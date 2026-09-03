@@ -210,6 +210,15 @@
     .sec-label { display:block; font-size:.7rem; font-weight:800; color: var(--accent); text-transform:uppercase; letter-spacing:1.8px; margin-bottom:5px; }
 
     .svc-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:15px; }
+    @media (max-width: 680px) {
+      .svc-grid { display:flex; overflow-x:auto; scroll-snap-type:x proximity; gap:12px; padding:2px 16px 14px; margin:0 -16px; -webkit-overflow-scrolling:touch; }
+      .svc-grid::-webkit-scrollbar { height:6px; }
+      .svc-grid::-webkit-scrollbar-thumb { background: var(--border-md); border-radius:10px; }
+      .svc-card { flex:0 0 78vw; max-width:290px; scroll-snap-align:start; }
+      .svc-swipe-hint { display:flex; }
+    }
+    .svc-swipe-hint { display:none; align-items:center; gap:6px; color: var(--muted); font-size:.76rem; font-weight:600; margin:-18px 0 18px; }
+    .svc-swipe-hint i { color: var(--accent-light); }
     .svc-card { background: linear-gradient(160deg, rgba(255,255,255,.045) 0%, rgba(255,255,255,.012) 100%); border:1px solid var(--border); border-radius: var(--radius); padding:24px; transition: transform .22s, border-color .22s, box-shadow .22s; position:relative; overflow:hidden; cursor:pointer; }
     .svc-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); opacity:0; transition:opacity .22s; }
     .svc-card:hover { transform: translateY(-4px); border-color: var(--border-md); box-shadow: 0 18px 52px rgba(0,0,0,.38); }
@@ -261,7 +270,7 @@
     .testi-divider { height:1px; background: var(--border); }
     .testi-name { font-weight:800; font-size:.88rem; }
     .testi-role { color: var(--muted); font-size:.77rem; margin-top:2px; }
-    @media (max-width: 680px) { .testi-top { padding:0 18px 20px; } .testi-scroll { padding:0 18px 22px; } .testi-card { flex-basis:250px; } }
+    @media (max-width: 680px) { .testi-top { padding:0 16px 18px; } .testi-scroll { padding:0 16px 22px; gap:12px; } .testi-card { flex-basis:86vw; max-width:340px; } }
 
     .testi-head { display:flex; align-items:center; gap:12px; }
     .testi-avatar { width:46px; height:46px; border-radius:50%; object-fit:cover; flex-shrink:0; }
@@ -546,6 +555,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <span class="pill"><i class="ri-verified-badge-line"></i> <span data-i18n="services.pill">Clear pricing · No hidden charges</span></span>
     </div>
+    <p class="svc-swipe-hint"><i class="ri-arrow-left-right-line"></i> <span data-i18n="services.swipeHint">Swipe to browse all services</span></p>
     <div class="svc-grid" id="svcGrid"></div>
   </div>
 </section>
@@ -945,7 +955,7 @@ en: {
   'hero.ctaConsult':'Get Free Consultation','hero.ctaWa':'WhatsApp Us',
   'hero.trust1':'Expert-Handled','hero.trust2':'100% Online Process','hero.trust3':'Transparent Pricing','hero.trust4':'Dedicated Support',
   'feat1':'Documentation Handled','feat2':'Fast Turnaround','feat3':'Updates on WhatsApp',
-  'services.sectionLabel':'What we handle','services.title':'Our Services','services.pill':'Clear pricing · No hidden charges',
+  'services.sectionLabel':'What we handle','services.title':'Our Services','services.pill':'Clear pricing · No hidden charges','services.swipeHint':'Swipe to browse all services',
   'svc.pvtltd':'Pvt Ltd Company Registration','svc.pvtltd.desc':'End-to-end incorporation — name approval, DIN & DSC, MOA/AOA drafting and ROC filing, so your company is legally ready to operate anywhere in West Bengal.',
   'svc.llp':'LLP Registration','svc.llp.desc':'Limited Liability Partnership formation with partner agreement drafting, DPIN & DSC, and ROC filing — a flexible structure for professionals and small businesses.',
   'svc.trade':'Trade License','svc.trade.desc':'Get your municipal trade license sorted with correct documentation and application filing — required to legally run most local businesses anywhere in West Bengal.',
@@ -1042,7 +1052,7 @@ bn: {
   'hero.ctaConsult':'বিনামূল্যে পরামর্শ নিন','hero.ctaWa':'হোয়াটসঅ্যাপে যোগাযোগ করুন',
   'hero.trust1':'বিশেষজ্ঞ দ্বারা পরিচালিত','hero.trust2':'১০০% অনলাইন প্রক্রিয়া','hero.trust3':'স্বচ্ছ মূল্য','hero.trust4':'নিবেদিত সহায়তা',
   'feat1':'সমস্ত নথিপত্র সামলানো হয়','feat2':'দ্রুত সম্পন্ন','feat3':'হোয়াটসঅ্যাপে আপডেট',
-  'services.sectionLabel':'আমরা যা করি','services.title':'আমাদের পরিষেবাসমূহ','services.pill':'স্পষ্ট মূল্য · কোনো লুকানো চার্জ নেই',
+  'services.sectionLabel':'আমরা যা করি','services.title':'আমাদের পরিষেবাসমূহ','services.pill':'স্পষ্ট মূল্য · কোনো লুকানো চার্জ নেই','services.swipeHint':'সব পরিষেবা দেখতে সোয়াইপ করুন',
   'svc.pvtltd':'প্রাইভেট লিমিটেড কোম্পানি নিবন্ধন','svc.pvtltd.desc':'নাম অনুমোদন, DIN ও DSC, MOA/AOA খসড়া তৈরি এবং ROC ফাইলিং সহ সম্পূর্ণ নিবন্ধন প্রক্রিয়া — যাতে আপনার কোম্পানি পশ্চিমবঙ্গের যেকোনো স্থানে আইনগতভাবে কার্যক্রম শুরু করতে প্রস্তুত থাকে।',
   'svc.llp':'এলএলপি (LLP) নিবন্ধন','svc.llp.desc':'পার্টনার চুক্তি খসড়া, DPIN ও DSC এবং ROC ফাইলিং সহ লিমিটেড লায়াবিলিটি পার্টনারশিপ গঠন — পেশাদার ও ছোট ব্যবসার জন্য একটি নমনীয় কাঠামো।',
   'svc.trade':'ট্রেড লাইসেন্স','svc.trade.desc':'সঠিক নথিপত্র ও আবেদন ফাইলিং সহ পৌরসভার ট্রেড লাইসেন্স সম্পন্ন করুন — পশ্চিমবঙ্গের যেকোনো এলাকায় ব্যবসা বৈধভাবে চালানোর জন্য প্রয়োজনীয়।',
@@ -1139,7 +1149,7 @@ hi: {
   'hero.ctaConsult':'मुफ़्त परामर्श लें','hero.ctaWa':'व्हाट्सएप पर संपर्क करें',
   'hero.trust1':'विशेषज्ञों द्वारा संभाला गया','hero.trust2':'100% ऑनलाइन प्रक्रिया','hero.trust3':'पारदर्शी मूल्य निर्धारण','hero.trust4':'समर्पित सहायता',
   'feat1':'सभी दस्तावेज़ीकरण संभाला गया','feat2':'तेज़ प्रोसेसिंग','feat3':'व्हाट्सएप पर अपडेट',
-  'services.sectionLabel':'हम क्या संभालते हैं','services.title':'हमारी सेवाएं','services.pill':'स्पष्ट मूल्य निर्धारण · कोई छिपा शुल्क नहीं',
+  'services.sectionLabel':'हम क्या संभालते हैं','services.title':'हमारी सेवाएं','services.pill':'स्पष्ट मूल्य निर्धारण · कोई छिपा शुल्क नहीं','services.swipeHint':'सभी सेवाएं देखने के लिए स्वाइप करें',
   'svc.pvtltd':'प्राइवेट लिमिटेड कंपनी पंजीकरण','svc.pvtltd.desc':'नाम अनुमोदन, DIN व DSC, MOA/AOA प्रारूपण और ROC फाइलिंग सहित पूर्ण निगमन प्रक्रिया — ताकि आपकी कंपनी पश्चिम बंगाल में कहीं भी कानूनी रूप से कार्य करने के लिए तैयार हो।',
   'svc.llp':'LLP पंजीकरण','svc.llp.desc':'पार्टनर एग्रीमेंट प्रारूपण, DPIN व DSC, और ROC फाइलिंग के साथ लिमिटेड लायबिलिटी पार्टनरशिप गठन — पेशेवरों और छोटे व्यवसायों के लिए एक लचीला ढांचा।',
   'svc.trade':'ट्रेड लाइसेंस','svc.trade.desc':'सही दस्तावेज़ीकरण और आवेदन फाइलिंग के साथ अपना नगरपालिका ट्रेड लाइसेंस प्राप्त करें — पश्चिम बंगाल में कहीं भी अधिकांश स्थानीय व्यवसाय चलाने के लिए आवश्यक।',
