@@ -304,7 +304,7 @@
     .ck-psub { margin:0 0 18px; color: var(--muted); font-size:.86rem; }
     .ck-svc-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:9px; }
     .ck-svc-note { margin:12px 2px 0; font-size:.76rem; font-weight:700; color: var(--accent-light); display:flex; align-items:center; gap:6px; }
-    .ck-svc { display:flex; align-items:center; gap:.6rem; border:1px solid var(--border); border-radius:11px; padding:.75rem .85rem; background: rgba(255,255,255,.02); cursor:pointer; transition:.18s; text-align:left; font-family:inherit; color: var(--txt); position:relative; }
+    .ck-svc { display:flex; align-items:center; gap:.6rem; border:1px solid var(--border); border-radius:11px; padding:.75rem .85rem; background: rgba(255,255,255,.02); cursor:pointer; transition:.18s; text-align:left; font-family:inherit; color: var(--txt); position:relative; touch-action:manipulation; }
     .ck-badge { position:absolute; top:-8px; right:-6px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color:#06140d; font-size:.6rem; font-weight:800; padding:2px 7px; border-radius:20px; box-shadow: 0 2px 8px rgba(0,0,0,.4); letter-spacing:.3px; white-space:nowrap; }
     .ck-svc i { color: var(--accent-light); font-size:1.05rem; flex-shrink:0; }
     .ck-svc span { font-size:.84rem; font-weight:700; }
@@ -312,7 +312,7 @@
     .ck-svc.sel { border-color: var(--accent); background: rgba(58,184,129,.12); box-shadow: var(--ring); }
     .ck-field { margin-bottom:14px; }
     .ck-field label { display:block; font-size:.78rem; font-weight:700; color: var(--muted); margin-bottom:6px; }
-    .ck-inp, .ck-txt { width:100%; padding:.75rem .9rem; border-radius:10px; border:1px solid var(--border-md); background: rgba(255,255,255,.03); color: var(--txt); font-family:inherit; font-size:.9rem; }
+    .ck-inp, .ck-txt { width:100%; padding:.75rem .9rem; border-radius:10px; border:1px solid var(--border-md); background: rgba(255,255,255,.03); color: var(--txt); font-family:inherit; font-size:16px; }
     .ck-inp:focus, .ck-txt:focus { outline:none; border-color: var(--accent); box-shadow: var(--ring); }
     .ck-txt { resize: vertical; min-height:78px; }
     .ck-row2 { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
@@ -329,9 +329,9 @@
     .ck-toast { display:none; align-items:center; gap:8px; margin:0 26px 14px; padding:.7rem .9rem; border-radius:9px; background: rgba(58,184,129,.12); border:1px solid rgba(58,184,129,.35); color: var(--accent-light); font-size:.82rem; font-weight:700; }
     .ck-toast i { font-size:1.05rem; flex-shrink:0; }
     .ck-foot { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:16px 26px; border-top:1px solid var(--border); background: rgba(255,255,255,.015); }
-    .ck-back { background:none; border:1px solid var(--border-md); border-radius:9px; padding:.7rem 1rem; color: var(--muted); font-weight:700; font-size:.85rem; cursor:pointer; font-family:inherit; display:flex; align-items:center; gap:.4rem; }
+    .ck-back { background:none; border:1px solid var(--border-md); border-radius:9px; padding:.7rem 1rem; color: var(--muted); font-weight:700; font-size:.85rem; cursor:pointer; font-family:inherit; display:flex; align-items:center; gap:.4rem; touch-action:manipulation; }
     .ck-back:disabled { opacity:.35; cursor:not-allowed; }
-    .ck-next { flex:1; max-width:260px; margin-left:auto; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border:none; border-radius:9px; padding:.78rem 1.1rem; color:#071a0f; font-weight:800; font-size:.88rem; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:.45rem; font-family:inherit; transition: transform .18s, box-shadow .18s; }
+    .ck-next { flex:1; max-width:260px; margin-left:auto; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border:none; border-radius:9px; padding:.78rem 1.1rem; color:#071a0f; font-weight:800; font-size:.88rem; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:.45rem; font-family:inherit; transition: transform .18s, box-shadow .18s; touch-action:manipulation; }
     .ck-next:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(58,184,129,.35); }
     .ck-next:disabled { opacity:.65; cursor:default; pointer-events:none; }
     .ck-next.wa { background: linear-gradient(135deg, #25d366, #128c7e); color:#fff; }
@@ -351,6 +351,26 @@
     .ck-success p { color:var(--muted); font-size:.9rem; line-height:1.65; max-width:380px; margin:0 auto 26px; animation: ckFadeUp .5s ease .4s both; }
     .ck-done-btn { background: linear-gradient(135deg, var(--accent), var(--accent-light)); border:none; border-radius:9px; padding:.78rem 1.6rem; color:#071a0f; font-weight:800; font-size:.86rem; cursor:pointer; font-family:inherit; transition: transform .18s, box-shadow .18s; animation: ckFadeUp .5s ease .5s both; }
     .ck-done-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(58,184,129,.35); }
+    .ck-caseid-box { display:flex; flex-direction:column; align-items:center; gap:6px; border:1px dashed var(--border-hi); border-radius:11px; padding:.7rem 1.1rem; background: rgba(58,184,129,.06); margin:0 0 22px; animation: ckFadeUp .5s ease .45s both; }
+    .ck-caseid-label { font-size:.72rem; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; }
+    .ck-caseid-row { display:flex; align-items:center; gap:8px; }
+    .ck-caseid-val { font-size:1rem; font-weight:800; color:var(--accent-light); letter-spacing:.02em; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .ck-caseid-copy { display:flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:7px; border:1px solid var(--border-md); background:transparent; color:var(--muted); cursor:pointer; transition: color .18s, border-color .18s, background .18s; }
+    .ck-caseid-copy:hover { color:var(--accent-light); border-color:var(--accent); background: rgba(58,184,129,.08); }
+    .ck-caseid-copy.copied { color:var(--accent-light); border-color:var(--accent); }
+    .ck-updates-block { margin-top:22px; padding-top:20px; border-top:1px solid var(--border); max-width:400px; animation: ckFadeUp .5s ease .55s both; }
+    .ck-updates-msg { color:var(--muted); font-size:.8rem; line-height:1.6; margin:0 0 14px; }
+    .ck-updates-btn { display:inline-flex; align-items:center; gap:.45rem; padding:.65rem 1.15rem; border-radius:9px; border:1px solid var(--border-hi); background: rgba(58,184,129,.09); color:var(--accent-light); font-weight:700; font-size:.84rem; cursor:pointer; font-family:inherit; transition: transform .18s, box-shadow .18s, background .18s; }
+    .ck-updates-btn:hover { transform: translateY(-2px); background: rgba(58,184,129,.15); box-shadow: 0 8px 22px rgba(58,184,129,.22); }
+    .ck-updates-options { display:none; align-items:center; justify-content:center; gap:10px; margin-top:12px; flex-wrap:wrap; }
+    .ck-updates-options.show { display:flex; }
+    .ck-updates-opt { display:inline-flex; align-items:center; gap:.4rem; padding:.6rem 1rem; border-radius:9px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05); color:var(--txt); font-weight:700; font-size:.8rem; cursor:pointer; font-family:inherit; transition: transform .18s, box-shadow .18s, border-color .18s; }
+    .ck-updates-opt:hover { transform: translateY(-2px); }
+    .ck-updates-opt.wa { border-color: rgba(37,211,102,.4); }
+    .ck-updates-opt.wa:hover { background: rgba(37,211,102,.12); border-color:#25d366; }
+    .ck-updates-opt.wa i { color: var(--wa); }
+    .ck-updates-opt.em:hover { border-color: var(--accent); background: rgba(58,184,129,.09); }
+    .ck-updates-opt.em i { color: var(--accent-light); }
     @keyframes ckPop { 0% { transform:scale(0); opacity:0; } 60% { transform:scale(1.14); opacity:1; } 100% { transform:scale(1); opacity:1; } }
     @keyframes ckRingPulse { 0% { box-shadow:0 0 0 0 rgba(58,184,129,.4); } 100% { box-shadow:0 0 0 20px rgba(58,184,129,0); } }
     @keyframes ckDraw { to { stroke-dashoffset:0; } }
@@ -722,7 +742,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <h3 data-i18n="consult.successTitle">Request submitted!</h3>
         <p data-i18n="consult.successMsg">We've received your details and will get back to you within a couple of minutes.</p>
+        <div class="ck-caseid-box">
+          <span class="ck-caseid-label" data-i18n="consult.caseIdLabel">Your Case ID</span>
+          <div class="ck-caseid-row">
+            <span class="ck-caseid-val" id="ckCaseIdVal">—</span>
+            <button type="button" class="ck-caseid-copy" id="ckCaseIdCopy" onclick="ckCopyCaseId()" aria-label="Copy Case ID"><i class="ri-file-copy-line"></i></button>
+          </div>
+        </div>
         <button class="ck-done-btn" onclick="ckReset()" type="button" data-i18n="consult.done">Done</button>
+
+        <div class="ck-updates-block">
+          <p class="ck-updates-msg" data-i18n="consult.updatesMsg">If you would like real-time updates, click on 'Updates' or follow your email notifications. Alternatively, you can submit your case ID via WhatsApp or email us at onnmore@gmail.com.</p>
+          <button type="button" class="ck-updates-btn" id="ckUpdatesBtn" onclick="ckToggleUpdateOptions()"><i class="ri-refresh-line"></i> <span data-i18n="consult.updatesBtn">Updates</span></button>
+          <div class="ck-updates-options" id="ckUpdatesOptions">
+            <button type="button" class="ck-updates-opt wa" onclick="ckCheckStatus('whatsapp')"><i class="ri-whatsapp-line"></i> <span data-i18n="consult.viaWhatsapp">via WhatsApp</span></button>
+            <button type="button" class="ck-updates-opt em" onclick="ckCheckStatus('email')"><i class="ri-mail-line"></i> <span data-i18n="consult.viaEmail">via Email</span></button>
+          </div>
+        </div>
       </div>
 
       <div class="ck-err" id="ckErr" role="alert"></div>
@@ -1137,6 +1173,9 @@ en: {
   'consult.errSelect':'Please select a service to continue.','consult.errName':'Please enter your name.','consult.errPhone':'Please enter your phone number.',
   'consult.back':'Back','consult.continue':'Continue','consult.send':'Submit','consult.toast':"Got it! Your details have been recorded — we'll also reach out by phone or email.",
   'consult.successTitle':'Request submitted!','consult.successMsg':"We've received your details and will get back to you within a couple of minutes.",'consult.done':'Done',
+  'consult.caseIdLabel':'Your Case ID','consult.updatesBtn':'Updates','consult.viaWhatsapp':'via WhatsApp','consult.viaEmail':'via Email',
+  'consult.updatesMsg':"If you would like real-time updates, click on 'Updates' or follow your email notifications. Alternatively, you can submit your case ID via WhatsApp or email us at onnmore@gmail.com.",
+  'consult.statusWaMsg':'Hi, I would like an update on my case. My Case ID is: ','consult.statusEmailSubject':'Case Status Update Request - ',
   'why.sectionLabel':'Our promise','why.title':'Why choose Onnmore?',
   'why1.title':'Experienced Consultants','why1.desc':'Your registration and filings are handled by professionals who know the process inside out, across every district of West Bengal.',
   'why2.title':'Transparent Pricing','why2.desc':'You get a clear quote up front — no hidden charges, no last-minute surprises.',
@@ -1181,7 +1220,7 @@ en: {
   'area.kolkata':'Kolkata','area.howrah':'Howrah','area.hooghly':'Hooghly','area.n24pgs':'North 24 Parganas','area.s24pgs':'South 24 Parganas','area.nadia':'Nadia',
   'area.bardhaman':'Bardhaman','area.durgapur':'Durgapur','area.asansol':'Asansol','area.siliguri':'Siliguri','area.malda':'Malda','area.murshidabad':'Murshidabad',
   'wa.defaultMsg':"Hi Onnmore, I'd like to know more about your business consultancy services.",
-  'wa.msgTitle':'New Onnmore Consultation Request','wa.msgService':'Service','wa.msgBiz':'Business Name','wa.msgName':'Name','wa.msgPhone':'Phone','wa.msgEmail':'Email','wa.msgNotes':'Notes','wa.msgFooter':'(Please share pricing & next steps.)'
+  'wa.msgTitle':'New Onnmore Consultation Request','wa.msgCaseId':'Case ID','wa.msgService':'Service','wa.msgBiz':'Business Name','wa.msgName':'Name','wa.msgPhone':'Phone','wa.msgEmail':'Email','wa.msgNotes':'Notes','wa.msgFooter':'(Please share pricing & next steps.)'
 },
 bn: {
   'offer.text':'আমাদের সাথে যেকোনো পরিষেবা নিন এবং আপনার Udyam/MSME নিবন্ধন সম্পূর্ণ বিনামূল্যে পান!','offer.note':'(অফারটি শুধুমাত্র পশ্চিমবঙ্গের গ্রাহকদের জন্য প্রযোজ্য)',
@@ -1240,6 +1279,9 @@ bn: {
   'consult.errSelect':'চালিয়ে যেতে একটি পরিষেবা নির্বাচন করুন।','consult.errName':'আপনার নাম লিখুন।','consult.errPhone':'আপনার ফোন নম্বর লিখুন।',
   'consult.back':'পেছনে','consult.continue':'চালিয়ে যান','consult.send':'সাবমিট করুন','consult.toast':'ধন্যবাদ! আপনার তথ্য গ্রহণ করা হয়েছে — আমরা ফোন বা ইমেইলেও যোগাযোগ করব।',
   'consult.successTitle':'অনুরোধ সাবমিট হয়েছে!','consult.successMsg':'আমরা আপনার তথ্য পেয়েছি এবং কয়েক মিনিটের মধ্যে যোগাযোগ করব।','consult.done':'সম্পন্ন',
+  'consult.caseIdLabel':'আপনার কেস আইডি','consult.updatesBtn':'আপডেট','consult.viaWhatsapp':'হোয়াটসঅ্যাপের মাধ্যমে','consult.viaEmail':'ইমেইলের মাধ্যমে',
+  'consult.updatesMsg':"রিয়েল-টাইম আপডেট পেতে চাইলে 'আপডেট'-এ ক্লিক করুন অথবা আপনার ইমেইল নোটিফিকেশন দেখুন। এছাড়াও, আপনি আপনার কেস আইডি হোয়াটসঅ্যাপে পাঠাতে পারেন অথবা onnmore@gmail.com-এ ইমেইল করতে পারেন।",
+  'consult.statusWaMsg':'হাই, আমি আমার কেসের আপডেট জানতে চাই। আমার কেস আইডি: ','consult.statusEmailSubject':'কেস স্ট্যাটাস আপডেট অনুরোধ - ',
   'why.sectionLabel':'আমাদের প্রতিশ্রুতি','why.title':'কেন অনমোর বেছে নেবেন?',
   'why1.title':'অভিজ্ঞ পরামর্শদাতা','why1.desc':'আপনার নিবন্ধন ও ফাইলিং পরিচালনা করেন এমন পেশাদাররা যারা পশ্চিমবঙ্গের প্রতিটি জেলায় প্রক্রিয়াটি ভালোভাবে জানেন।',
   'why2.title':'স্বচ্ছ মূল্য','why2.desc':'কাজ শুরুর আগেই আপনি স্পষ্ট মূল্য পাবেন — কোনো লুকানো চার্জ নেই, শেষ মুহূর্তে কোনো চমক নেই।',
@@ -1284,7 +1326,7 @@ bn: {
   'area.kolkata':'কলকাতা','area.howrah':'হাওড়া','area.hooghly':'হুগলি','area.n24pgs':'উত্তর ২৪ পরগনা','area.s24pgs':'দক্ষিণ ২৪ পরগনা','area.nadia':'নদিয়া',
   'area.bardhaman':'বর্ধমান','area.durgapur':'দুর্গাপুর','area.asansol':'আসানসোল','area.siliguri':'শিলিগুড়ি','area.malda':'মালদা','area.murshidabad':'মুর্শিদাবাদ',
   'wa.defaultMsg':'হ্যালো অনমোর, আমি আপনাদের ব্যবসায়িক পরামর্শ পরিষেবা সম্পর্কে আরও জানতে চাই।',
-  'wa.msgTitle':'নতুন অনমোর পরামর্শ অনুরোধ','wa.msgService':'পরিষেবা','wa.msgBiz':'ব্যবসার নাম','wa.msgName':'নাম','wa.msgPhone':'ফোন','wa.msgEmail':'ইমেইল','wa.msgNotes':'নোট','wa.msgFooter':'(অনুগ্রহ করে মূল্য ও পরবর্তী পদক্ষেপ জানান।)'
+  'wa.msgTitle':'নতুন অনমোর পরামর্শ অনুরোধ','wa.msgCaseId':'কেস আইডি','wa.msgService':'পরিষেবা','wa.msgBiz':'ব্যবসার নাম','wa.msgName':'নাম','wa.msgPhone':'ফোন','wa.msgEmail':'ইমেইল','wa.msgNotes':'নোট','wa.msgFooter':'(অনুগ্রহ করে মূল্য ও পরবর্তী পদক্ষেপ জানান।)'
 },
 hi: {
   'offer.text':'हमारे साथ कोई भी सेवा लें और अपना Udyam/MSME पंजीकरण बिल्कुल मुफ़्त पाएं!','offer.note':'(यह ऑफर केवल पश्चिम बंगाल के ग्राहकों के लिए मान्य है)',
@@ -1343,6 +1385,9 @@ hi: {
   'consult.errSelect':'जारी रखने के लिए कृपया एक सेवा चुनें।','consult.errName':'कृपया अपना नाम दर्ज करें।','consult.errPhone':'कृपया अपना फ़ोन नंबर दर्ज करें।',
   'consult.back':'वापस','consult.continue':'जारी रखें','consult.send':'सबमिट करें','consult.toast':'हो गया! आपकी जानकारी दर्ज कर ली गई है — हम फ़ोन या ईमेल पर भी संपर्क करेंगे।',
   'consult.successTitle':'अनुरोध सबमिट हो गया!','consult.successMsg':'हमें आपकी जानकारी मिल गई है और हम कुछ ही मिनटों में संपर्क करेंगे।','consult.done':'हो गया',
+  'consult.caseIdLabel':'आपकी केस आईडी','consult.updatesBtn':'अपडेट','consult.viaWhatsapp':'व्हाट्सएप के ज़रिए','consult.viaEmail':'ईमेल के ज़रिए',
+  'consult.updatesMsg':"अगर आप रीयल-टाइम अपडेट चाहते हैं, तो 'अपडेट' पर क्लिक करें या अपने ईमेल नोटिफिकेशन देखें। इसके अलावा, आप अपनी केस आईडी व्हाट्सएप पर भेज सकते हैं या हमें onnmore@gmail.com पर ईमेल कर सकते हैं।",
+  'consult.statusWaMsg':'नमस्ते, मुझे अपने केस का अपडेट चाहिए। मेरी केस आईडी है: ','consult.statusEmailSubject':'केस स्टेटस अपडेट अनुरोध - ',
   'why.sectionLabel':'हमारा वादा','why.title':'ओन्नमोर को क्यों चुनें?',
   'why1.title':'अनुभवी सलाहकार','why1.desc':'आपका पंजीकरण और फाइलिंग ऐसे पेशेवरों द्वारा संभाला जाता है जो पश्चिम बंगाल के हर ज़िले में इस प्रक्रिया को अच्छी तरह जानते हैं।',
   'why2.title':'पारदर्शी मूल्य निर्धारण','why2.desc':'काम शुरू होने से पहले ही आपको स्पष्ट मूल्य मिलता है — कोई छिपा शुल्क नहीं, आखिरी समय में कोई आश्चर्य नहीं।',
@@ -1387,7 +1432,7 @@ hi: {
   'area.kolkata':'कोलकाता','area.howrah':'हावड़ा','area.hooghly':'हुगली','area.n24pgs':'उत्तर 24 परगना','area.s24pgs':'दक्षिण 24 परगना','area.nadia':'नादिया',
   'area.bardhaman':'बर्धमान','area.durgapur':'दुर्गापुर','area.asansol':'आसनसोल','area.siliguri':'सिलीगुड़ी','area.malda':'मालदा','area.murshidabad':'मुर्शिदाबाद',
   'wa.defaultMsg':'नमस्ते ओन्नमोर, मैं आपकी बिज़नेस कंसल्टेंसी सेवाओं के बारे में अधिक जानना चाहता/चाहती हूं।',
-  'wa.msgTitle':'नया ओन्नमोर परामर्श अनुरोध','wa.msgService':'सेवा','wa.msgBiz':'व्यवसाय का नाम','wa.msgName':'नाम','wa.msgPhone':'फ़ोन','wa.msgEmail':'ईमेल','wa.msgNotes':'टिप्पणी','wa.msgFooter':'(कृपया मूल्य व अगले कदम बताएं।)'
+  'wa.msgTitle':'नया ओन्नमोर परामर्श अनुरोध','wa.msgCaseId':'केस आईडी','wa.msgService':'सेवा','wa.msgBiz':'व्यवसाय का नाम','wa.msgName':'नाम','wa.msgPhone':'फ़ोन','wa.msgEmail':'ईमेल','wa.msgNotes':'टिप्पणी','wa.msgFooter':'(कृपया मूल्य व अगले कदम बताएं।)'
 }
 };
 
@@ -1639,7 +1684,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
 /* ══════════ CONSULTATION REQUEST WIZARD ══════════ */
 let ckStep = 1;
-const ckState = { svcKey: '', ico: 'ri-briefcase-4-line', name: '', phone: '', email: '', biz: '', msg: '' };
+const ckState = { svcKey: '', ico: 'ri-briefcase-4-line', name: '', phone: '', email: '', biz: '', msg: '', caseId: '' };
 
 /* Only nudge the page if the consult card has actually scrolled out of
    comfortable view — prevents the jarring snap-to-top on every tap that
@@ -1695,6 +1740,11 @@ function ckUpdateStepper(s) {
 }
 
 function ckShowPanel(s) {
+  /* Dismiss the mobile keyboard before swapping panels — if a text field is
+     still focused when the panel changes, iOS/Android can leave the page
+     zoomed in from that field's focus, which reads as the layout being
+     "shifted" or not fixed in place. */
+  if (document.activeElement && typeof document.activeElement.blur === 'function') document.activeElement.blur();
   document.querySelectorAll('.ck-panel').forEach(p => p.classList.remove('show'));
   document.getElementById('cp' + s).classList.add('show');
   ckUpdateStepper(s);
@@ -1737,6 +1787,7 @@ function ckValidate(s) {
 }
 
 function ckNext() {
+  ckPrimeAudio(); // must run inside a direct click handler so the browser allows audio later
   if (!ckValidate(ckStep)) return;
   ckCollect(ckStep);
   if (ckStep === 2) ckTrack('consult_details_completed', { service: ckState.svcKey });
@@ -1757,41 +1808,74 @@ function ckPrev() {
 /* Native WhatsApp app deep link (works on mobile + WhatsApp Desktop, no browser landing page) */
 function waDeepLink(msg) { return `whatsapp://send?phone=${WA_NUMBER}&text=${encodeURIComponent(msg)}`; }
 
-/* Soft, premium two-note "delivered" chime — synthesized, no audio file needed */
-function ckPlayChime() {
+/* Audio must be created/unlocked inside a real click handler or mobile browsers
+   silently refuse to play it later (this was why the old chime went silent —
+   it built a brand-new AudioContext inside a setTimeout, long after the click
+   that "authorized" audio had passed). We build ONE context up front, on the
+   Continue/Submit click, and just reuse + resume it whenever we need a sound. */
+let ckAudioCtx = null;
+function ckPrimeAudio() {
   try {
     const Ctx = window.AudioContext || window.webkitAudioContext;
     if (!Ctx) return;
-    const ctx = new Ctx();
-    const now = ctx.currentTime;
-    const notes = [
-      { freq: 659.25, time: 0,    dur: 0.32, gain: 0.09 },  // E5
-      { freq: 987.77, time: 0.14, dur: 0.40, gain: 0.10 },  // B5
-      { freq: 1318.51,time: 0.30, dur: 0.55, gain: 0.07 }   // E6
-    ];
-    notes.forEach(n => {
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.value = n.freq;
-      gain.gain.setValueAtTime(0.0001, now + n.time);
-      gain.gain.linearRampToValueAtTime(n.gain, now + n.time + 0.03);
-      gain.gain.exponentialRampToValueAtTime(0.0001, now + n.time + n.dur);
-      osc.connect(gain).connect(ctx.destination);
-      osc.start(now + n.time);
-      osc.stop(now + n.time + n.dur + 0.05);
-    });
-    setTimeout(() => { ctx.close().catch(() => {}); }, 1400);
+    if (!ckAudioCtx) ckAudioCtx = new Ctx();
+    if (ckAudioCtx.state === 'suspended') ckAudioCtx.resume().catch(() => {});
+  } catch (e) {}
+}
+
+/* Bright, punchy "order confirmed" style chime (think Zomato/Swiggy's cheerful
+   ding) — a quick ascending run that lands on a bold held note. Synthesized
+   with Web Audio, so no external sound file is needed. */
+function ckPlayChime() {
+  try {
+    ckPrimeAudio();
+    if (!ckAudioCtx) return;
+    const ctx = ckAudioCtx;
+    const play = () => {
+      const now = ctx.currentTime;
+      const notes = [
+        { freq: 784.00,  time: 0,    dur: 0.16, gain: 0.34, type: 'triangle' }, // G5
+        { freq: 987.77,  time: 0.11, dur: 0.16, gain: 0.36, type: 'triangle' }, // B5
+        { freq: 1318.51, time: 0.22, dur: 0.20, gain: 0.42, type: 'triangle' }, // E6
+        { freq: 1567.98, time: 0.38, dur: 0.55, gain: 0.44, type: 'sine' }      // G6 — bright, held finish
+      ];
+      notes.forEach(n => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = n.type;
+        osc.frequency.value = n.freq;
+        gain.gain.setValueAtTime(0.0001, now + n.time);
+        gain.gain.linearRampToValueAtTime(n.gain, now + n.time + 0.015);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + n.time + n.dur);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(now + n.time);
+        osc.stop(now + n.time + n.dur + 0.05);
+      });
+    };
+    if (ctx.state === 'suspended') { ctx.resume().then(play).catch(() => {}); }
+    else { play(); }
   } catch (e) { /* Web Audio unsupported — fail silently, animation still plays */ }
+}
+
+/* Short, human-readable, random Case ID customers can quote when following up:
+   ONM-YYMMDD-XXXX (date stamp + 4 random base-36 characters). */
+function ckGenerateCaseId() {
+  const d = new Date();
+  const yy = String(d.getFullYear()).slice(-2);
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  const rand = Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `ONM-${yy}${mm}${dd}-${rand}`;
 }
 
 function ckSubmit() {
   const svcName = ckState.svcKey ? t(ckState.svcKey) : '';
+  if (!ckState.caseId) ckState.caseId = ckGenerateCaseId();
   sendLeadToEmail(svcName);
   sendLeadToSheet(svcName);
-  ckTrack('consult_submit_clicked', { service: ckState.svcKey, value: 1, currency: 'INR' });
+  ckTrack('consult_submit_clicked', { service: ckState.svcKey, value: 1, currency: 'INR', caseId: ckState.caseId });
 
-  let m = `🧾 *${t('wa.msgTitle')}*\n───────────────────\n*${t('wa.msgService')}:* ${svcName}\n`;
+  let m = `🧾 *${t('wa.msgTitle')}*\n───────────────────\n*${t('wa.msgCaseId')}:* ${ckState.caseId}\n*${t('wa.msgService')}:* ${svcName}\n`;
   if (ckState.biz) m += `*${t('wa.msgBiz')}:* ${ckState.biz}\n`;
   m += `───────────────────\n*${t('wa.msgName')}:* ${ckState.name}\n*${t('wa.msgPhone')}:* ${ckState.phone}\n`;
   if (ckState.email) m += `*${t('wa.msgEmail')}:* ${ckState.email}\n`;
@@ -1836,6 +1920,7 @@ function ckSubmit() {
 }
 
 function ckShowSuccess() {
+  if (document.activeElement && typeof document.activeElement.blur === 'function') document.activeElement.blur();
   document.querySelectorAll('.ck-panel').forEach(p => p.classList.remove('show'));
   document.getElementById('ckErr').style.display = 'none';
   const toast = document.getElementById('ckToast');
@@ -1844,13 +1929,62 @@ function ckShowSuccess() {
   if (foot) foot.style.display = 'none';
   const stepper = document.querySelector('.ck-stepper');
   if (stepper) stepper.style.display = 'none';
+  const caseIdVal = document.getElementById('ckCaseIdVal');
+  if (caseIdVal) caseIdVal.textContent = ckState.caseId || '—';
+  const updOpts = document.getElementById('ckUpdatesOptions');
+  if (updOpts) updOpts.classList.remove('show');
   document.getElementById('cp4').classList.add('show');
   ckPlayChime();
 }
 
+/* Copies the Case ID to the clipboard so customers can paste it into WhatsApp/email later. */
+function ckCopyCaseId() {
+  const id = ckState.caseId || '';
+  if (!id) return;
+  const btn = document.getElementById('ckCaseIdCopy');
+  const done = () => {
+    if (!btn) return;
+    const icon = btn.querySelector('i');
+    btn.classList.add('copied');
+    if (icon) icon.className = 'ri-check-line';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      if (icon) icon.className = 'ri-file-copy-line';
+    }, 1500);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(id).then(done).catch(done);
+  } else {
+    done();
+  }
+}
+
+/* Reveals the WhatsApp / Email choice under the "Updates" button. */
+function ckToggleUpdateOptions() {
+  const opts = document.getElementById('ckUpdatesOptions');
+  if (!opts) return;
+  opts.classList.toggle('show');
+  ckTrack('consult_updates_opened', { service: ckState.svcKey, caseId: ckState.caseId });
+}
+
+/* Opens WhatsApp or Email with the Case ID already filled in, so the customer
+   just has to hit send to ask for a status update. */
+function ckCheckStatus(channel) {
+  const caseId = ckState.caseId || '';
+  ckTrack('consult_status_check', { channel, caseId });
+  if (channel === 'whatsapp') {
+    const msg = `${t('consult.statusWaMsg')}${caseId}`;
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  } else if (channel === 'email') {
+    const subject = `${t('consult.statusEmailSubject')}${caseId}`;
+    const body = `${t('consult.statusWaMsg')}${caseId}`;
+    window.location.href = `mailto:onnmore@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
+}
+
 function ckReset() {
   ckStep = 1;
-  ckState.svcKey = ''; ckState.ico = 'ri-briefcase-4-line'; ckState.name = ''; ckState.phone = ''; ckState.email = ''; ckState.biz = ''; ckState.msg = '';
+  ckState.svcKey = ''; ckState.ico = 'ri-briefcase-4-line'; ckState.name = ''; ckState.phone = ''; ckState.email = ''; ckState.biz = ''; ckState.msg = ''; ckState.caseId = '';
   document.getElementById('ckName').value = '';
   document.getElementById('ckPhone').value = '';
   document.getElementById('ckEmail').value = '';
@@ -1858,6 +1992,8 @@ function ckReset() {
   document.getElementById('ckMsg').value = '';
   document.querySelectorAll('.ck-svc.sel').forEach(b => b.classList.remove('sel'));
   document.getElementById('cp4').classList.remove('show');
+  const updOpts = document.getElementById('ckUpdatesOptions');
+  if (updOpts) updOpts.classList.remove('show');
   const foot = document.querySelector('.ck-foot');
   if (foot) foot.style.display = '';
   const stepper = document.querySelector('.ck-stepper');
