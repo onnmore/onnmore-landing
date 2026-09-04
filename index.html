@@ -250,6 +250,9 @@
     .price-card h4 { margin:0; font-size:.92rem; font-weight:800; line-height:1.35; }
     .price-tag { font-size:1.4rem; font-weight:900; color: var(--accent-light); line-height:1; }
     .price-tag small { font-size:.68rem; font-weight:700; color: var(--muted); display:block; margin-top:3px; }
+    .price-badge span { display:inline-block; font-size:.82rem; font-weight:800; padding:.32rem .75rem; border-radius:100vmax; letter-spacing:.2px; }
+    .price-badge.free span { color:#06140d; background: linear-gradient(135deg, var(--accent), var(--accent-light)); }
+    .price-badge.over span { color: var(--muted); background: rgba(255,255,255,.06); border:1px solid var(--border-md); }
     .price-note { color: var(--muted); font-size:.78rem; line-height:1.55; }
     .price-disclaimer { display:flex; align-items:flex-start; gap:.6rem; border:1px dashed var(--border-md); border-radius:12px; padding:.9rem 1.1rem; background: rgba(58,184,129,.045); font-size:.83rem; color: var(--muted); line-height:1.6; margin-top:22px; }
     .price-disclaimer i { color: var(--accent-light); font-size:1.05rem; margin-top:1px; flex-shrink:0; }
@@ -1053,10 +1056,10 @@ const PRICES = [
   { key:'svc.trade',  ico:'ri-file-shield-2-line',   price:'₹1,999',  note:'price.trade.note' },
   { key:'svc.food',   ico:'ri-restaurant-2-line',    price:'₹1,499',  note:'price.food.note' },
   { key:'svc.gst',    ico:'ri-percent-line',         price:'₹999',    note:'price.gst.note' },
-  { key:'svc.msme',   ico:'ri-store-2-line',         price:'₹499',    note:'price.msme.note' },
+  { key:'svc.msme',   ico:'ri-store-2-line',         badge:'price.msme.badge', badgeClass:'free', note:'price.msme.note' },
   { key:'svc.dsc',    ico:'ri-quill-pen-line',       price:'₹799',    note:'price.dsc.note' },
   { key:'svc.ptax',   ico:'ri-government-line',      price:'₹999',    note:'price.ptax.note' },
-  { key:'svc.itr',    ico:'ri-file-chart-line',      price:'₹599',    note:'price.itr.note' },
+  { key:'svc.itr',    ico:'ri-file-chart-line',      badge:'price.itr.badge', badgeClass:'over', note:'price.itr.note' },
   { key:'svc.iec',    ico:'ri-ship-2-line',          price:'₹999',    note:'price.iec.note' },
   { key:'svc.patent', ico:'ri-lightbulb-flash-line', price:'₹14,999', note:'price.patent.note' }
 ];
@@ -1168,10 +1171,12 @@ en: {
   'price.trade.note':'Excludes municipal/government license fees, which vary by trade category.',
   'price.food.note':'Basic registration; state/central license priced separately based on turnover.',
   'price.gst.note':'GSTIN allotment itself is free from the government — you pay only for our filing assistance.',
-  'price.msme.note':'Udyam registration is free from the government — you pay only for our filing assistance.',
+  'price.msme.badge':'FREE',
+  'price.msme.note':'Completely free, including our filing assistance — offer valid for West Bengal customers who take any other service with us.',
   'price.dsc.note':'Cost may vary if a physical token is required.',
   'price.ptax.note':'Excludes minimal state government fees.',
-  'price.itr.note':'Starting price for salaried ITR-1; capital gains and business returns are quoted after a quick look at your case.',
+  'price.itr.badge':'Due Date Over',
+  'price.itr.note':"The regular filing due date has passed, but you can still request a belated return filing — reach out and we'll take it from there.",
   'price.iec.note':'Excludes the ₹500 government fee.',
   'price.patent.note':'Excludes government filing fees. Final quote depends on the complexity of your invention.',
   'pricing.disclaimer':"These are our starting professional service fees for straightforward cases. Government/statutory fees (where applicable) are separate, fixed by the respective department, and shared with you upfront. We confirm your exact, final quote on WhatsApp before any work begins — no surprises later.",
@@ -1277,10 +1282,12 @@ bn: {
   'price.trade.note':'পৌরসভা/সরকারি লাইসেন্স ফি অন্তর্ভুক্ত নয়, যা ব্যবসার ধরন অনুযায়ী পরিবর্তিত হয়।',
   'price.food.note':'মৌলিক নিবন্ধন; টার্নওভার অনুযায়ী রাজ্য/কেন্দ্রীয় লাইসেন্সের দাম আলাদা।',
   'price.gst.note':'GSTIN বরাদ্দ সরকার থেকে বিনামূল্যে — শুধুমাত্র আমাদের ফাইলিং সহায়তার জন্য অর্থ প্রদান করবেন।',
-  'price.msme.note':'উদ্যম নিবন্ধন সরকার থেকে বিনামূল্যে — শুধুমাত্র আমাদের ফাইলিং সহায়তার জন্য অর্থ প্রদান করবেন।',
+  'price.msme.badge':'ফ্রি',
+  'price.msme.note':'সম্পূর্ণ বিনামূল্যে, আমাদের ফাইলিং সহায়তা সহ — যেসব গ্রাহক আমাদের সাথে অন্য কোনো পরিষেবা নেন তাদের জন্য এই অফারটি শুধুমাত্র পশ্চিমবঙ্গে প্রযোজ্য।',
   'price.dsc.note':'শারীরিক টোকেন প্রয়োজন হলে তার খরচ আলাদা হতে পারে।',
   'price.ptax.note':'রাজ্য সরকারের সামান্য ফি অন্তর্ভুক্ত নয়।',
-  'price.itr.note':'বেতনভোগীদের ITR-1-এর জন্য শুরুর মূল্য; ক্যাপিটাল গেইনস ও ব্যবসায়িক রিটার্নের জন্য দেখে মূল্য জানানো হবে।',
+  'price.itr.badge':'শেষ তারিখ পার হয়ে গেছে',
+  'price.itr.note':'নিয়মিত ফাইলিংয়ের শেষ তারিখ পার হয়ে গেছে, তবে আপনি এখনও বিলম্বিত রিটার্ন ফাইল করার অনুরোধ করতে পারেন — যোগাযোগ করুন, বাকিটা আমরা দেখে নেব।',
   'price.iec.note':'সরকারি ফি (₹৫০০) অন্তর্ভুক্ত নয়।',
   'price.patent.note':'সরকারি ফাইলিং ফি অন্তর্ভুক্ত নয়। আপনার উদ্ভাবনের জটিলতার উপর চূড়ান্ত মূল্য নির্ভর করে।',
   'pricing.disclaimer':'এগুলি সাধারণ ক্ষেত্রে আমাদের প্রারম্ভিক পেশাদার সার্ভিস ফি। প্রযোজ্য ক্ষেত্রে সরকারি/সংবিধিবদ্ধ ফি আলাদা, সংশ্লিষ্ট দপ্তর দ্বারা নির্ধারিত, এবং আগে থেকেই আপনাকে জানানো হয়। কোনো কাজ শুরুর আগে আমরা হোয়াটসঅ্যাপে আপনার চূড়ান্ত মূল্য নিশ্চিত করি — পরে কোনো চমক নেই।',
@@ -1386,10 +1393,12 @@ hi: {
   'price.trade.note':'नगरपालिका/सरकारी लाइसेंस शुल्क शामिल नहीं है, जो व्यवसाय श्रेणी के अनुसार बदलता है।',
   'price.food.note':'बेसिक पंजीकरण; टर्नओवर के अनुसार राज्य/केंद्रीय लाइसेंस की कीमत अलग होती है।',
   'price.gst.note':'GSTIN आवंटन सरकार की ओर से मुफ़्त है — आप केवल हमारी फाइलिंग सहायता के लिए भुगतान करते हैं।',
-  'price.msme.note':'उद्यम पंजीकरण सरकार की ओर से मुफ़्त है — आप केवल हमारी फाइलिंग सहायता के लिए भुगतान करते हैं।',
+  'price.msme.badge':'फ्री',
+  'price.msme.note':'हमारी फाइलिंग सहायता सहित पूरी तरह मुफ़्त — यह ऑफर उन पश्चिम बंगाल ग्राहकों के लिए है जो हमारे साथ कोई अन्य सेवा लेते हैं।',
   'price.dsc.note':'भौतिक टोकन आवश्यक होने पर उसकी लागत अलग हो सकती है।',
   'price.ptax.note':'राज्य सरकार का न्यूनतम शुल्क शामिल नहीं है।',
-  'price.itr.note':'वेतनभोगी ITR-1 के लिए शुरुआती मूल्य; पूंजीगत लाभ व व्यावसायिक रिटर्न का मूल्य देखकर बताया जाएगा।',
+  'price.itr.badge':'अंतिम तिथि समाप्त',
+  'price.itr.note':'नियमित फाइलिंग की अंतिम तिथि निकल चुकी है, लेकिन आप अब भी विलंबित रिटर्न फाइल करने का अनुरोध कर सकते हैं — संपर्क करें, बाकी हम संभाल लेंगे।',
   'price.iec.note':'सरकारी शुल्क (₹500) शामिल नहीं है।',
   'price.patent.note':'सरकारी फाइलिंग शुल्क शामिल नहीं है। अंतिम मूल्य आपके आविष्कार की जटिलता पर निर्भर करता है।',
   'pricing.disclaimer':'ये सामान्य मामलों के लिए हमारी शुरुआती पेशेवर सेवा शुल्क हैं। लागू होने पर सरकारी/वैधानिक शुल्क अलग हैं, संबंधित विभाग द्वारा तय किए जाते हैं, और पहले से आपको बताए जाते हैं। कोई भी काम शुरू करने से पहले हम व्हाट्सएप पर आपका अंतिम मूल्य कन्फर्म करते हैं — बाद में कोई आश्चर्य नहीं।',
@@ -1488,7 +1497,9 @@ function buildPriceCards() {
     <div class="price-card">
       <div class="price-top"><div class="price-ico"><i class="${p.ico}"></i></div></div>
       <h4 data-i18n="${p.key}">${t(p.key)}</h4>
-      <div class="price-tag">${p.price}<small data-i18n="price.onwards">${t('price.onwards')}</small></div>
+      ${p.badge
+        ? `<div class="price-tag price-badge ${p.badgeClass || ''}"><span data-i18n="${p.badge}">${t(p.badge)}</span></div>`
+        : `<div class="price-tag">${p.price}<small data-i18n="price.onwards">${t('price.onwards')}</small></div>`}
       <p class="price-note" data-i18n="${p.note}">${t(p.note)}</p>
     </div>
   `).join('');
