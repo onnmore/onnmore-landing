@@ -395,6 +395,25 @@
     .fab-wa { position:fixed; right:20px; bottom:20px; z-index:150; width:56px; height:56px; border-radius:50%; background: linear-gradient(135deg, #25d366, #128c7e); display:flex; align-items:center; justify-content:center; box-shadow: 0 10px 30px rgba(37,211,102,.45); font-size:1.6rem; color:#fff; animation: fabPulse 2.6s ease-in-out infinite; }
     @keyframes fabPulse { 0%,100%{ box-shadow: 0 10px 30px rgba(37,211,102,.45);} 50%{ box-shadow: 0 10px 30px rgba(37,211,102,.75), 0 0 0 8px rgba(37,211,102,.12);} }
 
+    /* ══════════ DOCUMENT CHECKLIST ══════════ */
+    .doc-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:14px; }
+    .doc-list details { border:1px solid var(--border); border-radius:12px; padding:16px 18px; background: rgba(255,255,255,.02); transition: border-color .2s; }
+    .doc-list details[open] { border-color: var(--border-hi); background: rgba(58,184,129,.03); }
+    .doc-list summary { cursor:pointer; list-style:none; display:flex; align-items:center; gap:.65rem; }
+    .doc-list summary::-webkit-details-marker { display:none; }
+    .doc-sum-ico { width:36px; height:36px; border-radius:9px; background: rgba(58,184,129,.1); border:1px solid rgba(58,184,129,.18); display:flex; align-items:center; justify-content:center; font-size:1.05rem; color: var(--accent-light); flex-shrink:0; }
+    .doc-sum-text { font-weight:700; font-size:.92rem; flex:1; }
+    .doc-sum-count { font-size:.7rem; font-weight:700; color: var(--muted); background: rgba(255,255,255,.05); border-radius:100vmax; padding:.2rem .55rem; flex-shrink:0; }
+    .doc-sum-chevron { font-size:1.15rem; color: var(--accent); transition: transform .2s; flex-shrink:0; }
+    .doc-list details[open] .doc-sum-chevron { transform: rotate(45deg); }
+    .doc-items { list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
+    .doc-items li { display:flex; align-items:flex-start; gap:.55rem; font-size:.85rem; color: var(--muted); line-height:1.5; }
+    .doc-items li i { color: var(--accent-light); font-size:1rem; margin-top:2px; flex-shrink:0; }
+    .doc-note { display:flex; align-items:flex-start; gap:.5rem; font-size:.78rem; color: var(--muted); background: rgba(255,255,255,.02); border:1px dashed var(--border-md); border-radius:9px; padding:.6rem .75rem; margin-top:14px; line-height:1.5; }
+    .doc-note i { color: var(--accent-light); flex-shrink:0; margin-top:1px; }
+    .doc-start-btn { display:inline-flex; align-items:center; gap:.4rem; margin-top:12px; background:none; border:1px solid var(--border-md); border-radius:8px; padding:.5rem .85rem; color: var(--accent-light); font-weight:700; font-size:.78rem; cursor:pointer; font-family:inherit; transition:.18s; }
+    .doc-start-btn:hover { border-color: var(--accent); background: rgba(58,184,129,.08); }
+
     @media (max-width: 1080px) { .foot-grid { grid-template-columns: 1fr 1fr 1fr; } }
     @media (max-width: 960px) { .why-grid, .steps-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 780px) {
@@ -428,6 +447,15 @@
     }
     @media (max-width: 400px) { .why-grid, .steps-grid { grid-template-columns: 1fr; } }
   </style>
+
+  <!-- ══════════ ANALYTICS (GA4) ══════════ -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJT7THH2DT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-PJT7THH2DT', { anonymize_ip: true });
+  </script>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -601,6 +629,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <i class="ri-information-line"></i>
       <span data-i18n="pricing.disclaimer">These are our starting professional service fees for straightforward cases. Government/statutory fees (where applicable) are separate, fixed by the respective department, and shared with you upfront. We confirm your exact, final quote on WhatsApp before any work begins — no surprises later.</span>
     </div>
+  </div>
+</section>
+
+<!-- ════════════ DOCUMENT CHECKLIST ════════════ -->
+<section id="docs" aria-labelledby="docs-h2">
+  <div class="container">
+    <div class="sec-hd">
+      <div>
+        <span class="sec-label" data-i18n="docs.sectionLabel">Come prepared</span>
+        <h2 id="docs-h2" data-i18n="docs.title">What documents do I need?</h2>
+      </div>
+      <span class="pill"><i class="ri-file-list-3-line"></i> <span data-i18n="docs.pill">Tap a service to see the list</span></span>
+    </div>
+    <p style="color:var(--muted);font-size:.9rem;max-width:640px;margin:-8px 0 22px" data-i18n="docs.sub">A quick checklist so you can gather everything before we start — saves back-and-forth once your request is in.</p>
+    <div class="doc-grid doc-list" id="docGrid"></div>
   </div>
 </section>
 
@@ -870,9 +913,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="#features" data-i18n="footer.link.why">Why Onnmore</a>
           <a href="#services" data-i18n="footer.link.services">Our Services</a>
           <a href="#pricing" data-i18n="footer.link.pricing">Pricing</a>
+          <a href="#docs" data-i18n="footer.link.docs">Document Checklist</a>
           <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
           <a href="#faq" data-i18n="footer.link.faq">FAQ</a>
           <a href="#contact" data-i18n="footer.link.contact">Contact</a>
+          <a href="blog/pvt-ltd-vs-llp.html">Pvt Ltd vs LLP Guide</a>
+          <a href="blog/gst-registration-checklist-2026.html">GST Registration Checklist</a>
         </div>
       </div>
 
@@ -959,6 +1005,49 @@ const PRICES = [
   { key:'svc.patent', ico:'ri-lightbulb-flash-line', price:'₹14,999', note:'price.patent.note' }
 ];
 const MARQUEE_KEYS = ['svc.pvtltd','svc.trade','svc.food','svc.gst','svc.msme','svc.ptax','svc.itr','svc.patent','svc.llp','svc.dsc','svc.iec'];
+
+/* ══════════ DOCUMENT CHECKLISTS ══════════ */
+/* General requirement lists (India-wide) — the actual list is confirmed per case on WhatsApp before work begins. English only for now. */
+const DOC_CHECKLISTS = [
+  { key:'svc.pvtltd', ico:'ri-building-4-line', items:[
+    "PAN card of all proposed directors", "Aadhaar card of all proposed directors", "Passport-size photographs",
+    "Proof of registered office (electricity bill / rent agreement + owner's NOC)", "Digital Signature Certificate (DSC) for each director",
+    "Latest bank statement or utility bill for address proof" ] },
+  { key:'svc.llp', ico:'ri-team-line', items:[
+    "PAN card of all partners", "Aadhaar card of all partners", "Passport-size photographs",
+    "Proof of registered office address", "Digital Signature Certificate (DSC) for designated partners",
+    "Details for the LLP agreement (capital contribution, profit-sharing ratio)" ] },
+  { key:'svc.trade', ico:'ri-file-shield-2-line', items:[
+    "PAN card / photo ID of the owner", "Proof of business address (rent agreement or ownership document)",
+    "Passport-size photograph", "NOC from the local municipal ward/panchayat (if applicable)", "Latest property tax receipt" ] },
+  { key:'svc.food', ico:'ri-restaurant-2-line', items:[
+    "PAN card and Aadhaar card of the applicant", "Passport-size photograph", "Proof of business premises",
+    "List of food products / menu to be sold", "NOC from the local municipality (if applicable)",
+    "Water test report — for manufacturing units only" ] },
+  { key:'svc.gst', ico:'ri-percent-line', items:[
+    "PAN card of the business or proprietor", "Aadhaar card", "Passport-size photograph",
+    "Proof of business address", "Cancelled cheque or latest bank statement",
+    "Partnership deed / incorporation certificate (for firms & companies)" ] },
+  { key:'svc.msme', ico:'ri-store-2-line', items:[
+    "Aadhaar card of the business owner", "PAN card of the business", "Business address details",
+    "Bank account number and IFSC", "Approximate investment and annual turnover figures" ] },
+  { key:'svc.dsc', ico:'ri-quill-pen-line', items:[
+    "PAN card", "Aadhaar card", "Passport-size photograph", "Active email ID and mobile number (for OTP verification)",
+    "A short video self-verification (as required by the certifying authority)" ] },
+  { key:'svc.ptax', ico:'ri-government-line', items:[
+    "PAN card of the business", "Certificate of incorporation / partnership deed", "Proof of business address",
+    "Employee count and salary details (for employer registration)", "Bank account details" ] },
+  { key:'svc.itr', ico:'ri-file-chart-line', items:[
+    "PAN card and Aadhaar card", "Form 16 (for salaried individuals) or income & expense summary (for business/professionals)",
+    "Bank statements for the financial year", "Proof of tax-saving investments, if claiming deductions" ] },
+  { key:'svc.iec', ico:'ri-ship-2-line', items:[
+    "PAN card of the business", "Photo ID proof of the applicant", "Cancelled cheque of the current bank account",
+    "Proof of business address" ] },
+  { key:'svc.patent', ico:'ri-lightbulb-flash-line', items:[
+    "A clear description of the invention", "Drawings or diagrams, if applicable", "Photo ID proof of the applicant/inventor",
+    "Proof of ownership or assignment (if filed by a company)", "Power of attorney, if filed through an agent" ] }
+];
+
 const FAQ_ITEMS = [
   { q:'faq.q1', a:'faq.a1' },
   { q:'faq.q2', a:'faq.a2' },
@@ -1030,6 +1119,10 @@ en: {
   'price.iec.note':'Excludes the ₹500 government fee.',
   'price.patent.note':'Excludes government filing fees. Final quote depends on the complexity of your invention.',
   'pricing.disclaimer':"These are our starting professional service fees for straightforward cases. Government/statutory fees (where applicable) are separate, fixed by the respective department, and shared with you upfront. We confirm your exact, final quote on WhatsApp before any work begins — no surprises later.",
+  'docs.sectionLabel':'Come prepared','docs.title':'What documents do I need?','docs.pill':'Tap a service to see the list',
+  'docs.sub':"A quick checklist so you can gather everything before we start — saves back-and-forth once your request is in.",
+  'docs.note':"This is a general checklist — the exact documents can vary by case. We'll confirm the final list with you on WhatsApp before starting.",
+  'docs.startBtn':'Start this service','footer.link.docs':'Document Checklist',
   'consult.eyebrow':'Free, no-obligation consultation','consult.title':'Tell us what you need',
   'consult.sub':"Pick a service, share a few details, and send it straight to our team on WhatsApp — we'll get back with next steps and pricing.",
   'consult.step1Label':'Service','consult.step2Label':'Your Details','consult.step3Label':'Send Request',
@@ -1129,6 +1222,10 @@ bn: {
   'price.iec.note':'সরকারি ফি (₹৫০০) অন্তর্ভুক্ত নয়।',
   'price.patent.note':'সরকারি ফাইলিং ফি অন্তর্ভুক্ত নয়। আপনার উদ্ভাবনের জটিলতার উপর চূড়ান্ত মূল্য নির্ভর করে।',
   'pricing.disclaimer':'এগুলি সাধারণ ক্ষেত্রে আমাদের প্রারম্ভিক পেশাদার সার্ভিস ফি। প্রযোজ্য ক্ষেত্রে সরকারি/সংবিধিবদ্ধ ফি আলাদা, সংশ্লিষ্ট দপ্তর দ্বারা নির্ধারিত, এবং আগে থেকেই আপনাকে জানানো হয়। কোনো কাজ শুরুর আগে আমরা হোয়াটসঅ্যাপে আপনার চূড়ান্ত মূল্য নিশ্চিত করি — পরে কোনো চমক নেই।',
+  'docs.sectionLabel':'প্রস্তুত হয়ে আসুন','docs.title':'কোন কোন নথি লাগবে?','docs.pill':'তালিকা দেখতে একটি পরিষেবায় ট্যাপ করুন',
+  'docs.sub':'শুরু করার আগে সবকিছু জোগাড় করে রাখতে একটি দ্রুত চেকলিস্ট — অনুরোধ জমা দেওয়ার পর বারবার যোগাযোগের প্রয়োজন কমায়।',
+  'docs.note':'এটি একটি সাধারণ চেকলিস্ট — প্রকৃত নথি ক্ষেত্রবিশেষে ভিন্ন হতে পারে। শুরু করার আগে আমরা হোয়াটসঅ্যাপে চূড়ান্ত তালিকা নিশ্চিত করব।',
+  'docs.startBtn':'এই পরিষেবা শুরু করুন','footer.link.docs':'নথির চেকলিস্ট',
   'consult.eyebrow':'বিনামূল্যে, কোনো বাধ্যবাধকতা ছাড়াই পরামর্শ','consult.title':'আমাদের জানান আপনার কী প্রয়োজন',
   'consult.sub':'একটি পরিষেবা বেছে নিন, কিছু তথ্য দিন, এবং সরাসরি হোয়াটসঅ্যাপে আমাদের টিমের কাছে পাঠান — আমরা পরবর্তী পদক্ষেপ ও মূল্য জানিয়ে ফিরে আসব।',
   'consult.step1Label':'পরিষেবা','consult.step2Label':'আপনার তথ্য','consult.step3Label':'অনুরোধ পাঠান',
@@ -1228,6 +1325,10 @@ hi: {
   'price.iec.note':'सरकारी शुल्क (₹500) शामिल नहीं है।',
   'price.patent.note':'सरकारी फाइलिंग शुल्क शामिल नहीं है। अंतिम मूल्य आपके आविष्कार की जटिलता पर निर्भर करता है।',
   'pricing.disclaimer':'ये सामान्य मामलों के लिए हमारी शुरुआती पेशेवर सेवा शुल्क हैं। लागू होने पर सरकारी/वैधानिक शुल्क अलग हैं, संबंधित विभाग द्वारा तय किए जाते हैं, और पहले से आपको बताए जाते हैं। कोई भी काम शुरू करने से पहले हम व्हाट्सएप पर आपका अंतिम मूल्य कन्फर्म करते हैं — बाद में कोई आश्चर्य नहीं।',
+  'docs.sectionLabel':'तैयार होकर आएं','docs.title':'मुझे कौन से दस्तावेज़ चाहिए?','docs.pill':'सूची देखने के लिए किसी सेवा पर टैप करें',
+  'docs.sub':'शुरू करने से पहले सब कुछ इकट्ठा करने के लिए एक त्वरित चेकलिस्ट — अनुरोध जमा करने के बाद बार-बार पूछताछ की ज़रूरत कम करता है।',
+  'docs.note':'यह एक सामान्य चेकलिस्ट है — असल दस्तावेज़ मामले के अनुसार अलग हो सकते हैं। शुरू करने से पहले हम व्हाट्सएप पर अंतिम सूची कन्फर्म करेंगे।',
+  'docs.startBtn':'यह सेवा शुरू करें','footer.link.docs':'दस्तावेज़ चेकलिस्ट',
   'consult.eyebrow':'मुफ़्त, बिना किसी बाध्यता के परामर्श','consult.title':'हमें बताएं आपको क्या चाहिए',
   'consult.sub':'एक सेवा चुनें, कुछ विवरण साझा करें, और सीधे हमारी टीम को व्हाट्सएप पर भेजें — हम अगले कदम और मूल्य के साथ वापस आएंगे।',
   'consult.step1Label':'सेवा','consult.step2Label':'आपका विवरण','consult.step3Label':'अनुरोध भेजें',
@@ -1316,6 +1417,28 @@ function buildPriceCards() {
       <div class="price-tag">${p.price}<small data-i18n="price.onwards">${t('price.onwards')}</small></div>
       <p class="price-note" data-i18n="${p.note}">${t(p.note)}</p>
     </div>
+  `).join('');
+}
+
+function buildDocChecklist() {
+  const grid = document.getElementById('docGrid');
+  if (!grid) return;
+  grid.innerHTML = DOC_CHECKLISTS.map(d => `
+    <details>
+      <summary>
+        <div class="doc-sum-ico"><i class="${d.ico}"></i></div>
+        <span class="doc-sum-text" data-i18n="${d.key}">${t(d.key)}</span>
+        <span class="doc-sum-count">${d.items.length}</span>
+        <i class="ri-add-line doc-sum-chevron"></i>
+      </summary>
+      <ul class="doc-items">
+        ${d.items.map(item => `<li><i class="ri-checkbox-circle-line"></i><span>${item}</span></li>`).join('')}
+      </ul>
+      <div class="doc-note"><i class="ri-information-line"></i><span data-i18n="docs.note">${t('docs.note')}</span></div>
+      <button class="doc-start-btn" type="button" onclick="ckJumpTo('${d.key}','${d.ico}','doc_checklist')">
+        <i class="ri-arrow-right-line"></i> <span data-i18n="docs.startBtn">${t('docs.startBtn')}</span>
+      </button>
+    </details>
   `).join('');
 }
 
@@ -1416,6 +1539,7 @@ function setLang(lang) {
   try { localStorage.setItem('onnmore_lang', lang); } catch(e) {}
   buildServiceCards();
   buildPriceCards();
+  buildDocChecklist();
   buildFaqList();
   buildFootAreas();
   buildTestimonials();
@@ -1433,6 +1557,10 @@ function setLang(lang) {
 
 /* ══════════ WHATSAPP LINKS ══════════ */
 const WA_NUMBER = '919477110971';
+/* Fires GA4 events if analytics is configured; silently no-ops otherwise so nothing breaks before a real Measurement ID is added. */
+function ckTrack(eventName, params) {
+  try { if (typeof gtag === 'function') gtag('event', eventName, params || {}); } catch (e) {}
+}
 function waLink(msg) { return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`; }
 function updateWaLinks() {
   const msg = t('wa.defaultMsg');
@@ -1531,15 +1659,17 @@ function ckSelectSvc(el) {
   el.classList.add('sel');
   ckState.svcKey = el.dataset.svcKey;
   ckState.ico = el.dataset.ico;
+  ckTrack('consult_service_selected', { service: el.dataset.svcKey, source: 'form_grid' });
   setTimeout(() => { ckStep = 2; ckShowPanel(2); ckScrollToConsult(); }, 350);
 }
 
-function ckJumpTo(svcKey, ico) {
+function ckJumpTo(svcKey, ico, source) {
   ckState.svcKey = svcKey;
   ckState.ico = ico;
   document.querySelectorAll('.ck-svc').forEach(b => {
     b.classList.toggle('sel', b.dataset.svcKey === svcKey);
   });
+  ckTrack('consult_service_selected', { service: svcKey, source: source || 'jump_link' });
   ckStep = 2;
   ckShowPanel(2);
   ckScrollToConsult();
@@ -1609,6 +1739,7 @@ function ckValidate(s) {
 function ckNext() {
   if (!ckValidate(ckStep)) return;
   ckCollect(ckStep);
+  if (ckStep === 2) ckTrack('consult_details_completed', { service: ckState.svcKey });
   if (ckStep === 3) { ckSubmit(); return; }
   ckStep++;
   if (ckStep === 3) ckPopulateReview();
@@ -1658,6 +1789,7 @@ function ckSubmit() {
   const svcName = ckState.svcKey ? t(ckState.svcKey) : '';
   sendLeadToEmail(svcName);
   sendLeadToSheet(svcName);
+  ckTrack('consult_submit_clicked', { service: ckState.svcKey, value: 1, currency: 'INR' });
 
   let m = `🧾 *${t('wa.msgTitle')}*\n───────────────────\n*${t('wa.msgService')}:* ${svcName}\n`;
   if (ckState.biz) m += `*${t('wa.msgBiz')}:* ${ckState.biz}\n`;
@@ -1692,7 +1824,10 @@ function ckSubmit() {
 
     if (!handedOff) {
       // WhatsApp app wasn't available — show our own success confirmation.
+      ckTrack('consult_lead_submitted', { service: ckState.svcKey, method: 'fallback_screen' });
       ckShowSuccess();
+    } else {
+      ckTrack('consult_lead_submitted', { service: ckState.svcKey, method: 'whatsapp_handoff' });
     }
     // If it was handed off, the user is on their way to WhatsApp; nothing
     // more to do here. They'll see the success screen if they come back
@@ -1738,6 +1873,7 @@ function ckReset() {
   currentLang = ['en','bn','hi'].includes(savedLang) ? savedLang : 'en';
   buildServiceCards();
   buildPriceCards();
+  buildDocChecklist();
   buildFaqList();
   buildFootAreas();
   buildTestimonials();
