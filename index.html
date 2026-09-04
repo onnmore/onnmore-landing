@@ -333,8 +333,29 @@
     .ck-back:disabled { opacity:.35; cursor:not-allowed; }
     .ck-next { flex:1; max-width:260px; margin-left:auto; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border:none; border-radius:9px; padding:.78rem 1.1rem; color:#071a0f; font-weight:800; font-size:.88rem; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:.45rem; font-family:inherit; transition: transform .18s, box-shadow .18s; }
     .ck-next:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(58,184,129,.35); }
+    .ck-next:disabled { opacity:.65; cursor:default; pointer-events:none; }
     .ck-next.wa { background: linear-gradient(135deg, #25d366, #128c7e); color:#fff; }
     .ck-next.wa:hover { box-shadow: 0 8px 24px rgba(37,211,102,.35); }
+
+    /* Premium success screen */
+    .ck-success { display:none; flex-direction:column; align-items:center; text-align:center; padding:52px 26px 46px; }
+    .ck-success.show { display:flex; }
+    .ck-success-badge { position:relative; width:88px; height:88px; border-radius:50%; background: radial-gradient(circle at 32% 28%, var(--accent-light), var(--accent) 72%); display:flex; align-items:center; justify-content:center; margin-bottom:24px; animation: ckPop .6s cubic-bezier(.34,1.56,.64,1) both, ckRingPulse 1.9s ease-out .6s infinite; }
+    .ck-success-badge svg { width:42px; height:42px; overflow:visible; }
+    .ck-success-badge .ckCheckPath { stroke-dasharray:40; stroke-dashoffset:40; animation: ckDraw .5s ease .4s forwards; }
+    .ck-spark { position:absolute; width:6px; height:6px; border-radius:50%; background: var(--accent-light); opacity:0; }
+    .ck-spark.s1 { top:-4px; left:14px; animation: ckSpark .9s ease .5s forwards; }
+    .ck-spark.s2 { top:8px; right:-8px; animation: ckSpark .9s ease .62s forwards; }
+    .ck-spark.s3 { bottom:-2px; left:-6px; animation: ckSpark .9s ease .74s forwards; }
+    .ck-success h3 { font-size:1.2rem; font-weight:800; margin:0 0 9px; animation: ckFadeUp .5s ease .3s both; }
+    .ck-success p { color:var(--muted); font-size:.9rem; line-height:1.65; max-width:380px; margin:0 auto 26px; animation: ckFadeUp .5s ease .4s both; }
+    .ck-done-btn { background: linear-gradient(135deg, var(--accent), var(--accent-light)); border:none; border-radius:9px; padding:.78rem 1.6rem; color:#071a0f; font-weight:800; font-size:.86rem; cursor:pointer; font-family:inherit; transition: transform .18s, box-shadow .18s; animation: ckFadeUp .5s ease .5s both; }
+    .ck-done-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(58,184,129,.35); }
+    @keyframes ckPop { 0% { transform:scale(0); opacity:0; } 60% { transform:scale(1.14); opacity:1; } 100% { transform:scale(1); opacity:1; } }
+    @keyframes ckRingPulse { 0% { box-shadow:0 0 0 0 rgba(58,184,129,.4); } 100% { box-shadow:0 0 0 20px rgba(58,184,129,0); } }
+    @keyframes ckDraw { to { stroke-dashoffset:0; } }
+    @keyframes ckFadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes ckSpark { 0% { opacity:0; transform:scale(.4) translateY(0); } 35% { opacity:1; } 100% { opacity:0; transform:scale(1.3) translateY(-10px); } }
 
     .faq-layout { display:grid; grid-template-columns: 1.4fr 1fr; gap:24px; align-items:start; }
     .faq-list details { border:1px solid var(--border); border-radius:12px; padding:16px 18px; margin-bottom:10px; background: rgba(255,255,255,.02); }
@@ -644,6 +665,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="ck-notice"><i class="ri-shield-check-line"></i><span data-i18n="consult.notice">Your request is sent directly to our consultancy team over WhatsApp. We'll confirm the requirements and share transparent pricing before any work begins — no hidden charges.</span></div>
+      </div>
+
+      <!-- Step 4: Success -->
+      <div class="ck-success" id="cp4">
+        <div class="ck-success-badge">
+          <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="ckCheckPath" d="M14 27l7 7 17-17" stroke="#071a0f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="ck-spark s1"></span>
+          <span class="ck-spark s2"></span>
+          <span class="ck-spark s3"></span>
+        </div>
+        <h3 data-i18n="consult.successTitle">Request submitted!</h3>
+        <p data-i18n="consult.successMsg">We've received your details and will get back to you within a couple of minutes.</p>
+        <button class="ck-done-btn" onclick="ckReset()" type="button" data-i18n="consult.done">Done</button>
       </div>
 
       <div class="ck-err" id="ckErr" role="alert"></div>
@@ -1002,11 +1038,12 @@ en: {
   'consult.p2Title':'Your details','consult.p2Sub':'So our team can reach out with the right guidance.',
   'consult.labelName':'Full name','consult.labelPhone':'Phone number','consult.labelEmail':'Email address','consult.labelBiz':'Business / company name (if any)','consult.labelMsg':'Anything specific we should know?',
   'consult.placeholderName':'Your name','consult.placeholderPhone':'10-digit mobile number','consult.placeholderEmail':'you@example.com','consult.placeholderBiz':'e.g. your business or brand name','consult.placeholderMsg':'Tell us a bit about your business or requirement…',
-  'consult.p3Title':'Review your request','consult.p3Sub':"Looks good? Send it to us on WhatsApp — our team usually responds the same day.",
+  'consult.p3Title':'Review your request','consult.p3Sub':"Looks good? Submit your request and our team will get back to you shortly.",
   'consult.rBizDefault':'No business name given','consult.rowName':'Name','consult.rowPhone':'Phone','consult.rowEmail':'Email','consult.rowMsg':'Notes',
-  'consult.notice':"Your request is sent directly to our consultancy team over WhatsApp. We'll confirm the requirements and share transparent pricing before any work begins — no hidden charges.",
+  'consult.notice':"Your request goes straight to our consultancy team. We'll confirm the requirements and share transparent pricing before any work begins — no hidden charges.",
   'consult.errSelect':'Please select a service to continue.','consult.errName':'Please enter your name.','consult.errPhone':'Please enter your phone number.',
-  'consult.back':'Back','consult.continue':'Continue','consult.send':'Send via WhatsApp','consult.toast':"Got it! Your details have been recorded — we'll also reach out by phone or email.",
+  'consult.back':'Back','consult.continue':'Continue','consult.send':'Submit','consult.toast':"Got it! Your details have been recorded — we'll also reach out by phone or email.",
+  'consult.successTitle':'Request submitted!','consult.successMsg':"We've received your details and will get back to you within a couple of minutes.",'consult.done':'Done',
   'why.sectionLabel':'Our promise','why.title':'Why choose Onnmore?',
   'why1.title':'Experienced Consultants','why1.desc':'Your registration and filings are handled by professionals who know the process inside out, across every district of West Bengal.',
   'why2.title':'Transparent Pricing','why2.desc':'You get a clear quote up front — no hidden charges, no last-minute surprises.',
@@ -1100,11 +1137,12 @@ bn: {
   'consult.p2Title':'আপনার তথ্য','consult.p2Sub':'যাতে আমাদের টিম সঠিক নির্দেশনা নিয়ে যোগাযোগ করতে পারে।',
   'consult.labelName':'পুরো নাম','consult.labelPhone':'ফোন নম্বর','consult.labelEmail':'ইমেইল ঠিকানা','consult.labelBiz':'ব্যবসা / কোম্পানির নাম (যদি থাকে)','consult.labelMsg':'আমাদের বিশেষভাবে জানার মতো কিছু আছে কি?',
   'consult.placeholderName':'আপনার নাম','consult.placeholderPhone':'১০-সংখ্যার মোবাইল নম্বর','consult.placeholderEmail':'you@example.com','consult.placeholderBiz':'যেমন আপনার ব্যবসা বা ব্র্যান্ডের নাম','consult.placeholderMsg':'আপনার ব্যবসা বা প্রয়োজন সম্পর্কে কিছু বলুন…',
-  'consult.p3Title':'আপনার অনুরোধ পর্যালোচনা করুন','consult.p3Sub':'ঠিক আছে? হোয়াটসঅ্যাপে আমাদের কাছে পাঠান — আমাদের টিম সাধারণত একই দিনে সাড়া দেয়।',
+  'consult.p3Title':'আপনার অনুরোধ পর্যালোচনা করুন','consult.p3Sub':'ঠিক আছে? আপনার অনুরোধ সাবমিট করুন — আমাদের টিম শীঘ্রই যোগাযোগ করবে।',
   'consult.rBizDefault':'কোনো ব্যবসার নাম দেওয়া হয়নি','consult.rowName':'নাম','consult.rowPhone':'ফোন','consult.rowEmail':'ইমেইল','consult.rowMsg':'নোট',
-  'consult.notice':'আপনার অনুরোধ সরাসরি হোয়াটসঅ্যাপে আমাদের পরামর্শদাতা টিমের কাছে পাঠানো হয়। কোনো কাজ শুরুর আগে আমরা প্রয়োজনীয়তা নিশ্চিত করব এবং স্বচ্ছ মূল্য জানাব — কোনো লুকানো চার্জ নেই।',
+  'consult.notice':'আপনার অনুরোধ সরাসরি আমাদের পরামর্শদাতা টিমের কাছে যায়। কোনো কাজ শুরুর আগে আমরা প্রয়োজনীয়তা নিশ্চিত করব এবং স্বচ্ছ মূল্য জানাব — কোনো লুকানো চার্জ নেই।',
   'consult.errSelect':'চালিয়ে যেতে একটি পরিষেবা নির্বাচন করুন।','consult.errName':'আপনার নাম লিখুন।','consult.errPhone':'আপনার ফোন নম্বর লিখুন।',
-  'consult.back':'পেছনে','consult.continue':'চালিয়ে যান','consult.send':'হোয়াটসঅ্যাপে পাঠান','consult.toast':'ধন্যবাদ! আপনার তথ্য গ্রহণ করা হয়েছে — আমরা ফোন বা ইমেইলেও যোগাযোগ করব।',
+  'consult.back':'পেছনে','consult.continue':'চালিয়ে যান','consult.send':'সাবমিট করুন','consult.toast':'ধন্যবাদ! আপনার তথ্য গ্রহণ করা হয়েছে — আমরা ফোন বা ইমেইলেও যোগাযোগ করব।',
+  'consult.successTitle':'অনুরোধ সাবমিট হয়েছে!','consult.successMsg':'আমরা আপনার তথ্য পেয়েছি এবং কয়েক মিনিটের মধ্যে যোগাযোগ করব।','consult.done':'সম্পন্ন',
   'why.sectionLabel':'আমাদের প্রতিশ্রুতি','why.title':'কেন অনমোর বেছে নেবেন?',
   'why1.title':'অভিজ্ঞ পরামর্শদাতা','why1.desc':'আপনার নিবন্ধন ও ফাইলিং পরিচালনা করেন এমন পেশাদাররা যারা পশ্চিমবঙ্গের প্রতিটি জেলায় প্রক্রিয়াটি ভালোভাবে জানেন।',
   'why2.title':'স্বচ্ছ মূল্য','why2.desc':'কাজ শুরুর আগেই আপনি স্পষ্ট মূল্য পাবেন — কোনো লুকানো চার্জ নেই, শেষ মুহূর্তে কোনো চমক নেই।',
@@ -1198,11 +1236,12 @@ hi: {
   'consult.p2Title':'आपका विवरण','consult.p2Sub':'ताकि हमारी टीम सही मार्गदर्शन के साथ आपसे संपर्क कर सके।',
   'consult.labelName':'पूरा नाम','consult.labelPhone':'फ़ोन नंबर','consult.labelEmail':'ईमेल पता','consult.labelBiz':'व्यवसाय / कंपनी का नाम (यदि कोई हो)','consult.labelMsg':'क्या कुछ खास है जो हमें जानना चाहिए?',
   'consult.placeholderName':'आपका नाम','consult.placeholderPhone':'10 अंकों का मोबाइल नंबर','consult.placeholderEmail':'you@example.com','consult.placeholderBiz':'जैसे आपके व्यवसाय या ब्रांड का नाम','consult.placeholderMsg':'अपने व्यवसाय या आवश्यकता के बारे में थोड़ा बताएं…',
-  'consult.p3Title':'अपने अनुरोध की समीक्षा करें','consult.p3Sub':'ठीक लग रहा है? इसे हमें व्हाट्सएप पर भेजें — हमारी टीम आमतौर पर उसी दिन जवाब देती है।',
+  'consult.p3Title':'अपने अनुरोध की समीक्षा करें','consult.p3Sub':'ठीक लग रहा है? अपना अनुरोध सबमिट करें — हमारी टीम जल्द ही संपर्क करेगी।',
   'consult.rBizDefault':'कोई व्यवसाय नाम नहीं दिया गया','consult.rowName':'नाम','consult.rowPhone':'फ़ोन','consult.rowEmail':'ईमेल','consult.rowMsg':'टिप्पणी',
-  'consult.notice':'आपका अनुरोध सीधे हमारी कंसल्टेंसी टीम को व्हाट्सएप पर भेजा जाता है। कोई भी काम शुरू करने से पहले हम आवश्यकताओं की पुष्टि करेंगे और पारदर्शी मूल्य बताएंगे — कोई छिपा शुल्क नहीं।',
+  'consult.notice':'आपका अनुरोध सीधे हमारी कंसल्टेंसी टीम के पास जाता है। कोई भी काम शुरू करने से पहले हम आवश्यकताओं की पुष्टि करेंगे और पारदर्शी मूल्य बताएंगे — कोई छिपा शुल्क नहीं।',
   'consult.errSelect':'जारी रखने के लिए कृपया एक सेवा चुनें।','consult.errName':'कृपया अपना नाम दर्ज करें।','consult.errPhone':'कृपया अपना फ़ोन नंबर दर्ज करें।',
-  'consult.back':'वापस','consult.continue':'जारी रखें','consult.send':'व्हाट्सएप पर भेजें','consult.toast':'हो गया! आपकी जानकारी दर्ज कर ली गई है — हम फ़ोन या ईमेल पर भी संपर्क करेंगे।',
+  'consult.back':'वापस','consult.continue':'जारी रखें','consult.send':'सबमिट करें','consult.toast':'हो गया! आपकी जानकारी दर्ज कर ली गई है — हम फ़ोन या ईमेल पर भी संपर्क करेंगे।',
+  'consult.successTitle':'अनुरोध सबमिट हो गया!','consult.successMsg':'हमें आपकी जानकारी मिल गई है और हम कुछ ही मिनटों में संपर्क करेंगे।','consult.done':'हो गया',
   'why.sectionLabel':'हमारा वादा','why.title':'ओन्नमोर को क्यों चुनें?',
   'why1.title':'अनुभवी सलाहकार','why1.desc':'आपका पंजीकरण और फाइलिंग ऐसे पेशेवरों द्वारा संभाला जाता है जो पश्चिम बंगाल के हर ज़िले में इस प्रक्रिया को अच्छी तरह जानते हैं।',
   'why2.title':'पारदर्शी मूल्य निर्धारण','why2.desc':'काम शुरू होने से पहले ही आपको स्पष्ट मूल्य मिलता है — कोई छिपा शुल्क नहीं, आखिरी समय में कोई आश्चर्य नहीं।',
@@ -1474,12 +1513,25 @@ document.getElementById('year').textContent = new Date().getFullYear();
 let ckStep = 1;
 const ckState = { svcKey: '', ico: 'ri-briefcase-4-line', name: '', phone: '', email: '', biz: '', msg: '' };
 
+/* Only nudge the page if the consult card has actually scrolled out of
+   comfortable view — prevents the jarring snap-to-top on every tap that
+   forcing scrollIntoView(block:'start') was causing on mobile. */
+function ckScrollToConsult() {
+  const el = document.getElementById('consult');
+  const rect = el.getBoundingClientRect();
+  const headerOffset = 90; // roughly the sticky header height
+  if (rect.top < headerOffset || rect.top > window.innerHeight * 0.4) {
+    const y = rect.top + window.scrollY - headerOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+}
+
 function ckSelectSvc(el) {
   document.querySelectorAll('.ck-svc').forEach(b => b.classList.remove('sel'));
   el.classList.add('sel');
   ckState.svcKey = el.dataset.svcKey;
   ckState.ico = el.dataset.ico;
-  setTimeout(() => { ckStep = 2; ckShowPanel(2); document.getElementById('consult').scrollIntoView({behavior:'smooth', block:'start'}); }, 350);
+  setTimeout(() => { ckStep = 2; ckShowPanel(2); ckScrollToConsult(); }, 350);
 }
 
 function ckJumpTo(svcKey, ico) {
@@ -1490,7 +1542,7 @@ function ckJumpTo(svcKey, ico) {
   });
   ckStep = 2;
   ckShowPanel(2);
-  document.getElementById('consult').scrollIntoView({behavior:'smooth', block:'start'});
+  ckScrollToConsult();
 }
 
 function ckUpdateStepper(s) {
@@ -1508,7 +1560,7 @@ function ckUpdateStepper(s) {
   }
   document.getElementById('ckBack').disabled = (s === 1);
   const nb = document.getElementById('ckNext');
-  if (s === 3) { nb.innerHTML = `<i class="ri-whatsapp-line"></i> <span data-i18n="consult.send">${t('consult.send')}</span>`; nb.classList.add('wa'); }
+  if (s === 3) { nb.innerHTML = `<i class="ri-send-plane-fill"></i> <span data-i18n="consult.send">${t('consult.send')}</span>`; nb.classList.remove('wa'); }
   else { nb.innerHTML = `<span data-i18n="consult.continue">${t('consult.continue')}</span> <i class="ri-arrow-right-line"></i>`; nb.classList.remove('wa'); }
 }
 
@@ -1557,33 +1609,126 @@ function ckValidate(s) {
 function ckNext() {
   if (!ckValidate(ckStep)) return;
   ckCollect(ckStep);
-  if (ckStep === 3) { ckSendWA(); return; }
+  if (ckStep === 3) { ckSubmit(); return; }
   ckStep++;
   if (ckStep === 3) ckPopulateReview();
   ckShowPanel(ckStep);
-  document.getElementById('consult').scrollIntoView({behavior:'smooth', block:'start'});
+  ckScrollToConsult();
 }
 
 function ckPrev() {
   if (ckStep === 1) return;
   ckStep--;
   ckShowPanel(ckStep);
-  document.getElementById('consult').scrollIntoView({behavior:'smooth', block:'start'});
+  ckScrollToConsult();
 }
 
-function ckSendWA() {
+/* Native WhatsApp app deep link (works on mobile + WhatsApp Desktop, no browser landing page) */
+function waDeepLink(msg) { return `whatsapp://send?phone=${WA_NUMBER}&text=${encodeURIComponent(msg)}`; }
+
+/* Soft, premium two-note "delivered" chime — synthesized, no audio file needed */
+function ckPlayChime() {
+  try {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return;
+    const ctx = new Ctx();
+    const now = ctx.currentTime;
+    const notes = [
+      { freq: 659.25, time: 0,    dur: 0.32, gain: 0.09 },  // E5
+      { freq: 987.77, time: 0.14, dur: 0.40, gain: 0.10 },  // B5
+      { freq: 1318.51,time: 0.30, dur: 0.55, gain: 0.07 }   // E6
+    ];
+    notes.forEach(n => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = n.freq;
+      gain.gain.setValueAtTime(0.0001, now + n.time);
+      gain.gain.linearRampToValueAtTime(n.gain, now + n.time + 0.03);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + n.time + n.dur);
+      osc.connect(gain).connect(ctx.destination);
+      osc.start(now + n.time);
+      osc.stop(now + n.time + n.dur + 0.05);
+    });
+    setTimeout(() => { ctx.close().catch(() => {}); }, 1400);
+  } catch (e) { /* Web Audio unsupported — fail silently, animation still plays */ }
+}
+
+function ckSubmit() {
   const svcName = ckState.svcKey ? t(ckState.svcKey) : '';
   sendLeadToEmail(svcName);
   sendLeadToSheet(svcName);
-  const toast = document.getElementById('ckToast');
-  if (toast) toast.style.display = 'flex';
+
   let m = `🧾 *${t('wa.msgTitle')}*\n───────────────────\n*${t('wa.msgService')}:* ${svcName}\n`;
   if (ckState.biz) m += `*${t('wa.msgBiz')}:* ${ckState.biz}\n`;
   m += `───────────────────\n*${t('wa.msgName')}:* ${ckState.name}\n*${t('wa.msgPhone')}:* ${ckState.phone}\n`;
   if (ckState.email) m += `*${t('wa.msgEmail')}:* ${ckState.email}\n`;
   if (ckState.msg) m += `*${t('wa.msgNotes')}:* ${ckState.msg}\n`;
   m += `───────────────────\n_${t('wa.msgFooter')}_`;
-  window.open(waLink(m), '_blank');
+
+  const nb = document.getElementById('ckNext');
+  if (nb) nb.disabled = true;
+
+  // Try to hand off to the native WhatsApp app. If the OS switches away to
+  // the app, the page loses focus almost immediately. If nothing is
+  // installed to handle the link, focus never leaves — after a short wait
+  // we treat that as "WhatsApp not available" and show our own confirmation
+  // screen instead of dumping the user on WhatsApp's generic web fallback.
+  let handedOff = false;
+  const markHandedOff = () => { handedOff = true; };
+  document.addEventListener('visibilitychange', markHandedOff, { once: true });
+  window.addEventListener('blur', markHandedOff, { once: true });
+
+  const iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+  try { iframe.src = waDeepLink(m); } catch (e) {}
+
+  setTimeout(() => {
+    document.removeEventListener('visibilitychange', markHandedOff);
+    window.removeEventListener('blur', markHandedOff);
+    if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
+    if (nb) nb.disabled = false;
+
+    if (!handedOff) {
+      // WhatsApp app wasn't available — show our own success confirmation.
+      ckShowSuccess();
+    }
+    // If it was handed off, the user is on their way to WhatsApp; nothing
+    // more to do here. They'll see the success screen if they come back
+    // and start a new request.
+  }, 1200);
+}
+
+function ckShowSuccess() {
+  document.querySelectorAll('.ck-panel').forEach(p => p.classList.remove('show'));
+  document.getElementById('ckErr').style.display = 'none';
+  const toast = document.getElementById('ckToast');
+  if (toast) toast.style.display = 'none';
+  const foot = document.querySelector('.ck-foot');
+  if (foot) foot.style.display = 'none';
+  const stepper = document.querySelector('.ck-stepper');
+  if (stepper) stepper.style.display = 'none';
+  document.getElementById('cp4').classList.add('show');
+  ckPlayChime();
+}
+
+function ckReset() {
+  ckStep = 1;
+  ckState.svcKey = ''; ckState.ico = 'ri-briefcase-4-line'; ckState.name = ''; ckState.phone = ''; ckState.email = ''; ckState.biz = ''; ckState.msg = '';
+  document.getElementById('ckName').value = '';
+  document.getElementById('ckPhone').value = '';
+  document.getElementById('ckEmail').value = '';
+  document.getElementById('ckBiz').value = '';
+  document.getElementById('ckMsg').value = '';
+  document.querySelectorAll('.ck-svc.sel').forEach(b => b.classList.remove('sel'));
+  document.getElementById('cp4').classList.remove('show');
+  const foot = document.querySelector('.ck-foot');
+  if (foot) foot.style.display = '';
+  const stepper = document.querySelector('.ck-stepper');
+  if (stepper) stepper.style.display = '';
+  ckShowPanel(1);
+  ckScrollToConsult();
 }
 
 /* ══════════ INIT ══════════ */
