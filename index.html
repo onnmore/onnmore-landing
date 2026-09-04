@@ -132,6 +132,14 @@
     section { padding: 72px 0; }
     .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border-md), transparent); margin: 32px 0; }
 
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity:0; transform: translateY(28px); transition: opacity .7s cubic-bezier(.16,.8,.24,1), transform .7s cubic-bezier(.16,.8,.24,1); }
+    .reveal.is-visible { opacity:1; transform:none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { transition: opacity .01s linear !important; transform:none !important; }
+      .hero-img-card { transition:none !important; }
+    }
+
     .ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
     .ambient::before { content:''; position:absolute; width:700px; height:700px; top:-260px; left:-200px; background: radial-gradient(circle, rgba(58,184,129,.09) 0%, transparent 65%); border-radius:50%; }
     .ambient::after { content:''; position:absolute; width:500px; height:500px; top:300px; right:-180px; background: radial-gradient(circle, rgba(45,148,99,.06) 0%, transparent 65%); border-radius:50%; }
@@ -192,9 +200,12 @@
     .hero-trust { display:flex; flex-wrap:wrap; gap:1.2rem; margin-top:26px; padding-top:22px; border-top:1px solid var(--border); }
     .trust-badge { display:flex; align-items:center; gap:.4rem; font-size:.8rem; font-weight:700; color:var(--muted); }
     .trust-badge i { color: var(--accent); font-size:.95rem; }
-    .hero-visual { position:relative; }
-    .hero-img-card { border-radius: var(--radius); overflow:hidden; border:1px solid var(--border-md); background: linear-gradient(145deg, rgba(58,184,129,.16), rgba(9,9,15,.4)); box-shadow: var(--shadow); display:flex; align-items:flex-end; justify-content:center; }
-    .hero-img-card img { width:88%; max-width:420px; object-fit:contain; display:block; }
+    .hero-visual { position:relative; perspective: 1200px; }
+    .hero-img-card { position:relative; border-radius: var(--radius); overflow:hidden; border:1px solid var(--border-md); background: linear-gradient(145deg, rgba(58,184,129,.16), rgba(9,9,15,.4)); box-shadow: var(--shadow); display:flex; align-items:flex-end; justify-content:center; transform: perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1); transition: transform .6s cubic-bezier(.22,1,.36,1), box-shadow .4s; transform-style: preserve-3d; will-change: transform; }
+    .hero-img-card.tilting { transition: transform .12s ease-out, box-shadow .4s; box-shadow: 0 24px 64px rgba(0,0,0,.6); }
+    .hero-img-card::after { content:''; position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .35s; background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,.16), transparent 60%); }
+    .hero-img-card.tilting::after { opacity:1; }
+    .hero-img-card img { width:88%; max-width:420px; object-fit:contain; display:block; transform: translateZ(30px); }
     .feature-strip { display:grid; grid-template-columns: repeat(3, 1fr); border:1px solid var(--border); border-radius: var(--radius-sm); overflow:hidden; margin-top:12px; gap:1px; background: var(--border); }
     .feat { background: var(--card); padding:14px 10px; text-align:center; }
     .feat i { color: var(--accent-light); font-size:1.25rem; display:block; margin-bottom:5px; }
@@ -311,6 +322,10 @@
     .ck-svc:hover { border-color: var(--border-md); background: rgba(58,184,129,.06); }
     .ck-svc.sel { border-color: var(--accent); background: rgba(58,184,129,.12); box-shadow: var(--ring); }
     .ck-field { margin-bottom:14px; }
+    /* Honeypot field: visually and physically off-screen for sighted/mouse users,
+       and pulled out of tab order + hidden from screen readers, but still present
+       in the DOM so form-filling bots that grab every input tend to fill it in. */
+    .ck-hp { position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden; }
     .ck-field label { display:block; font-size:.78rem; font-weight:700; color: var(--muted); margin-bottom:6px; }
     .ck-inp, .ck-txt { width:100%; padding:.75rem .9rem; border-radius:10px; border:1px solid var(--border-md); background: rgba(255,255,255,.03); color: var(--txt); font-family:inherit; font-size:16px; }
     .ck-inp:focus, .ck-txt:focus { outline:none; border-color: var(--accent); box-shadow: var(--ring); }
@@ -498,7 +513,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header>
   <div class="container">
     <nav aria-label="Primary navigation">
-      <div class="brand" aria-label="Onnmore Home">
+      <a href="index.html" class="brand" aria-label="Onnmore Home">
         <svg width="126" height="38" viewBox="0 0 293.43 87.63" xmlns="http://www.w3.org/2000/svg" aria-label="Onnmore logo" role="img">
           <path d="M16.5 43.23A16.5 16.5 0 1 0 33 59.73a16.52 16.52 0 0 0-16.5-16.5Zm0 22a5.5 5.5 0 1 1 5.5-5.5 5.49 5.49 0 0 1-5.48 5.5Z" fill="#ffffff"/>
           <path d="M192.66 43.38a16.5 16.5 0 1 0 16.5 16.5 16.5 16.5 0 0 0-16.5-16.5Zm0 22a5.5 5.5 0 1 1 5.5-5.5 5.5 5.5 0 0 1-5.5 5.5Z" fill="#ffffff"/>
@@ -509,7 +524,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <path d="M275.5 68.57a5.64 5.64 0 0 0-5.29-3.57l1.41-1.53c5.94-4.17 3.88-9.29 3.88-9.29-5.12-10.29-14.06-10.5-14.06-10.5-14.59-1-17.5 11.74-17.5 11.74a17.41 17.41 0 0 0 1.21 11.9 15.9 15.9 0 0 0 2.69 3.68 18 18 0 0 0 4.33 3.28 15.69 15.69 0 0 0 4.59 1.72l.45.08c1.81.1 3.68.17 5.62.2 3.15 0 6.15 0 9-.2a5.69 5.69 0 0 0 3.56-2.89 5.58 5.58 0 0 0 .11-4.62Zm-19.47-5a5.53 5.53 0 0 1-1.53-3.22 5.43 5.43 0 0 1 .75-3.36 5.25 5.25 0 0 1 1.15-1.29 5.75 5.75 0 0 1 4.13-1.07 4.25 4.25 0 0 1 3 1.47Z" fill="#ffffff"/>
           <text transform="translate(275.93 41.1)" font-size="12" font-family="ArialRoundedMTBold,Arial Rounded MT Bold" fill="#ffffff">TM</text>
         </svg>
-      </div>
+      </a>
 
       <div class="nav-links">
         <a href="#services" data-i18n="nav.services">Services</a>
@@ -706,6 +721,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="ck-field"><label for="ckBiz" data-i18n="consult.labelBiz">Business / company name (if any)</label><input class="ck-inp" id="ckBiz" type="text" data-i18n-ph="consult.placeholderBiz" placeholder="e.g. your business or brand name"></div>
         </div>
         <div class="ck-field"><label for="ckMsg" data-i18n="consult.labelMsg">Anything specific we should know?</label><textarea class="ck-txt" id="ckMsg" data-i18n-ph="consult.placeholderMsg" placeholder="Tell us a bit about your business or requirement…"></textarea></div>
+        <!-- Honeypot: hidden from real users, but bots that auto-fill every field will populate it. Never shown, never required. -->
+        <div class="ck-hp" aria-hidden="true">
+          <label for="ckWebsite">Website</label>
+          <input type="text" id="ckWebsite" name="website" tabindex="-1" autocomplete="off">
+        </div>
       </div>
 
       <!-- Step 3: Review -->
@@ -1171,6 +1191,9 @@ en: {
   'consult.rBizDefault':'No business name given','consult.rowName':'Name','consult.rowPhone':'Phone','consult.rowEmail':'Email','consult.rowMsg':'Notes',
   'consult.notice':"Your request goes straight to our consultancy team. We'll confirm the requirements and share transparent pricing before any work begins — no hidden charges.",
   'consult.errSelect':'Please select a service to continue.','consult.errName':'Please enter your name.','consult.errPhone':'Please enter your phone number.',
+  'consult.errNameLen':'Please enter your full name (2–60 characters).','consult.errNameChars':'Please enter a valid name.',
+  'consult.errPhoneFormat':'Please enter a valid 10-digit Indian mobile number.','consult.errEmailFormat':'Please enter a valid email address.',
+  'consult.errMsgLinks':'Please remove the extra links from your message.','consult.errTooSoon':"You've already sent a request recently. Please wait a minute before submitting again, or message us on WhatsApp.",
   'consult.back':'Back','consult.continue':'Continue','consult.send':'Submit','consult.toast':"Got it! Your details have been recorded — we'll also reach out by phone or email.",
   'consult.successTitle':'Request submitted!','consult.successMsg':"We've received your details and will get back to you within a couple of minutes.",'consult.done':'Done',
   'consult.caseIdLabel':'Your Case ID','consult.updatesBtn':'Updates','consult.viaWhatsapp':'via WhatsApp','consult.viaEmail':'via Email',
@@ -1277,6 +1300,9 @@ bn: {
   'consult.rBizDefault':'কোনো ব্যবসার নাম দেওয়া হয়নি','consult.rowName':'নাম','consult.rowPhone':'ফোন','consult.rowEmail':'ইমেইল','consult.rowMsg':'নোট',
   'consult.notice':'আপনার অনুরোধ সরাসরি আমাদের পরামর্শদাতা টিমের কাছে যায়। কোনো কাজ শুরুর আগে আমরা প্রয়োজনীয়তা নিশ্চিত করব এবং স্বচ্ছ মূল্য জানাব — কোনো লুকানো চার্জ নেই।',
   'consult.errSelect':'চালিয়ে যেতে একটি পরিষেবা নির্বাচন করুন।','consult.errName':'আপনার নাম লিখুন।','consult.errPhone':'আপনার ফোন নম্বর লিখুন।',
+  'consult.errNameLen':'অনুগ্রহ করে আপনার পুরো নাম লিখুন (২–৬০ অক্ষর)।','consult.errNameChars':'অনুগ্রহ করে একটি সঠিক নাম লিখুন।',
+  'consult.errPhoneFormat':'অনুগ্রহ করে একটি সঠিক ১০-সংখ্যার মোবাইল নম্বর লিখুন।','consult.errEmailFormat':'অনুগ্রহ করে একটি সঠিক ইমেইল ঠিকানা লিখুন।',
+  'consult.errMsgLinks':'অনুগ্রহ করে আপনার বার্তা থেকে অতিরিক্ত লিঙ্ক সরিয়ে ফেলুন।','consult.errTooSoon':'আপনি সম্প্রতি একটি অনুরোধ পাঠিয়েছেন। অনুগ্রহ করে আবার পাঠানোর আগে একটু অপেক্ষা করুন, অথবা হোয়াটসঅ্যাপে যোগাযোগ করুন।',
   'consult.back':'পেছনে','consult.continue':'চালিয়ে যান','consult.send':'সাবমিট করুন','consult.toast':'ধন্যবাদ! আপনার তথ্য গ্রহণ করা হয়েছে — আমরা ফোন বা ইমেইলেও যোগাযোগ করব।',
   'consult.successTitle':'অনুরোধ সাবমিট হয়েছে!','consult.successMsg':'আমরা আপনার তথ্য পেয়েছি এবং কয়েক মিনিটের মধ্যে যোগাযোগ করব।','consult.done':'সম্পন্ন',
   'consult.caseIdLabel':'আপনার কেস আইডি','consult.updatesBtn':'আপডেট','consult.viaWhatsapp':'হোয়াটসঅ্যাপের মাধ্যমে','consult.viaEmail':'ইমেইলের মাধ্যমে',
@@ -1383,6 +1409,9 @@ hi: {
   'consult.rBizDefault':'कोई व्यवसाय नाम नहीं दिया गया','consult.rowName':'नाम','consult.rowPhone':'फ़ोन','consult.rowEmail':'ईमेल','consult.rowMsg':'टिप्पणी',
   'consult.notice':'आपका अनुरोध सीधे हमारी कंसल्टेंसी टीम के पास जाता है। कोई भी काम शुरू करने से पहले हम आवश्यकताओं की पुष्टि करेंगे और पारदर्शी मूल्य बताएंगे — कोई छिपा शुल्क नहीं।',
   'consult.errSelect':'जारी रखने के लिए कृपया एक सेवा चुनें।','consult.errName':'कृपया अपना नाम दर्ज करें।','consult.errPhone':'कृपया अपना फ़ोन नंबर दर्ज करें।',
+  'consult.errNameLen':'कृपया अपना पूरा नाम दर्ज करें (2–60 अक्षर)।','consult.errNameChars':'कृपया एक मान्य नाम दर्ज करें।',
+  'consult.errPhoneFormat':'कृपया एक मान्य 10-अंकीय मोबाइल नंबर दर्ज करें।','consult.errEmailFormat':'कृपया एक मान्य ईमेल पता दर्ज करें।',
+  'consult.errMsgLinks':'कृपया अपने संदेश से अतिरिक्त लिंक हटा दें।','consult.errTooSoon':'आपने हाल ही में एक अनुरोध भेजा है। कृपया दोबारा भेजने से पहले थोड़ा इंतज़ार करें, या व्हाट्सएप पर संपर्क करें।',
   'consult.back':'वापस','consult.continue':'जारी रखें','consult.send':'सबमिट करें','consult.toast':'हो गया! आपकी जानकारी दर्ज कर ली गई है — हम फ़ोन या ईमेल पर भी संपर्क करेंगे।',
   'consult.successTitle':'अनुरोध सबमिट हो गया!','consult.successMsg':'हमें आपकी जानकारी मिल गई है और हम कुछ ही मिनटों में संपर्क करेंगे।','consult.done':'हो गया',
   'consult.caseIdLabel':'आपकी केस आईडी','consult.updatesBtn':'अपडेट','consult.viaWhatsapp':'व्हाट्सएप के ज़रिए','consult.viaEmail':'ईमेल के ज़रिए',
@@ -1598,6 +1627,97 @@ function setLang(lang) {
   }
   applyTranslations();
   updateWaLinks();
+  initScrollReveal();
+}
+
+/* ══════════ SCROLL REVEAL ══════════
+   Scans for reveal-worthy elements (section headers + all card grids,
+   including ones rebuilt on language switch), fades/slides them in the
+   first time they cross into view. Runs safely more than once — anything
+   already initialised is skipped via the data-reveal-init flag, so calling
+   it again after setLang() only picks up freshly rebuilt cards. */
+let _revealObserver = null;
+function initScrollReveal() {
+  const REVEAL_SELECTORS = [
+    '.hero-eyebrow', '.hero h1', '.hero-lead', '.hero-cta', '.hero-trust', '.hero-visual',
+    '.sec-hd', '.svc-card', '.price-card', '.price-disclaimer',
+    '#docGrid > details', '.why-card', '.step-card',
+    '.testi-top', '.testi-card', '#faqList > details', '.faq-contact-card',
+    '.contact-card', '.ck-stepper', '.ck-card'
+  ];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = Array.from(document.querySelectorAll(REVEAL_SELECTORS.join(','))).filter(el => !el.dataset.revealInit);
+  if (!els.length) return;
+
+  const groupCounts = new Map();
+  els.forEach(el => {
+    el.dataset.revealInit = '1';
+    el.classList.add('reveal');
+    const parent = el.parentElement;
+    const idx = groupCounts.get(parent) || 0;
+    groupCounts.set(parent, idx + 1);
+    el.style.transitionDelay = reduceMotion ? '0ms' : (Math.min(idx, 6) * 70) + 'ms';
+  });
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+
+  if (!_revealObserver) {
+    _revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          _revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  }
+  els.forEach(el => _revealObserver.observe(el));
+}
+
+/* ══════════ HERO TILT ══════════
+   Pointer-driven 3D tilt on the hero image card, desktop/mouse only.
+   The outer .hero-visual handles the scroll-reveal fade above; this
+   moves only the inner .hero-img-card, so the two transforms never fight. */
+function initHeroTilt() {
+  const zone = document.querySelector('.hero-visual');
+  const card = document.querySelector('.hero-img-card');
+  if (!zone || !card) return;
+
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!canHover || reduceMotion) return;
+
+  const MAX_TILT = 9; // degrees at the card edge
+  let rect = null;
+  let raf = null;
+
+  function onMove(e) {
+    if (!rect) rect = zone.getBoundingClientRect();
+    const px = Math.min(Math.max((e.clientX - rect.left) / rect.width, 0), 1);
+    const py = Math.min(Math.max((e.clientY - rect.top) / rect.height, 0), 1);
+    const rotY = (px - 0.5) * MAX_TILT * 2;
+    const rotX = (0.5 - py) * MAX_TILT * 2;
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      card.style.transform = `perspective(1200px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.03,1.03,1.03)`;
+      card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+      card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+    });
+  }
+  function onEnter() { rect = zone.getBoundingClientRect(); card.classList.add('tilting'); }
+  function onLeave() {
+    card.classList.remove('tilting');
+    card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+    rect = null;
+  }
+
+  zone.addEventListener('mouseenter', onEnter);
+  zone.addEventListener('mousemove', onMove);
+  zone.addEventListener('mouseleave', onLeave);
+  window.addEventListener('resize', () => { rect = null; });
 }
 
 /* ══════════ WHATSAPP LINKS ══════════ */
@@ -1686,6 +1806,62 @@ document.getElementById('year').textContent = new Date().getFullYear();
 let ckStep = 1;
 const ckState = { svcKey: '', ico: 'ri-briefcase-4-line', name: '', phone: '', email: '', biz: '', msg: '', caseId: '' };
 
+/* ── SPAM GUARDS ──────────────────────────────────────────────────────
+   1) Honeypot ("ckWebsite") — a field no real visitor ever fills in;
+      bots that auto-fill every input on the page usually catch it.
+   2) Time trap — records when the details step first appears. A real
+      person needs at least a couple of seconds to type a name and
+      phone number; a script submitting instantly is almost certainly
+      not a person.
+   3) Cooldown — blocks resubmission for a short window using
+      localStorage, so a script (or an impatient double-tap) can't
+      fire the same lead repeatedly.
+   None of this is shown to genuine users under normal use; it only
+   ever surfaces as a generic "please try again" style message. */
+let ckDetailsShownAt = 0;
+const CK_MIN_FILL_MS = 2500;      // fastest a human could plausibly finish step 2
+const CK_RESUBMIT_COOLDOWN_MS = 60000; // 1 minute between successful submissions
+
+function ckIsSpamSubmission() {
+  const hp = document.getElementById('ckWebsite');
+  if (hp && hp.value.trim() !== '') return true; // honeypot tripped
+  if (ckDetailsShownAt && (Date.now() - ckDetailsShownAt) < CK_MIN_FILL_MS) return true; // filled too fast
+  return false;
+}
+
+function ckOnCooldown() {
+  try {
+    const last = parseInt(localStorage.getItem('onnmore_last_submit') || '0', 10);
+    return (Date.now() - last) < CK_RESUBMIT_COOLDOWN_MS;
+  } catch (e) { return false; }
+}
+function ckMarkSubmitted() {
+  try { localStorage.setItem('onnmore_last_submit', String(Date.now())); } catch (e) {}
+}
+
+/* Normalizes an Indian mobile number typed with spaces, dashes, +91, 91 or a
+   leading 0 down to a bare 10-digit number, and reports whether it's valid. */
+function ckNormalizePhone(raw) {
+  let digits = (raw || '').replace(/\D/g, '');
+  if (digits.length === 12 && digits.startsWith('91')) digits = digits.slice(2);
+  else if (digits.length === 11 && digits.startsWith('0')) digits = digits.slice(1);
+  return digits;
+}
+function ckIsValidPhone(raw) {
+  const digits = ckNormalizePhone(raw);
+  return /^[6-9]\d{9}$/.test(digits);
+}
+function ckIsValidEmail(raw) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(raw);
+}
+function ckIsValidName(raw) {
+  if (raw.length < 2 || raw.length > 60) return 'len';
+  if (!/\p{L}/u.test(raw)) return 'chars';               // must contain at least one real letter
+  if (/https?:\/\/|www\.|\.(com|net|org|in|co)\b/i.test(raw)) return 'chars'; // no links in a name field
+  if (/(.)\1{4,}/.test(raw)) return 'chars';              // "aaaaaaaa" style keyboard-mash
+  return null;
+}
+
 /* Only nudge the page if the consult card has actually scrolled out of
    comfortable view — prevents the jarring snap-to-top on every tap that
    forcing scrollIntoView(block:'start') was causing on mobile. */
@@ -1749,6 +1925,7 @@ function ckShowPanel(s) {
   document.getElementById('cp' + s).classList.add('show');
   ckUpdateStepper(s);
   document.getElementById('ckErr').style.display = 'none';
+  if (s === 2 && !ckDetailsShownAt) ckDetailsShownAt = Date.now();
 }
 
 function ckShowErr(m) {
@@ -1769,8 +1946,8 @@ function ckPopulateReview() {
 
 function ckCollect(s) {
   if (s === 2) {
-    ckState.name  = document.getElementById('ckName').value.trim();
-    ckState.phone = document.getElementById('ckPhone').value.trim();
+    ckState.name  = document.getElementById('ckName').value.trim().replace(/\s+/g, ' ');
+    ckState.phone = ckNormalizePhone(document.getElementById('ckPhone').value.trim());
     ckState.email = document.getElementById('ckEmail').value.trim();
     ckState.biz   = document.getElementById('ckBiz').value.trim();
     ckState.msg   = document.getElementById('ckMsg').value.trim();
@@ -1780,9 +1957,25 @@ function ckCollect(s) {
 function ckValidate(s) {
   if (s === 1 && !ckState.svcKey) { ckShowErr(t('consult.errSelect')); return false; }
   if (s === 2) {
-    if (!document.getElementById('ckName').value.trim())  { ckShowErr(t('consult.errName')); return false; }
-    if (!document.getElementById('ckPhone').value.trim()) { ckShowErr(t('consult.errPhone')); return false; }
+    const name  = document.getElementById('ckName').value.trim();
+    const phone = document.getElementById('ckPhone').value.trim();
+    const email = document.getElementById('ckEmail').value.trim();
+    const msg   = document.getElementById('ckMsg').value.trim();
+
+    if (!name)  { ckShowErr(t('consult.errName')); return false; }
+    const nameProblem = ckIsValidName(name);
+    if (nameProblem === 'len')   { ckShowErr(t('consult.errNameLen'));   return false; }
+    if (nameProblem === 'chars') { ckShowErr(t('consult.errNameChars')); return false; }
+
+    if (!phone) { ckShowErr(t('consult.errPhone')); return false; }
+    if (!ckIsValidPhone(phone)) { ckShowErr(t('consult.errPhoneFormat')); return false; }
+
+    if (email && !ckIsValidEmail(email)) { ckShowErr(t('consult.errEmailFormat')); return false; }
+
+    const linkCount = (msg.match(/https?:\/\/|www\./gi) || []).length;
+    if (linkCount > 1) { ckShowErr(t('consult.errMsgLinks')); return false; }
   }
+  if (s === 3 && ckOnCooldown()) { ckShowErr(t('consult.errTooSoon')); return false; }
   return true;
 }
 
@@ -1871,9 +2064,25 @@ function ckGenerateCaseId() {
 function ckSubmit() {
   const svcName = ckState.svcKey ? t(ckState.svcKey) : '';
   if (!ckState.caseId) ckState.caseId = ckGenerateCaseId();
-  sendLeadToEmail(svcName);
-  sendLeadToSheet(svcName);
-  ckTrack('consult_submit_clicked', { service: ckState.svcKey, value: 1, currency: 'INR', caseId: ckState.caseId });
+
+  /* Bot traffic (honeypot filled, or the whole form completed faster than a
+     person plausibly could) never reaches our inbox/sheet/WhatsApp. We still
+     show the normal success screen so an automated script has no signal to
+     learn from and adapt around — the request is just quietly discarded. */
+  const isSpam = ckIsSpamSubmission();
+  if (!isSpam) {
+    sendLeadToEmail(svcName);
+    sendLeadToSheet(svcName);
+    ckMarkSubmitted();
+  }
+  ckTrack('consult_submit_clicked', { service: ckState.svcKey, value: 1, currency: 'INR', caseId: ckState.caseId, spam: isSpam });
+
+  if (isSpam) {
+    // No real lead was recorded — skip the WhatsApp handoff too and just
+    // land on the same success screen a genuine submission would reach.
+    ckShowSuccess();
+    return;
+  }
 
   let m = `🧾 *${t('wa.msgTitle')}*\n───────────────────\n*${t('wa.msgCaseId')}:* ${ckState.caseId}\n*${t('wa.msgService')}:* ${svcName}\n`;
   if (ckState.biz) m += `*${t('wa.msgBiz')}:* ${ckState.biz}\n`;
@@ -1984,12 +2193,14 @@ function ckCheckStatus(channel) {
 
 function ckReset() {
   ckStep = 1;
+  ckDetailsShownAt = 0;
   ckState.svcKey = ''; ckState.ico = 'ri-briefcase-4-line'; ckState.name = ''; ckState.phone = ''; ckState.email = ''; ckState.biz = ''; ckState.msg = ''; ckState.caseId = '';
   document.getElementById('ckName').value = '';
   document.getElementById('ckPhone').value = '';
   document.getElementById('ckEmail').value = '';
   document.getElementById('ckBiz').value = '';
   document.getElementById('ckMsg').value = '';
+  const hp = document.getElementById('ckWebsite'); if (hp) hp.value = '';
   document.querySelectorAll('.ck-svc.sel').forEach(b => b.classList.remove('sel'));
   document.getElementById('cp4').classList.remove('show');
   const updOpts = document.getElementById('ckUpdatesOptions');
@@ -2019,6 +2230,8 @@ function ckReset() {
   applyTranslations();
   updateWaLinks();
   ckShowPanel(1);
+  initScrollReveal();
+  initHeroTilt();
 })();
 </script>
 </body>
