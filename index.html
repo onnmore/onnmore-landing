@@ -326,6 +326,8 @@
     .ck-notice { display:flex; align-items:flex-start; gap:.6rem; border:1px solid var(--border-md); border-radius:11px; padding:.8rem .95rem; background: rgba(58,184,129,.06); font-size:.82rem; color: var(--muted); line-height:1.55; margin-bottom:8px; }
     .ck-notice i { color: var(--accent-light); font-size:1rem; margin-top:1px; flex-shrink:0; }
     .ck-err { display:none; margin:0 26px 14px; padding:.6rem .85rem; border-radius:9px; background: rgba(220,80,80,.12); border:1px solid rgba(220,80,80,.35); color:#ff9d9d; font-size:.82rem; font-weight:600; }
+    .ck-toast { display:none; align-items:center; gap:8px; margin:0 26px 14px; padding:.7rem .9rem; border-radius:9px; background: rgba(58,184,129,.12); border:1px solid rgba(58,184,129,.35); color: var(--accent-light); font-size:.82rem; font-weight:700; }
+    .ck-toast i { font-size:1.05rem; flex-shrink:0; }
     .ck-foot { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:16px 26px; border-top:1px solid var(--border); background: rgba(255,255,255,.015); }
     .ck-back { background:none; border:1px solid var(--border-md); border-radius:9px; padding:.7rem 1rem; color: var(--muted); font-weight:700; font-size:.85rem; cursor:pointer; font-family:inherit; display:flex; align-items:center; gap:.4rem; }
     .ck-back:disabled { opacity:.35; cursor:not-allowed; }
@@ -399,6 +401,7 @@
       .ck-lbl { display:none; }
       .ck-rrow { grid-template-columns: 1fr; gap:2px; }
       .ck-err { margin:0 16px 12px; }
+      .ck-toast { margin:0 16px 12px; }
       .foot-grid { grid-template-columns: 1fr; }
       .why-grid, .steps-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -644,6 +647,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="ck-err" id="ckErr" role="alert"></div>
+      <div class="ck-toast" id="ckToast"><i class="ri-checkbox-circle-fill"></i> <span data-i18n="consult.toast">Got it! Your details have been recorded — we'll also reach out by phone or email.</span></div>
       <div class="ck-foot">
         <button class="ck-back" id="ckBack" onclick="ckPrev()" type="button" disabled aria-label="Go back"><i class="ri-arrow-left-line"></i> <span data-i18n="consult.back">Back</span></button>
         <button class="ck-next" id="ckNext" onclick="ckNext()" type="button"><span data-i18n="consult.continue">Continue</span> <i class="ri-arrow-right-line"></i></button>
@@ -782,6 +786,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3><i class="ri-whatsapp-line"></i> <span data-i18n="contact.wa.title">WhatsApp</span></h3>
         <p class="c-desc" data-i18n="contact.wa.desc">The fastest way to reach us. Tap below to start a chat — no need to note down a number.</p>
         <a href="#" id="contactWaLink" class="btn wa-btn" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-line"></i> <span data-i18n="contact.wa.btn">Chat on WhatsApp</span></a>
+      </div>
+      <div class="contact-card">
+        <h3><i class="ri-phone-line"></i> <span data-i18n="contact.call.title">Call Us</span></h3>
+        <p class="c-desc" data-i18n="contact.call.desc">Prefer to talk it through? Give us a call and we'll walk you through everything.</p>
+        <a href="tel:+919477110971" class="btn ghost"><i class="ri-phone-line"></i> <span data-i18n="contact.call.btn">+91 94771 10971</span></a>
       </div>
       <div class="contact-card">
         <h3><i class="ri-mail-line"></i> <span data-i18n="contact.email.title">Email</span></h3>
@@ -997,7 +1006,7 @@ en: {
   'consult.rBizDefault':'No business name given','consult.rowName':'Name','consult.rowPhone':'Phone','consult.rowEmail':'Email','consult.rowMsg':'Notes',
   'consult.notice':"Your request is sent directly to our consultancy team over WhatsApp. We'll confirm the requirements and share transparent pricing before any work begins — no hidden charges.",
   'consult.errSelect':'Please select a service to continue.','consult.errName':'Please enter your name.','consult.errPhone':'Please enter your phone number.',
-  'consult.back':'Back','consult.continue':'Continue','consult.send':'Send via WhatsApp',
+  'consult.back':'Back','consult.continue':'Continue','consult.send':'Send via WhatsApp','consult.toast':"Got it! Your details have been recorded — we'll also reach out by phone or email.",
   'why.sectionLabel':'Our promise','why.title':'Why choose Onnmore?',
   'why1.title':'Experienced Consultants','why1.desc':'Your registration and filings are handled by professionals who know the process inside out, across every district of West Bengal.',
   'why2.title':'Transparent Pricing','why2.desc':'You get a clear quote up front — no hidden charges, no last-minute surprises.',
@@ -1030,6 +1039,7 @@ en: {
   'faq.contact.title':'Still have questions?','faq.contact.desc':'Our team is happy to walk you through the process. Send us a WhatsApp message for quick answers.','faq.contact.wa':'Chat on WhatsApp',
   'contact.sectionLabel':'Reach us','contact.title':'Contact & Office','contact.pill':'Mon–Sat, 10 AM – 7 PM',
   'contact.wa.title':'WhatsApp','contact.wa.desc':'The fastest way to reach us. Tap below to start a chat — no need to note down a number.','contact.wa.btn':'Chat on WhatsApp',
+  'contact.call.title':'Call Us','contact.call.desc':"Prefer to talk it through? Give us a call and we'll walk you through everything.",'contact.call.btn':'+91 94771 10971',
   'contact.email.title':'Email','contact.email.desc':'For detailed queries, document sharing, and follow-ups.',
   'contact.addr.title':'Office Address','contact.addr.desc':'HFGP+RQG, AA II, Newtown, Chakpachuria, West Bengal 700160','contact.addr.btn':'Get Directions',
   'footer.desc':"West Bengal's trusted business consultancy — company registration, licensing and compliance, made simple, from Kolkata to every district we serve.",
@@ -1094,7 +1104,7 @@ bn: {
   'consult.rBizDefault':'কোনো ব্যবসার নাম দেওয়া হয়নি','consult.rowName':'নাম','consult.rowPhone':'ফোন','consult.rowEmail':'ইমেইল','consult.rowMsg':'নোট',
   'consult.notice':'আপনার অনুরোধ সরাসরি হোয়াটসঅ্যাপে আমাদের পরামর্শদাতা টিমের কাছে পাঠানো হয়। কোনো কাজ শুরুর আগে আমরা প্রয়োজনীয়তা নিশ্চিত করব এবং স্বচ্ছ মূল্য জানাব — কোনো লুকানো চার্জ নেই।',
   'consult.errSelect':'চালিয়ে যেতে একটি পরিষেবা নির্বাচন করুন।','consult.errName':'আপনার নাম লিখুন।','consult.errPhone':'আপনার ফোন নম্বর লিখুন।',
-  'consult.back':'পেছনে','consult.continue':'চালিয়ে যান','consult.send':'হোয়াটসঅ্যাপে পাঠান',
+  'consult.back':'পেছনে','consult.continue':'চালিয়ে যান','consult.send':'হোয়াটসঅ্যাপে পাঠান','consult.toast':'ধন্যবাদ! আপনার তথ্য গ্রহণ করা হয়েছে — আমরা ফোন বা ইমেইলেও যোগাযোগ করব।',
   'why.sectionLabel':'আমাদের প্রতিশ্রুতি','why.title':'কেন অনমোর বেছে নেবেন?',
   'why1.title':'অভিজ্ঞ পরামর্শদাতা','why1.desc':'আপনার নিবন্ধন ও ফাইলিং পরিচালনা করেন এমন পেশাদাররা যারা পশ্চিমবঙ্গের প্রতিটি জেলায় প্রক্রিয়াটি ভালোভাবে জানেন।',
   'why2.title':'স্বচ্ছ মূল্য','why2.desc':'কাজ শুরুর আগেই আপনি স্পষ্ট মূল্য পাবেন — কোনো লুকানো চার্জ নেই, শেষ মুহূর্তে কোনো চমক নেই।',
@@ -1127,6 +1137,7 @@ bn: {
   'faq.contact.title':'এখনও প্রশ্ন আছে?','faq.contact.desc':'আমাদের টিম প্রক্রিয়াটি বুঝিয়ে দিতে খুশি হবে। দ্রুত উত্তরের জন্য আমাদের হোয়াটসঅ্যাপে বার্তা পাঠান।','faq.contact.wa':'হোয়াটসঅ্যাপে চ্যাট করুন',
   'contact.sectionLabel':'যোগাযোগ করুন','contact.title':'যোগাযোগ ও অফিস','contact.pill':'সোম–শনি, সকাল ১০টা – সন্ধ্যা ৭টা',
   'contact.wa.title':'হোয়াটসঅ্যাপ','contact.wa.desc':'আমাদের কাছে পৌঁছানোর দ্রুততম উপায়। নম্বর মনে রাখার দরকার নেই — নিচে ট্যাপ করে চ্যাট শুরু করুন।','contact.wa.btn':'হোয়াটসঅ্যাপে চ্যাট করুন',
+  'contact.call.title':'কল করুন','contact.call.desc':'সরাসরি কথা বলতে চান? আমাদের কল করুন, আমরা সবকিছু বুঝিয়ে দেব।','contact.call.btn':'+91 94771 10971',
   'contact.email.title':'ইমেইল','contact.email.desc':'বিস্তারিত জিজ্ঞাসা, নথিপত্র শেয়ারিং এবং ফলোআপের জন্য।',
   'contact.addr.title':'অফিসের ঠিকানা','contact.addr.desc':'HFGP+RQG, AA II, নিউটাউন, চকপাচুরিয়া, পশ্চিমবঙ্গ ৭০০১৬০','contact.addr.btn':'দিকনির্দেশ পান',
   'footer.desc':'পশ্চিমবঙ্গের বিশ্বস্ত ব্যবসায়িক পরামর্শদাতা — কোম্পানি নিবন্ধন, লাইসেন্সিং ও কমপ্লায়েন্স, সহজ করে তোলা, কলকাতা থেকে আমরা যে প্রতিটি জেলায় পরিষেবা দিই সেখানে পর্যন্ত।',
@@ -1191,7 +1202,7 @@ hi: {
   'consult.rBizDefault':'कोई व्यवसाय नाम नहीं दिया गया','consult.rowName':'नाम','consult.rowPhone':'फ़ोन','consult.rowEmail':'ईमेल','consult.rowMsg':'टिप्पणी',
   'consult.notice':'आपका अनुरोध सीधे हमारी कंसल्टेंसी टीम को व्हाट्सएप पर भेजा जाता है। कोई भी काम शुरू करने से पहले हम आवश्यकताओं की पुष्टि करेंगे और पारदर्शी मूल्य बताएंगे — कोई छिपा शुल्क नहीं।',
   'consult.errSelect':'जारी रखने के लिए कृपया एक सेवा चुनें।','consult.errName':'कृपया अपना नाम दर्ज करें।','consult.errPhone':'कृपया अपना फ़ोन नंबर दर्ज करें।',
-  'consult.back':'वापस','consult.continue':'जारी रखें','consult.send':'व्हाट्सएप पर भेजें',
+  'consult.back':'वापस','consult.continue':'जारी रखें','consult.send':'व्हाट्सएप पर भेजें','consult.toast':'हो गया! आपकी जानकारी दर्ज कर ली गई है — हम फ़ोन या ईमेल पर भी संपर्क करेंगे।',
   'why.sectionLabel':'हमारा वादा','why.title':'ओन्नमोर को क्यों चुनें?',
   'why1.title':'अनुभवी सलाहकार','why1.desc':'आपका पंजीकरण और फाइलिंग ऐसे पेशेवरों द्वारा संभाला जाता है जो पश्चिम बंगाल के हर ज़िले में इस प्रक्रिया को अच्छी तरह जानते हैं।',
   'why2.title':'पारदर्शी मूल्य निर्धारण','why2.desc':'काम शुरू होने से पहले ही आपको स्पष्ट मूल्य मिलता है — कोई छिपा शुल्क नहीं, आखिरी समय में कोई आश्चर्य नहीं।',
@@ -1224,6 +1235,7 @@ hi: {
   'faq.contact.title':'अभी भी सवाल हैं?','faq.contact.desc':'हमारी टीम आपको पूरी प्रक्रिया समझाने में खुश होगी। त्वरित उत्तर के लिए हमें व्हाट्सएप पर संदेश भेजें।','faq.contact.wa':'व्हाट्सएप पर चैट करें',
   'contact.sectionLabel':'हमसे संपर्क करें','contact.title':'संपर्क व ऑफिस','contact.pill':'सोम–शनि, सुबह 10 बजे – शाम 7 बजे',
   'contact.wa.title':'व्हाट्सएप','contact.wa.desc':'हम तक पहुंचने का सबसे तेज़ तरीका। नंबर याद रखने की ज़रूरत नहीं — नीचे टैप करके चैट शुरू करें।','contact.wa.btn':'व्हाट्सएप पर चैट करें',
+  'contact.call.title':'कॉल करें','contact.call.desc':'सीधे बात करना चाहते हैं? हमें कॉल करें, हम आपको पूरी जानकारी देंगे।','contact.call.btn':'+91 94771 10971',
   'contact.email.title':'ईमेल','contact.email.desc':'विस्तृत प्रश्नों, दस्तावेज़ साझा करने और फॉलो-अप के लिए।',
   'contact.addr.title':'ऑफिस का पता','contact.addr.desc':'HFGP+RQG, AA II, न्यूटाउन, चकपचुरिया, पश्चिम बंगाल 700160','contact.addr.btn':'दिशा-निर्देश पाएं',
   'footer.desc':'पश्चिम बंगाल की भरोसेमंद बिज़नेस कंसल्टेंसी — कंपनी पंजीकरण, लाइसेंसिंग और अनुपालन को आसान बनाया गया, कोलकाता से लेकर हर उस ज़िले तक जहां हम सेवा देते हैं।',
@@ -1391,6 +1403,52 @@ function updateWaLinks() {
   });
 }
 
+/* ══════════ LEAD DELIVERY — EMAIL + GOOGLE SHEET ══════════ */
+/* 1. EMAIL: Get a free access key at https://web3forms.com (just enter your email, no signup) and paste it below. */
+const WEB3FORMS_ACCESS_KEY = '30790f77-ad43-4bc1-8ccc-0daa24ed4328';
+/* 2. GOOGLE SHEET: Deploy a Google Apps Script Web App bound to your sheet and paste its /exec URL below.
+   See the setup guide provided separately for the exact script to paste into script.google.com. */
+const GSHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwsgIpEKNUWUo8VHOIoF2O-w-xzfzu-5C1n7_S6d_CYLeTR5l9AdPMrkJB0aHk4O5MafQ/exec';
+
+function sendLeadToEmail(svcName) {
+  if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY.startsWith('PASTE_')) return;
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: 'New Onnmore Consultation Request',
+      from_name: 'Onnmore Website',
+      Service: svcName,
+      Name: ckState.name,
+      Phone: ckState.phone,
+      Email: ckState.email || 'Not provided',
+      Business: ckState.biz || 'N/A',
+      Notes: ckState.msg || 'N/A',
+      Language: currentLang
+    })
+  }).catch(err => console.error('Email lead delivery failed:', err));
+}
+
+function sendLeadToSheet(svcName) {
+  if (!GSHEET_WEBHOOK_URL || GSHEET_WEBHOOK_URL.startsWith('PASTE_')) return;
+  fetch(GSHEET_WEBHOOK_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      timestamp: new Date().toISOString(),
+      service: svcName,
+      name: ckState.name,
+      phone: ckState.phone,
+      email: ckState.email || '',
+      business: ckState.biz || '',
+      notes: ckState.msg || '',
+      language: currentLang
+    })
+  }).catch(err => console.error('Sheet lead delivery failed:', err));
+}
+
 /* ══════════ Mobile nav ══════════ */
 const mToggle = document.getElementById('mobileToggle');
 const mNav    = document.getElementById('mobileNav');
@@ -1515,6 +1573,10 @@ function ckPrev() {
 
 function ckSendWA() {
   const svcName = ckState.svcKey ? t(ckState.svcKey) : '';
+  sendLeadToEmail(svcName);
+  sendLeadToSheet(svcName);
+  const toast = document.getElementById('ckToast');
+  if (toast) toast.style.display = 'flex';
   let m = `🧾 *${t('wa.msgTitle')}*\n───────────────────\n*${t('wa.msgService')}:* ${svcName}\n`;
   if (ckState.biz) m += `*${t('wa.msgBiz')}:* ${ckState.biz}\n`;
   m += `───────────────────\n*${t('wa.msgName')}:* ${ckState.name}\n*${t('wa.msgPhone')}:* ${ckState.phone}\n`;
