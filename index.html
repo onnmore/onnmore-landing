@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Applies the saved theme before first paint, so there's no flash of
+       the wrong (default dark) theme on repeat visits who picked light. -->
+  <script>(function(){try{if(localStorage.getItem('onnmore_theme')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -130,7 +134,67 @@
       --ring:         0 0 0 3px rgba(58,184,129,.22);
       --radius:       16px;
       --radius-sm:    11px;
+      --header-bg:    rgba(9,9,15,.92);
+      --mnav-bg:      rgba(9,9,15,.98);
+      --amb-1:        rgba(58,184,129,.09);
+      --amb-2:        rgba(45,148,99,.06);
+      --logo-fg:      #ffffff;
+      /* Subtle surface-tint scale, layered over --bg/--card to add depth.
+         White in dark mode, dark in light mode — see [data-theme="light"] below. */
+      --ov01:  rgba(255,255,255,.01);
+      --ov012: rgba(255,255,255,.012);
+      --ov015: rgba(255,255,255,.015);
+      --ov02:  rgba(255,255,255,.02);
+      --ov025: rgba(255,255,255,.025);
+      --ov03:  rgba(255,255,255,.03);
+      --ov04:  rgba(255,255,255,.04);
+      --ov045: rgba(255,255,255,.045);
+      --ov05:  rgba(255,255,255,.05);
+      --ov06:  rgba(255,255,255,.06);
+      --ov12:  rgba(255,255,255,.12);
     }
+
+    /* ══════════ LIGHT THEME ══════════
+       Toggled by setting data-theme="light" on <html> (see themeSwitch JS).
+       Everything else in the file reads the variables above, so this one
+       block is enough to re-skin the whole site to a white/black/green look. */
+    [data-theme="light"] {
+      --bg:           #ffffff;
+      --bg-2:         #f6f9f8;
+      --card:         #ffffff;
+      --soft:         #eef3f1;
+      --border:       rgba(21,120,80,.16);
+      --border-md:    rgba(21,120,80,.26);
+      --border-hi:    rgba(21,120,80,.4);
+      --txt:          #10151b;
+      --muted:        #57616d;
+      --shadow:       0 16px 40px rgba(16,24,32,.10);
+      --ring:         0 0 0 3px rgba(21,120,80,.16);
+      --header-bg:    rgba(255,255,255,.86);
+      --mnav-bg:      rgba(255,255,255,.98);
+      --amb-1:        rgba(58,184,129,.07);
+      --amb-2:        rgba(45,148,99,.045);
+      --logo-fg:      #10151b;
+      --ov01:  rgba(13,20,28,.03);
+      --ov012: rgba(13,20,28,.035);
+      --ov015: rgba(13,20,28,.04);
+      --ov02:  rgba(13,20,28,.05);
+      --ov025: rgba(13,20,28,.055);
+      --ov03:  rgba(13,20,28,.065);
+      --ov04:  rgba(13,20,28,.075);
+      --ov045: rgba(13,20,28,.08);
+      --ov05:  rgba(13,20,28,.085);
+      --ov06:  rgba(13,20,28,.10);
+      --ov12:  rgba(13,20,28,.09);
+    }
+    [data-theme="light"] body { color-scheme: light; }
+    /* The brand mark is baked as white-fill SVG paths (design intent: sit on
+       the dark header/footer). In light mode those same paths need to become
+       dark, so retarget them by their literal fill attribute. */
+    [data-theme="light"] svg path[fill="#fff"],
+    [data-theme="light"] svg path[fill="#ffffff"],
+    [data-theme="light"] svg text[fill="#ffffff"] { fill: var(--logo-fg); }
+
     *, *::before, *::after { box-sizing: border-box; }
     html { overflow-x: hidden; scroll-behavior: smooth; font-size: 16px; }
     body { margin: 0; padding: 0; background: var(--bg); color: var(--txt); font-family: Manrope, system-ui, sans-serif; line-height: 1.5; }
@@ -151,10 +215,10 @@
     }
 
     .ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-    .ambient::before { content:''; position:absolute; width:700px; height:700px; top:-260px; left:-200px; background: radial-gradient(circle, rgba(58,184,129,.09) 0%, transparent 65%); border-radius:50%; }
-    .ambient::after { content:''; position:absolute; width:500px; height:500px; top:300px; right:-180px; background: radial-gradient(circle, rgba(45,148,99,.06) 0%, transparent 65%); border-radius:50%; }
+    .ambient::before { content:''; position:absolute; width:700px; height:700px; top:-260px; left:-200px; background: radial-gradient(circle, var(--amb-1) 0%, transparent 65%); border-radius:50%; }
+    .ambient::after { content:''; position:absolute; width:500px; height:500px; top:300px; right:-180px; background: radial-gradient(circle, var(--amb-2) 0%, transparent 65%); border-radius:50%; }
 
-    .btn { display:inline-flex; align-items:center; gap:.52rem; padding:.78rem 1.2rem; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05); color:var(--txt); font-weight:700; font-size:.9rem; transition:transform .2s, box-shadow .2s, background .2s, border-color .2s; white-space:nowrap; cursor:pointer; font-family:inherit; }
+    .btn { display:inline-flex; align-items:center; gap:.52rem; padding:.78rem 1.2rem; border-radius:10px; border:1px solid var(--ov12); background:var(--ov05); color:var(--txt); font-weight:700; font-size:.9rem; transition:transform .2s, box-shadow .2s, background .2s, border-color .2s; white-space:nowrap; cursor:pointer; font-family:inherit; }
     .btn:hover { transform: translateY(-2px); box-shadow: var(--ring); }
     .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-color: transparent; color:#071a0f; font-weight:800; }
     .btn.primary:hover { box-shadow: 0 8px 28px rgba(58,184,129,.38); transform: translateY(-2px); }
@@ -168,15 +232,24 @@
     .pill { display:inline-flex; align-items:center; gap:.38rem; padding:.28rem .65rem; border-radius:100vmax; border:1px dashed var(--border-md); font-size:.75rem; color:var(--accent-light); }
 
     /* ── LANGUAGE SWITCHER ── */
-    .lang-switch { display:flex; align-items:center; gap:2px; border:1px solid var(--border-md); border-radius:9px; padding:2px; background: rgba(255,255,255,.03); flex-shrink:0; }
+    .lang-switch { display:flex; align-items:center; gap:2px; border:1px solid var(--border-md); border-radius:9px; padding:2px; background: var(--ov03); flex-shrink:0; }
     .lang-btn { border:none; background:none; color: var(--muted); font-family:inherit; font-size:.76rem; font-weight:800; padding:.42rem .55rem; border-radius:7px; cursor:pointer; transition:.16s; line-height:1; }
     .lang-btn.active { background: rgba(58,184,129,.16); color: var(--accent-light); }
     .lang-btn:hover:not(.active) { color: var(--txt); }
     .mnav-lang { display:flex; gap:8px; margin-bottom:1.5rem; width:100%; }
-    .mnav-lang .lang-btn { flex:1; text-align:center; padding:.65rem; border:1px solid var(--border-md); border-radius: var(--radius-sm); font-size:.82rem; background: rgba(255,255,255,.02); }
+    .mnav-lang .lang-btn { flex:1; text-align:center; padding:.65rem; border:1px solid var(--border-md); border-radius: var(--radius-sm); font-size:.82rem; background: var(--ov02); }
     .mnav-lang .lang-btn.active { border-color: var(--accent); background: rgba(58,184,129,.1); color: var(--accent-light); }
 
-    header { position:sticky; top:0; z-index:100; background:rgba(9,9,15,.92); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%); border-bottom:1px solid var(--border); }
+    /* ── THEME SWITCHER ── */
+    .theme-switch { display:flex; align-items:center; gap:2px; border:1px solid var(--border-md); border-radius:9px; padding:2px; background: var(--ov03); flex-shrink:0; }
+    .theme-btn { display:flex; align-items:center; justify-content:center; border:none; background:none; color: var(--muted); font-family:inherit; font-size:.92rem; padding:.42rem .55rem; border-radius:7px; cursor:pointer; transition:.16s; line-height:1; }
+    .theme-btn.active { background: rgba(58,184,129,.16); color: var(--accent-light); }
+    .theme-btn:hover:not(.active) { color: var(--txt); }
+    .mnav-theme { display:flex; gap:8px; margin-bottom:1.5rem; width:100%; }
+    .mnav-theme .theme-btn { flex:1; display:flex; align-items:center; justify-content:center; gap:.4rem; text-align:center; padding:.65rem; border:1px solid var(--border-md); border-radius: var(--radius-sm); font-size:.82rem; font-weight:700; background: var(--ov02); }
+    .mnav-theme .theme-btn.active { border-color: var(--accent); background: rgba(58,184,129,.1); color: var(--accent-light); }
+
+    header { position:sticky; top:0; z-index:100; background:var(--header-bg); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%); border-bottom:1px solid var(--border); }
     .offer-bar { background: linear-gradient(90deg, var(--accent), var(--accent-light)); color:#06140d; padding:9px 16px; text-align:center; font-size:.82rem; font-weight:700; position:relative; z-index:101; }
     .offer-bar .container { display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; }
     .offer-bar i { font-size:1rem; }
@@ -190,12 +263,12 @@
     .nav-actions { display:flex; align-items:center; gap:.55rem; flex-shrink:0; }
     .mobile-toggle { display:none; background:none; border:1px solid var(--border); border-radius:9px; padding:.55rem .6rem; color:var(--txt); cursor:pointer; align-items:center; justify-content:center; font-size:1.15rem; }
 
-    .mobile-nav { display:none; position:fixed; inset:0; background:rgba(9,9,15,.98); backdrop-filter: blur(20px); z-index:200; flex-direction:column; align-items:stretch; padding:1.4rem; overflow-y:auto; }
+    .mobile-nav { display:none; position:fixed; inset:0; background:var(--mnav-bg); backdrop-filter: blur(20px); z-index:200; flex-direction:column; align-items:stretch; padding:1.4rem; overflow-y:auto; }
     .mobile-nav.open { display:flex; animation: mnavIn .22s ease; }
     @keyframes mnavIn { from{opacity:0; transform:translateY(-6px);} to{opacity:1; transform:translateY(0);} }
     .mnav-header { display:flex; justify-content:center; align-items:center; position:relative; margin-bottom:1.4rem; width:100%; }
     .mnav-close { position:absolute; right:0; top:50%; transform:translateY(-50%); background:none; border:1px solid var(--border-md); border-radius:11px; padding:.6rem; color:var(--txt); cursor:pointer; display:flex; font-size:1.15rem; }
-    .mobile-nav a { display:flex; align-items:center; gap:.85rem; padding:.85rem 1rem; border-radius: var(--radius); font-size:.98rem; font-weight:700; color:var(--txt); border:1px solid var(--border); background: rgba(255,255,255,.02); transition:.18s; margin-bottom:.55rem; width:100%; align-self:stretch; text-align:left; }
+    .mobile-nav a { display:flex; align-items:center; gap:.85rem; padding:.85rem 1rem; border-radius: var(--radius); font-size:.98rem; font-weight:700; color:var(--txt); border:1px solid var(--border); background: var(--ov02); transition:.18s; margin-bottom:.55rem; width:100%; align-self:stretch; text-align:left; }
     .mobile-nav a:hover { background: rgba(58,184,129,.08); border-color: var(--border-md); }
     .mnav-icon { display:flex; align-items:center; justify-content:center; width:42px; height:42px; flex-shrink:0; border-radius:12px; background: rgba(58,184,129,.14); }
     .mobile-nav a .mnav-icon i { font-size:1.05rem; color:var(--accent-light); }
@@ -259,7 +332,7 @@
     }
     .svc-swipe-hint { display:none; align-items:center; gap:6px; color: var(--muted); font-size:.76rem; font-weight:600; margin:-18px 0 18px; }
     .svc-swipe-hint i { color: var(--accent-light); }
-    .svc-card { background: linear-gradient(160deg, rgba(255,255,255,.045) 0%, rgba(255,255,255,.012) 100%); border:1px solid var(--border); border-radius: var(--radius); padding:24px; transition: transform .22s, border-color .22s, box-shadow .22s; position:relative; overflow:hidden; cursor:pointer; }
+    .svc-card { background: linear-gradient(160deg, var(--ov045) 0%, var(--ov012) 100%); border:1px solid var(--border); border-radius: var(--radius); padding:24px; transition: transform .22s, border-color .22s, box-shadow .22s; position:relative; overflow:hidden; cursor:pointer; }
     .svc-card::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--accent), var(--accent-light)); opacity:0; transition:opacity .22s; }
     .svc-card:hover { transform: translateY(-4px); border-color: var(--border-md); box-shadow: 0 18px 52px rgba(0,0,0,.38); }
     .svc-card:hover::after { opacity:1; }
@@ -272,7 +345,7 @@
     .svc-card:hover .svc-go { opacity:1; transform: translateX(2px); }
 
     .price-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:15px; }
-    .price-card { border:1px solid var(--border); border-radius: var(--radius); padding:22px; background: linear-gradient(160deg, rgba(255,255,255,.045), rgba(255,255,255,.01)); display:flex; flex-direction:column; gap:10px; transition: transform .2s, border-color .2s; }
+    .price-card { border:1px solid var(--border); border-radius: var(--radius); padding:22px; background: linear-gradient(160deg, var(--ov045), var(--ov01)); display:flex; flex-direction:column; gap:10px; transition: transform .2s, border-color .2s; }
     .price-card:hover { transform: translateY(-3px); border-color: var(--border-md); }
     .price-top { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }
     .price-ico { width:38px; height:38px; border-radius:10px; background: rgba(58,184,129,.1); border:1px solid rgba(58,184,129,.18); display:flex; align-items:center; justify-content:center; font-size:1.1rem; color: var(--accent-light); flex-shrink:0; }
@@ -281,13 +354,13 @@
     .price-tag small { font-size:.68rem; font-weight:700; color: var(--muted); display:block; margin-top:3px; }
     .price-badge span { display:inline-block; font-size:.82rem; font-weight:800; padding:.32rem .75rem; border-radius:100vmax; letter-spacing:.2px; }
     .price-badge.free span { color:#06140d; background: linear-gradient(135deg, var(--accent), var(--accent-light)); }
-    .price-badge.over span { color: var(--muted); background: rgba(255,255,255,.06); border:1px solid var(--border-md); }
+    .price-badge.over span { color: var(--muted); background: var(--ov06); border:1px solid var(--border-md); }
     .price-note { color: var(--muted); font-size:.78rem; line-height:1.55; }
     .price-disclaimer { display:flex; align-items:flex-start; gap:.6rem; border:1px dashed var(--border-md); border-radius:12px; padding:.9rem 1.1rem; background: rgba(58,184,129,.045); font-size:.83rem; color: var(--muted); line-height:1.6; margin-top:22px; }
     .price-disclaimer i { color: var(--accent-light); font-size:1.05rem; margin-top:1px; flex-shrink:0; }
 
     .why-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:15px; }
-    .why-card { background: linear-gradient(160deg, rgba(255,255,255,.04), rgba(255,255,255,.01)); border:1px solid var(--border); border-radius: var(--radius); padding:22px; }
+    .why-card { background: linear-gradient(160deg, var(--ov04), var(--ov01)); border:1px solid var(--border); border-radius: var(--radius); padding:22px; }
     .why-ico { width:42px; height:42px; border-radius:11px; background: rgba(58,184,129,.1); border:1px solid rgba(58,184,129,.18); display:flex; align-items:center; justify-content:center; font-size:1.2rem; color: var(--accent-light); margin-bottom:12px; }
     .why-card h4 { margin:0 0 6px; font-size:.94rem; font-weight:800; }
     .why-card p { margin:0; color: var(--muted); font-size:.83rem; line-height:1.6; }
@@ -295,7 +368,7 @@
     .steps-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:15px; }
 
     /* ── TESTIMONIALS ── */
-    .testi-band { background: linear-gradient(160deg, rgba(58,184,129,.05), rgba(255,255,255,.015)); border:1px solid var(--border); border-radius: var(--radius); padding:32px 0 8px; overflow:hidden; }
+    .testi-band { background: linear-gradient(160deg, rgba(58,184,129,.05), var(--ov015)); border:1px solid var(--border); border-radius: var(--radius); padding:32px 0 8px; overflow:hidden; }
     .testi-top { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; padding:0 28px 28px; }
     .testi-tagline { font-size: clamp(19px, 2.4vw, 26px); font-weight:800; margin:0; }
     .testi-tagline .hl { color: var(--accent-light); }
@@ -310,7 +383,7 @@
     @media (prefers-reduced-motion: reduce) {
       .testi-scroll { animation:none !important; overflow-x:auto; width:auto; padding:0 28px 28px; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; }
     }
-    .testi-card { flex: 0 0 300px; scroll-snap-align:start; border:1px solid var(--border); border-radius: var(--radius-sm); padding:22px; background: rgba(255,255,255,.03); display:flex; flex-direction:column; gap:10px; }
+    .testi-card { flex: 0 0 300px; scroll-snap-align:start; border:1px solid var(--border); border-radius: var(--radius-sm); padding:22px; background: var(--ov03); display:flex; flex-direction:column; gap:10px; }
     .testi-quote-ico { color: var(--accent); font-size:1.6rem; line-height:1; opacity:.6; font-family: Georgia, serif; }
     .testi-quote { margin:0; color: var(--txt); font-size:.9rem; line-height:1.65; flex-grow:1; }
     .testi-divider { height:1px; background: var(--border); }
@@ -324,7 +397,7 @@
     .testi-stars { color:#ffb84d; font-size:.8rem; letter-spacing:1px; }
     .testi-tag { display:inline-block; align-self:flex-start; border:1px solid rgba(58,184,129,.3); color: var(--accent-light); font-size:.7rem; font-weight:700; padding:4px 10px; border-radius:20px; }
     .testi-loc { color: var(--muted); font-size:.75rem; display:flex; align-items:center; gap:4px; }
-    .step-card { border:1px solid var(--border); border-radius: var(--radius); padding:20px; background: rgba(255,255,255,.02); display:flex; flex-direction:column; gap:6px; }
+    .step-card { border:1px solid var(--border); border-radius: var(--radius); padding:20px; background: var(--ov02); display:flex; flex-direction:column; gap:6px; }
     .step-n { font-size:.72rem; font-weight:800; color: var(--accent); letter-spacing:1px; text-transform:uppercase; }
     .step-card strong { font-size:.95rem; }
     .step-card span { color: var(--muted); font-size:.83rem; line-height:1.55; }
@@ -342,7 +415,7 @@
     .ck-lbl { font-size:10px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color: var(--muted); text-align:center; white-space:nowrap; transition: color .3s; }
     .ck-lbl.on { color: var(--accent-light); }
 
-    .ck-card { max-width:640px; margin:0 auto; border:1px solid var(--border-md); border-radius: var(--radius); background: linear-gradient(160deg, rgba(255,255,255,.05), rgba(255,255,255,.015)); box-shadow: var(--shadow); overflow:hidden; }
+    .ck-card { max-width:640px; margin:0 auto; border:1px solid var(--border-md); border-radius: var(--radius); background: linear-gradient(160deg, var(--ov05), var(--ov015)); box-shadow: var(--shadow); overflow:hidden; }
     .ck-panel { display:none; padding:26px 26px 6px; }
     .ck-panel.show { display:block; animation: ckIn .28s ease; }
     @keyframes ckIn { from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
@@ -350,17 +423,17 @@
     .ck-psub { margin:0 0 18px; color: var(--muted); font-size:.86rem; }
     .ck-svc-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:9px; }
     .ck-svc-note { margin:12px 2px 0; font-size:.76rem; font-weight:700; color: var(--accent-light); display:flex; align-items:center; gap:6px; }
-    .ck-svc { display:flex; align-items:center; gap:.6rem; border:1px solid var(--border); border-radius:11px; padding:.75rem .85rem; background: rgba(255,255,255,.02); cursor:pointer; transition:.18s; text-align:left; font-family:inherit; color: var(--txt); position:relative; touch-action:manipulation; }
+    .ck-svc { display:flex; align-items:center; gap:.6rem; border:1px solid var(--border); border-radius:11px; padding:.75rem .85rem; background: var(--ov02); cursor:pointer; transition:.18s; text-align:left; font-family:inherit; color: var(--txt); position:relative; touch-action:manipulation; }
     .ck-badge { position:absolute; top:-8px; right:-6px; background: linear-gradient(135deg, var(--accent), var(--accent-light)); color:#06140d; font-size:.6rem; font-weight:800; padding:2px 7px; border-radius:20px; box-shadow: 0 2px 8px rgba(0,0,0,.4); letter-spacing:.3px; white-space:nowrap; }
     .ck-svc i { color: var(--accent-light); font-size:1.05rem; flex-shrink:0; }
     .ck-svc span { font-size:.84rem; font-weight:700; }
     .ck-svc:hover { border-color: var(--border-md); background: rgba(58,184,129,.06); }
     .ck-svc.sel { border-color: var(--accent); background: rgba(58,184,129,.12); box-shadow: var(--ring); }
-    .ck-svc-check { width:17px; height:17px; border-radius:5px; border:1.5px solid var(--border-hi); flex-shrink:0; display:flex; align-items:center; justify-content:center; margin-left:auto; transition:.18s; background: rgba(255,255,255,.02); }
+    .ck-svc-check { width:17px; height:17px; border-radius:5px; border:1.5px solid var(--border-hi); flex-shrink:0; display:flex; align-items:center; justify-content:center; margin-left:auto; transition:.18s; background: var(--ov02); }
     .ck-svc-check i { font-size:.7rem; color:transparent; }
     .ck-svc.sel .ck-svc-check { background: var(--accent); border-color: var(--accent); }
     .ck-svc.sel .ck-svc-check i { color:#071a0f; }
-    .ck-svc-selbar { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:14px; padding:.65rem .9rem; border-radius:10px; background: rgba(255,255,255,.03); border:1px solid var(--border); font-size:.8rem; color: var(--muted); }
+    .ck-svc-selbar { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:14px; padding:.65rem .9rem; border-radius:10px; background: var(--ov03); border:1px solid var(--border); font-size:.8rem; color: var(--muted); }
     .ck-svc-selbar strong { color: var(--accent-light); font-weight:800; }
     .ck-field { margin-bottom:14px; }
     /* Honeypot field: visually and physically off-screen for sighted/mouse users,
@@ -370,11 +443,21 @@
     .ck-field label { display:block; font-size:.78rem; font-weight:700; color: var(--muted); margin-bottom:6px; }
     .ck-hint { font-size:.72rem; color: var(--muted); margin:5px 2px 0; line-height:1.5; display:flex; align-items:flex-start; gap:.3rem; }
     .ck-hint i { color: var(--accent-light); margin-top:1px; flex-shrink:0; }
-    .ck-inp, .ck-txt { width:100%; padding:.75rem .9rem; border-radius:10px; border:1px solid var(--border-md); background: rgba(255,255,255,.03); color: var(--txt); font-family:inherit; font-size:16px; }
+    .ck-inp, .ck-txt { width:100%; padding:.75rem .9rem; border-radius:10px; border:1px solid var(--border-md); background: var(--ov03); color: var(--txt); font-family:inherit; font-size:16px; }
     .ck-inp:focus, .ck-txt:focus { outline:none; border-color: var(--accent); box-shadow: var(--ring); }
     .ck-txt { resize: vertical; min-height:78px; }
     .ck-row2 { display:grid; grid-template-columns: 1fr 1fr; gap:12px; }
-    .ck-rcard { border:1px solid var(--border); border-radius:12px; padding:16px; background: rgba(255,255,255,.02); margin-bottom:14px; }
+    .ck-returning-hint { background: rgba(58,184,129,.08); border:1px solid var(--border); border-radius:10px; padding:.65rem .85rem; margin:0 0 14px; color: var(--accent-light); }
+    .ck-returning-hint i { color: var(--accent-light); }
+    .ck-txt-wrap { position:relative; }
+    .ck-txt-wrap .ck-txt { padding-right:46px; }
+    .ck-mic-btn { position:absolute; right:8px; bottom:8px; width:32px; height:32px; border-radius:50%; border:1px solid var(--border-md); background: var(--ov05); color: var(--muted); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1rem; padding:0; transition: background .2s, border-color .2s, color .2s; }
+    .ck-mic-btn:hover { border-color: var(--accent); color: var(--accent-light); }
+    .ck-mic-btn.listening { background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-color:transparent; color:#071a0f; animation: ckMicPulse 1.4s ease-in-out infinite; }
+    @keyframes ckMicPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(58,184,129,.45); } 50% { box-shadow: 0 0 0 8px rgba(58,184,129,0); } }
+    .ck-mic-hint { color: var(--accent-light); }
+    .ck-mic-hint i { color: var(--accent-light); }
+    .ck-rcard { border:1px solid var(--border); border-radius:12px; padding:16px; background: var(--ov02); margin-bottom:14px; }
     .ck-rhead { display:flex; align-items:center; gap:.7rem; margin-bottom:12px; padding-bottom:12px; border-bottom:1px solid var(--border); }
     .ck-rico { width:38px; height:38px; border-radius:10px; background: rgba(58,184,129,.14); display:flex; align-items:center; justify-content:center; color: var(--accent-light); font-size:1.1rem; flex-shrink:0; }
     .ck-rrows { display:flex; flex-direction:column; gap:8px; }
@@ -390,14 +473,14 @@
     .ck-sec-title { display:flex; align-items:center; gap:.5rem; font-size:.92rem; font-weight:800; margin:22px 0 4px; }
     .ck-sec-title i { color: var(--accent-light); }
     .ck-sec-sub { margin:0 0 12px; color: var(--muted); font-size:.8rem; line-height:1.5; }
-    .ck-doc-group { border:1px solid var(--border); border-radius:11px; padding:14px 16px; background: rgba(255,255,255,.02); margin-bottom:10px; }
+    .ck-doc-group { border:1px solid var(--border); border-radius:11px; padding:14px 16px; background: var(--ov02); margin-bottom:10px; }
     .ck-doc-group-head { display:flex; align-items:center; gap:.55rem; font-weight:700; font-size:.85rem; margin-bottom:10px; }
     .ck-doc-group-head i { color: var(--accent-light); font-size:1rem; }
-    .ck-addon-row { display:flex; align-items:flex-start; gap:.75rem; border:1px solid var(--border); border-radius:11px; padding:.85rem .95rem; background: rgba(255,255,255,.02); margin-bottom:9px; cursor:pointer; transition:.18s; }
+    .ck-addon-row { display:flex; align-items:flex-start; gap:.75rem; border:1px solid var(--border); border-radius:11px; padding:.85rem .95rem; background: var(--ov02); margin-bottom:9px; cursor:pointer; transition:.18s; }
     .ck-addon-row:hover { border-color: var(--border-md); background: rgba(58,184,129,.05); }
     .ck-addon-row.checked { border-color: var(--accent); background: rgba(58,184,129,.1); }
     .ck-addon-row.disabled { cursor:default; opacity:.7; }
-    .ck-addon-check { width:19px; height:19px; border-radius:6px; border:1.5px solid var(--border-hi); flex-shrink:0; margin-top:1px; display:flex; align-items:center; justify-content:center; background: rgba(255,255,255,.02); }
+    .ck-addon-check { width:19px; height:19px; border-radius:6px; border:1.5px solid var(--border-hi); flex-shrink:0; margin-top:1px; display:flex; align-items:center; justify-content:center; background: var(--ov02); }
     .ck-addon-check i { font-size:.75rem; color:transparent; }
     .ck-addon-row.checked .ck-addon-check { background: var(--accent); border-color: var(--accent); }
     .ck-addon-row.checked .ck-addon-check i { color:#071a0f; }
@@ -420,7 +503,7 @@
     .ck-promo-applied { display:flex; align-items:center; justify-content:space-between; gap:8px; border:1px solid var(--border-hi); background: rgba(58,184,129,.1); border-radius:10px; padding:.65rem .9rem; }
     .ck-promo-applied span { font-size:.83rem; font-weight:700; color: var(--accent-light); }
     .ck-promo-remove { background:none; border:none; color: var(--muted); font-size:.76rem; font-weight:700; cursor:pointer; font-family:inherit; text-decoration:underline; }
-    .ck-price-box { border:1px solid var(--border); border-radius:12px; padding:16px; background: rgba(255,255,255,.02); }
+    .ck-price-box { border:1px solid var(--border); border-radius:12px; padding:16px; background: var(--ov02); }
     .ck-price-line { display:flex; align-items:center; justify-content:space-between; gap:10px; font-size:.85rem; padding:6px 0; color: var(--txt); }
     .ck-price-line .ck-price-label { color: var(--muted); }
     .ck-price-line.custom .ck-price-label { color: var(--txt); font-weight:600; }
@@ -434,7 +517,7 @@
     .ck-err { display:none; margin:0 26px 14px; padding:.6rem .85rem; border-radius:9px; background: rgba(220,80,80,.12); border:1px solid rgba(220,80,80,.35); color:#ff9d9d; font-size:.82rem; font-weight:600; }
     .ck-toast { display:none; align-items:center; gap:8px; margin:0 26px 14px; padding:.7rem .9rem; border-radius:9px; background: rgba(58,184,129,.12); border:1px solid rgba(58,184,129,.35); color: var(--accent-light); font-size:.82rem; font-weight:700; }
     .ck-toast i { font-size:1.05rem; flex-shrink:0; }
-    .ck-foot { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:16px 26px; border-top:1px solid var(--border); background: rgba(255,255,255,.015); }
+    .ck-foot { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:16px 26px; border-top:1px solid var(--border); background: var(--ov015); }
     .ck-back { background:none; border:1px solid var(--border-md); border-radius:9px; padding:.7rem 1rem; color: var(--muted); font-weight:700; font-size:.85rem; cursor:pointer; font-family:inherit; display:flex; align-items:center; gap:.4rem; touch-action:manipulation; }
     .ck-back:disabled { opacity:.35; cursor:not-allowed; }
     .ck-next { flex:1; max-width:260px; margin-left:auto; background: linear-gradient(135deg, var(--accent), var(--accent-light)); border:none; border-radius:9px; padding:.78rem 1.1rem; color:#071a0f; font-weight:800; font-size:.88rem; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:.45rem; font-family:inherit; transition: transform .18s, box-shadow .18s; touch-action:manipulation; }
@@ -470,7 +553,7 @@
     .ck-updates-btn:hover { transform: translateY(-2px); background: rgba(58,184,129,.15); box-shadow: 0 8px 22px rgba(58,184,129,.22); }
     .ck-updates-options { display:none; align-items:center; justify-content:center; gap:10px; margin-top:12px; flex-wrap:wrap; }
     .ck-updates-options.show { display:flex; }
-    .ck-updates-opt { display:inline-flex; align-items:center; gap:.4rem; padding:.6rem 1rem; border-radius:9px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05); color:var(--txt); font-weight:700; font-size:.8rem; cursor:pointer; font-family:inherit; transition: transform .18s, box-shadow .18s, border-color .18s; }
+    .ck-updates-opt { display:inline-flex; align-items:center; gap:.4rem; padding:.6rem 1rem; border-radius:9px; border:1px solid var(--ov12); background:var(--ov05); color:var(--txt); font-weight:700; font-size:.8rem; cursor:pointer; font-family:inherit; transition: transform .18s, box-shadow .18s, border-color .18s; }
     .ck-updates-opt:hover { transform: translateY(-2px); }
     .ck-updates-opt.wa { border-color: rgba(37,211,102,.4); }
     .ck-updates-opt.wa:hover { background: rgba(37,211,102,.12); border-color:#25d366; }
@@ -487,7 +570,7 @@
     @keyframes ckSpark { 0% { opacity:0; transform:scale(.4) translateY(0); } 35% { opacity:1; } 100% { opacity:0; transform:scale(1.3) translateY(-10px); } }
 
     .faq-layout { display:grid; grid-template-columns: 1.4fr 1fr; gap:24px; align-items:start; }
-    .faq-list details { border:1px solid var(--border); border-radius:12px; padding:16px 18px; margin-bottom:10px; background: rgba(255,255,255,.02); }
+    .faq-list details { border:1px solid var(--border); border-radius:12px; padding:16px 18px; margin-bottom:10px; background: var(--ov02); }
     .faq-list summary { cursor:pointer; font-weight:700; font-size:.94rem; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:10px; }
     .faq-list summary::-webkit-details-marker { display:none; }
     .faq-list summary::after { content:'+'; font-size:1.3rem; color: var(--accent); font-weight:400; flex-shrink:0; }
@@ -500,7 +583,7 @@
     .fcc-actions { display:flex; flex-direction:column; gap:.6rem; }
 
     .contact-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap:14px; }
-    .contact-card { background: linear-gradient(160deg, rgba(255,255,255,.045), rgba(255,255,255,.01)); border:1px solid var(--border); border-radius: var(--radius); padding:22px; }
+    .contact-card { background: linear-gradient(160deg, var(--ov045), var(--ov01)); border:1px solid var(--border); border-radius: var(--radius); padding:22px; }
     .contact-card h3 { margin:0 0 5px; font-size:.96rem; display:flex; align-items:center; gap:.55rem; }
     .contact-card h3 i { color: var(--accent); }
     .contact-card .c-desc { margin:0 0 15px; color: var(--muted); font-size:.86rem; line-height:1.6; }
@@ -513,10 +596,10 @@
     .foot-links a { color: var(--muted); font-size:.86rem; transition: color .18s; }
     .foot-links a:hover { color: var(--txt); }
     .foot-areas { display:flex; flex-wrap:wrap; gap:6px; }
-    .foot-area-chip { font-size:.76rem; color: var(--muted); background: rgba(255,255,255,.04); border:1px solid var(--border); border-radius:100vmax; padding:.28rem .62rem; }
+    .foot-area-chip { font-size:.76rem; color: var(--muted); background: var(--ov04); border:1px solid var(--border); border-radius:100vmax; padding:.28rem .62rem; }
     .foot-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding-top:22px; border-top:1px solid var(--border); }
     .foot-copy { color: var(--muted); font-size:.76rem; line-height:1.65; }
-    .foot-disclaimer { margin-top:20px; padding:16px 18px; border:1px solid var(--border); border-radius: var(--radius-sm); background: rgba(255,255,255,.025); color: var(--muted); font-size:.76rem; line-height:1.7; }
+    .foot-disclaimer { margin-top:20px; padding:16px 18px; border:1px solid var(--border); border-radius: var(--radius-sm); background: var(--ov025); color: var(--muted); font-size:.76rem; line-height:1.7; }
     .foot-disclaimer strong { display:block; color: var(--txt); font-size:.8rem; margin-bottom:6px; }
     .social-row { display:flex; gap:.6rem; }
     .soc-link { width:34px; height:34px; border-radius:8px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color: var(--muted); transition:.18s; }
@@ -566,21 +649,46 @@
     .a2hs-note i { color:var(--accent); flex-shrink:0; margin-top:1px; font-size:.95rem; }
     @media (max-width:420px) { .a2hs-modal { padding:22px 18px 20px; } }
 
+    /* ── WHATSAPP CONNECT MODAL ── */
+    .wa-modal-overlay { display:none; position:fixed; inset:0; z-index:410; background:rgba(6,6,10,.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); align-items:center; justify-content:center; padding:20px; }
+    .wa-modal-overlay.show { display:flex; animation: a2hsFadeIn .22s ease; }
+    .wa-modal { position:relative; width:min(420px, 100%); max-height:88vh; overflow-y:auto; background:#fff; border-radius:22px; box-shadow: var(--shadow); animation: a2hsPop .28s cubic-bezier(.22,1,.36,1); }
+    .wa-modal-head { position:relative; display:flex; align-items:flex-start; gap:16px; padding:26px 56px 26px 24px; background: linear-gradient(135deg, #1fae5c, #17974f); border-radius:22px 22px 0 0; }
+    .wa-modal-icon { flex-shrink:0; width:52px; height:52px; border-radius:50%; background:rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; font-size:1.5rem; color:#fff; }
+    .wa-modal-head h3 { margin:0; color:#fff; font-size:1.26rem; font-weight:800; line-height:1.3; }
+    .wa-modal-close { position:absolute; top:18px; right:18px; width:34px; height:34px; border-radius:50%; border:none; background:rgba(255,255,255,.18); color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.15rem; transition:.18s; flex-shrink:0; }
+    .wa-modal-close:hover { background:rgba(255,255,255,.32); }
+    .wa-modal-body { padding:26px 24px 24px; display:flex; flex-direction:column; gap:16px; }
+    .wa-field { position:relative; display:flex; align-items:center; border:1.5px solid #e2e5eb; border-radius:100vmax; padding:0 18px; height:56px; transition:border-color .18s; background:#fff; }
+    .wa-field:focus-within { border-color:#25d366; }
+    .wa-field i { color:#9aa1b0; font-size:1.2rem; flex-shrink:0; }
+    .wa-field input { border:none; outline:none; flex:1; min-width:0; font-family:inherit; font-size:1rem; color:#1a1a1a; padding:0 0 0 12px; background:transparent; }
+    .wa-field input::placeholder { color:#9aa1b0; }
+    .wa-field.wa-phone-field { padding-left:14px; }
+    .wa-country { display:flex; align-items:center; gap:6px; flex-shrink:0; color:#1a1a1a; font-weight:700; font-size:1rem; padding-right:12px; margin-right:6px; border-right:1.5px solid #e2e5eb; height:60%; }
+    .wa-country .flag { font-size:1.15rem; line-height:1; }
+    .wa-modal-submit { display:flex; align-items:center; justify-content:center; gap:.6rem; width:100%; height:56px; border:none; border-radius:100vmax; background: linear-gradient(135deg, #25d366, #128c7e); color:#fff; font-weight:800; font-size:1.02rem; cursor:pointer; font-family:inherit; transition: transform .2s, box-shadow .2s; }
+    .wa-modal-submit i { font-size:1.3rem; }
+    .wa-modal-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(37,211,102,.4); }
+    .wa-modal-err { color:#e0433d; font-size:.8rem; font-weight:600; margin:-6px 0 0; display:none; }
+    .wa-modal-err.show { display:block; }
+    @media (max-width:420px) { .wa-modal-head { padding:22px 50px 22px 20px; } .wa-modal-body { padding:22px 20px 20px; } }
+
     /* ══════════ DOCUMENT CHECKLIST ══════════ */
     .doc-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:14px; }
-    .doc-list details { border:1px solid var(--border); border-radius:12px; padding:16px 18px; background: rgba(255,255,255,.02); transition: border-color .2s; }
+    .doc-list details { border:1px solid var(--border); border-radius:12px; padding:16px 18px; background: var(--ov02); transition: border-color .2s; }
     .doc-list details[open] { border-color: var(--border-hi); background: rgba(58,184,129,.03); }
     .doc-list summary { cursor:pointer; list-style:none; display:flex; align-items:center; gap:.65rem; }
     .doc-list summary::-webkit-details-marker { display:none; }
     .doc-sum-ico { width:36px; height:36px; border-radius:9px; background: rgba(58,184,129,.1); border:1px solid rgba(58,184,129,.18); display:flex; align-items:center; justify-content:center; font-size:1.05rem; color: var(--accent-light); flex-shrink:0; }
     .doc-sum-text { font-weight:700; font-size:.92rem; flex:1; }
-    .doc-sum-count { font-size:.7rem; font-weight:700; color: var(--muted); background: rgba(255,255,255,.05); border-radius:100vmax; padding:.2rem .55rem; flex-shrink:0; }
+    .doc-sum-count { font-size:.7rem; font-weight:700; color: var(--muted); background: var(--ov05); border-radius:100vmax; padding:.2rem .55rem; flex-shrink:0; }
     .doc-sum-chevron { font-size:1.15rem; color: var(--accent); transition: transform .2s; flex-shrink:0; }
     .doc-list details[open] .doc-sum-chevron { transform: rotate(45deg); }
     .doc-items { list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column; gap:8px; }
     .doc-items li { display:flex; align-items:flex-start; gap:.55rem; font-size:.85rem; color: var(--muted); line-height:1.5; }
     .doc-items li i { color: var(--accent-light); font-size:1rem; margin-top:2px; flex-shrink:0; }
-    .doc-note { display:flex; align-items:flex-start; gap:.5rem; font-size:.78rem; color: var(--muted); background: rgba(255,255,255,.02); border:1px dashed var(--border-md); border-radius:9px; padding:.6rem .75rem; margin-top:14px; line-height:1.5; }
+    .doc-note { display:flex; align-items:flex-start; gap:.5rem; font-size:.78rem; color: var(--muted); background: var(--ov02); border:1px dashed var(--border-md); border-radius:9px; padding:.6rem .75rem; margin-top:14px; line-height:1.5; }
     .doc-note i { color: var(--accent-light); flex-shrink:0; margin-top:1px; }
     .doc-start-btn { display:inline-flex; align-items:center; gap:.4rem; margin-top:12px; background:none; border:1px solid var(--border-md); border-radius:8px; padding:.5rem .85rem; color: var(--accent-light); font-weight:700; font-size:.78rem; cursor:pointer; font-family:inherit; transition:.18s; }
     .doc-start-btn:hover { border-color: var(--accent); background: rgba(58,184,129,.08); }
@@ -673,6 +781,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="nav-actions">
+        <div class="theme-switch hide-mobile" role="group" aria-label="Theme switcher">
+          <button class="theme-btn active" data-theme-choice="dark" onclick="setTheme('dark')" aria-label="Dark theme" title="Dark (black &amp; green)"><i class="ri-moon-fill"></i></button>
+          <button class="theme-btn" data-theme-choice="light" onclick="setTheme('light')" aria-label="Light theme" title="Light (white, black &amp; green)"><i class="ri-sun-fill"></i></button>
+        </div>
         <div class="lang-switch hide-mobile" role="group" aria-label="Language switcher">
           <button class="lang-btn active" data-lang="en" onclick="setLang('en')">EN</button>
           <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাং</button>
@@ -702,6 +814,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <path d="M275.5 68.57a5.64 5.64 0 0 0-5.29-3.57l1.41-1.53c5.94-4.17 3.88-9.29 3.88-9.29-5.12-10.29-14.06-10.5-14.06-10.5-14.59-1-17.5 11.74-17.5 11.74a17.41 17.41 0 0 0 1.21 11.9 15.9 15.9 0 0 0 2.69 3.68 18 18 0 0 0 4.33 3.28 15.69 15.69 0 0 0 4.59 1.72l.45.08c1.81.1 3.68.17 5.62.2 3.15 0 6.15 0 9-.2a5.69 5.69 0 0 0 3.56-2.89 5.58 5.58 0 0 0 .11-4.62Zm-19.47-5a5.53 5.53 0 0 1-1.53-3.22 5.43 5.43 0 0 1 .75-3.36 5.25 5.25 0 0 1 1.15-1.29 5.75 5.75 0 0 1 4.13-1.07 4.25 4.25 0 0 1 3 1.47Z" fill="#fff"/>
     </svg>
     <button class="mnav-close" id="mobileNavClose" aria-label="Close menu"><i class="ri-close-line"></i></button>
+  </div>
+  <div class="mnav-theme">
+    <button class="theme-btn active" data-theme-choice="dark" onclick="setTheme('dark')"><i class="ri-moon-fill"></i> Dark</button>
+    <button class="theme-btn" data-theme-choice="light" onclick="setTheme('light')"><i class="ri-sun-fill"></i> Light</button>
   </div>
   <div class="mnav-lang">
     <button class="lang-btn active" data-lang="en" onclick="setLang('en')">English</button>
@@ -891,6 +1007,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="ck-panel" id="cp2">
         <p class="ck-ptitle" data-i18n="consult.p2Title">Your details</p>
         <p class="ck-psub" data-i18n="consult.p2Sub">So our team can reach out with the right guidance.</p>
+        <p class="ck-hint ck-returning-hint" id="ckReturningHint" style="display:none"><i class="ri-user-heart-line"></i> <span data-i18n="consult.returningHint">Welcome back! We've filled in your name, phone and email from your last request — feel free to update anything that's changed.</span></p>
         <div class="ck-row2">
           <div class="ck-field"><label for="ckName" data-i18n="consult.labelName">Full name</label><input class="ck-inp" id="ckName" type="text" data-i18n-ph="consult.placeholderName" placeholder="Your name" autocomplete="name"></div>
           <div class="ck-field"><label for="ckPhone" data-i18n="consult.labelPhone">Phone number</label><input class="ck-inp" id="ckPhone" type="tel" data-i18n-ph="consult.placeholderPhone" placeholder="10-digit mobile number" autocomplete="tel"></div>
@@ -903,7 +1020,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="ck-field"><label for="ckBiz" data-i18n="consult.labelBiz">Business / company name (if any)</label><input class="ck-inp" id="ckBiz" type="text" data-i18n-ph="consult.placeholderBiz" placeholder="e.g. your business or brand name"></div>
         </div>
-        <div class="ck-field"><label for="ckMsg" data-i18n="consult.labelMsg">Anything specific we should know?</label><textarea class="ck-txt" id="ckMsg" data-i18n-ph="consult.placeholderMsg" placeholder="Tell us a bit about your business or requirement…"></textarea></div>
+        <div class="ck-field">
+          <label for="ckMsg" data-i18n="consult.labelMsg">Anything specific we should know?</label>
+          <div class="ck-txt-wrap">
+            <textarea class="ck-txt" id="ckMsg" data-i18n-ph="consult.placeholderMsg" placeholder="Tell us a bit about your business or requirement…"></textarea>
+            <button type="button" class="ck-mic-btn" id="ckMsgMicBtn" onclick="ckToggleVoiceInput()" aria-label="Speak instead of typing" title="Speak instead of typing"><i class="ri-mic-line"></i></button>
+          </div>
+          <p class="ck-hint ck-mic-hint" id="ckMsgMicHint" style="display:none"><i class="ri-mic-line"></i> <span data-i18n="consult.voiceListening">Listening… tap the mic again when you're done.</span></p>
+        </div>
         <!-- Honeypot: hidden from real users, but bots that auto-fill every field will populate it. Never shown, never required. -->
         <div class="ck-hp" aria-hidden="true">
           <label for="ckWebsite">Website</label>
@@ -1326,6 +1450,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
+<!-- ════════════ WHATSAPP CONNECT MODAL ════════════ -->
+<div class="wa-modal-overlay" id="waModalOverlay" role="dialog" aria-modal="true" aria-labelledby="waModalTitle">
+  <div class="wa-modal">
+    <div class="wa-modal-head">
+      <div class="wa-modal-icon"><i class="ri-whatsapp-fill"></i></div>
+      <h3 id="waModalTitle" data-i18n="waModal.title">Connect with our Expert Professionals</h3>
+      <button type="button" class="wa-modal-close" onclick="closeWaModal()" aria-label="Close"><i class="ri-close-line"></i></button>
+    </div>
+    <form class="wa-modal-body" id="waModalForm" onsubmit="return submitWaModal(event)">
+      <div class="wa-field">
+        <i class="ri-user-3-line"></i>
+        <input type="text" id="waModalName" placeholder="Name" autocomplete="name" required>
+      </div>
+      <div class="wa-field wa-phone-field">
+        <span class="wa-country"><span class="flag">🇮🇳</span> +91</span>
+        <input type="tel" id="waModalPhone" placeholder="Phone" inputmode="numeric" autocomplete="tel" required>
+      </div>
+      <div class="wa-modal-err" id="waModalErr"></div>
+      <button type="submit" class="wa-modal-submit"><i class="ri-whatsapp-fill"></i> <span data-i18n="waModal.btn">Connect on WhatsApp</span></button>
+    </form>
+  </div>
+</div>
+
 <!-- ════════════ SCRIPTS ════════════ -->
 <script>
 /* ══════════ i18n DATA ══════════ */
@@ -1523,6 +1670,11 @@ en: {
   'consult.successTitle':'Request submitted!','consult.successMsg':"We've received your details and will get back to you within a couple of minutes.",'consult.done':'Done',
   'consult.caseIdLabel':'Your Case ID','consult.updatesBtn':'Updates','consult.viaWhatsapp':'via WhatsApp','consult.viaEmail':'via Email','consult.viaLogin':'Login for Updates',
   'consult.emailHint':"Please double-check this — you'll use the same email to log in and see updates on your request.",
+  'consult.returningHint':"Welcome back! We've filled in your name, phone and email from your last request — feel free to update anything that's changed.",
+  'consult.voiceListening':"Listening… tap the mic again when you're done.",
+  'consult.errVoiceUnsupported':"Voice input isn't supported in this browser — please try Chrome, or type your requirement instead.",
+  'consult.errVoicePermission':'Please allow microphone access in your browser to use voice input.',
+  'consult.errVoiceGeneric':"Voice input didn't work — please try again or type your requirement.",
   'consult.updatesMsg':"Want real-time updates? Log in anytime with the email you entered above to track this request from your dashboard — or reach us directly on WhatsApp with your Case ID.",
   'consult.statusWaMsg':'Hi, I would like an update on my case. My Case ID is: ','consult.statusEmailSubject':'Case Status Update Request - ',
   'why.sectionLabel':'Our promise','why.title':'Why choose Onnmore?',
@@ -1557,6 +1709,7 @@ en: {
   'faq.contact.title':'Still have questions?','faq.contact.desc':'Our team is happy to walk you through the process. Send us a WhatsApp message for quick answers.','faq.contact.wa':'Chat on WhatsApp',
   'contact.sectionLabel':'Reach us','contact.title':'Contact & Office','contact.pill':'Mon–Sat, 10 AM – 7 PM',
   'contact.wa.title':'WhatsApp','contact.wa.desc':'The fastest way to reach us. Tap below to start a chat — no need to note down a number.','contact.wa.btn':'Chat on WhatsApp',
+  'waModal.title':'Connect with our Expert Professionals','waModal.btn':'Connect on WhatsApp','waModal.errName':'Please enter your name.','waModal.errPhone':'Please enter a valid 10-digit phone number.',
   'contact.call.title':'Call Us','contact.call.desc':"Prefer to talk it through? Give us a call and we'll walk you through everything.",'contact.call.btn':'+91 94771 10971',
   'contact.email.title':'Email','contact.email.desc':'For detailed queries, document sharing, and follow-ups.',
   'contact.addr.title':'Office Address','contact.addr.desc':'HFGP+RQG, AA II, Newtown, Chakpachuria, West Bengal 700160','contact.addr.btn':'Get Directions',
@@ -1659,6 +1812,11 @@ bn: {
   'consult.successTitle':'অনুরোধ সাবমিট হয়েছে!','consult.successMsg':'আমরা আপনার তথ্য পেয়েছি এবং কয়েক মিনিটের মধ্যে যোগাযোগ করব।','consult.done':'সম্পন্ন',
   'consult.caseIdLabel':'আপনার কেস আইডি','consult.updatesBtn':'আপডেট','consult.viaWhatsapp':'হোয়াটসঅ্যাপের মাধ্যমে','consult.viaEmail':'ইমেইলের মাধ্যমে','consult.viaLogin':'লগইন করে আপডেট দেখুন',
   'consult.emailHint':'অনুগ্রহ করে এটি ভালোভাবে যাচাই করুন — আপনি এই একই ইমেইল দিয়ে লগইন করে আপনার অনুরোধের আপডেট দেখতে পারবেন।',
+  'consult.returningHint':'আবার স্বাগতম! আপনার আগের অনুরোধ থেকে নাম, ফোন ও ইমেইল আগে থেকেই পূরণ করা হয়েছে — কিছু পরিবর্তন হলে অনুগ্রহ করে হালনাগাদ করুন।',
+  'consult.voiceListening':'শোনা হচ্ছে… কথা শেষ হলে আবার মাইকে ট্যাপ করুন।',
+  'consult.errVoiceUnsupported':'আপনার ব্রাউজারে ভয়েস ইনপুট সমর্থিত নয় — অনুগ্রহ করে Chrome ব্যবহার করুন, অথবা টাইপ করে লিখুন।',
+  'consult.errVoicePermission':'ভয়েস ইনপুট ব্যবহার করতে আপনার ব্রাউজারে মাইক্রোফোন অ্যাক্সেসের অনুমতি দিন।',
+  'consult.errVoiceGeneric':'ভয়েস ইনপুট কাজ করেনি — অনুগ্রহ করে আবার চেষ্টা করুন অথবা টাইপ করে লিখুন।',
   'consult.updatesMsg':'রিয়েল-টাইম আপডেট পেতে চাইলে উপরে দেওয়া ইমেইল দিয়ে যেকোনো সময় লগইন করে আপনার ড্যাশবোর্ড থেকে এই অনুরোধটি ট্র্যাক করুন — অথবা আপনার কেস আইডি সহ সরাসরি হোয়াটসঅ্যাপে আমাদের সাথে যোগাযোগ করুন।',
   'consult.statusWaMsg':'হাই, আমি আমার কেসের আপডেট জানতে চাই। আমার কেস আইডি: ','consult.statusEmailSubject':'কেস স্ট্যাটাস আপডেট অনুরোধ - ',
   'why.sectionLabel':'আমাদের প্রতিশ্রুতি','why.title':'কেন অনমোর বেছে নেবেন?',
@@ -1795,6 +1953,11 @@ hi: {
   'consult.successTitle':'अनुरोध सबमिट हो गया!','consult.successMsg':'हमें आपकी जानकारी मिल गई है और हम कुछ ही मिनटों में संपर्क करेंगे।','consult.done':'हो गया',
   'consult.caseIdLabel':'आपकी केस आईडी','consult.updatesBtn':'अपडेट','consult.viaWhatsapp':'व्हाट्सएप के ज़रिए','consult.viaEmail':'ईमेल के ज़रिए','consult.viaLogin':'लॉगिन करके अपडेट देखें',
   'consult.emailHint':'कृपया इसे ध्यान से जांच लें — आप इसी ईमेल से लॉगिन करके अपने अनुरोध पर अपडेट देख सकेंगे।',
+  'consult.returningHint':'वापसी पर स्वागत है! आपके पिछले अनुरोध से नाम, फ़ोन और ईमेल पहले से भर दिए गए हैं — कुछ बदलना हो तो अपडेट कर लें।',
+  'consult.voiceListening':'सुन रहे हैं… बोलना समाप्त होने पर दोबारा माइक पर टैप करें।',
+  'consult.errVoiceUnsupported':'इस ब्राउज़र में वॉइस इनपुट समर्थित नहीं है — कृपया Chrome आज़माएं, या टाइप करके लिखें।',
+  'consult.errVoicePermission':'वॉइस इनपुट इस्तेमाल करने के लिए कृपया अपने ब्राउज़र में माइक्रोफ़ोन एक्सेस की अनुमति दें।',
+  'consult.errVoiceGeneric':'वॉइस इनपुट काम नहीं आया — कृपया दोबारा कोशिश करें या टाइप करके लिखें।',
   'consult.updatesMsg':'रीयल-टाइम अपडेट चाहिए? ऊपर दिए गए ईमेल से कभी भी लॉगिन करके अपने डैशबोर्ड से इस अनुरोध को ट्रैक करें — या अपनी केस आईडी के साथ सीधे व्हाट्सएप पर हमसे संपर्क करें।',
   'consult.statusWaMsg':'नमस्ते, मुझे अपने केस का अपडेट चाहिए। मेरी केस आईडी है: ','consult.statusEmailSubject':'केस स्टेटस अपडेट अनुरोध - ',
   'why.sectionLabel':'हमारा वादा','why.title':'ओन्नमोर को क्यों चुनें?',
@@ -2025,6 +2188,36 @@ function setLang(lang) {
   initScrollReveal();
 }
 
+/* ══════════ THEME SWITCHER ══════════
+   Two looks, same layout: 'dark' (black & green, the default) and
+   'light' (white, black & green). Everything visual reads the CSS
+   variables in :root / [data-theme="light"], so switching is just
+   flipping an attribute on <html> — see the tiny inline script in
+   <head> that applies the saved choice before first paint, to avoid
+   a flash of the wrong theme. */
+function setTheme(theme) {
+  const val = theme === 'light' ? 'light' : 'dark';
+  if (val === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  else document.documentElement.removeAttribute('data-theme');
+  try { localStorage.setItem('onnmore_theme', val); } catch (e) {}
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-theme-choice') === val);
+  });
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute('content', val === 'light' ? '#ffffff' : '#09090f');
+  ckTrack('theme_switched', { theme: val });
+}
+
+function initThemeSwitch() {
+  let saved = 'dark';
+  try { saved = localStorage.getItem('onnmore_theme') || 'dark'; } catch (e) {}
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-theme-choice') === saved);
+  });
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute('content', saved === 'light' ? '#ffffff' : '#09090f');
+}
+
 /* ══════════ SCROLL REVEAL ══════════
    Scans for reveal-worthy elements (section headers + all card grids,
    including ones rebuilt on language switch), fades/slides them in the
@@ -2176,6 +2369,76 @@ function updateWaLinks() {
   });
 }
 
+/* ══════════ WHATSAPP CONNECT MODAL ══════════
+   Every "Chat on WhatsApp" trigger on the site now opens this modal first
+   (name + phone) instead of jumping straight to wa.me, matching the
+   requested flow. The href on each trigger is kept as a real wa.me link
+   (fallback for middle-click / right-click / no-JS), but a normal click
+   is intercepted to show the modal instead. */
+function openWaModal() {
+  const overlay = document.getElementById('waModalOverlay');
+  if (!overlay) return;
+  const err = document.getElementById('waModalErr');
+  if (err) { err.classList.remove('show'); err.textContent = ''; }
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  ckTrack('wa_modal_opened', {});
+  setTimeout(() => { const n = document.getElementById('waModalName'); if (n) n.focus(); }, 50);
+}
+
+function closeWaModal() {
+  const overlay = document.getElementById('waModalOverlay');
+  if (!overlay) return;
+  overlay.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function submitWaModal(event) {
+  if (event) event.preventDefault();
+  const nameEl = document.getElementById('waModalName');
+  const phoneEl = document.getElementById('waModalPhone');
+  const errEl = document.getElementById('waModalErr');
+  const name = (nameEl && nameEl.value || '').trim();
+  const phoneDigits = (phoneEl && phoneEl.value || '').replace(/\D/g, '');
+
+  const showErr = (msg) => { if (errEl) { errEl.textContent = msg; errEl.classList.add('show'); } };
+  if (errEl) { errEl.classList.remove('show'); errEl.textContent = ''; }
+
+  if (!name) { showErr(t('waModal.errName')); if (nameEl) nameEl.focus(); return false; }
+  if (phoneDigits.length !== 10) { showErr(t('waModal.errPhone')); if (phoneEl) phoneEl.focus(); return false; }
+
+  const msg = `${t('wa.defaultMsg')}\n\n*Name:* ${name}\n*Phone:* +91 ${phoneDigits}`;
+  ckTrack('wa_modal_submitted', {});
+  window.open(waLink(msg), '_blank', 'noopener');
+
+  closeWaModal();
+  if (nameEl) nameEl.value = '';
+  if (phoneEl) phoneEl.value = '';
+  return false;
+}
+
+/* Intercepts every WhatsApp trigger's click so the modal opens first. */
+function initWaModalTriggers() {
+  ['heroWaLink','faqWaLink','contactWaLink','footWaLink','mnavWaLink','fabWaLink'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (id === 'mnavWaLink') closeMobileNav();
+      openWaModal();
+    });
+  });
+}
+
+document.addEventListener('click', (e) => {
+  const overlay = document.getElementById('waModalOverlay');
+  if (overlay && e.target === overlay) closeWaModal();
+});
+document.addEventListener('keydown', (e) => {
+  const overlay = document.getElementById('waModalOverlay');
+  if (overlay && overlay.classList.contains('show') && e.key === 'Escape') closeWaModal();
+});
+
 /* ══════════ LEAD DELIVERY — EMAIL + GOOGLE SHEET ══════════ */
 /* 1. EMAIL: Get a free access key at https://web3forms.com (just enter your email, no signup) and paste it below. */
 const WEB3FORMS_ACCESS_KEY = '30790f77-ad43-4bc1-8ccc-0daa24ed4328';
@@ -2291,6 +2554,48 @@ const ckState = {
   promo: { code: '', type: null, value: 0, valid: false }
 };
 
+/* ── RETURNING CUSTOMER AUTO-FILL ────────────────────────────────────
+   A customer who already submitted a request for one service and now
+   wants another shouldn't have to retype their name, phone or email.
+   We save just those three fields (never the message/business name,
+   which are specific to each request) to localStorage after a real
+   submission, and restore them into the form next time — whether
+   that's later in the same session (via ckReset) or on a fresh visit
+   days later. Fields stay editable in case anything's changed. */
+const CK_CONTACT_STORAGE_KEY = 'onnmore_contact_info';
+
+function ckSaveContactInfo() {
+  try {
+    localStorage.setItem(CK_CONTACT_STORAGE_KEY, JSON.stringify({
+      name: ckState.name || '', phone: ckState.phone || '', email: ckState.email || ''
+    }));
+  } catch (e) {}
+}
+
+function ckShowReturningHint() {
+  const hint = document.getElementById('ckReturningHint');
+  if (hint && (ckState.name || ckState.phone || ckState.email)) hint.style.display = 'flex';
+}
+
+function ckLoadSavedContactInfo() {
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(CK_CONTACT_STORAGE_KEY) || 'null'); } catch (e) {}
+  if (!saved) return;
+  if (saved.name) {
+    ckState.name = saved.name;
+    const el = document.getElementById('ckName'); if (el) el.value = saved.name;
+  }
+  if (saved.phone) {
+    ckState.phone = saved.phone;
+    const el = document.getElementById('ckPhone'); if (el) el.value = saved.phone;
+  }
+  if (saved.email) {
+    ckState.email = saved.email;
+    const el = document.getElementById('ckEmail'); if (el) el.value = saved.email;
+  }
+  ckShowReturningHint();
+}
+
 /* ── SPAM GUARDS ──────────────────────────────────────────────────────
    1) Honeypot ("ckWebsite") — a field no real visitor ever fills in;
       bots that auto-fill every input on the page usually catch it.
@@ -2345,6 +2650,89 @@ function ckIsValidName(raw) {
   if (/https?:\/\/|www\.|\.(com|net|org|in|co)\b/i.test(raw)) return 'chars'; // no links in a name field
   if (/(.)\1{4,}/.test(raw)) return 'chars';              // "aaaaaaaa" style keyboard-mash
   return null;
+}
+
+/* ── VOICE INPUT (speech-to-text) FOR THE REQUIREMENTS FIELD ─────────
+   Many customers would rather speak their requirement than type it out
+   in detail, especially in their own language. This uses the browser's
+   built-in Web Speech API (no external service, no audio ever leaves
+   the device to us) to transcribe speech directly into the ckMsg
+   textarea, in whichever of the site's three languages is active. */
+let ckRecognition = null;
+let ckListening = false;
+let ckMsgBaseText = '';
+
+function ckSpeechSupported() {
+  return !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+}
+
+/* Maps the site's language toggle to a BCP-47 locale the recognizer understands. */
+function ckSpeechLangCode(lang) {
+  const map = { en: 'en-IN', bn: 'bn-IN', hi: 'hi-IN' };
+  return map[lang] || 'en-IN';
+}
+
+function ckStopVoiceInput() {
+  if (ckRecognition) { try { ckRecognition.stop(); } catch (e) {} }
+}
+
+function ckToggleVoiceInput() {
+  const SpeechRecognitionCtor = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognitionCtor) { ckShowErr(t('consult.errVoiceUnsupported')); return; }
+
+  if (ckListening) { ckStopVoiceInput(); return; }
+
+  const textarea = document.getElementById('ckMsg');
+  const btn = document.getElementById('ckMsgMicBtn');
+  const hint = document.getElementById('ckMsgMicHint');
+  if (!textarea) return;
+
+  ckMsgBaseText = textarea.value.trim();
+  ckRecognition = new SpeechRecognitionCtor();
+  ckRecognition.lang = ckSpeechLangCode(currentLang);
+  ckRecognition.continuous = true;
+  ckRecognition.interimResults = true;
+  ckRecognition.maxAlternatives = 1;
+
+  ckRecognition.onstart = () => {
+    ckListening = true;
+    if (btn) btn.classList.add('listening');
+    if (hint) hint.style.display = 'flex';
+  };
+
+  ckRecognition.onresult = (e) => {
+    let finalChunk = '';
+    let interimChunk = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      const transcript = e.results[i][0].transcript;
+      if (e.results[i].isFinal) finalChunk += transcript;
+      else interimChunk += transcript;
+    }
+    if (finalChunk) ckMsgBaseText = (ckMsgBaseText ? ckMsgBaseText + ' ' : '') + finalChunk.trim();
+    textarea.value = ckMsgBaseText + (interimChunk ? (ckMsgBaseText ? ' ' : '') + interimChunk : '');
+  };
+
+  ckRecognition.onerror = (e) => {
+    if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
+      ckShowErr(t('consult.errVoicePermission'));
+    } else if (e.error !== 'no-speech' && e.error !== 'aborted') {
+      ckShowErr(t('consult.errVoiceGeneric'));
+    }
+  };
+
+  ckRecognition.onend = () => {
+    ckListening = false;
+    if (btn) btn.classList.remove('listening');
+    if (hint) hint.style.display = 'none';
+    textarea.value = ckMsgBaseText;
+    ckRecognition = null;
+  };
+
+  try {
+    ckRecognition.start();
+  } catch (err) {
+    ckListening = false;
+  }
 }
 
 /* Only nudge the page if the consult card has actually scrolled out of
@@ -2434,6 +2822,7 @@ function ckShowPanel(s) {
      zoomed in from that field's focus, which reads as the layout being
      "shifted" or not fixed in place. */
   if (document.activeElement && typeof document.activeElement.blur === 'function') document.activeElement.blur();
+  if (s !== 2) ckStopVoiceInput();
   document.querySelectorAll('.ck-panel').forEach(p => p.classList.remove('show'));
   document.getElementById('cp' + s).classList.add('show');
   ckUpdateStepper(s);
@@ -2768,6 +3157,7 @@ function ckSubmit() {
     sendLeadToSheet(svcName, addonsText, promoText, totalText);
     registerCaseWithPortal(svcName, addonsText, promoText, totalText);
     ckMarkSubmitted();
+    ckSaveContactInfo();
   }
   ckTrack('consult_submit_clicked', { services: ckState.svcKeys, value: q.total, currency: 'INR', promo: promoText, caseId: ckState.caseId, spam: isSpam });
 
@@ -2857,12 +3247,13 @@ function ckCheckStatus(channel) {
 function ckReset() {
   ckStep = 1;
   ckDetailsShownAt = 0;
-  ckState.svcKeys = []; ckState.ico = 'ri-briefcase-4-line'; ckState.name = ''; ckState.phone = ''; ckState.email = ''; ckState.biz = ''; ckState.msg = ''; ckState.caseId = '';
+  // Name, phone and email are intentionally NOT cleared here — if the
+  // customer is adding another service right after submitting one, they've
+  // already given us these details and shouldn't have to retype them.
+  // Only the request-specific fields reset for the next service.
+  ckState.svcKeys = []; ckState.ico = 'ri-briefcase-4-line'; ckState.biz = ''; ckState.msg = ''; ckState.caseId = '';
   ckState.addons = { 'addon.msme': false, 'addon.ca': false };
   ckState.promo = { code: '', type: null, value: 0, valid: false };
-  document.getElementById('ckName').value = '';
-  document.getElementById('ckPhone').value = '';
-  document.getElementById('ckEmail').value = '';
   document.getElementById('ckBiz').value = '';
   document.getElementById('ckMsg').value = '';
   const hp = document.getElementById('ckWebsite'); if (hp) hp.value = '';
@@ -2875,6 +3266,7 @@ function ckReset() {
   if (foot) foot.style.display = '';
   const stepper = document.querySelector('.ck-stepper');
   if (stepper) stepper.style.display = '';
+  ckShowReturningHint();
   ckShowPanel(1);
   ckScrollToConsult();
 }
@@ -3020,7 +3412,14 @@ document.addEventListener('keydown', (e) => {
   buildConsultServiceGrid();
   applyTranslations();
   updateWaLinks();
+  initWaModalTriggers();
+  initThemeSwitch();
   ckShowPanel(1);
+  ckLoadSavedContactInfo();
+  if (!ckSpeechSupported()) {
+    const micBtn = document.getElementById('ckMsgMicBtn');
+    if (micBtn) micBtn.style.display = 'none';
+  }
   initScrollReveal();
   initHeroTilt();
   initHeroCarousel();
