@@ -101,6 +101,15 @@
   <!-- ── FAVICON ── -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%23090912'/%3E%3Cpath d='M19 35l9 9 17-23' stroke='%233ab881' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 
+  <!-- ── PWA / ADD TO HOME SCREEN ── -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#09090f">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Onnmore">
+  <meta name="mobile-web-app-capable" content="yes">
+
   <style>
     :root {
       --bg:           #09090f;
@@ -501,6 +510,40 @@
 
     .fab-wa { position:fixed; right:20px; bottom:20px; z-index:150; width:56px; height:56px; border-radius:50%; background: linear-gradient(135deg, #25d366, #128c7e); display:flex; align-items:center; justify-content:center; box-shadow: 0 10px 30px rgba(37,211,102,.45); font-size:1.6rem; color:#fff; animation: fabPulse 2.6s ease-in-out infinite; }
     @keyframes fabPulse { 0%,100%{ box-shadow: 0 10px 30px rgba(37,211,102,.45);} 50%{ box-shadow: 0 10px 30px rgba(37,211,102,.75), 0 0 0 8px rgba(37,211,102,.12);} }
+
+    /* ── ADD TO HOME SCREEN: floating button ── */
+    .fab-a2hs { position:fixed; right:20px; bottom:86px; z-index:150; width:52px; height:52px; border-radius:50%; border:none; background: linear-gradient(135deg, var(--accent), var(--accent-light)); display:flex; align-items:center; justify-content:center; box-shadow: 0 10px 28px rgba(58,184,129,.42); font-size:1.35rem; color:#071a0f; cursor:pointer; font-family:inherit; transition: transform .2s, box-shadow .2s; }
+    .fab-a2hs:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 12px 34px rgba(58,184,129,.55); }
+    .fab-a2hs.is-hidden { display:none !important; }
+
+    /* ── ADD TO HOME SCREEN: guide modal ── */
+    .a2hs-overlay { display:none; position:fixed; inset:0; z-index:400; background:rgba(6,6,10,.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); align-items:center; justify-content:center; padding:20px; }
+    .a2hs-overlay.show { display:flex; animation: a2hsFadeIn .22s ease; }
+    @keyframes a2hsFadeIn { from{opacity:0;} to{opacity:1;} }
+    .a2hs-modal { position:relative; width:min(440px, 100%); max-height:88vh; overflow-y:auto; background: var(--card); border:1px solid var(--border-md); border-radius: var(--radius); padding:28px 26px 24px; box-shadow: var(--shadow); animation: a2hsPop .28s cubic-bezier(.22,1,.36,1); }
+    @keyframes a2hsPop { from{opacity:0; transform:translateY(14px) scale(.97);} to{opacity:1; transform:translateY(0) scale(1);} }
+    .a2hs-close { position:absolute; top:14px; right:14px; width:32px; height:32px; border-radius:9px; border:1px solid var(--border); background:transparent; color:var(--muted); display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.1rem; transition:.18s; }
+    .a2hs-close:hover { color:var(--txt); border-color:var(--accent); background:rgba(58,184,129,.08); }
+    .a2hs-icon { width:54px; height:54px; border-radius:15px; background: linear-gradient(145deg, rgba(58,184,129,.22), rgba(58,184,129,.05)); border:1px solid var(--border-md); display:flex; align-items:center; justify-content:center; font-size:1.5rem; color:var(--accent-light); margin-bottom:16px; overflow:hidden; }
+    .a2hs-icon img { width:100%; height:100%; object-fit:cover; }
+    .a2hs-modal h3 { margin:0 0 8px; font-size:1.14rem; font-weight:800; padding-right:16px; line-height:1.35; }
+    .a2hs-sub { margin:0 0 18px; color:var(--muted); font-size:.87rem; line-height:1.6; }
+    .a2hs-install-now { margin-bottom:16px; display:none; }
+    .a2hs-tabs { display:flex; gap:6px; border:1px solid var(--border); border-radius:11px; padding:4px; margin-bottom:18px; }
+    .a2hs-tab { flex:1; display:flex; align-items:center; justify-content:center; gap:.35rem; padding:.62rem .4rem; border:none; background:transparent; color:var(--muted); font-weight:700; font-size:.78rem; border-radius:8px; cursor:pointer; font-family:inherit; transition:.18s; }
+    .a2hs-tab i { font-size:.98rem; }
+    .a2hs-tab.active { background: rgba(58,184,129,.16); color: var(--accent-light); }
+    .a2hs-tab:hover:not(.active) { color:var(--txt); }
+    .a2hs-steps { display:flex; flex-direction:column; gap:15px; }
+    .a2hs-step { display:flex; align-items:flex-start; gap:12px; }
+    .a2hs-step-num { flex-shrink:0; width:26px; height:26px; border-radius:50%; background: rgba(58,184,129,.14); border:1px solid var(--border-hi); color:var(--accent-light); font-size:.78rem; font-weight:800; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+    .a2hs-step-text { flex:1; min-width:0; }
+    .a2hs-step-text strong { display:block; font-size:.88rem; font-weight:700; margin-bottom:2px; }
+    .a2hs-step-text p { margin:0; color:var(--muted); font-size:.82rem; line-height:1.55; }
+    .a2hs-step-ico { flex-shrink:0; font-size:1.15rem; color:var(--accent-light); opacity:.7; margin-top:2px; }
+    .a2hs-note { margin-top:19px; padding-top:16px; border-top:1px solid var(--border); font-size:.76rem; color:var(--muted); line-height:1.6; display:flex; gap:8px; align-items:flex-start; }
+    .a2hs-note i { color:var(--accent); flex-shrink:0; margin-top:1px; font-size:.95rem; }
+    @media (max-width:420px) { .a2hs-modal { padding:22px 18px 20px; } }
 
     /* ══════════ DOCUMENT CHECKLIST ══════════ */
     .doc-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap:14px; }
@@ -1135,6 +1178,88 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Floating WhatsApp button -->
 <a href="#" id="fabWaLink" class="fab-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="ri-whatsapp-fill"></i></a>
 
+<!-- Floating Add to Home Screen button -->
+<button type="button" id="fabA2hs" class="fab-a2hs" onclick="openA2hsModal()" aria-label="Add Onnmore to Home Screen" aria-haspopup="dialog">
+  <i class="ri-download-2-line"></i>
+</button>
+
+<!-- ════════════ ADD TO HOME SCREEN GUIDE MODAL ════════════ -->
+<div class="a2hs-overlay" id="a2hsOverlay" role="dialog" aria-modal="true" aria-labelledby="a2hsTitle">
+  <div class="a2hs-modal">
+    <button type="button" class="a2hs-close" onclick="closeA2hsModal()" aria-label="Close"><i class="ri-close-line"></i></button>
+
+    <div class="a2hs-icon"><i class="ri-shield-check-fill"></i></div>
+    <h3 id="a2hsTitle" data-i18n="a2hs.title">Add Onnmore to Your Home Screen</h3>
+    <p class="a2hs-sub" data-i18n="a2hs.subtitle">Get one-tap access next time — no app store needed, and it only takes a few seconds.</p>
+
+    <button type="button" id="a2hsInstallNow" class="btn primary block a2hs-install-now" onclick="a2hsTriggerInstall()">
+      <i class="ri-add-box-line"></i> <span data-i18n="a2hs.installNow">Install Now</span>
+    </button>
+
+    <div class="a2hs-tabs" role="tablist" aria-label="Choose your device">
+      <button type="button" class="a2hs-tab" data-platform="android" onclick="a2hsSwitchTab('android')" role="tab"><i class="ri-android-fill"></i> <span data-i18n="a2hs.tab.android">Android</span></button>
+      <button type="button" class="a2hs-tab" data-platform="ios" onclick="a2hsSwitchTab('ios')" role="tab"><i class="ri-apple-fill"></i> <span data-i18n="a2hs.tab.ios">iPhone</span></button>
+      <button type="button" class="a2hs-tab" data-platform="desktop" onclick="a2hsSwitchTab('desktop')" role="tab"><i class="ri-computer-line"></i> <span data-i18n="a2hs.tab.desktop">Desktop</span></button>
+    </div>
+
+    <div class="a2hs-steps" data-platform-panel="android">
+      <div class="a2hs-step">
+        <span class="a2hs-step-num">1</span>
+        <div class="a2hs-step-text"><strong data-i18n="a2hs.android.s1.t">Open the browser menu</strong><p data-i18n="a2hs.android.s1.d">Tap the three-dot menu (⋮) in the top-right corner of Chrome.</p></div>
+        <i class="ri-more-2-fill a2hs-step-ico"></i>
+      </div>
+      <div class="a2hs-step">
+        <span class="a2hs-step-num">2</span>
+        <div class="a2hs-step-text"><strong data-i18n="a2hs.android.s2.t">Tap "Add to Home screen"</strong><p data-i18n="a2hs.android.s2.d">Scroll down the menu and select this option.</p></div>
+        <i class="ri-add-line a2hs-step-ico"></i>
+      </div>
+      <div class="a2hs-step">
+        <span class="a2hs-step-num">3</span>
+        <div class="a2hs-step-text"><strong data-i18n="a2hs.android.s3.t">Confirm</strong><p data-i18n="a2hs.android.s3.d">Tap "Add" (or "Install") to place the Onnmore icon on your home screen.</p></div>
+        <i class="ri-check-double-line a2hs-step-ico"></i>
+      </div>
+    </div>
+
+    <div class="a2hs-steps" data-platform-panel="ios" style="display:none">
+      <div class="a2hs-step">
+        <span class="a2hs-step-num">1</span>
+        <div class="a2hs-step-text"><strong data-i18n="a2hs.ios.s1.t">Tap the Share icon</strong><p data-i18n="a2hs.ios.s1.d">Tap the Share icon (square with an arrow ↑) in the Safari toolbar.</p></div>
+        <i class="ri-share-forward-line a2hs-step-ico"></i>
+      </div>
+      <div class="a2hs-step">
+        <span class="a2hs-step-num">2</span>
+        <div class="a2hs-step-text"><strong data-i18n="a2hs.ios.s2.t">Tap "Add to Home Screen"</strong><p data-i18n="a2hs.ios.s2.d">Scroll down the share menu and select this option.</p></div>
+        <i class="ri-add-line a2hs-step-ico"></i>
+      </div>
+      <div class="a2hs-step">
+        <span class="a2hs-step-num">3</span>
+        <div class="a2hs-step-text"><strong data-i18n="a2hs.ios.s3.t">Tap "Add"</strong><p data-i18n="a2hs.ios.s3.d">Tap "Add" in the top-right corner to finish.</p></div>
+        <i class="ri-check-double-line a2hs-step-ico"></i>
+      </div>
+    </div>
+
+    <div class="a2hs-steps" data-platform-panel="desktop" style="display:none">
+      <div class="a2hs-step">
+        <span class="a2hs-step-num">1</span>
+        <div class="a2hs-step-text"><strong data-i18n="a2hs.desktop.s1.t">Find the install icon</strong><p data-i18n="a2hs.desktop.s1.d">Look for the install icon (⊕) on the right side of your browser's address bar.</p></div>
+        <i class="ri-macbook-line a2hs-step-ico"></i>
+      </div>
+      <div class="a2hs-step">
+        <span class="a2hs-step-num">2</span>
+        <div class="a2hs-step-text"><strong data-i18n="a2hs.desktop.s2.t">Click "Install"</strong><p data-i18n="a2hs.desktop.s2.d">Click the icon, then choose "Install" in the popup that appears.</p></div>
+        <i class="ri-add-box-line a2hs-step-ico"></i>
+      </div>
+      <div class="a2hs-step">
+        <span class="a2hs-step-num">3</span>
+        <div class="a2hs-step-text"><strong data-i18n="a2hs.desktop.s3.t">No install icon?</strong><p data-i18n="a2hs.desktop.s3.d">Open the ⋮ menu and choose "Install Onnmore…" instead.</p></div>
+        <i class="ri-more-2-fill a2hs-step-ico"></i>
+      </div>
+    </div>
+
+    <div class="a2hs-note"><i class="ri-information-line"></i> <span data-i18n="a2hs.note">Once added, Onnmore opens like an app — full-screen, right from your home screen.</span></div>
+  </div>
+</div>
+
 <!-- ════════════ SCRIPTS ════════════ -->
 <script>
 /* ══════════ i18n DATA ══════════ */
@@ -1377,7 +1502,19 @@ en: {
   'area.kolkata':'Kolkata','area.howrah':'Howrah','area.hooghly':'Hooghly','area.n24pgs':'North 24 Parganas','area.s24pgs':'South 24 Parganas','area.nadia':'Nadia',
   'area.bardhaman':'Bardhaman','area.durgapur':'Durgapur','area.asansol':'Asansol','area.siliguri':'Siliguri','area.malda':'Malda','area.murshidabad':'Murshidabad',
   'wa.defaultMsg':"Hi Onnmore, I'd like to know more about your business consultancy services.",
-  'wa.msgTitle':'New Onnmore Consultation Request','wa.msgCaseId':'Case ID','wa.msgService':'Service','wa.msgBiz':'Business Name','wa.msgName':'Name','wa.msgPhone':'Phone','wa.msgEmail':'Email','wa.msgNotes':'Notes','wa.msgFooter':'(Please share pricing & next steps.)'
+  'wa.msgTitle':'New Onnmore Consultation Request','wa.msgCaseId':'Case ID','wa.msgService':'Service','wa.msgBiz':'Business Name','wa.msgName':'Name','wa.msgPhone':'Phone','wa.msgEmail':'Email','wa.msgNotes':'Notes','wa.msgFooter':'(Please share pricing & next steps.)',
+  'a2hs.title':'Add Onnmore to Your Home Screen','a2hs.subtitle':'Get one-tap access next time — no app store needed, and it only takes a few seconds.',
+  'a2hs.installNow':'Install Now','a2hs.tab.android':'Android','a2hs.tab.ios':'iPhone','a2hs.tab.desktop':'Desktop',
+  'a2hs.android.s1.t':'Open the browser menu','a2hs.android.s1.d':'Tap the three-dot menu (⋮) in the top-right corner of Chrome.',
+  'a2hs.android.s2.t':'Tap "Add to Home screen"','a2hs.android.s2.d':'Scroll down the menu and select this option.',
+  'a2hs.android.s3.t':'Confirm','a2hs.android.s3.d':'Tap "Add" (or "Install") to place the Onnmore icon on your home screen.',
+  'a2hs.ios.s1.t':'Tap the Share icon','a2hs.ios.s1.d':'Tap the Share icon (square with an arrow ↑) in the Safari toolbar.',
+  'a2hs.ios.s2.t':'Tap "Add to Home Screen"','a2hs.ios.s2.d':'Scroll down the share menu and select this option.',
+  'a2hs.ios.s3.t':'Tap "Add"','a2hs.ios.s3.d':'Tap "Add" in the top-right corner to finish.',
+  'a2hs.desktop.s1.t':'Find the install icon','a2hs.desktop.s1.d':"Look for the install icon (⊕) on the right side of your browser's address bar.",
+  'a2hs.desktop.s2.t':'Click "Install"','a2hs.desktop.s2.d':'Click the icon, then choose "Install" in the popup that appears.',
+  'a2hs.desktop.s3.t':'No install icon?','a2hs.desktop.s3.d':'Open the ⋮ menu and choose "Install Onnmore…" instead.',
+  'a2hs.note':'Once added, Onnmore opens like an app — full-screen, right from your home screen.'
 },
 bn: {
   'offer.text':'আমাদের সাথে যেকোনো পরিষেবা নিন এবং আপনার Udyam/MSME নিবন্ধন সম্পূর্ণ বিনামূল্যে পান!','offer.note':'(অফারটি শুধুমাত্র পশ্চিমবঙ্গের গ্রাহকদের জন্য প্রযোজ্য)',
@@ -1500,7 +1637,19 @@ bn: {
   'area.kolkata':'কলকাতা','area.howrah':'হাওড়া','area.hooghly':'হুগলি','area.n24pgs':'উত্তর ২৪ পরগনা','area.s24pgs':'দক্ষিণ ২৪ পরগনা','area.nadia':'নদিয়া',
   'area.bardhaman':'বর্ধমান','area.durgapur':'দুর্গাপুর','area.asansol':'আসানসোল','area.siliguri':'শিলিগুড়ি','area.malda':'মালদা','area.murshidabad':'মুর্শিদাবাদ',
   'wa.defaultMsg':'হ্যালো অনমোর, আমি আপনাদের ব্যবসায়িক পরামর্শ পরিষেবা সম্পর্কে আরও জানতে চাই।',
-  'wa.msgTitle':'নতুন অনমোর পরামর্শ অনুরোধ','wa.msgCaseId':'কেস আইডি','wa.msgService':'পরিষেবা','wa.msgBiz':'ব্যবসার নাম','wa.msgName':'নাম','wa.msgPhone':'ফোন','wa.msgEmail':'ইমেইল','wa.msgNotes':'নোট','wa.msgFooter':'(অনুগ্রহ করে মূল্য ও পরবর্তী পদক্ষেপ জানান।)'
+  'wa.msgTitle':'নতুন অনমোর পরামর্শ অনুরোধ','wa.msgCaseId':'কেস আইডি','wa.msgService':'পরিষেবা','wa.msgBiz':'ব্যবসার নাম','wa.msgName':'নাম','wa.msgPhone':'ফোন','wa.msgEmail':'ইমেইল','wa.msgNotes':'নোট','wa.msgFooter':'(অনুগ্রহ করে মূল্য ও পরবর্তী পদক্ষেপ জানান।)',
+  'a2hs.title':'আপনার হোম স্ক্রিনে Onnmore যোগ করুন','a2hs.subtitle':'পরের বার এক ট্যাপেই খুলুন — কোনো অ্যাপ স্টোরের প্রয়োজন নেই, মাত্র কয়েক সেকেন্ড লাগবে।',
+  'a2hs.installNow':'এখনই ইনস্টল করুন','a2hs.tab.android':'অ্যান্ড্রয়েড','a2hs.tab.ios':'আইফোন','a2hs.tab.desktop':'ডেস্কটপ',
+  'a2hs.android.s1.t':'ব্রাউজার মেনু খুলুন','a2hs.android.s1.d':'Chrome-এর উপরের ডানদিকে থ্রি-ডট মেনুতে (⋮) ট্যাপ করুন।',
+  'a2hs.android.s2.t':'"Add to Home screen"-এ ট্যাপ করুন','a2hs.android.s2.d':'মেনুতে নিচে স্ক্রল করে এই অপশনটি বেছে নিন।',
+  'a2hs.android.s3.t':'নিশ্চিত করুন','a2hs.android.s3.d':'আপনার হোম স্ক্রিনে Onnmore আইকন যোগ করতে "Add" (বা "Install")-এ ট্যাপ করুন।',
+  'a2hs.ios.s1.t':'শেয়ার আইকনে ট্যাপ করুন','a2hs.ios.s1.d':'Safari টুলবারে শেয়ার আইকনে (উপরের দিকে তীরচিহ্নযুক্ত বর্গক্ষেত্র ↑) ট্যাপ করুন।',
+  'a2hs.ios.s2.t':'"Add to Home Screen"-এ ট্যাপ করুন','a2hs.ios.s2.d':'শেয়ার মেনুতে নিচে স্ক্রল করে এই অপশনটি বেছে নিন।',
+  'a2hs.ios.s3.t':'"Add"-এ ট্যাপ করুন','a2hs.ios.s3.d':'শেষ করতে উপরের ডানদিকে "Add"-এ ট্যাপ করুন।',
+  'a2hs.desktop.s1.t':'ইনস্টল আইকন খুঁজুন','a2hs.desktop.s1.d':'আপনার ব্রাউজারের অ্যাড্রেস বারের ডানদিকে ইনস্টল আইকন (⊕) দেখুন।',
+  'a2hs.desktop.s2.t':'"Install"-এ ক্লিক করুন','a2hs.desktop.s2.d':'আইকনে ক্লিক করুন, তারপর পপআপে "Install" বেছে নিন।',
+  'a2hs.desktop.s3.t':'ইনস্টল আইকন নেই?','a2hs.desktop.s3.d':'⋮ মেনু খুলে "Install Onnmore…" বেছে নিন।',
+  'a2hs.note':'যোগ করার পর, Onnmore একটি অ্যাপের মতোই খুলবে — পূর্ণ স্ক্রিনে, সরাসরি আপনার হোম স্ক্রিন থেকে।'
 },
 hi: {
   'offer.text':'हमारे साथ कोई भी सेवा लें और अपना Udyam/MSME पंजीकरण बिल्कुल मुफ़्त पाएं!','offer.note':'(यह ऑफर केवल पश्चिम बंगाल के ग्राहकों के लिए मान्य है)',
@@ -1623,7 +1772,19 @@ hi: {
   'area.kolkata':'कोलकाता','area.howrah':'हावड़ा','area.hooghly':'हुगली','area.n24pgs':'उत्तर 24 परगना','area.s24pgs':'दक्षिण 24 परगना','area.nadia':'नादिया',
   'area.bardhaman':'बर्धमान','area.durgapur':'दुर्गापुर','area.asansol':'आसनसोल','area.siliguri':'सिलीगुड़ी','area.malda':'मालदा','area.murshidabad':'मुर्शिदाबाद',
   'wa.defaultMsg':'नमस्ते ओन्नमोर, मैं आपकी बिज़नेस कंसल्टेंसी सेवाओं के बारे में अधिक जानना चाहता/चाहती हूं।',
-  'wa.msgTitle':'नया ओन्नमोर परामर्श अनुरोध','wa.msgCaseId':'केस आईडी','wa.msgService':'सेवा','wa.msgBiz':'व्यवसाय का नाम','wa.msgName':'नाम','wa.msgPhone':'फ़ोन','wa.msgEmail':'ईमेल','wa.msgNotes':'टिप्पणी','wa.msgFooter':'(कृपया मूल्य व अगले कदम बताएं।)'
+  'wa.msgTitle':'नया ओन्नमोर परामर्श अनुरोध','wa.msgCaseId':'केस आईडी','wa.msgService':'सेवा','wa.msgBiz':'व्यवसाय का नाम','wa.msgName':'नाम','wa.msgPhone':'फ़ोन','wa.msgEmail':'ईमेल','wa.msgNotes':'टिप्पणी','wa.msgFooter':'(कृपया मूल्य व अगले कदम बताएं।)',
+  'a2hs.title':'Onnmore को अपनी होम स्क्रीन पर जोड़ें','a2hs.subtitle':'अगली बार एक टैप में खोलें — किसी ऐप स्टोर की ज़रूरत नहीं, बस कुछ ही सेकंड लगेंगे।',
+  'a2hs.installNow':'अभी इंस्टॉल करें','a2hs.tab.android':'एंड्रॉइड','a2hs.tab.ios':'आईफ़ोन','a2hs.tab.desktop':'डेस्कटॉप',
+  'a2hs.android.s1.t':'ब्राउज़र मेनू खोलें','a2hs.android.s1.d':'Chrome में ऊपर दाईं ओर थ्री-डॉट मेनू (⋮) पर टैप करें।',
+  'a2hs.android.s2.t':'"Add to Home screen" पर टैप करें','a2hs.android.s2.d':'मेनू में नीचे स्क्रॉल करके यह विकल्प चुनें।',
+  'a2hs.android.s3.t':'पुष्टि करें','a2hs.android.s3.d':'अपनी होम स्क्रीन पर Onnmore आइकन जोड़ने के लिए "Add" (या "Install") पर टैप करें।',
+  'a2hs.ios.s1.t':'शेयर आइकन पर टैप करें','a2hs.ios.s1.d':'Safari टूलबार में शेयर आइकन (ऊपर तीर वाला वर्ग ↑) पर टैप करें।',
+  'a2hs.ios.s2.t':'"Add to Home Screen" पर टैप करें','a2hs.ios.s2.d':'शेयर मेनू में नीचे स्क्रॉल करके यह विकल्प चुनें।',
+  'a2hs.ios.s3.t':'"Add" पर टैप करें','a2hs.ios.s3.d':'पूरा करने के लिए ऊपर दाईं ओर "Add" पर टैप करें।',
+  'a2hs.desktop.s1.t':'इंस्टॉल आइकन खोजें','a2hs.desktop.s1.d':'अपने ब्राउज़र के एड्रेस बार के दाईं ओर इंस्टॉल आइकन (⊕) देखें।',
+  'a2hs.desktop.s2.t':'"Install" पर क्लिक करें','a2hs.desktop.s2.d':'आइकन पर क्लिक करें, फिर पॉपअप में "Install" चुनें।',
+  'a2hs.desktop.s3.t':'इंस्टॉल आइकन नहीं दिख रहा?','a2hs.desktop.s3.d':'⋮ मेनू खोलें और "Install Onnmore…" चुनें।',
+  'a2hs.note':'जोड़ने के बाद, Onnmore एक ऐप की तरह खुलेगा — पूरी स्क्रीन पर, सीधे आपकी होम स्क्रीन से।'
 }
 };
 
@@ -2661,6 +2822,89 @@ function initTestiMarquee() {
   track.addEventListener('focusout', resume);
 }
 
+/* ══════════ ADD TO HOME SCREEN ══════════ */
+let a2hsDeferredPrompt = null;
+
+function a2hsIsStandalone() {
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+}
+
+function a2hsDetectPlatform() {
+  const ua = navigator.userAgent || '';
+  if (/iPhone|iPad|iPod/.test(ua) && !window.MSStream) return 'ios';
+  if (/Android/.test(ua)) return 'android';
+  return 'desktop';
+}
+
+function a2hsInitFab() {
+  const fab = document.getElementById('fabA2hs');
+  if (!fab) return;
+  if (a2hsIsStandalone()) fab.classList.add('is-hidden');
+}
+
+function openA2hsModal() {
+  const overlay = document.getElementById('a2hsOverlay');
+  if (!overlay) return;
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  a2hsSwitchTab(a2hsDetectPlatform());
+  const installBtn = document.getElementById('a2hsInstallNow');
+  if (installBtn) installBtn.style.display = a2hsDeferredPrompt ? 'flex' : 'none';
+  ckTrack('a2hs_guide_opened', { platform: a2hsDetectPlatform() });
+}
+
+function closeA2hsModal() {
+  const overlay = document.getElementById('a2hsOverlay');
+  if (!overlay) return;
+  overlay.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+function a2hsSwitchTab(platform) {
+  document.querySelectorAll('.a2hs-tab').forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-platform') === platform);
+  });
+  document.querySelectorAll('[data-platform-panel]').forEach(panel => {
+    panel.style.display = panel.getAttribute('data-platform-panel') === platform ? 'flex' : 'none';
+  });
+}
+
+async function a2hsTriggerInstall() {
+  if (!a2hsDeferredPrompt) return;
+  const installBtn = document.getElementById('a2hsInstallNow');
+  a2hsDeferredPrompt.prompt();
+  const choice = await a2hsDeferredPrompt.userChoice;
+  ckTrack('a2hs_install_prompt_result', { outcome: choice.outcome });
+  a2hsDeferredPrompt = null;
+  if (installBtn) installBtn.style.display = 'none';
+  if (choice.outcome === 'accepted') closeA2hsModal();
+}
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  a2hsDeferredPrompt = e;
+  const overlay = document.getElementById('a2hsOverlay');
+  const installBtn = document.getElementById('a2hsInstallNow');
+  if (overlay && installBtn && overlay.classList.contains('show')) installBtn.style.display = 'flex';
+});
+
+window.addEventListener('appinstalled', () => {
+  a2hsDeferredPrompt = null;
+  const fab = document.getElementById('fabA2hs');
+  if (fab) fab.classList.add('is-hidden');
+  closeA2hsModal();
+  ckTrack('a2hs_app_installed', {});
+});
+
+document.addEventListener('click', (e) => {
+  const overlay = document.getElementById('a2hsOverlay');
+  if (overlay && e.target === overlay) closeA2hsModal();
+});
+document.addEventListener('keydown', (e) => {
+  const overlay = document.getElementById('a2hsOverlay');
+  if (overlay && overlay.classList.contains('show') && e.key === 'Escape') closeA2hsModal();
+});
+
 /* ══════════ INIT ══════════ */
 (function init() {
   let savedLang = 'en';
@@ -2682,6 +2926,7 @@ function initTestiMarquee() {
   initHeroTilt();
   initHeroCarousel();
   initTestiMarquee();
+  a2hsInitFab();
 })();
 </script>
 </body>
