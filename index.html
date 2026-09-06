@@ -172,7 +172,7 @@
     .lang-btn { border:none; background:none; color: var(--muted); font-family:inherit; font-size:.76rem; font-weight:800; padding:.42rem .55rem; border-radius:7px; cursor:pointer; transition:.16s; line-height:1; }
     .lang-btn.active { background: rgba(58,184,129,.16); color: var(--accent-light); }
     .lang-btn:hover:not(.active) { color: var(--txt); }
-    .mnav-lang { display:flex; gap:8px; margin-bottom:1.5rem; }
+    .mnav-lang { display:flex; gap:8px; margin-bottom:1.5rem; width:100%; }
     .mnav-lang .lang-btn { flex:1; text-align:center; padding:.65rem; border:1px solid var(--border-md); border-radius: var(--radius-sm); font-size:.82rem; background: rgba(255,255,255,.02); }
     .mnav-lang .lang-btn.active { border-color: var(--accent); background: rgba(58,184,129,.1); color: var(--accent-light); }
 
@@ -190,16 +190,16 @@
     .nav-actions { display:flex; align-items:center; gap:.55rem; flex-shrink:0; }
     .mobile-toggle { display:none; background:none; border:1px solid var(--border); border-radius:9px; padding:.55rem .6rem; color:var(--txt); cursor:pointer; align-items:center; justify-content:center; font-size:1.15rem; }
 
-    .mobile-nav { display:none; position:fixed; inset:0; background:rgba(9,9,15,.98); backdrop-filter: blur(20px); z-index:200; flex-direction:column; padding:1.4rem; overflow-y:auto; }
+    .mobile-nav { display:none; position:fixed; inset:0; background:rgba(9,9,15,.98); backdrop-filter: blur(20px); z-index:200; flex-direction:column; align-items:stretch; padding:1.4rem; overflow-y:auto; }
     .mobile-nav.open { display:flex; animation: mnavIn .22s ease; }
     @keyframes mnavIn { from{opacity:0; transform:translateY(-6px);} to{opacity:1; transform:translateY(0);} }
-    .mnav-header { display:flex; justify-content:center; align-items:center; position:relative; margin-bottom:1.4rem; }
+    .mnav-header { display:flex; justify-content:center; align-items:center; position:relative; margin-bottom:1.4rem; width:100%; }
     .mnav-close { position:absolute; right:0; top:50%; transform:translateY(-50%); background:none; border:1px solid var(--border-md); border-radius:11px; padding:.6rem; color:var(--txt); cursor:pointer; display:flex; font-size:1.15rem; }
-    .mobile-nav a { display:flex; align-items:center; gap:.85rem; padding:.85rem 1rem; border-radius: var(--radius); font-size:.98rem; font-weight:700; color:var(--txt); border:1px solid var(--border); background: rgba(255,255,255,.02); transition:.18s; margin-bottom:.55rem; }
+    .mobile-nav a { display:flex; align-items:center; gap:.85rem; padding:.85rem 1rem; border-radius: var(--radius); font-size:.98rem; font-weight:700; color:var(--txt); border:1px solid var(--border); background: rgba(255,255,255,.02); transition:.18s; margin-bottom:.55rem; width:100%; align-self:stretch; text-align:left; }
     .mobile-nav a:hover { background: rgba(58,184,129,.08); border-color: var(--border-md); }
     .mnav-icon { display:flex; align-items:center; justify-content:center; width:42px; height:42px; flex-shrink:0; border-radius:12px; background: rgba(58,184,129,.14); }
     .mobile-nav a .mnav-icon i { font-size:1.05rem; color:var(--accent-light); }
-    .mobile-nav a .mnav-label { flex:1; }
+    .mobile-nav a .mnav-label { flex:1; text-align:left; }
     .mobile-nav a .mnav-chevron { font-size:1.15rem; color:var(--muted); flex-shrink:0; }
     .mnav-cta { margin-top:.6rem; padding-top:.8rem; }
     .mnav-wa-btn { display:flex; align-items:center; gap:.85rem; width:100%; padding:1rem 1.3rem; border-radius:100vmax; background:linear-gradient(135deg,#25d366,#128c7e); color:#fff; font-weight:800; font-size:1rem; border:none; cursor:pointer; transition:.2s; font-family:inherit; }
@@ -530,6 +530,12 @@
     .fab-a2hs { position:fixed; right:20px; bottom:86px; z-index:150; width:52px; height:52px; border-radius:50%; border:none; background: linear-gradient(135deg, var(--accent), var(--accent-light)); display:flex; align-items:center; justify-content:center; box-shadow: 0 10px 28px rgba(58,184,129,.42); font-size:1.35rem; color:#071a0f; cursor:pointer; font-family:inherit; transition: transform .2s, box-shadow .2s; }
     .fab-a2hs:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 12px 34px rgba(58,184,129,.55); }
     .fab-a2hs.is-hidden { display:none !important; }
+
+    .fab-a2hs-tip { position:fixed; right:84px; bottom:86px; height:52px; z-index:150; display:flex; align-items:center; gap:.3rem; padding:0 14px; border-radius:100vmax; background: var(--card); border:1px solid var(--border-hi); color:var(--txt); font-size:.82rem; font-weight:700; white-space:nowrap; box-shadow: var(--shadow); pointer-events:none; opacity:0; transform: translateX(8px) scale(.95); transition: opacity .32s ease, transform .32s ease; }
+    .fab-a2hs-tip.show { opacity:1; transform: translateX(0) scale(1); }
+    .fab-a2hs-tip.is-hidden { display:none !important; }
+    .fab-a2hs-tip-arrow { color: var(--accent-light); font-size:1.15rem; margin-right:-4px; }
+    @media (max-width: 380px) { .fab-a2hs-tip { font-size:.76rem; padding:0 11px; right:80px; } }
 
     /* ── ADD TO HOME SCREEN: guide modal ── */
     .a2hs-overlay { display:none; position:fixed; inset:0; z-index:400; background:rgba(6,6,10,.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); align-items:center; justify-content:center; padding:20px; }
@@ -1235,6 +1241,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a href="#" id="fabWaLink" class="fab-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="ri-whatsapp-fill"></i></a>
 
 <!-- Floating Add to Home Screen button -->
+<div class="fab-a2hs-tip" id="fabA2hsTip" role="status">
+  <span data-i18n="a2hs.fabTip">Tap to install our app</span>
+  <i class="ri-arrow-right-s-line fab-a2hs-tip-arrow"></i>
+</div>
 <button type="button" id="fabA2hs" class="fab-a2hs" onclick="openA2hsModal()" aria-label="Add Onnmore to Home Screen" aria-haspopup="dialog">
   <i class="ri-download-2-line"></i>
 </button>
@@ -1560,7 +1570,7 @@ en: {
   'area.bardhaman':'Bardhaman','area.durgapur':'Durgapur','area.asansol':'Asansol','area.siliguri':'Siliguri','area.malda':'Malda','area.murshidabad':'Murshidabad',
   'wa.defaultMsg':"Hi Onnmore, I'd like to know more about your business consultancy services.",
   'wa.msgTitle':'New Onnmore Consultation Request','wa.msgCaseId':'Case ID','wa.msgService':'Service','wa.msgBiz':'Business Name','wa.msgName':'Name','wa.msgPhone':'Phone','wa.msgEmail':'Email','wa.msgNotes':'Notes','wa.msgFooter':'(Please share pricing & next steps.)',
-  'a2hs.title':'Add Onnmore to Your Home Screen','a2hs.subtitle':'Get one-tap access next time — no app store needed, and it only takes a few seconds.',
+  'a2hs.title':'Add Onnmore to Your Home Screen','a2hs.subtitle':'Get one-tap access next time — no app store needed, and it only takes a few seconds.','a2hs.fabTip':'Tap to install our app',
   'a2hs.installNow':'Install Now','a2hs.tab.android':'Android','a2hs.tab.ios':'iPhone','a2hs.tab.desktop':'Desktop',
   'a2hs.android.s1.t':'Open the browser menu','a2hs.android.s1.d':'Tap the three-dot menu (⋮) in the top-right corner of Chrome.',
   'a2hs.android.s2.t':'Tap "Add to Home screen"','a2hs.android.s2.d':'Scroll down the menu and select this option.',
@@ -1696,7 +1706,7 @@ bn: {
   'area.bardhaman':'বর্ধমান','area.durgapur':'দুর্গাপুর','area.asansol':'আসানসোল','area.siliguri':'শিলিগুড়ি','area.malda':'মালদা','area.murshidabad':'মুর্শিদাবাদ',
   'wa.defaultMsg':'হ্যালো অনমোর, আমি আপনাদের ব্যবসায়িক পরামর্শ পরিষেবা সম্পর্কে আরও জানতে চাই।',
   'wa.msgTitle':'নতুন অনমোর পরামর্শ অনুরোধ','wa.msgCaseId':'কেস আইডি','wa.msgService':'পরিষেবা','wa.msgBiz':'ব্যবসার নাম','wa.msgName':'নাম','wa.msgPhone':'ফোন','wa.msgEmail':'ইমেইল','wa.msgNotes':'নোট','wa.msgFooter':'(অনুগ্রহ করে মূল্য ও পরবর্তী পদক্ষেপ জানান।)',
-  'a2hs.title':'আপনার হোম স্ক্রিনে Onnmore যোগ করুন','a2hs.subtitle':'পরের বার এক ট্যাপেই খুলুন — কোনো অ্যাপ স্টোরের প্রয়োজন নেই, মাত্র কয়েক সেকেন্ড লাগবে।',
+  'a2hs.title':'আপনার হোম স্ক্রিনে Onnmore যোগ করুন','a2hs.subtitle':'পরের বার এক ট্যাপেই খুলুন — কোনো অ্যাপ স্টোরের প্রয়োজন নেই, মাত্র কয়েক সেকেন্ড লাগবে।','a2hs.fabTip':'অ্যাপ ইনস্টল করতে ট্যাপ করুন',
   'a2hs.installNow':'এখনই ইনস্টল করুন','a2hs.tab.android':'অ্যান্ড্রয়েড','a2hs.tab.ios':'আইফোন','a2hs.tab.desktop':'ডেস্কটপ',
   'a2hs.android.s1.t':'ব্রাউজার মেনু খুলুন','a2hs.android.s1.d':'Chrome-এর উপরের ডানদিকে থ্রি-ডট মেনুতে (⋮) ট্যাপ করুন।',
   'a2hs.android.s2.t':'"Add to Home screen"-এ ট্যাপ করুন','a2hs.android.s2.d':'মেনুতে নিচে স্ক্রল করে এই অপশনটি বেছে নিন।',
@@ -1832,7 +1842,7 @@ hi: {
   'area.bardhaman':'बर्धमान','area.durgapur':'दुर्गापुर','area.asansol':'आसनसोल','area.siliguri':'सिलीगुड़ी','area.malda':'मालदा','area.murshidabad':'मुर्शिदाबाद',
   'wa.defaultMsg':'नमस्ते ओन्नमोर, मैं आपकी बिज़नेस कंसल्टेंसी सेवाओं के बारे में अधिक जानना चाहता/चाहती हूं।',
   'wa.msgTitle':'नया ओन्नमोर परामर्श अनुरोध','wa.msgCaseId':'केस आईडी','wa.msgService':'सेवा','wa.msgBiz':'व्यवसाय का नाम','wa.msgName':'नाम','wa.msgPhone':'फ़ोन','wa.msgEmail':'ईमेल','wa.msgNotes':'टिप्पणी','wa.msgFooter':'(कृपया मूल्य व अगले कदम बताएं।)',
-  'a2hs.title':'Onnmore को अपनी होम स्क्रीन पर जोड़ें','a2hs.subtitle':'अगली बार एक टैप में खोलें — किसी ऐप स्टोर की ज़रूरत नहीं, बस कुछ ही सेकंड लगेंगे।',
+  'a2hs.title':'Onnmore को अपनी होम स्क्रीन पर जोड़ें','a2hs.subtitle':'अगली बार एक टैप में खोलें — किसी ऐप स्टोर की ज़रूरत नहीं, बस कुछ ही सेकंड लगेंगे।','a2hs.fabTip':'ऐप इंस्टॉल करने के लिए टैप करें',
   'a2hs.installNow':'अभी इंस्टॉल करें','a2hs.tab.android':'एंड्रॉइड','a2hs.tab.ios':'आईफ़ोन','a2hs.tab.desktop':'डेस्कटॉप',
   'a2hs.android.s1.t':'ब्राउज़र मेनू खोलें','a2hs.android.s1.d':'Chrome में ऊपर दाईं ओर थ्री-डॉट मेनू (⋮) पर टैप करें।',
   'a2hs.android.s2.t':'"Add to Home screen" पर टैप करें','a2hs.android.s2.d':'मेनू में नीचे स्क्रॉल करके यह विकल्प चुनें।',
@@ -2761,12 +2771,13 @@ function ckSubmit() {
   }
   ckTrack('consult_submit_clicked', { services: ckState.svcKeys, value: q.total, currency: 'INR', promo: promoText, caseId: ckState.caseId, spam: isSpam });
 
-  if (isSpam) {
-    // No real lead was recorded — skip the WhatsApp handoff too and just
-    // land on the same success screen a genuine submission would reach.
-    ckShowSuccess();
-    return;
-  }
+  // The lead is already recorded at this point, so the customer sees their
+  // "Request submitted!" confirmation immediately and always — regardless
+  // of whether a WhatsApp handoff below succeeds, fails, or never resolves.
+  ckTrack('consult_lead_submitted', { services: ckState.svcKeys, method: isSpam ? 'discarded_spam' : 'confirmed' });
+  ckShowSuccess();
+
+  if (isSpam) return; // no real lead — skip the WhatsApp handoff too
 
   let m = `🧾 *${t('wa.msgTitle')}*\n───────────────────\n*${t('wa.msgCaseId')}:* ${ckState.caseId}\n*${t('wa.msgService')}:* ${svcName}\n`;
   if (addonsText) m += `*${t('consult.addonsTitle')}:* ${addonsText}\n`;
@@ -2778,42 +2789,17 @@ function ckSubmit() {
   if (ckState.msg) m += `*${t('wa.msgNotes')}:* ${ckState.msg}\n`;
   m += `───────────────────\n_${t('wa.msgFooter')}_`;
 
-  const nb = document.getElementById('ckNext');
-  if (nb) nb.disabled = true;
-
-  // Try to hand off to the native WhatsApp app. If the OS switches away to
-  // the app, the page loses focus almost immediately. If nothing is
-  // installed to handle the link, focus never leaves — after a short wait
-  // we treat that as "WhatsApp not available" and show our own confirmation
-  // screen instead of dumping the user on WhatsApp's generic web fallback.
-  let handedOff = false;
-  const markHandedOff = () => { handedOff = true; };
-  document.addEventListener('visibilitychange', markHandedOff, { once: true });
-  window.addEventListener('blur', markHandedOff, { once: true });
-
+  // Best-effort handoff to the native WhatsApp app so the customer can also
+  // message the business directly. This runs quietly in the background —
+  // whether or not WhatsApp opens, the customer has already seen their
+  // on-site confirmation above.
   const iframe = document.createElement('iframe');
   iframe.style.display = 'none';
   document.body.appendChild(iframe);
   try { iframe.src = waDeepLink(m); } catch (e) {}
-
-  setTimeout(() => {
-    document.removeEventListener('visibilitychange', markHandedOff);
-    window.removeEventListener('blur', markHandedOff);
-    if (iframe.parentNode) iframe.parentNode.removeChild(iframe);
-    if (nb) nb.disabled = false;
-
-    if (!handedOff) {
-      // WhatsApp app wasn't available — show our own success confirmation.
-      ckTrack('consult_lead_submitted', { services: ckState.svcKeys, method: 'fallback_screen' });
-      ckShowSuccess();
-    } else {
-      ckTrack('consult_lead_submitted', { services: ckState.svcKeys, method: 'whatsapp_handoff' });
-    }
-    // If it was handed off, the user is on their way to WhatsApp; nothing
-    // more to do here. They'll see the success screen if they come back
-    // and start a new request.
-  }, 1200);
+  setTimeout(() => { if (iframe.parentNode) iframe.parentNode.removeChild(iframe); }, 1200);
 }
+
 
 function ckShowSuccess() {
   if (document.activeElement && typeof document.activeElement.blur === 'function') document.activeElement.blur();
@@ -2923,10 +2909,37 @@ function a2hsDetectPlatform() {
 function a2hsInitFab() {
   const fab = document.getElementById('fabA2hs');
   if (!fab) return;
-  if (a2hsIsStandalone()) fab.classList.add('is-hidden');
+  if (a2hsIsStandalone()) {
+    fab.classList.add('is-hidden');
+    const tip = document.getElementById('fabA2hsTip');
+    if (tip) tip.classList.add('is-hidden');
+    return;
+  }
+  a2hsScheduleFabTip();
+}
+
+/* Briefly points new visitors at the download FAB so they notice it's
+   there, then gets out of the way on its own — a light nudge, not a
+   nag. Any interaction with the FAB or the tip dismisses it early. */
+let a2hsTipShowTimer = null;
+let a2hsTipHideTimer = null;
+function a2hsScheduleFabTip() {
+  const tip = document.getElementById('fabA2hsTip');
+  if (!tip) return;
+  a2hsTipShowTimer = setTimeout(() => {
+    tip.classList.add('show');
+    a2hsTipHideTimer = setTimeout(() => a2hsDismissFabTip(), 2800);
+  }, 1500);
+}
+function a2hsDismissFabTip() {
+  clearTimeout(a2hsTipShowTimer);
+  clearTimeout(a2hsTipHideTimer);
+  const tip = document.getElementById('fabA2hsTip');
+  if (tip) tip.classList.remove('show');
 }
 
 function openA2hsModal() {
+  a2hsDismissFabTip();
   const overlay = document.getElementById('a2hsOverlay');
   if (!overlay) return;
   overlay.classList.add('show');
@@ -2976,6 +2989,8 @@ window.addEventListener('appinstalled', () => {
   a2hsDeferredPrompt = null;
   const fab = document.getElementById('fabA2hs');
   if (fab) fab.classList.add('is-hidden');
+  const tip = document.getElementById('fabA2hsTip');
+  if (tip) tip.classList.add('is-hidden');
   closeA2hsModal();
   ckTrack('a2hs_app_installed', {});
 });
