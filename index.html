@@ -285,16 +285,19 @@
     .testi-stat-num { font-size: clamp(20px, 2.6vw, 28px); font-weight:900; color: var(--txt); line-height:1; }
     .testi-stat-num .star { color:#ffb84d; }
     .testi-stat-label { font-size:.74rem; color: var(--muted); margin-top:5px; font-weight:600; }
-    .testi-scroll { display:flex; gap:14px; overflow-x:auto; padding:0 28px 28px; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; }
-    .testi-scroll::-webkit-scrollbar { height:6px; }
-    .testi-scroll::-webkit-scrollbar-thumb { background: var(--border-md); border-radius:10px; }
+    .testi-scroll { display:flex; gap:14px; width:max-content; padding:0 0 28px; animation: testiMarquee 52s linear infinite; }
+    .testi-scroll.is-paused { animation-play-state: paused; }
+    @keyframes testiMarquee { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+    @media (prefers-reduced-motion: reduce) {
+      .testi-scroll { animation:none !important; overflow-x:auto; width:auto; padding:0 28px 28px; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch; }
+    }
     .testi-card { flex: 0 0 300px; scroll-snap-align:start; border:1px solid var(--border); border-radius: var(--radius-sm); padding:22px; background: rgba(255,255,255,.03); display:flex; flex-direction:column; gap:10px; }
     .testi-quote-ico { color: var(--accent); font-size:1.6rem; line-height:1; opacity:.6; font-family: Georgia, serif; }
     .testi-quote { margin:0; color: var(--txt); font-size:.9rem; line-height:1.65; flex-grow:1; }
     .testi-divider { height:1px; background: var(--border); }
     .testi-name { font-weight:800; font-size:.88rem; }
     .testi-role { color: var(--muted); font-size:.77rem; margin-top:2px; }
-    @media (max-width: 680px) { .testi-top { padding:0 16px 18px; } .testi-scroll { padding:0 16px 22px; gap:12px; } .testi-card { flex-basis:86vw; max-width:340px; } }
+    @media (max-width: 680px) { .testi-top { padding:0 16px 18px; } .testi-scroll { gap:12px; } .testi-card { flex-basis:86vw; max-width:340px; } @media (prefers-reduced-motion: reduce) { .testi-scroll { padding:0 16px 22px; } } }
 
     .testi-head { display:flex; align-items:center; gap:12px; }
     .testi-avatar { width:46px; height:46px; border-radius:50%; object-fit:cover; flex-shrink:0; }
@@ -489,6 +492,8 @@
     .foot-area-chip { font-size:.76rem; color: var(--muted); background: rgba(255,255,255,.04); border:1px solid var(--border); border-radius:100vmax; padding:.28rem .62rem; }
     .foot-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding-top:22px; border-top:1px solid var(--border); }
     .foot-copy { color: var(--muted); font-size:.76rem; line-height:1.65; }
+    .foot-disclaimer { margin-top:20px; padding:16px 18px; border:1px solid var(--border); border-radius: var(--radius-sm); background: rgba(255,255,255,.025); color: var(--muted); font-size:.76rem; line-height:1.7; }
+    .foot-disclaimer strong { display:block; color: var(--txt); font-size:.8rem; margin-bottom:6px; }
     .social-row { display:flex; gap:.6rem; }
     .soc-link { width:34px; height:34px; border-radius:8px; border:1px solid var(--border); display:flex; align-items:center; justify-content:center; color: var(--muted); transition:.18s; }
     .soc-link:hover { border-color: var(--accent); color: var(--accent-light); background: rgba(58,184,129,.07); }
@@ -1119,6 +1124,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </a>
       </div>
     </div>
+
+    <div class="foot-disclaimer">
+      <strong>Website Disclaimer :</strong>
+      This website is privately operated and not affiliated with any government entity. We do not represent or are affiliated with, endorsed by, or in any way connected to any government body or department. The form provided is not for official registration purposes; rather, it's designed to gather information from our clients to help us better understand their business or needs. By continuing to use this website, you acknowledge that we are a private company. We offer assistance based on customer requests, and the fees collected on this website are charged as a platform fee. We reserve the right to outsource matters as deemed necessary. We are in the process of giving our brand a new name. Stay tuned for updates. This platform does not offer legal services, nor does it provide legal advice or representation. Do you require legal assistance? We strongly recommend consulting with a qualified lawyer or law firm.
+    </div>
   </div>
 </footer>
 
@@ -1691,8 +1701,8 @@ function initials(name) {
 
 function buildTestimonials() {
   const grid = document.getElementById('testiGrid');
-  grid.innerHTML = TESTIMONIALS.map(r => `
-    <div class="testi-card">
+  const cardHtml = (r, hidden) => `
+    <div class="testi-card"${hidden ? ' aria-hidden="true"' : ''}>
       <div class="testi-quote-ico">&ldquo;</div>
       <p class="testi-quote" data-i18n="${r.quoteKey}">${t(r.quoteKey)}</p>
       <div class="testi-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
@@ -1709,7 +1719,11 @@ function buildTestimonials() {
       </div>
       ${r.tag ? `<span class="testi-tag">${r.tag}</span>` : ''}
     </div>
-  `).join('');
+  `;
+  // Render the set twice back-to-back so the marquee can loop seamlessly;
+  // the second copy is hidden from assistive tech to avoid duplicate announcements.
+  grid.innerHTML = TESTIMONIALS.map(r => cardHtml(r, false)).join('')
+    + TESTIMONIALS.map(r => cardHtml(r, true)).join('');
 }
 
 function buildTestiStats() {
@@ -2634,6 +2648,19 @@ function ckReset() {
   ckScrollToConsult();
 }
 
+function initTestiMarquee() {
+  const track = document.getElementById('testiGrid');
+  if (!track) return;
+  const pause = () => track.classList.add('is-paused');
+  const resume = () => track.classList.remove('is-paused');
+  track.addEventListener('mouseenter', pause);
+  track.addEventListener('mouseleave', resume);
+  track.addEventListener('touchstart', pause, { passive: true });
+  track.addEventListener('touchend', resume);
+  track.addEventListener('focusin', pause);
+  track.addEventListener('focusout', resume);
+}
+
 /* ══════════ INIT ══════════ */
 (function init() {
   let savedLang = 'en';
@@ -2654,6 +2681,7 @@ function ckReset() {
   initScrollReveal();
   initHeroTilt();
   initHeroCarousel();
+  initTestiMarquee();
 })();
 </script>
 </body>
