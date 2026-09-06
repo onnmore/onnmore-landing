@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Account – Onnmore Business Consultancy</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- ── FONTS ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- ── FAVICON ── -->
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="icons/favicon-16.png" sizes="16x16" type="image/png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#09090f">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+  <style>
+    :root {
+      --bg:           #09090f;
+      --card:         #111119;
+      --soft:         #16161f;
+      --border:       rgba(58,184,129,.13);
+      --border-md:    rgba(58,184,129,.22);
+      --border-hi:    rgba(58,184,129,.35);
+      --txt:          #eef0f6;
+      --muted:        #8892a8;
+      --accent:       #3ab881;
+      --accent-light: #4dd194;
+      --danger:       #e0616f;
+      --shadow:       0 16px 48px rgba(0,0,0,.55);
+      --ring:         0 0 0 3px rgba(58,184,129,.22);
+      --radius:       16px;
+      --radius-sm:    11px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { font-size: 16px; }
+    body { margin:0; min-height:100vh; background: var(--bg); color: var(--txt); font-family: Manrope, system-ui, sans-serif; line-height:1.5; }
+    a { color: inherit; }
+    .ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .ambient::before { content:''; position:absolute; width:700px; height:700px; top:-260px; left:-200px; background: radial-gradient(circle, rgba(58,184,129,.09) 0%, transparent 65%); border-radius:50%; }
+    .ambient::after { content:''; position:absolute; width:500px; height:500px; top:300px; right:-180px; background: radial-gradient(circle, rgba(45,148,99,.06) 0%, transparent 65%); border-radius:50%; }
+
+    header { position:relative; z-index:1; padding:20px 0; border-bottom:1px solid var(--border); }
+    .p-container { width:min(560px, 92vw); margin:0 auto; position:relative; z-index:1; }
+    .p-header-row { width:min(1160px, 92vw); margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+    .brand-mini { display:flex; align-items:center; gap:.5rem; font-weight:800; font-size:1.05rem; }
+    .brand-mini .mark { width:30px; height:30px; border-radius:9px; background:#090912; display:flex; align-items:center; justify-content:center; }
+    .back-link { font-size:.85rem; color:var(--muted); display:flex; align-items:center; gap:.35rem; }
+    .back-link:hover { color:var(--accent-light); }
+
+    main { padding: 48px 0 80px; }
+
+    .p-card { background: var(--card); border:1px solid var(--border-md); border-radius: var(--radius); padding: 30px 28px; box-shadow: var(--shadow); }
+    .p-card + .p-card { margin-top: 20px; }
+    .p-icon { width:52px; height:52px; border-radius:14px; background: linear-gradient(145deg, rgba(58,184,129,.22), rgba(58,184,129,.05)); border:1px solid var(--border-md); display:flex; align-items:center; justify-content:center; font-size:1.4rem; color:var(--accent-light); margin-bottom:18px; }
+    h1.p-title { margin:0 0 8px; font-size:1.35rem; font-weight:800; }
+    p.p-sub { margin:0 0 24px; color:var(--muted); font-size:.9rem; line-height:1.6; }
+
+    label { display:block; font-size:.8rem; font-weight:700; color:var(--muted); margin-bottom:6px; }
+    input, textarea, select { width:100%; padding:.8rem .9rem; border-radius:10px; border:1px solid var(--border-md); background: var(--soft); color:var(--txt); font-family:inherit; font-size:.95rem; outline:none; transition: border-color .18s, box-shadow .18s; }
+    input:focus, textarea:focus, select:focus { border-color:var(--accent); box-shadow: var(--ring); }
+    .field { margin-bottom: 16px; }
+    textarea { resize:vertical; min-height:90px; }
+
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.85rem 1.2rem; border-radius:10px; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05); color:var(--txt); font-weight:700; font-size:.92rem; transition:transform .2s, box-shadow .2s; cursor:pointer; font-family:inherit; }
+    .btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--ring); }
+    .btn:disabled { opacity:.5; cursor:not-allowed; }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-light)); border-color: transparent; color:#071a0f; font-weight:800; }
+    .btn.primary:hover:not(:disabled) { box-shadow: 0 8px 28px rgba(58,184,129,.38); }
+    .btn.ghost { background: transparent; border-color: var(--border-md); color: var(--muted); }
+    .btn.ghost:hover:not(:disabled) { border-color: var(--accent); color: var(--accent-light); background: rgba(58,184,129,.07); }
+    .btn.block { width:100%; }
+    .btn.sm { padding:.5rem .85rem; font-size:.82rem; }
+
+    .msg { padding:.75rem 1rem; border-radius:10px; font-size:.86rem; margin-bottom:16px; display:none; align-items:flex-start; gap:.5rem; line-height:1.5; }
+    .msg.show { display:flex; }
+    .msg.error { background: rgba(224,97,111,.1); border:1px solid rgba(224,97,111,.35); color:#f5aab1; }
+    .msg.success { background: rgba(58,184,129,.1); border:1px solid var(--border-hi); color: var(--accent-light); }
+    .msg i { margin-top:1px; }
+
+    .link-row { display:flex; justify-content:space-between; align-items:center; margin-top:16px; font-size:.83rem; }
+    .link-btn { background:none; border:none; color: var(--accent-light); cursor:pointer; font-family:inherit; font-size:.83rem; font-weight:700; padding:0; }
+    .link-btn:disabled { color: var(--muted); cursor:not-allowed; }
+
+    .otp-input { text-align:center; font-size:1.6rem; letter-spacing:.6rem; font-weight:800; padding:.9rem; }
+
+    .top-bar { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; }
+    .top-bar h2 { margin:0; font-size:1.2rem; font-weight:800; }
+    .top-bar p { margin:2px 0 0; color:var(--muted); font-size:.85rem; }
+
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    @media (max-width:520px) { .grid-2 { grid-template-columns:1fr; } }
+
+    .app-item { border:1px solid var(--border); border-radius: var(--radius-sm); padding:16px; margin-bottom:12px; }
+    .app-item:last-child { margin-bottom:0; }
+    .app-top { display:flex; justify-content:space-between; align-items:flex-start; gap:10px; flex-wrap:wrap; }
+    .app-ref { font-weight:800; font-size:.95rem; }
+    .app-service { color:var(--muted); font-size:.83rem; margin-top:2px; }
+    .app-notes { margin-top:10px; padding-top:10px; border-top:1px solid var(--border); font-size:.84rem; color:var(--muted); }
+    .status-badge { display:inline-flex; align-items:center; gap:.35rem; padding:.3rem .7rem; border-radius:100vmax; font-size:.74rem; font-weight:800; white-space:nowrap; }
+    .app-date { font-size:.75rem; color:var(--muted); margin-top:6px; }
+
+    .empty-state { text-align:center; color:var(--muted); font-size:.88rem; padding:24px 10px; }
+    .spinner { display:inline-block; width:16px; height:16px; border:2px solid rgba(255,255,255,.25); border-top-color:currentColor; border-radius:50%; animation: spin .7s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .view { display:none; }
+    .view.show { display:block; animation: viewIn .25s ease; }
+    @keyframes viewIn { from { opacity:0; transform:translateY(8px);} to { opacity:1; transform:none; } }
+
+    #dashboardWrap { width:min(720px, 94vw); margin:0 auto; }
+  </style>
+</head>
+<body>
+<div class="ambient" aria-hidden="true"></div>
+
+<header>
+  <div class="p-header-row">
+    <a href="index.html" class="brand-mini">
+      <span class="mark"><img src="icons/icon-192.png" alt="" width="20" height="20" style="border-radius:5px"></span>
+      Onnmore
+    </a>
+    <a href="index.html" class="back-link"><i class="ri-arrow-left-line"></i> Back to site</a>
+  </div>
+</header>
+
+<main>
+  <!-- ═══════ LOGIN VIEW ═══════ -->
+  <div class="p-container view show" id="viewLogin">
+    <div class="p-card">
+      <div class="p-icon"><i class="ri-shield-user-line"></i></div>
+      <h1 class="p-title">Log in to your account</h1>
+      <p class="p-sub">Enter your email and we'll send you a one-time login code — no password to remember.</p>
+
+      <div class="msg error" id="loginMsg"><i class="ri-error-warning-line"></i><span></span></div>
+
+      <div class="field">
+        <label for="loginEmail">Email address</label>
+        <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" />
+      </div>
+      <button class="btn primary block" id="sendOtpBtn" onclick="submitSendOtp()">
+        <i class="ri-mail-send-line"></i> <span>Send Login Code</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════ OTP VIEW ═══════ -->
+  <div class="p-container view" id="viewOtp">
+    <div class="p-card">
+      <div class="p-icon"><i class="ri-lock-password-line"></i></div>
+      <h1 class="p-title">Enter your code</h1>
+      <p class="p-sub">We've sent a 6-digit code to <strong id="otpEmailDisplay">your email</strong>. It expires in 10 minutes.</p>
+
+      <div class="msg error" id="otpMsg"><i class="ri-error-warning-line"></i><span></span></div>
+
+      <div class="field">
+        <label for="otpCode">6-digit code</label>
+        <input type="text" id="otpCode" class="otp-input" maxlength="6" inputmode="numeric" pattern="[0-9]*" placeholder="000000" autocomplete="one-time-code" />
+      </div>
+      <button class="btn primary block" id="verifyOtpBtn" onclick="submitVerifyOtp()">
+        <i class="ri-check-double-line"></i> <span>Verify &amp; Continue</span>
+      </button>
+
+      <div class="link-row">
+        <button class="link-btn" id="changeEmailBtn" onclick="backToLogin()">Use a different email</button>
+        <button class="link-btn" id="resendBtn" onclick="resendOtp()">Resend code</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ DASHBOARD VIEW ═══════ -->
+  <div class="view" id="viewDashboard">
+    <div id="dashboardWrap">
+
+      <div class="p-card">
+        <div class="top-bar">
+          <div>
+            <h2 id="welcomeName">Welcome</h2>
+            <p id="welcomeEmail"></p>
+          </div>
+          <button class="btn ghost sm" onclick="logout()"><i class="ri-logout-box-r-line"></i> Log out</button>
+        </div>
+
+        <div class="msg success" id="profileMsg"><i class="ri-checkbox-circle-line"></i><span></span></div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label for="profName">Full name</label>
+            <input type="text" id="profName" placeholder="Your name" />
+          </div>
+          <div class="field">
+            <label for="profPhone">Phone</label>
+            <input type="tel" id="profPhone" placeholder="10-digit mobile number" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="profBiz">Business name (optional)</label>
+          <input type="text" id="profBiz" placeholder="Your business name, if any" />
+        </div>
+        <button class="btn ghost sm" onclick="saveProfile()"><i class="ri-save-line"></i> Save profile</button>
+      </div>
+
+      <div class="p-card">
+        <div class="p-icon"><i class="ri-add-circle-line"></i></div>
+        <h1 class="p-title" style="font-size:1.1rem">Start a Service</h1>
+        <p class="p-sub" style="margin-bottom:18px">Pick a service and tell us a little about what you need — we'll take it from there.</p>
+
+        <div class="msg error" id="applyMsg"><i class="ri-error-warning-line"></i><span></span></div>
+        <div class="msg success" id="applySuccessMsg"><i class="ri-checkbox-circle-line"></i><span></span></div>
+
+        <div class="field">
+          <label for="serviceSelect">Service</label>
+          <select id="serviceSelect"><option value="">Loading services…</option></select>
+        </div>
+        <div class="field">
+          <label for="serviceDetails">Details (optional)</label>
+          <textarea id="serviceDetails" placeholder="Anything specific we should know? e.g. city, business type, preferred timeline…"></textarea>
+        </div>
+        <button class="btn primary block" id="submitAppBtn" onclick="submitApplication()">
+          <i class="ri-send-plane-line"></i> <span>Submit Application</span>
+        </button>
+      </div>
+
+      <div class="p-card">
+        <div class="p-icon"><i class="ri-file-list-3-line"></i></div>
+        <h1 class="p-title" style="font-size:1.1rem">My Applications</h1>
+        <p class="p-sub" style="margin-bottom:18px">Track the status of everything you've submitted.</p>
+        <div id="applicationsList">
+          <div class="empty-state"><span class="spinner"></span> Loading…</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script>
+/* ══════════ CONFIG ══════════ */
+// ⬇︎ Replace this with your deployed Apps Script Web App URL.
+const API_URL = 'https://script.google.com/macros/s/AKfycbzV6IreJDzuGRboGPWSCM4CTKEL6rUjljgGdxBBMvR2cej6sfFx0l-vFdLssp_SDOZpKg/exec';
+
+const TOKEN_KEY = 'onnmore_token';
+let pendingEmail = '';
+let servicesCache = [];
+
+/* ══════════ API HELPER ══════════
+   Content-Type: text/plain avoids the CORS preflight that Apps
+   Script can't handle — the server still JSON.parses the body. */
+async function api(action, payload) {
+  const res = await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ action, ...payload })
+  });
+  return res.json();
+}
+
+function getToken() { return localStorage.getItem(TOKEN_KEY); }
+function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
+function clearToken() { localStorage.removeItem(TOKEN_KEY); }
+
+/* ══════════ VIEW SWITCHING ══════════ */
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('show'));
+  document.getElementById(id).classList.add('show');
+}
+
+function showMsg(id, text, isError) {
+  const el = document.getElementById(id);
+  el.querySelector('span').textContent = text;
+  el.classList.toggle('show', !!text);
+}
+function hideMsg(id) { document.getElementById(id).classList.remove('show'); }
+
+function setBtnLoading(btnId, loading, label) {
+  const btn = document.getElementById(btnId);
+  btn.disabled = loading;
+  btn.querySelector('span').textContent = loading ? 'Please wait…' : label;
+}
+
+/* ══════════ LOGIN FLOW ══════════ */
+async function submitSendOtp() {
+  const email = document.getElementById('loginEmail').value.trim();
+  hideMsg('loginMsg');
+  if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    showMsg('loginMsg', 'Please enter a valid email address.');
+    return;
+  }
+  setBtnLoading('sendOtpBtn', true, 'Send Login Code');
+  try {
+    const res = await api('sendOtp', { email });
+    if (!res.ok) { showMsg('loginMsg', res.error || 'Something went wrong.'); return; }
+    pendingEmail = email;
+    document.getElementById('otpEmailDisplay').textContent = email;
+    document.getElementById('otpCode').value = '';
+    hideMsg('otpMsg');
+    showView('viewOtp');
+    startResendCooldown();
+  } catch (e) {
+    showMsg('loginMsg', 'Could not reach the server. Please check your connection and try again.');
+  } finally {
+    setBtnLoading('sendOtpBtn', false, 'Send Login Code');
+  }
+}
+
+async function submitVerifyOtp() {
+  const otp = document.getElementById('otpCode').value.trim();
+  hideMsg('otpMsg');
+  if (!/^\d{6}$/.test(otp)) {
+    showMsg('otpMsg', 'Enter the 6-digit code from your email.');
+    return;
+  }
+  setBtnLoading('verifyOtpBtn', true, 'Verify & Continue');
+  try {
+    const res = await api('verifyOtp', { email: pendingEmail, otp });
+    if (!res.ok) { showMsg('otpMsg', res.error || 'Something went wrong.'); return; }
+    setToken(res.token);
+    await loadDashboard(res.profile);
+  } catch (e) {
+    showMsg('otpMsg', 'Could not reach the server. Please check your connection and try again.');
+  } finally {
+    setBtnLoading('verifyOtpBtn', false, 'Verify & Continue');
+  }
+}
+
+function backToLogin() {
+  showView('viewLogin');
+}
+
+let resendTimer = null;
+function startResendCooldown() {
+  let secs = 30;
+  const btn = document.getElementById('resendBtn');
+  btn.disabled = true;
+  clearInterval(resendTimer);
+  resendTimer = setInterval(() => {
+    secs--;
+    btn.textContent = secs > 0 ? `Resend code (${secs}s)` : 'Resend code';
+    if (secs <= 0) { clearInterval(resendTimer); btn.disabled = false; }
+  }, 1000);
+}
+async function resendOtp() {
+  if (document.getElementById('resendBtn').disabled) return;
+  hideMsg('otpMsg');
+  try {
+    const res = await api('sendOtp', { email: pendingEmail });
+    if (!res.ok) { showMsg('otpMsg', res.error || 'Could not resend the code.'); return; }
+    startResendCooldown();
+  } catch (e) {
+    showMsg('otpMsg', 'Could not reach the server.');
+  }
+}
+
+/* ══════════ LOGOUT ══════════ */
+function logout() {
+  clearToken();
+  pendingEmail = '';
+  document.getElementById('loginEmail').value = '';
+  showView('viewLogin');
+}
+
+/* ══════════ DASHBOARD ══════════ */
+async function loadDashboard(profile) {
+  document.getElementById('welcomeName').textContent = 'Welcome, ' + (profile.name || 'there') + '!';
+  document.getElementById('welcomeEmail').textContent = profile.email;
+  document.getElementById('profName').value = profile.name || '';
+  document.getElementById('profPhone').value = profile.phone || '';
+  document.getElementById('profBiz').value = profile.businessName || '';
+  showView('viewDashboard');
+  await Promise.all([loadServices(), loadApplications()]);
+}
+
+async function saveProfile() {
+  hideMsg('profileMsg');
+  const res = await api('updateProfile', {
+    token: getToken(),
+    name: document.getElementById('profName').value.trim(),
+    phone: document.getElementById('profPhone').value.trim(),
+    businessName: document.getElementById('profBiz').value.trim()
+  });
+  if (res.ok) {
+    showMsg('profileMsg', 'Profile updated.');
+    document.getElementById('welcomeName').textContent = 'Welcome, ' + (document.getElementById('profName').value || 'there') + '!';
+  } else if (res.error && res.error.indexOf('expired') !== -1) {
+    logout();
+  }
+}
+
+async function loadServices() {
+  const res = await api('getServices', {});
+  const select = document.getElementById('serviceSelect');
+  if (!res.ok) { select.innerHTML = '<option value="">Could not load services</option>'; return; }
+  servicesCache = res.services;
+  select.innerHTML = '<option value="">Choose a service…</option>' +
+    res.services.map(s => `<option value="${s.key}">${s.name}</option>`).join('');
+}
+
+async function submitApplication() {
+  hideMsg('applyMsg'); hideMsg('applySuccessMsg');
+  const serviceKey = document.getElementById('serviceSelect').value;
+  const details = document.getElementById('serviceDetails').value.trim();
+  if (!serviceKey) { showMsg('applyMsg', 'Please choose a service first.'); return; }
+
+  setBtnLoading('submitAppBtn', true, 'Submit Application');
+  try {
+    const res = await api('submitApplication', { token: getToken(), serviceKey, details });
+    if (!res.ok) {
+      if (res.error && res.error.indexOf('expired') !== -1) { logout(); return; }
+      showMsg('applyMsg', res.error || 'Something went wrong.');
+      return;
+    }
+    showMsg('applySuccessMsg', `Submitted! Your reference number is ${res.referenceNumber} — keep this for your records.`);
+    document.getElementById('serviceSelect').value = '';
+    document.getElementById('serviceDetails').value = '';
+    await loadApplications();
+  } catch (e) {
+    showMsg('applyMsg', 'Could not reach the server. Please try again.');
+  } finally {
+    setBtnLoading('submitAppBtn', false, 'Submit Application');
+  }
+}
+
+function statusStyle(status) {
+  const s = String(status || '').toLowerCase();
+  if (s.includes('complete')) return { bg:'rgba(58,184,129,.16)', fg:'#4dd194' };
+  if (s.includes('hold') || s.includes('reject')) return { bg:'rgba(224,97,111,.16)', fg:'#f5aab1' };
+  if (s.includes('review') || s.includes('filed')) return { bg:'rgba(77,159,209,.16)', fg:'#8ec4ea' };
+  if (s.includes('pending') || s.includes('document')) return { bg:'rgba(224,168,62,.16)', fg:'#f0c778' };
+  return { bg:'rgba(136,146,168,.16)', fg:'#b7bfd1' }; // Submitted / default
+}
+
+function formatDate(v) {
+  if (!v) return '';
+  const d = new Date(v);
+  if (isNaN(d)) return '';
+  return d.toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+}
+
+async function loadApplications() {
+  const list = document.getElementById('applicationsList');
+  const res = await api('getApplications', { token: getToken() });
+  if (!res.ok) {
+    if (res.error && res.error.indexOf('expired') !== -1) { logout(); return; }
+    list.innerHTML = '<div class="empty-state">Could not load your applications.</div>';
+    return;
+  }
+  if (!res.applications.length) {
+    list.innerHTML = '<div class="empty-state">No applications yet — start one above and it\'ll show up here.</div>';
+    return;
+  }
+  list.innerHTML = res.applications.map(a => {
+    const st = statusStyle(a.status);
+    return `
+      <div class="app-item">
+        <div class="app-top">
+          <div>
+            <div class="app-ref">${a.referenceNumber}</div>
+            <div class="app-service">${a.serviceName || ''}</div>
+          </div>
+          <span class="status-badge" style="background:${st.bg};color:${st.fg}">${a.status || 'Submitted'}</span>
+        </div>
+        <div class="app-date">Submitted ${formatDate(a.submittedAt)}</div>
+        ${a.notes ? `<div class="app-notes"><i class="ri-chat-3-line"></i> ${a.notes}</div>` : ''}
+      </div>`;
+  }).join('');
+}
+
+/* ══════════ INIT ══════════
+   If a saved session token exists, validate it and jump straight
+   to the dashboard instead of asking to log in again. */
+(async function init() {
+  const token = getToken();
+  if (!token) { showView('viewLogin'); return; }
+  try {
+    const res = await api('getProfile', { token });
+    if (res.ok) { await loadDashboard(res.profile); }
+    else { clearToken(); showView('viewLogin'); }
+  } catch (e) {
+    showView('viewLogin');
+  }
+})();
+</script>
+</body>
+</html>
