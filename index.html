@@ -172,9 +172,9 @@
     .lang-btn { border:none; background:none; color: var(--muted); font-family:inherit; font-size:.76rem; font-weight:800; padding:.42rem .55rem; border-radius:7px; cursor:pointer; transition:.16s; line-height:1; }
     .lang-btn.active { background: rgba(58,184,129,.16); color: var(--accent-light); }
     .lang-btn:hover:not(.active) { color: var(--txt); }
-    .mnav-lang { display:flex; gap:6px; margin-bottom:1.4rem; }
-    .mnav-lang .lang-btn { flex:1; text-align:center; padding:.6rem; border:1px solid var(--border); font-size:.82rem; }
-    .mnav-lang .lang-btn.active { border-color: var(--accent); }
+    .mnav-lang { display:flex; gap:8px; margin-bottom:1.5rem; }
+    .mnav-lang .lang-btn { flex:1; text-align:center; padding:.65rem; border:1px solid var(--border-md); border-radius: var(--radius-sm); font-size:.82rem; background: rgba(255,255,255,.02); }
+    .mnav-lang .lang-btn.active { border-color: var(--accent); background: rgba(58,184,129,.1); color: var(--accent-light); }
 
     header { position:sticky; top:0; z-index:100; background:rgba(9,9,15,.92); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%); border-bottom:1px solid var(--border); }
     .offer-bar { background: linear-gradient(90deg, var(--accent), var(--accent-light)); color:#06140d; padding:9px 16px; text-align:center; font-size:.82rem; font-weight:700; position:relative; z-index:101; }
@@ -193,12 +193,21 @@
     .mobile-nav { display:none; position:fixed; inset:0; background:rgba(9,9,15,.98); backdrop-filter: blur(20px); z-index:200; flex-direction:column; padding:1.4rem; overflow-y:auto; }
     .mobile-nav.open { display:flex; animation: mnavIn .22s ease; }
     @keyframes mnavIn { from{opacity:0; transform:translateY(-6px);} to{opacity:1; transform:translateY(0);} }
-    .mnav-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.4rem; }
-    .mnav-close { background:none; border:1px solid var(--border); border-radius:9px; padding:.55rem; color:var(--txt); cursor:pointer; display:flex; font-size:1.15rem; }
-    .mobile-nav a { display:flex; align-items:center; gap:.75rem; padding:.9rem 1.1rem; border-radius:11px; font-size:1rem; font-weight:700; color:var(--muted); border:1px solid transparent; transition:.18s; margin-bottom:.3rem; }
-    .mobile-nav a i { font-size:1rem; color:var(--accent); }
-    .mobile-nav a:hover { background: rgba(58,184,129,.07); border-color: var(--border); color: var(--txt); }
-    .mnav-cta { margin-top:auto; padding-top:1.5rem; display:flex; flex-direction:column; gap:.7rem; }
+    .mnav-header { display:flex; justify-content:center; align-items:center; position:relative; margin-bottom:1.4rem; }
+    .mnav-close { position:absolute; right:0; top:50%; transform:translateY(-50%); background:none; border:1px solid var(--border-md); border-radius:11px; padding:.6rem; color:var(--txt); cursor:pointer; display:flex; font-size:1.15rem; }
+    .mobile-nav a { display:flex; align-items:center; gap:.85rem; padding:.85rem 1rem; border-radius: var(--radius); font-size:.98rem; font-weight:700; color:var(--txt); border:1px solid var(--border); background: rgba(255,255,255,.02); transition:.18s; margin-bottom:.55rem; }
+    .mobile-nav a:hover { background: rgba(58,184,129,.08); border-color: var(--border-md); }
+    .mnav-icon { display:flex; align-items:center; justify-content:center; width:42px; height:42px; flex-shrink:0; border-radius:12px; background: rgba(58,184,129,.14); }
+    .mobile-nav a .mnav-icon i { font-size:1.05rem; color:var(--accent-light); }
+    .mobile-nav a .mnav-label { flex:1; }
+    .mobile-nav a .mnav-chevron { font-size:1.15rem; color:var(--muted); flex-shrink:0; }
+    .mnav-cta { margin-top:.6rem; padding-top:.8rem; }
+    .mnav-wa-btn { display:flex; align-items:center; gap:.85rem; width:100%; padding:1rem 1.3rem; border-radius:100vmax; background:linear-gradient(135deg,#25d366,#128c7e); color:#fff; font-weight:800; font-size:1rem; border:none; cursor:pointer; transition:.2s; font-family:inherit; }
+    .mnav-wa-btn:hover { box-shadow:0 8px 28px rgba(37,211,102,.35); transform:translateY(-2px); }
+    .mnav-wa-btn i:first-child { font-size:1.35rem; flex-shrink:0; }
+    .mnav-wa-divider { width:1px; align-self:stretch; background:rgba(255,255,255,.35); flex-shrink:0; }
+    .mnav-wa-label { flex:1; }
+    .mnav-wa-chevron { font-size:1.2rem; opacity:.85; flex-shrink:0; }
 
     .hero { padding: clamp(52px, 9vw, 96px) 0 40px; position:relative; }
     .hero-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap: min(5vw, 60px); align-items:center; }
@@ -359,6 +368,8 @@
        in the DOM so form-filling bots that grab every input tend to fill it in. */
     .ck-hp { position:absolute; left:-9999px; top:-9999px; width:1px; height:1px; overflow:hidden; }
     .ck-field label { display:block; font-size:.78rem; font-weight:700; color: var(--muted); margin-bottom:6px; }
+    .ck-hint { font-size:.72rem; color: var(--muted); margin:5px 2px 0; line-height:1.5; display:flex; align-items:flex-start; gap:.3rem; }
+    .ck-hint i { color: var(--accent-light); margin-top:1px; flex-shrink:0; }
     .ck-inp, .ck-txt { width:100%; padding:.75rem .9rem; border-radius:10px; border:1px solid var(--border-md); background: rgba(255,255,255,.03); color: var(--txt); font-family:inherit; font-size:16px; }
     .ck-inp:focus, .ck-txt:focus { outline:none; border-color: var(--accent); box-shadow: var(--ring); }
     .ck-txt { resize: vertical; min-height:78px; }
@@ -464,6 +475,9 @@
     .ck-updates-opt.wa { border-color: rgba(37,211,102,.4); }
     .ck-updates-opt.wa:hover { background: rgba(37,211,102,.12); border-color:#25d366; }
     .ck-updates-opt.wa i { color: var(--wa); }
+    .ck-updates-opt.login { border-color: var(--border-hi); }
+    .ck-updates-opt.login:hover { background: rgba(58,184,129,.12); border-color: var(--accent); }
+    .ck-updates-opt.login i { color: var(--accent-light); }
     .ck-updates-opt.em:hover { border-color: var(--accent); background: rgba(58,184,129,.09); }
     .ck-updates-opt.em i { color: var(--accent-light); }
     @keyframes ckPop { 0% { transform:scale(0); opacity:0; } 60% { transform:scale(1.14); opacity:1; } 100% { transform:scale(1); opacity:1; } }
@@ -688,17 +702,53 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাংলা</button>
     <button class="lang-btn" data-lang="hi" onclick="setLang('hi')">हिन्दी</button>
   </div>
-  <a href="#services" onclick="closeMobileNav()"><i class="ri-briefcase-4-line"></i> <span data-i18n="nav.services">Services</span></a>
-  <a href="#pricing" onclick="closeMobileNav()"><i class="ri-price-tag-3-line"></i> <span data-i18n="nav.pricing">Pricing</span></a>
-  <a href="#consult" onclick="closeMobileNav()"><i class="ri-file-list-3-line"></i> <span data-i18n="nav.consultBtn">Get Free Consultation</span></a>
-  <a href="#features" onclick="closeMobileNav()"><i class="ri-shield-check-line"></i> <span data-i18n="nav.whyUs">Why Us</span></a>
-  <a href="#reviews" onclick="closeMobileNav()"><i class="ri-star-smile-line"></i> <span data-i18n="nav.reviews">Reviews</span></a>
-  <a href="#faq" onclick="closeMobileNav()"><i class="ri-question-answer-line"></i> <span data-i18n="nav.faq">FAQ</span></a>
-  <a href="#contact" onclick="closeMobileNav()"><i class="ri-map-pin-line"></i> <span data-i18n="nav.contact">Contact</span></a>
-  <a href="portal.html"><i class="ri-user-3-line"></i> Login / My Applications</a>
+  <a href="portal.html">
+    <span class="mnav-icon"><i class="ri-user-3-line"></i></span>
+    <span class="mnav-label">Login / My Applications</span>
+    <i class="ri-arrow-right-s-line mnav-chevron"></i>
+  </a>
+  <a href="#services" onclick="closeMobileNav()">
+    <span class="mnav-icon"><i class="ri-briefcase-4-line"></i></span>
+    <span class="mnav-label" data-i18n="nav.services">Services</span>
+    <i class="ri-arrow-right-s-line mnav-chevron"></i>
+  </a>
+  <a href="#pricing" onclick="closeMobileNav()">
+    <span class="mnav-icon"><i class="ri-price-tag-3-line"></i></span>
+    <span class="mnav-label" data-i18n="nav.pricing">Pricing</span>
+    <i class="ri-arrow-right-s-line mnav-chevron"></i>
+  </a>
+  <a href="#consult" onclick="closeMobileNav()">
+    <span class="mnav-icon"><i class="ri-file-list-3-line"></i></span>
+    <span class="mnav-label" data-i18n="nav.consultBtn">Get Free Consultation</span>
+    <i class="ri-arrow-right-s-line mnav-chevron"></i>
+  </a>
+  <a href="#features" onclick="closeMobileNav()">
+    <span class="mnav-icon"><i class="ri-shield-check-line"></i></span>
+    <span class="mnav-label" data-i18n="nav.whyUs">Why Us</span>
+    <i class="ri-arrow-right-s-line mnav-chevron"></i>
+  </a>
+  <a href="#reviews" onclick="closeMobileNav()">
+    <span class="mnav-icon"><i class="ri-star-line"></i></span>
+    <span class="mnav-label" data-i18n="nav.reviews">Reviews</span>
+    <i class="ri-arrow-right-s-line mnav-chevron"></i>
+  </a>
+  <a href="#faq" onclick="closeMobileNav()">
+    <span class="mnav-icon"><i class="ri-discuss-line"></i></span>
+    <span class="mnav-label" data-i18n="nav.faq">FAQ</span>
+    <i class="ri-arrow-right-s-line mnav-chevron"></i>
+  </a>
+  <a href="#contact" onclick="closeMobileNav()">
+    <span class="mnav-icon"><i class="ri-map-pin-line"></i></span>
+    <span class="mnav-label" data-i18n="nav.contact">Contact</span>
+    <i class="ri-arrow-right-s-line mnav-chevron"></i>
+  </a>
   <div class="mnav-cta">
-    <a href="#" id="mnavWaLink" class="btn wa-btn block" onclick="closeMobileNav()" target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> <span data-i18n="faq.contact.wa">Chat on WhatsApp</span></a>
-    <a href="#consult" class="btn primary block" onclick="closeMobileNav()"><i class="ri-bolt-line"></i> <span data-i18n="nav.consultBtn">Get Free Consultation</span></a>
+    <a href="#" id="mnavWaLink" class="mnav-wa-btn" onclick="closeMobileNav()" target="_blank" rel="noopener">
+      <i class="ri-whatsapp-line"></i>
+      <span class="mnav-wa-divider"></span>
+      <span class="mnav-wa-label" data-i18n="faq.contact.wa">Chat on WhatsApp</span>
+      <i class="ri-arrow-right-s-line mnav-wa-chevron"></i>
+    </a>
   </div>
 </nav>
 
@@ -840,7 +890,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="ck-field"><label for="ckPhone" data-i18n="consult.labelPhone">Phone number</label><input class="ck-inp" id="ckPhone" type="tel" data-i18n-ph="consult.placeholderPhone" placeholder="10-digit mobile number" autocomplete="tel"></div>
         </div>
         <div class="ck-row2">
-          <div class="ck-field"><label for="ckEmail" data-i18n="consult.labelEmail">Email address</label><input class="ck-inp" id="ckEmail" type="email" data-i18n-ph="consult.placeholderEmail" placeholder="you@example.com" autocomplete="email"></div>
+          <div class="ck-field">
+            <label for="ckEmail" data-i18n="consult.labelEmail">Email address</label>
+            <input class="ck-inp" id="ckEmail" type="email" data-i18n-ph="consult.placeholderEmail" placeholder="you@example.com" autocomplete="email">
+            <p class="ck-hint"><i class="ri-information-line"></i> <span data-i18n="consult.emailHint">Please double-check this — you'll use the same email to log in and see updates on your request.</span></p>
+          </div>
           <div class="ck-field"><label for="ckBiz" data-i18n="consult.labelBiz">Business / company name (if any)</label><input class="ck-inp" id="ckBiz" type="text" data-i18n-ph="consult.placeholderBiz" placeholder="e.g. your business or brand name"></div>
         </div>
         <div class="ck-field"><label for="ckMsg" data-i18n="consult.labelMsg">Anything specific we should know?</label><textarea class="ck-txt" id="ckMsg" data-i18n-ph="consult.placeholderMsg" placeholder="Tell us a bit about your business or requirement…"></textarea></div>
@@ -915,11 +969,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="ck-done-btn" onclick="ckReset()" type="button" data-i18n="consult.done">Done</button>
 
         <div class="ck-updates-block">
-          <p class="ck-updates-msg" data-i18n="consult.updatesMsg">If you would like real-time updates, click on 'Updates' or follow your email notifications. Alternatively, you can submit your case ID via WhatsApp or email us at onnmore@gmail.com.</p>
-          <button type="button" class="ck-updates-btn" id="ckUpdatesBtn" onclick="ckToggleUpdateOptions()"><i class="ri-refresh-line"></i> <span data-i18n="consult.updatesBtn">Updates</span></button>
-          <div class="ck-updates-options" id="ckUpdatesOptions">
+          <p class="ck-updates-msg" data-i18n="consult.updatesMsg">Want real-time updates? Log in anytime with the email you entered above to track this request from your dashboard — or reach us directly on WhatsApp with your Case ID.</p>
+          <div class="ck-updates-options show" id="ckUpdatesOptions">
+            <a href="portal.html" class="ck-updates-opt login" id="ckLoginLink"><i class="ri-login-circle-line"></i> <span data-i18n="consult.viaLogin">Login for Updates</span></a>
             <button type="button" class="ck-updates-opt wa" onclick="ckCheckStatus('whatsapp')"><i class="ri-whatsapp-line"></i> <span data-i18n="consult.viaWhatsapp">via WhatsApp</span></button>
-            <button type="button" class="ck-updates-opt em" onclick="ckCheckStatus('email')"><i class="ri-mail-line"></i> <span data-i18n="consult.viaEmail">via Email</span></button>
           </div>
         </div>
       </div>
@@ -1458,8 +1511,9 @@ en: {
   'consult.errMsgLinks':'Please remove the extra links from your message.','consult.errTooSoon':"You've already sent a request recently. Please wait a minute before submitting again, or message us on WhatsApp.",
   'consult.back':'Back','consult.continue':'Continue','consult.send':'Submit','consult.toast':"Got it! Your details have been recorded — we'll also reach out by phone or email.",
   'consult.successTitle':'Request submitted!','consult.successMsg':"We've received your details and will get back to you within a couple of minutes.",'consult.done':'Done',
-  'consult.caseIdLabel':'Your Case ID','consult.updatesBtn':'Updates','consult.viaWhatsapp':'via WhatsApp','consult.viaEmail':'via Email',
-  'consult.updatesMsg':"If you would like real-time updates, click on 'Updates' or follow your email notifications. Alternatively, you can submit your case ID via WhatsApp or email us at onnmore@gmail.com.",
+  'consult.caseIdLabel':'Your Case ID','consult.updatesBtn':'Updates','consult.viaWhatsapp':'via WhatsApp','consult.viaEmail':'via Email','consult.viaLogin':'Login for Updates',
+  'consult.emailHint':"Please double-check this — you'll use the same email to log in and see updates on your request.",
+  'consult.updatesMsg':"Want real-time updates? Log in anytime with the email you entered above to track this request from your dashboard — or reach us directly on WhatsApp with your Case ID.",
   'consult.statusWaMsg':'Hi, I would like an update on my case. My Case ID is: ','consult.statusEmailSubject':'Case Status Update Request - ',
   'why.sectionLabel':'Our promise','why.title':'Why choose Onnmore?',
   'why1.title':'Experienced Consultants','why1.desc':'Your registration and filings are handled by professionals who know the process inside out, across every district of West Bengal.',
@@ -1593,8 +1647,9 @@ bn: {
   'consult.errMsgLinks':'অনুগ্রহ করে আপনার বার্তা থেকে অতিরিক্ত লিঙ্ক সরিয়ে ফেলুন।','consult.errTooSoon':'আপনি সম্প্রতি একটি অনুরোধ পাঠিয়েছেন। অনুগ্রহ করে আবার পাঠানোর আগে একটু অপেক্ষা করুন, অথবা হোয়াটসঅ্যাপে যোগাযোগ করুন।',
   'consult.back':'পেছনে','consult.continue':'চালিয়ে যান','consult.send':'সাবমিট করুন','consult.toast':'ধন্যবাদ! আপনার তথ্য গ্রহণ করা হয়েছে — আমরা ফোন বা ইমেইলেও যোগাযোগ করব।',
   'consult.successTitle':'অনুরোধ সাবমিট হয়েছে!','consult.successMsg':'আমরা আপনার তথ্য পেয়েছি এবং কয়েক মিনিটের মধ্যে যোগাযোগ করব।','consult.done':'সম্পন্ন',
-  'consult.caseIdLabel':'আপনার কেস আইডি','consult.updatesBtn':'আপডেট','consult.viaWhatsapp':'হোয়াটসঅ্যাপের মাধ্যমে','consult.viaEmail':'ইমেইলের মাধ্যমে',
-  'consult.updatesMsg':"রিয়েল-টাইম আপডেট পেতে চাইলে 'আপডেট'-এ ক্লিক করুন অথবা আপনার ইমেইল নোটিফিকেশন দেখুন। এছাড়াও, আপনি আপনার কেস আইডি হোয়াটসঅ্যাপে পাঠাতে পারেন অথবা onnmore@gmail.com-এ ইমেইল করতে পারেন।",
+  'consult.caseIdLabel':'আপনার কেস আইডি','consult.updatesBtn':'আপডেট','consult.viaWhatsapp':'হোয়াটসঅ্যাপের মাধ্যমে','consult.viaEmail':'ইমেইলের মাধ্যমে','consult.viaLogin':'লগইন করে আপডেট দেখুন',
+  'consult.emailHint':'অনুগ্রহ করে এটি ভালোভাবে যাচাই করুন — আপনি এই একই ইমেইল দিয়ে লগইন করে আপনার অনুরোধের আপডেট দেখতে পারবেন।',
+  'consult.updatesMsg':'রিয়েল-টাইম আপডেট পেতে চাইলে উপরে দেওয়া ইমেইল দিয়ে যেকোনো সময় লগইন করে আপনার ড্যাশবোর্ড থেকে এই অনুরোধটি ট্র্যাক করুন — অথবা আপনার কেস আইডি সহ সরাসরি হোয়াটসঅ্যাপে আমাদের সাথে যোগাযোগ করুন।',
   'consult.statusWaMsg':'হাই, আমি আমার কেসের আপডেট জানতে চাই। আমার কেস আইডি: ','consult.statusEmailSubject':'কেস স্ট্যাটাস আপডেট অনুরোধ - ',
   'why.sectionLabel':'আমাদের প্রতিশ্রুতি','why.title':'কেন অনমোর বেছে নেবেন?',
   'why1.title':'অভিজ্ঞ পরামর্শদাতা','why1.desc':'আপনার নিবন্ধন ও ফাইলিং পরিচালনা করেন এমন পেশাদাররা যারা পশ্চিমবঙ্গের প্রতিটি জেলায় প্রক্রিয়াটি ভালোভাবে জানেন।',
@@ -1728,8 +1783,9 @@ hi: {
   'consult.errMsgLinks':'कृपया अपने संदेश से अतिरिक्त लिंक हटा दें।','consult.errTooSoon':'आपने हाल ही में एक अनुरोध भेजा है। कृपया दोबारा भेजने से पहले थोड़ा इंतज़ार करें, या व्हाट्सएप पर संपर्क करें।',
   'consult.back':'वापस','consult.continue':'जारी रखें','consult.send':'सबमिट करें','consult.toast':'हो गया! आपकी जानकारी दर्ज कर ली गई है — हम फ़ोन या ईमेल पर भी संपर्क करेंगे।',
   'consult.successTitle':'अनुरोध सबमिट हो गया!','consult.successMsg':'हमें आपकी जानकारी मिल गई है और हम कुछ ही मिनटों में संपर्क करेंगे।','consult.done':'हो गया',
-  'consult.caseIdLabel':'आपकी केस आईडी','consult.updatesBtn':'अपडेट','consult.viaWhatsapp':'व्हाट्सएप के ज़रिए','consult.viaEmail':'ईमेल के ज़रिए',
-  'consult.updatesMsg':"अगर आप रीयल-टाइम अपडेट चाहते हैं, तो 'अपडेट' पर क्लिक करें या अपने ईमेल नोटिफिकेशन देखें। इसके अलावा, आप अपनी केस आईडी व्हाट्सएप पर भेज सकते हैं या हमें onnmore@gmail.com पर ईमेल कर सकते हैं।",
+  'consult.caseIdLabel':'आपकी केस आईडी','consult.updatesBtn':'अपडेट','consult.viaWhatsapp':'व्हाट्सएप के ज़रिए','consult.viaEmail':'ईमेल के ज़रिए','consult.viaLogin':'लॉगिन करके अपडेट देखें',
+  'consult.emailHint':'कृपया इसे ध्यान से जांच लें — आप इसी ईमेल से लॉगिन करके अपने अनुरोध पर अपडेट देख सकेंगे।',
+  'consult.updatesMsg':'रीयल-टाइम अपडेट चाहिए? ऊपर दिए गए ईमेल से कभी भी लॉगिन करके अपने डैशबोर्ड से इस अनुरोध को ट्रैक करें — या अपनी केस आईडी के साथ सीधे व्हाट्सएप पर हमसे संपर्क करें।',
   'consult.statusWaMsg':'नमस्ते, मुझे अपने केस का अपडेट चाहिए। मेरी केस आईडी है: ','consult.statusEmailSubject':'केस स्टेटस अपडेट अनुरोध - ',
   'why.sectionLabel':'हमारा वादा','why.title':'ओन्नमोर को क्यों चुनें?',
   'why1.title':'अनुभवी सलाहकार','why1.desc':'आपका पंजीकरण और फाइलिंग ऐसे पेशेवरों द्वारा संभाला जाता है जो पश्चिम बंगाल के हर ज़िले में इस प्रक्रिया को अच्छी तरह जानते हैं।',
@@ -2116,6 +2172,10 @@ const WEB3FORMS_ACCESS_KEY = '30790f77-ad43-4bc1-8ccc-0daa24ed4328';
 /* 2. GOOGLE SHEET: Deploy a Google Apps Script Web App bound to your sheet and paste its /exec URL below.
    See the setup guide provided separately for the exact script to paste into script.google.com. */
 const GSHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwsgIpEKNUWUo8VHOIoF2O-w-xzfzu-5C1n7_S6d_CYLeTR5l9AdPMrkJB0aHk4O5MafQ/exec';
+/* 3. CUSTOMER PORTAL: the SAME Apps Script Web App URL used in portal.html's API_URL.
+   Registering the lead here means the customer can log in with the email
+   they gave above and see this request's status on their dashboard. */
+const PORTAL_API_URL = 'https://script.google.com/macros/s/AKfycbzV6IreJDzuGRboGPWSCM4CTKEL6rUjljgGdxBBMvR2cej6sfFx0l-vFdLssp_SDOZpKg/exec';
 
 function sendLeadToEmail(svcName, addonsText, promoText, totalText) {
   if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY.startsWith('PASTE_')) return;
@@ -2160,6 +2220,36 @@ function sendLeadToSheet(svcName, addonsText, promoText, totalText) {
       language: currentLang
     })
   }).catch(err => console.error('Sheet lead delivery failed:', err));
+}
+
+/* 3. Registers this request against the Customer Portal backend — same Sheet
+   the OTP-login dashboard reads from — so the customer can log in with the
+   email they gave above and see this exact Case ID with a live status.
+   Silently no-ops until PORTAL_API_URL is filled in. Requires no login: it
+   finds or creates the customer record by email, purely from this form. */
+function registerCaseWithPortal(svcName, addonsText, promoText, totalText) {
+  if (!PORTAL_API_URL || PORTAL_API_URL.startsWith('PASTE_')) return;
+  if (!ckState.email) return; // no email given — nothing to tie the case to
+  const detailsParts = [];
+  if (addonsText) detailsParts.push(`Add-ons: ${addonsText}`);
+  if (promoText) detailsParts.push(`Promo: ${promoText}`);
+  if (totalText) detailsParts.push(`Estimated Total: ${totalText}`);
+  if (ckState.msg) detailsParts.push(`Notes: ${ckState.msg}`);
+  fetch(PORTAL_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // avoids a CORS preflight Apps Script can't answer
+    body: JSON.stringify({
+      action: 'submitPublicLead',
+      caseId: ckState.caseId,
+      email: ckState.email,
+      name: ckState.name || '',
+      phone: ckState.phone || '',
+      businessName: ckState.biz || '',
+      serviceKey: ckState.svcKeys.join(', '),
+      serviceName: svcName,
+      details: detailsParts.join(' | ')
+    })
+  }).catch(err => console.error('Portal case registration failed:', err));
 }
 
 /* ══════════ Mobile nav ══════════ */
@@ -2666,6 +2756,7 @@ function ckSubmit() {
   if (!isSpam) {
     sendLeadToEmail(svcName, addonsText, promoText, totalText);
     sendLeadToSheet(svcName, addonsText, promoText, totalText);
+    registerCaseWithPortal(svcName, addonsText, promoText, totalText);
     ckMarkSubmitted();
   }
   ckTrack('consult_submit_clicked', { services: ckState.svcKeys, value: q.total, currency: 'INR', promo: promoText, caseId: ckState.caseId, spam: isSpam });
@@ -2736,8 +2827,10 @@ function ckShowSuccess() {
   if (stepper) stepper.style.display = 'none';
   const caseIdVal = document.getElementById('ckCaseIdVal');
   if (caseIdVal) caseIdVal.textContent = ckState.caseId || '—';
+  const loginLink = document.getElementById('ckLoginLink');
+  if (loginLink) loginLink.href = ckState.email ? `portal.html?email=${encodeURIComponent(ckState.email)}` : 'portal.html';
   const updOpts = document.getElementById('ckUpdatesOptions');
-  if (updOpts) updOpts.classList.remove('show');
+  if (updOpts) updOpts.classList.add('show');
   document.getElementById('cp4').classList.add('show');
   ckPlayChime();
 }
@@ -2764,15 +2857,7 @@ function ckCopyCaseId() {
   }
 }
 
-/* Reveals the WhatsApp / Email choice under the "Updates" button. */
-function ckToggleUpdateOptions() {
-  const opts = document.getElementById('ckUpdatesOptions');
-  if (!opts) return;
-  opts.classList.toggle('show');
-  ckTrack('consult_updates_opened', { services: ckState.svcKeys, caseId: ckState.caseId });
-}
-
-/* Opens WhatsApp or Email with the Case ID already filled in, so the customer
+/* Opens WhatsApp with the Case ID already filled in, so the customer
    just has to hit send to ask for a status update. */
 function ckCheckStatus(channel) {
   const caseId = ckState.caseId || '';
@@ -2780,10 +2865,6 @@ function ckCheckStatus(channel) {
   if (channel === 'whatsapp') {
     const msg = `${t('consult.statusWaMsg')}${caseId}`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
-  } else if (channel === 'email') {
-    const subject = `${t('consult.statusEmailSubject')}${caseId}`;
-    const body = `${t('consult.statusWaMsg')}${caseId}`;
-    window.location.href = `mailto:onnmore@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   }
 }
 
