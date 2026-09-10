@@ -212,6 +212,7 @@
     @media (prefers-reduced-motion: reduce) {
       .reveal { transition: opacity .01s linear !important; transform:none !important; }
       .hero-img-card { transition:none !important; }
+      .hero-grid > div:first-child::before, .hero h1 .hl::after { animation:none !important; }
     }
 
     .ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
@@ -284,10 +285,28 @@
 
     .hero { padding: clamp(52px, 9vw, 96px) 0 40px; position:relative; }
     .hero-grid { display:grid; grid-template-columns: 1.1fr .9fr; gap: min(5vw, 60px); align-items:center; }
-    .hero-eyebrow { margin-bottom:16px; }
-    h1 { font-size: clamp(30px, 5vw, 54px); line-height:1.1; margin:0 0 18px; font-weight:900; letter-spacing:-.4px; }
+    .hero-eyebrow { margin-bottom:20px; }
+    /* Soft ambient glow behind the headline copy — pulls the eye to the
+       headline first, reinforcing it as the focal point of the section. */
+    .hero-grid > div:first-child { position:relative; }
+    .hero-grid > div:first-child::before {
+      content:''; position:absolute; top:-70px; left:-90px; width:440px; height:440px;
+      background: radial-gradient(circle, rgba(58,184,129,.15), transparent 68%);
+      z-index:-1; pointer-events:none; animation: heroGlowPulse 7s ease-in-out infinite;
+    }
+    @keyframes heroGlowPulse { 0%,100%{ opacity:.55; transform:scale(1); } 50%{ opacity:1; transform:scale(1.08); } }
+    h1 { font-size: clamp(34px, 5.8vw, 60px); line-height:1.05; margin:0 0 20px; font-weight:900; letter-spacing:-.5px; }
     .hl { background: linear-gradient(92deg, var(--accent) 0%, var(--accent-light) 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .hero-lead { font-size: clamp(15px, 2vw, 17.5px); color:var(--muted); line-height:1.7; margin:0 0 26px; max-width:520px; }
+    /* Animated underline sweep, scoped to the hero headline only so it
+       doesn't leak into other places .hl is reused (e.g. testimonials). */
+    .hero h1 .hl { position:relative; display:inline-block; }
+    .hero h1 .hl::after {
+      content:''; position:absolute; left:1px; right:1px; bottom:-.05em; height:.12em; border-radius:2px;
+      background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
+      background-size: 200% 100%; opacity:.6; animation: hlSweep 3.4s ease-in-out infinite;
+    }
+    @keyframes hlSweep { 0%{ background-position:0% 0; } 100%{ background-position:-200% 0; } }
+    .hero-lead { font-size: clamp(15.5px, 2vw, 18px); color:var(--muted); line-height:1.7; margin:0 0 26px; max-width:520px; }
     .hero-cta { display:flex; gap:.75rem; flex-wrap:wrap; }
     .hero-trust { display:flex; flex-wrap:wrap; gap:1.2rem; margin-top:26px; padding-top:22px; border-top:1px solid var(--border); }
     .trust-badge { display:flex; align-items:center; gap:.4rem; font-size:.8rem; font-weight:700; color:var(--muted); }
@@ -366,6 +385,7 @@
     .why-card p { margin:0; color: var(--muted); font-size:.83rem; line-height:1.6; }
 
     .steps-grid { display:grid; grid-template-columns: repeat(4, 1fr); gap:15px; }
+    .steps-grid.steps-grid-6 { grid-template-columns: repeat(3, 1fr); }
 
     /* ── TESTIMONIALS ── */
     .testi-band { background: linear-gradient(160deg, rgba(58,184,129,.05), var(--ov015)); border:1px solid var(--border); border-radius: var(--radius); padding:32px 0 8px; overflow:hidden; }
@@ -378,6 +398,10 @@
     .testi-stat-num .star { color:#ffb84d; }
     .testi-stat-label { font-size:.74rem; color: var(--muted); margin-top:5px; font-weight:600; }
     .testi-scroll { display:flex; gap:14px; width:max-content; padding:0 0 28px; animation: testiMarquee 52s linear infinite; }
+    .testi-empty { display:flex; flex-direction:column; align-items:flex-start; gap:10px; padding: 6px 28px 32px; width:100%; max-width:520px; }
+    .testi-empty i { font-size:1.6rem; color: var(--accent-light); }
+    .testi-empty p { margin:0; color: var(--muted); font-size:.9rem; line-height:1.6; }
+    .testi-empty .btn { margin-top:4px; }
     .testi-scroll.is-paused { animation-play-state: paused; }
     @keyframes testiMarquee { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
     @media (prefers-reduced-motion: reduce) {
@@ -589,7 +613,39 @@
     .contact-card .c-desc { margin:0 0 15px; color: var(--muted); font-size:.86rem; line-height:1.6; }
 
     footer { padding:48px 0 20px; border-top:1px solid var(--border); }
-    .foot-grid { display:grid; grid-template-columns: 1.3fr 1fr 1fr 1fr 1.2fr; gap:22px; margin-bottom:36px; }
+    /* ── FOOTER BRAND LOGO ──
+       Real <img> asset (assets/onnmore-logo.png) so the mark always shows up
+       reliably — screenshots, previews, slow connections, anywhere inline
+       SVG might not render. A second, mask-based accent layer sits exactly
+       on top of the chevron and animates a soft light sweep across it for a
+       bit of polish. In light theme the raster (white-ink) image is swapped
+       for a mask-based mono mark tinted with --logo-fg so it stays legible. */
+    .foot-brand-logo { position:relative; display:inline-block; width:140px; aspect-ratio: 293.43 / 87.63; margin-bottom:6px; transition: transform .25s ease; }
+    .foot-brand-logo:hover { transform: translateY(-1px) scale(1.03); }
+    .foot-logo-img { display:block; width:100%; height:100%; object-fit:contain; }
+    .fbl-mono { display:none; }
+    .fbl-accent {
+      position:absolute; inset:0;
+      -webkit-mask: url('assets/logo-accent.svg') no-repeat center / contain;
+      mask: url('assets/logo-accent.svg') no-repeat center / contain;
+      background: linear-gradient(120deg, var(--accent) 0%, var(--accent-light) 42%, #eafff4 50%, var(--accent-light) 58%, var(--accent) 100%);
+      background-size: 240% 100%;
+      animation: fblShine 5.5s ease-in-out infinite;
+    }
+    @keyframes fblShine {
+      0%, 100% { background-position: 0% 50%; filter: drop-shadow(0 0 0 rgba(77,209,148,0)); }
+      50%      { background-position: 100% 50%; filter: drop-shadow(0 0 7px rgba(77,209,148,.55)); }
+    }
+    .foot-brand-logo:hover .fbl-accent { animation-duration: 1.7s; }
+    [data-theme="light"] .foot-logo-img { display:none; }
+    [data-theme="light"] .fbl-mono {
+      display:block; position:absolute; inset:0;
+      -webkit-mask: url('assets/logo-mono.svg') no-repeat center / contain;
+      mask: url('assets/logo-mono.svg') no-repeat center / contain;
+      background: var(--logo-fg);
+    }
+    @media (prefers-reduced-motion: reduce) { .fbl-accent { animation: none; } }
+    .foot-grid { display:grid; grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr 1.1fr; gap:22px; margin-bottom:36px; }
     .foot-desc { color: var(--muted); font-size:.86rem; line-height:1.65; margin-top:10px; max-width:280px; }
     footer h5 { margin:0 0 14px; font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; color: var(--accent); font-weight:800; }
     .foot-links { display:flex; flex-direction:column; gap:8px; }
@@ -710,7 +766,8 @@
       .hero-cta { justify-content:center; }
       .hero-trust { justify-content:center; }
       .hero-img-card { max-width:320px; margin:0 auto; }
-      h1 { font-size: clamp(26px, 7.5vw, 40px); }
+      h1 { font-size: clamp(28px, 7.8vw, 42px); }
+      .hero-grid > div:first-child::before { width:300px; height:300px; top:-40px; left:-40px; }
     }
     @media (max-width: 560px) {
       .ck-panel { padding:18px 16px 4px; }
@@ -725,6 +782,21 @@
       .why-grid, .steps-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 400px) { .why-grid, .steps-grid { grid-template-columns: 1fr; } }
+
+    /* ── "What are you looking to do" cards ── */
+    .info-card-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap:16px; margin: 10px 0 8px; }
+    .info-card { border:1px solid var(--border); background: var(--ov02); border-radius: var(--radius-sm); padding: 22px; transition: border-color .2s, transform .2s; }
+    .info-card:hover { border-color: var(--border-hi); transform: translateY(-2px); }
+    .info-card .ic-ico { width:40px; height:40px; border-radius:10px; background: rgba(58,184,129,.1); border:1px solid rgba(58,184,129,.18); display:flex; align-items:center; justify-content:center; font-size:1.15rem; color: var(--accent-light); margin-bottom:12px; }
+    .info-card h4 { margin:0 0 6px; font-size:1rem; font-weight:700; }
+    .info-card p { margin:0; font-size:.86rem; color: var(--muted); line-height:1.55; }
+
+    /* ── CTA banner (Case ID section) ── */
+    .cta-banner { border:1px solid var(--border-hi); background: linear-gradient(135deg, rgba(58,184,129,.1), rgba(58,184,129,.02)); border-radius: var(--radius); padding: 30px 32px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    .cta-banner h3 { margin:0 0 6px; font-size:1.2rem; font-weight:800; }
+    .cta-banner p { margin:0; color: var(--muted); font-size:.9rem; max-width:480px; }
+    .cta-banner .btns { display:flex; gap:10px; flex-wrap:wrap; }
+    @media (max-width:780px) { .cta-banner { flex-direction:column; align-items:flex-start; } }
   </style>
 
   <!-- ══════════ ANALYTICS (GA4) ══════════ -->
@@ -748,8 +820,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="offer-bar" role="note">
   <div class="container">
     <i class="ri-gift-line"></i>
-    <span data-i18n="offer.text">Take any service with us and get your Udyam/MSME Registration absolutely FREE!</span>
-    <span class="offer-note" data-i18n="offer.note">(Offer valid for West Bengal customers only)</span>
+    <span data-i18n="offer.text">Udyam (MSME) Registration is a free government registration — we can guide you through it if you need help.</span>
+    <span class="offer-note" data-i18n="offer.note">(Assistance available across West Bengal)</span>
   </div>
 </div>
 
@@ -865,7 +937,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <i class="ri-arrow-right-s-line mnav-chevron"></i>
   </a>
   <div class="mnav-cta">
-    <a href="#" id="mnavWaLink" class="mnav-wa-btn" onclick="closeMobileNav()" target="_blank" rel="noopener">
+    <a href="https://wa.me/919477110971" id="mnavWaLink" class="mnav-wa-btn" onclick="closeMobileNav()" target="_blank" rel="noopener">
       <i class="ri-whatsapp-line"></i>
       <span class="mnav-wa-divider"></span>
       <span class="mnav-wa-label" data-i18n="faq.contact.wa">Chat on WhatsApp</span>
@@ -885,10 +957,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="hero-eyebrow">
           <span class="badge"><i class="ri-map-pin-2-fill"></i> <span data-i18n="hero.eyebrow">West Bengal · Business Registration & Compliance Experts</span></span>
         </div>
-        <h1 id="hero-h1"><span data-i18n="hero.title1">Start, license &amp; run your business</span> <span class="hl" data-i18n="hero.titleHl">the right way.</span></h1>
-        <p class="hero-lead" data-i18n="hero.lead">From Pvt Ltd company registration to GST, MSME, licenses, tax filing and patents — we handle the paperwork so you can focus on your business, anywhere in West Bengal. 100% online, fully explained, confirmed on WhatsApp.</p>
+        <h1 id="hero-h1"><span data-i18n="hero.title1">Start Your Business.</span> <span class="hl" data-i18n="hero.titleHl">We'll Handle the Paperwork.</span></h1>
+        <p class="hero-lead" data-i18n="hero.lead">Business registration, licenses, GST, tax and compliance — simplified for entrepreneurs and growing businesses.</p>
         <div class="hero-cta">
-          <a href="#consult" class="btn primary"><i class="ri-file-list-3-line"></i> <span data-i18n="hero.ctaConsult">Get Free Consultation</span></a>
+          <a href="#consult" class="btn primary"><i class="ri-file-list-3-line"></i> <span data-i18n="hero.ctaConsult">Get Started</span></a>
+          <a href="#find-path" class="btn ghost"><i class="ri-compass-3-line"></i> <span data-i18n="hero.ctaUnsure">Not Sure What You Need?</span></a>
         </div>
         <div class="hero-trust">
           <div class="trust-badge"><i class="ri-shield-check-line"></i> <span data-i18n="hero.trust1">Expert-Handled</span></div>
@@ -920,6 +993,40 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="marquee-wrap" aria-hidden="true">
       <div class="marquee-track" id="marqueeTrack"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ WHAT ARE YOU LOOKING TO DO ════════════ -->
+<section id="find-path" aria-labelledby="find-path-h2">
+  <div class="container">
+    <div class="sec-hd">
+      <div>
+        <span class="sec-label">Not sure where to start?</span>
+        <h2 id="find-path-h2">What are you looking to do?</h2>
+      </div>
+    </div>
+    <div class="info-card-grid" style="margin-top:6px">
+      <a class="info-card" href="business-registration.html" style="display:block">
+        <div class="ic-ico"><i class="ri-rocket-2-line"></i></div>
+        <h4>🚀 Start a Business</h4>
+        <p>Starting your first business? We'll help you understand the right business structure, registrations and licenses.</p>
+      </a>
+      <a class="info-card" href="compliance.html" style="display:block">
+        <div class="ic-ico"><i class="ri-store-2-line"></i></div>
+        <h4>🏪 Run an Existing Business</h4>
+        <p>Already running a business? Get help with GST, tax, licenses, filings, renewals and compliance.</p>
+      </a>
+      <a class="info-card" href="food-business.html" style="display:block">
+        <div class="ic-ico"><i class="ri-restaurant-2-line"></i></div>
+        <h4>🍽️ Start a Food Business</h4>
+        <p>Opening a restaurant, café, cloud kitchen, bakery or food business? We'll help you understand the registrations and licenses you may need.</p>
+      </a>
+      <a class="info-card" href="online-business.html" style="display:block">
+        <div class="ic-ico"><i class="ri-shopping-bag-3-line"></i></div>
+        <h4>🛒 Sell Online</h4>
+        <p>Selling through Instagram, Amazon, Flipkart, your own website or other platforms? Get help formalising your online business.</p>
+      </a>
     </div>
   </div>
 </section>
@@ -1156,33 +1263,73 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="sec-label" data-i18n="steps.sectionLabel">Simple process</span>
       <h3 style="font-size:clamp(18px,2.5vw,24px);margin:4px 0 20px;font-weight:800" data-i18n="steps.title">How it works</h3>
     </div>
-    <div class="steps-grid">
+    <div class="steps-grid steps-grid-6">
       <div class="step-card">
         <div class="step-n">01</div>
-        <strong data-i18n="step1.title">Share Your Requirement</strong>
+        <strong data-i18n="step1.title">Submit</strong>
         <span data-i18n="step1.desc">Pick a service and send us your details — takes under a minute.</span>
       </div>
       <div class="step-card">
         <div class="step-n">02</div>
-        <strong data-i18n="step2.title">Free Consultation</strong>
+        <strong data-i18n="step2.title">Consultation</strong>
         <span data-i18n="step2.desc">Our team calls you back to understand your needs and confirm transparent pricing.</span>
       </div>
       <div class="step-card">
         <div class="step-n">03</div>
-        <strong data-i18n="step3.title">Documentation</strong>
+        <strong data-i18n="step3.title">Documents</strong>
         <span data-i18n="step3.desc">We guide you on the documents needed and prepare all filings on your behalf.</span>
       </div>
       <div class="step-card">
         <div class="step-n">04</div>
-        <strong data-i18n="step4.title">Approval &amp; Handover</strong>
-        <span data-i18n="step4.desc">Once approved, we share your certificate/registration with you — job done.</span>
+        <strong data-i18n="step4.title">Processing</strong>
+        <span data-i18n="step4.desc">Your case is filed with the relevant department or portal and moves through review.</span>
+      </div>
+      <div class="step-card">
+        <div class="step-n">05</div>
+        <strong data-i18n="step5.title">Updates</strong>
+        <span data-i18n="step5.desc">Track progress against your Case ID, with updates sent to you on WhatsApp.</span>
+      </div>
+      <div class="step-card">
+        <div class="step-n">06</div>
+        <strong data-i18n="step6.title">Completion</strong>
+        <span data-i18n="step6.desc">Once approved, we share your certificate, filing confirmation or completed documents — job done.</span>
+      </div>
+    </div>
+
+    <div class="cta-banner" style="margin-top:26px">
+      <div>
+        <h3 data-i18n="caseid.title">Your request. Your Case ID. Your updates.</h3>
+        <p data-i18n="caseid.desc">Every request gets a unique Onnmore Case ID the moment you submit it. Use it to check your status, follow progress, and talk to our team without repeating yourself.</p>
+      </div>
+      <div class="btns">
+        <a href="#consult" class="btn primary"><i class="ri-file-list-3-line"></i> <span data-i18n="hero.ctaConsult">Get Started</span></a>
+        <a href="portal.html" class="btn ghost"><i class="ri-search-eye-line"></i> <span data-i18n="caseid.track">Track My Case</span></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════ FAQ ════════════ -->
-<!-- ════════════ TESTIMONIALS ════════════ -->
+<!-- ════════════ WHO WE HELP ════════════ -->
+<section id="who-we-help" aria-labelledby="who-we-help-h2">
+  <div class="container">
+    <div class="sec-hd">
+      <div>
+        <span class="sec-label">Built for businesses like yours</span>
+        <h2 id="who-we-help-h2">Who We Help</h2>
+      </div>
+    </div>
+    <div class="info-card-grid">
+      <div class="info-card"><div class="ic-ico"><i class="ri-seedling-line"></i></div><h4>First-Time Entrepreneurs</h4><p>You have the idea. We'll help you understand the paperwork needed to get started.</p></div>
+      <div class="info-card"><div class="ic-ico"><i class="ri-store-2-line"></i></div><h4>Small Business Owners</h4><p>Get the registrations, licenses and tax support needed to run your business properly.</p></div>
+      <div class="info-card"><div class="ic-ico"><i class="ri-restaurant-2-line"></i></div><h4>Restaurants &amp; Food Businesses</h4><p>From cafés and restaurants to cloud kitchens and food sellers, we'll help you navigate the required registrations and licenses.</p></div>
+      <div class="info-card"><div class="ic-ico"><i class="ri-shopping-bag-3-line"></i></div><h4>Online Sellers</h4><p>Selling through Instagram, marketplaces or your own website? We'll help you formalise and manage your business.</p></div>
+      <div class="info-card"><div class="ic-ico"><i class="ri-user-line"></i></div><h4>Freelancers &amp; Professionals</h4><p>Turn your independent work into a properly structured business.</p></div>
+      <div class="info-card"><div class="ic-ico"><i class="ri-tools-line"></i></div><h4>Manufacturers &amp; Traders</h4><p>Get help with business registration, MSME, GST and other applicable requirements.</p></div>
+      <div class="info-card"><div class="ic-ico"><i class="ri-line-chart-line"></i></div><h4>Growing Businesses</h4><p>Already established? We can help you stay organised with tax, filings, renewals and ongoing compliance.</p></div>
+    </div>
+  </div>
+</section>
+
 <section id="reviews" aria-labelledby="reviews-h2">
   <div class="container">
     <div class="sec-hd">
@@ -1190,9 +1337,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="sec-label" data-i18n="reviews.sectionLabel">What clients say</span>
         <h2 id="reviews-h2" data-i18n="reviews.title">Customer Reviews</h2>
       </div>
-    </div>
-    <div class="trust-banner">
-      <img src="images/trust-banner-100-startups.jpg" alt="100+ startups trust Onnmore for their company registration and compliance" width="1400" height="521" loading="lazy" />
     </div>
     <div class="testi-band">
       <div class="testi-top">
@@ -1222,7 +1366,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h3 data-i18n="faq.contact.title">Still have questions?</h3>
         <p data-i18n="faq.contact.desc">Our team is happy to walk you through the process. Send us a WhatsApp message for quick answers.</p>
         <div class="fcc-actions">
-          <a href="#" id="faqWaLink" class="btn wa-btn" target="_blank" rel="noopener noreferrer" style="justify-content:center">
+          <a href="https://wa.me/919477110971" id="faqWaLink" class="btn wa-btn" target="_blank" rel="noopener noreferrer" style="justify-content:center">
             <i class="ri-whatsapp-line"></i> <span data-i18n="faq.contact.wa">Chat on WhatsApp</span>
           </a>
           <a href="mailto:support@onnmore.com" class="btn ghost" style="justify-content:center">
@@ -1249,7 +1393,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="contact-card">
         <h3><i class="ri-whatsapp-line"></i> <span data-i18n="contact.wa.title">WhatsApp</span></h3>
         <p class="c-desc" data-i18n="contact.wa.desc">The fastest way to reach us. Tap below to start a chat — no need to note down a number.</p>
-        <a href="#" id="contactWaLink" class="btn wa-btn" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-line"></i> <span data-i18n="contact.wa.btn">Chat on WhatsApp</span></a>
+        <a href="https://wa.me/919477110971" id="contactWaLink" class="btn wa-btn" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-line"></i> <span data-i18n="contact.wa.btn">Chat on WhatsApp</span></a>
       </div>
       <div class="contact-card">
         <h3><i class="ri-phone-line"></i> <span data-i18n="contact.call.title">Call Us</span></h3>
@@ -1279,15 +1423,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="foot-grid">
 
       <div>
-        <svg width="116" height="36" viewBox="0 0 293.43 87.63" xmlns="http://www.w3.org/2000/svg" aria-label="Onnmore" role="img">
-          <path d="M16.5 43.23A16.5 16.5 0 1 0 33 59.73a16.52 16.52 0 0 0-16.5-16.5Zm0 22a5.5 5.5 0 1 1 5.5-5.5 5.49 5.49 0 0 1-5.48 5.5Z" fill="#fff"/>
-          <path d="M192.66 43.38a16.5 16.5 0 1 0 16.5 16.5 16.5 16.5 0 0 0-16.5-16.5Zm0 22a5.5 5.5 0 1 1 5.5-5.5 5.5 5.5 0 0 1-5.5 5.5Z" fill="#fff"/>
-          <path d="M78 71.82 78.29 57S79 46.3 91.84 43.76c0 0 9.53-1.23 14.6 5.47 0 0 4.5 5 4.06 11.69v9.62s-.25 2.91-1.66 3.93a6.68 6.68 0 0 1-6 1.14 6 6 0 0 1-2-1.49 6.2 6.2 0 0 1-1.34-2.61l-.09-12.88s-.93-4.68-6.53-4A5.17 5.17 0 0 0 90 56.34a4.81 4.81 0 0 0-1 2.57l-.06 12.39s.06 3.7-4.42 4.76c-.01.03-5.34.39-6.52-4.24Z" fill="#fff"/>
-          <path d="M39.21 71.82 39.47 57S40.18 46.3 53 43.76c0 0 9.53-1.23 14.61 5.47 0 0 4.5 5 4.06 11.69v9.62s-.25 2.91-1.67 3.93a6.67 6.67 0 0 1-6 1.14 5.89 5.89 0 0 1-2-1.49 6.14 6.14 0 0 1-1.34-2.61l-.09-12.88s-.93-4.68-6.53-4a5.17 5.17 0 0 0-2.86 1.71 4.81 4.81 0 0 0-1 2.57L50.1 71.3s.09 3.68-4.41 4.76c0 .03-5.34.39-6.48-4.24Z" fill="#fff"/>
-          <path d="m121.33 9.72-.2 63.79a50.13 50.13 0 0 0 20.55 14.12V39.69l16.47 16.11 40.65-40.58a46 46 0 0 0-4.32-5.78 44.13 44.13 0 0 0-5.27-5.14 41.76 41.76 0 0 0-5.91-4l-.3-.21-.13-.09-.09.09-5.55 5.55c-1.9 1.89-9.15 9.17-19.06 19.15L133 0s-7.26 4.3-11.67 9.72Z" fill="#3ab881"/>
-          <path d="M215.45 60.3c0-1.27-.06-8 5-12.76a15.56 15.56 0 0 1 9.34-4.08c1.58-.08 3.48-.15 5.08 1.16a6.67 6.67 0 0 1 2.13 5.09s.12 3.27-4.17 4.69c0 0-4.86.1-5.8 2.67a20.81 20.81 0 0 0-.82 6.37v8.47s0 1.65-2.24 2.94-2.62 1.15-2.62 1.15-2.68.41-4-1a11.39 11.39 0 0 1-2-3Z" fill="#fff"/>
-          <path d="M275.5 68.57a5.64 5.64 0 0 0-5.29-3.57l1.41-1.53c5.94-4.17 3.88-9.29 3.88-9.29-5.12-10.29-14.06-10.5-14.06-10.5-14.59-1-17.5 11.74-17.5 11.74a17.41 17.41 0 0 0 1.21 11.9 15.9 15.9 0 0 0 2.69 3.68 18 18 0 0 0 4.33 3.28 15.69 15.69 0 0 0 4.59 1.72l.45.08c1.81.1 3.68.17 5.62.2 3.15 0 6.15 0 9-.2a5.69 5.69 0 0 0 3.56-2.89 5.58 5.58 0 0 0 .11-4.62Zm-19.47-5a5.53 5.53 0 0 1-1.53-3.22 5.43 5.43 0 0 1 .75-3.36 5.25 5.25 0 0 1 1.15-1.29 5.75 5.75 0 0 1 4.13-1.07 4.25 4.25 0 0 1 3 1.47Z" fill="#fff"/>
-        </svg>
+        <a href="index.html" class="foot-brand-logo" aria-label="Onnmore Home">
+          <img src="assets/onnmore-logo.png" alt="Onnmore" class="foot-logo-img" width="140" height="43" loading="lazy" />
+          <span class="fbl-mono" aria-hidden="true"></span>
+          <span class="fbl-accent" aria-hidden="true"></span>
+        </a>
         <p class="foot-desc" data-i18n="footer.desc">West Bengal's trusted business consultancy — company registration, licensing and compliance, made simple, from Kolkata to every district we serve.</p>
         <p style="color:var(--muted);font-size:.76rem;margin-top:8px" data-i18n="footer.hours">Mon–Sat · 10 AM – 7 PM</p>
       </div>
@@ -1295,25 +1435,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <h5 data-i18n="footer.company">Company</h5>
         <div class="foot-links">
+          <a href="about.html">About Onnmore</a>
           <a href="#features" data-i18n="footer.link.why">Why Onnmore</a>
-          <a href="#services" data-i18n="footer.link.services">Our Services</a>
           <a href="#pricing" data-i18n="footer.link.pricing">Pricing</a>
           <a href="#docs" data-i18n="footer.link.docs">Document Checklist</a>
           <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
-          <a href="#faq" data-i18n="footer.link.faq">FAQ</a>
+          <a href="faq.html" data-i18n="footer.link.faq">FAQ</a>
           <a href="#contact" data-i18n="footer.link.contact">Contact</a>
-          <a href="blog/pvt-ltd-vs-llp.html">Pvt Ltd vs LLP Guide</a>
-          <a href="blog/gst-registration-checklist-2026.html">GST Registration Checklist</a>
         </div>
       </div>
 
       <div>
         <h5 data-i18n="footer.servicesHead">Services</h5>
         <div class="foot-links">
-          <a href="#consult" data-i18n="footer.link.pvtltd">Pvt Ltd &amp; LLP Registration</a>
-          <a href="#consult" data-i18n="footer.link.gstmsme">GST &amp; MSME Registration</a>
-          <a href="#consult" data-i18n="footer.link.tradefood">Trade &amp; Food License</a>
-          <a href="#consult" data-i18n="footer.link.itrpatent">ITR, DSC &amp; Patent Filing</a>
+          <a href="business-registration.html">Business Registration</a>
+          <a href="licenses.html">Licenses &amp; Approvals</a>
+          <a href="gst-tax.html">GST &amp; Tax</a>
+          <a href="compliance.html">Compliance</a>
+          <a href="trademark-ip.html">Trademark &amp; IP</a>
+          <a href="food-business.html">Food Business</a>
+          <a href="online-business.html">Online Business</a>
+          <a href="business-structure.html">Business Structure</a>
         </div>
       </div>
 
@@ -1321,8 +1463,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h5 data-i18n="footer.contactHead">Contact</h5>
         <div class="foot-links">
           <a href="mailto:support@onnmore.com">support@onnmore.com</a>
-          <a href="#" id="footWaLink" target="_blank" rel="noopener" data-i18n="footer.link.wa">WhatsApp Us</a>
+          <a href="https://wa.me/919477110971" id="footWaLink" target="_blank" rel="noopener" data-i18n="footer.link.wa">WhatsApp Us</a>
           <a href="https://www.google.com/maps/search/?api=1&query=HFGP%2BRQG%2C+AA+II%2C+Newtown%2C+Chakpachuria%2C+West+Bengal+700160" target="_blank" rel="noopener" data-i18n="footer.link.mapAddr">Newtown, Kolkata 700160</a>
+        </div>
+      </div>
+
+      <div>
+        <h5>Legal</h5>
+        <div class="foot-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-conditions.html">Terms &amp; Conditions</a>
+          <a href="refund-cancellation.html">Refund &amp; Cancellation Policy</a>
+          <a href="data-protection.html">Data Protection</a>
         </div>
       </div>
 
@@ -1356,13 +1508,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="foot-disclaimer">
       <strong>Website Disclaimer :</strong>
-      This website is privately operated and not affiliated with any government entity. We do not represent or are affiliated with, endorsed by, or in any way connected to any government body or department. The form provided is not for official registration purposes; rather, it's designed to gather information from our clients to help us better understand their business or needs. By continuing to use this website, you acknowledge that we are a private company. We offer assistance based on customer requests, and the fees collected on this website are charged as a platform fee. We reserve the right to outsource matters as deemed necessary. We are in the process of giving our brand a new name. Stay tuned for updates. This platform does not offer legal services, nor does it provide legal advice or representation. Do you require legal assistance? We strongly recommend consulting with a qualified lawyer or law firm.
+      This website is privately operated and not affiliated with any government entity. We do not represent or are affiliated with, endorsed by, or in any way connected to any government body or department. The form provided is not for official registration purposes; rather, it's designed to gather information from our clients to help us better understand their business or needs. By continuing to use this website, you acknowledge that we are a private company. We offer assistance based on customer requests, and the fees collected on this website are charged as a platform fee. We reserve the right to outsource matters as deemed necessary. This platform does not offer legal services, nor does it provide legal advice or representation. Do you require legal assistance? We strongly recommend consulting with a qualified lawyer or law firm.
     </div>
   </div>
 </footer>
 
 <!-- Floating WhatsApp button -->
-<a href="#" id="fabWaLink" class="fab-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="ri-whatsapp-fill"></i></a>
+<a href="https://wa.me/919477110971" id="fabWaLink" class="fab-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="ri-whatsapp-fill"></i></a>
 
 <!-- Floating Add to Home Screen button -->
 <div class="fab-a2hs-tip" id="fabA2hsTip" role="status">
@@ -1573,34 +1725,199 @@ const FAQ_ITEMS = [
 ];
 const AREA_KEYS = ['area.kolkata','area.howrah','area.hooghly','area.n24pgs','area.s24pgs','area.nadia','area.bardhaman','area.durgapur','area.asansol','area.siliguri','area.malda','area.murshidabad'];
 
-/* ══════════ TESTIMONIALS — real customer reviews ══════════ */
-/* photo: URL or base64 data-URI of the customer's photo. Leave empty ('') to show initials instead. */
+/* ══════════ TESTIMONIALS — real customer reviews only ══════════
+   Do NOT add sample/placeholder reviews here. Add an entry only once
+   you have a real client's permission to publish their name, quote
+   and rating. Leave this empty until then — the section below shows
+   an honest empty state instead of a fake carousel. */
 const TESTIMONIALS = [
-  { name: 'Arindam Basu', role: 'Business Owner', city: 'Kolkata', tag: 'Web & App Development', rating: 5, photo: '', quoteKey: 'reviews.sample1' },
-  { name: 'Souvik Dutta', role: 'CA / Consultant', city: 'Howrah', tag: 'Business & Documentation', rating: 5, photo: '', quoteKey: 'reviews.sample2' },
-  { name: 'Rohit Agarwal', role: 'Director', city: 'Durgapur', tag: 'Market Research & Feasibility', rating: 5, photo: '', quoteKey: 'reviews.sample3' },
-  { name: 'Priyanka Shaw', role: 'Business Owner', city: 'Asansol', tag: 'Registration & Compliance', rating: 5, photo: '', quoteKey: 'reviews.sample4' },
-  { name: 'Avijit Mallick', role: 'Operations Head', city: 'Kharagpur', tag: 'Business Strategy & Growth Consulting', rating: 5, photo: '', quoteKey: 'reviews.sample5' },
-  { name: 'Debasish Pal', role: 'Startup Founder', city: 'Siliguri', tag: 'Business Planning & Feasibility Reports', rating: 5, photo: '', quoteKey: 'reviews.sample6' },
-  { name: 'Mousumi Ghosh', role: 'Proprietor', city: 'Bardhaman', tag: 'MSME Advisory & Govt. Liaisoning', rating: 5, photo: '', quoteKey: 'reviews.sample7' },
-  { name: 'Subhajit Nandi', role: 'IT Manager', city: 'Haldia', tag: 'Ongoing Support & Technical Advisory', rating: 5, photo: '', quoteKey: 'reviews.sample8' }
+  {
+    "name": "Jijnasu Basa",
+    "quote": "Our experience with Jyoti has been outstanding. Her expertise in trademark compliance, filing strategy, and brand protection has been instrumental in safeguarding our intellectual property at a corporate level.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Avantika Sharma",
+    "quote": "Very good service. Got to know about them from Google but I am very much satisfied. Special thanks to Piyali for the coordination and assistance she showed. Highly recommendable.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Mithun Ghosh",
+    "quote": "They did my job very responsibly. Whenever I called, I got a very good response from Miss Piyali Naskar. Thank you so much Piyali and the team 💞",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Ayush Deb",
+    "quote": "Excellent service for FSSAI and other licenses. Very cooperative team and quick processing. Thank you for your support.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Piyali Naskar",
+    "quote": "Very trusted consultancy service in Kolkata. They guided us properly and completed our work on time.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Tanoya Sardar",
+    "quote": "Thank you very much to you and your team for the great and first work 🥰🥰",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Twinkle Agarwal",
+    "quote": "The application made by them went really smoothly. I would recommend everyone to take their services as they completed the job within time.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "S. S. Associates",
+    "quote": "We are S. S. Associates having experience with Onnmore Consultancy performance has been excellent, very good. So we are satisfied and want to continue in future also to get their work services.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Shankar Mistry",
+    "quote": "I started my food export business and consulted with them. They helped a lot with all export documents, central food licence, GST registration and guided me in the proper way. Thanks to them 🙏",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Somejit Mukherjee",
+    "quote": "Very good service, on time service, good behaviour. All total excellent.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Manish Verma",
+    "quote": "Best consultancy firm in Kolkata with quick response in day-to-day works. Polite and respectful behaviour of all staff.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Bipul Mistry",
+    "quote": "Best place in Kolkata for licence service. They are very experienced team, all are very polite.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "SAYANDEEP MANNA",
+    "quote": "I had a great experience with Onnmore Consultancy for my trademark application. Their team is highly professional, supportive, and transparent throughout the process. The pricing was very affordable compared to others in the market.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Kunal Lahiri",
+    "quote": "Received excise licence for restaurant cum bar within 3 months. Very good services.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Raj D",
+    "quote": "Trade mark done. Excellent service and reasonable price.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Subodh Chanda",
+    "quote": "I am really very satisfied with Onnmore Consultancy for their services. They are good in behaviour and work capability is also very good.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Suma C",
+    "quote": "Quick to respond despite of holiday. Work was done within a day. Thanks a lot.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Sridhar Jayakumar",
+    "quote": "Excellent service and very professional in licence works. Also completing the work on time without delay.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Saikat Sarkar",
+    "quote": "Great services always. Special mention must be for Mr. Asish 👍",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Sanjib Das",
+    "quote": "I renewed my tender Digital Signature from last 6 years with them. And their service is very good. Thanks to them.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Tamalika Roy",
+    "quote": "I'm very much satisfied with their services.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Sudeep Chakraborty",
+    "quote": "I had a great experience resolving my valid signature issue on my kid's birth certificate. They did it quickly and at a very nominal price that I can't believe. I would recommend everyone to reach out to them if they face any issue. Lots of thanks for your service.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "SAIKAT BANERJEE",
+    "quote": "Excellent service. I would highly recommend.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Savita Sharma",
+    "quote": "Excellent work, very professional 👌❤️ Quick service.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Swapnil Hasbe",
+    "quote": "Extremely competent team and resolved the issue on an immediate basis.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Souvik Roy",
+    "quote": "Excellent service. Very professional. 100% recommended.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Sk Saharuk",
+    "quote": "The digital signature service provided was exceptional. The process was smooth, with prompt issuance and clear instructions for installation. The support team was available 24/7 and very responsive to queries.",
+    "rating": 5,
+    "role": "Customer"
+  },
+  {
+    "name": "Vaibhav Kapoor",
+    "quote": "Great service. Very prompt and professional. Got my licence in 2 days, that too because I took time to verify the details otherwise maybe would have got it the same day of application. Fully trustworthy for online payment.",
+    "rating": 5,
+    "role": "Customer"
+  }
 ];
 
-/* ══════════ STATS — placeholder, replace with your real, verifiable numbers ══════════ */
+/* ══════════ TRUST MARKERS — verifiable facts only, no invented numbers ══════════ */
 const TESTI_STATS = [
-  { value: '200+', labelKey: 'reviews.stat1' },
-  { value: '188+', labelKey: 'reviews.stat2' },
-  { value: '4.0★', labelKey: 'reviews.stat3' }
+  { value: '100+', labelKey: 'reviews.stat1' },
+  { value: '500+', labelKey: 'reviews.stat2' },
+  { value: '6+', labelKey: 'reviews.stat3' },
+  { value: '★★★★★ 4.9/5', labelKey: 'reviews.stat4' },
+  { value: '1,000+', labelKey: 'reviews.stat5' }
 ];
 
 const I18N = {
 en: {
-  'offer.text':'Take any service with us and get your Udyam/MSME Registration absolutely FREE!','offer.note':'(Offer valid for West Bengal customers only)',
+  'offer.text':'Udyam (MSME) Registration is a free government registration — we can guide you through it if you need help.','offer.note':'(Assistance available across West Bengal)',
   'nav.services':'Services','nav.pricing':'Pricing','nav.getStarted':'Get Started','nav.whyUs':'Why Us','nav.reviews':'Reviews','nav.faq':'FAQ','nav.contact':'Contact','nav.contactBtn':'Contact','nav.consultBtn':'Get Free Consultation',
   'hero.eyebrow':'West Bengal · Business Registration & Compliance Experts',
-  'hero.title1':'Start, license & run your business','hero.titleHl':'the right way.',
-  'hero.lead':"From Pvt Ltd company registration to GST, MSME, licenses, tax filing and patents — we handle the paperwork so you can focus on your business, anywhere in West Bengal. 100% online, fully explained, confirmed on WhatsApp.",
-  'hero.ctaConsult':'Get Free Consultation','hero.ctaWa':'WhatsApp Us',
+  'hero.title1':"Start Your Business.",'hero.titleHl':"We'll Handle the Paperwork.",
+  'hero.lead':"Business registration, licenses, GST, tax and compliance — simplified for entrepreneurs and growing businesses.",
+  'hero.ctaConsult':'Get Started','hero.ctaUnsure':'Not Sure What You Need?','hero.ctaWa':'WhatsApp Us',
   'hero.trust1':'Expert-Handled','hero.trust2':'100% Online Process','hero.trust3':'Transparent Pricing','hero.trust4':'Dedicated Support',
   'feat1':'Documentation Handled','feat2':'Fast Turnaround','feat3':'Updates on WhatsApp',
   'services.sectionLabel':'What we handle','services.title':'Our Services','services.pill':'Clear pricing · No hidden charges','services.swipeHint':'Swipe to browse all services',
@@ -1609,7 +1926,7 @@ en: {
   'svc.trade':'Trade License','svc.trade.desc':'Get your municipal trade license sorted with correct documentation and application filing — required to legally run most local businesses anywhere in West Bengal.',
   'svc.food':'Food License (FSSAI)','svc.food.desc':'FSSAI registration and licensing for restaurants, cloud kitchens, cafes and food businesses of every size.',
   'svc.gst':'GST Registration','svc.gst.desc':'New GST registration, amendments and guidance so your business stays compliant from day one.',
-  'svc.msme':'MSME (Udyam) Registration','svc.msme.desc':'Register as a Micro, Small or Medium Enterprise and unlock government schemes, subsidies and easier access to credit.','svc.msme.badge':'FREE','svc.msme.badgeNote':'Free of cost when you take any service with us — offer valid for West Bengal only.',
+  'svc.msme':'MSME (Udyam) Registration','svc.msme.desc':'Register as a Micro, Small or Medium Enterprise and unlock government schemes, subsidies and easier access to credit.','svc.msme.badge':'Govt. Free',"svc.msme.badgeNote":"Udyam (MSME) registration itself is free on the government portal — our fee, if you'd like us to handle it for you, is confirmed upfront on WhatsApp.",
   'svc.dsc':'Digital Signature Certificate (DSC)','svc.dsc.desc':'Class 3 DSC for company filings, GST, tenders and e-tendering — issued quickly with full document support.',
   'svc.ptax':'Professional Tax (P.Tax)','svc.ptax.desc':'Employer and employee professional tax registration and return filing, handled correctly and on time.',
   'svc.itr':"Income Tax Return (ITR)",'svc.itr.desc':"Accurate ITR filing for individuals, professionals and businesses — with guidance to help you stay compliant and claim what you're due.",
@@ -1626,8 +1943,8 @@ en: {
   'price.trade.note':'Excludes municipal/government license fees, which vary by trade category.',
   'price.food.note':'Basic registration; state/central license priced separately based on turnover.',
   'price.gst.note':'GSTIN allotment itself is free from the government — you pay only for our filing assistance.',
-  'price.msme.badge':'FREE',
-  'price.msme.note':'Completely free, including our filing assistance — offer valid for West Bengal customers who take any other service with us.',
+  'price.msme.badge':'Govt. fee: ₹0',
+  "price.msme.note":"The Udyam government registration itself has no government fee. Our assistance fee (if you'd like us to file it for you) is confirmed upfront on WhatsApp.",
   'price.dsc.note':'Cost may vary if a physical token is required.',
   'price.ptax.note':'Excludes minimal state government fees.',
   'price.itr.badge':'Due Date Over',
@@ -1644,7 +1961,7 @@ en: {
   'consult.step1Label':'Service','consult.step2Label':'Your Details','consult.step3Label':'Send Request',
   'consult.p1Title':'Which service(s) do you need?','consult.p1Sub':'Select one or more to continue.',
   'consult.selectedWord':'service(s) selected',
-  'consult.msmeNote':'MSME (Udyam) Registration is FREE with any service — offer valid for West Bengal only.',
+  'consult.msmeNote':'Udyam (MSME) Registration is free on the government portal. We can guide you through it or handle it for a small assistance fee, confirmed upfront.',
   'consult.p2Title':'Your details','consult.p2Sub':'So our team can reach out with the right guidance.',
   'consult.labelName':'Full name','consult.labelPhone':'Phone number','consult.labelEmail':'Email address','consult.labelBiz':'Business / company name (if any)','consult.labelMsg':'Anything specific we should know?',
   'consult.placeholderName':'Your name','consult.placeholderPhone':'10-digit mobile number','consult.placeholderEmail':'you@example.com','consult.placeholderBiz':'e.g. your business or brand name','consult.placeholderMsg':'Tell us a bit about your business or requirement…',
@@ -1686,18 +2003,14 @@ en: {
   'step1.title':'Share Your Requirement','step1.desc':'Pick a service and send us your details — takes under a minute.',
   'step2.title':'Free Consultation','step2.desc':'Our team calls you back to understand your needs and confirm transparent pricing.',
   'step3.title':'Documentation','step3.desc':'We guide you on the documents needed and prepare all filings on your behalf.',
-  'step4.title':'Approval & Handover','step4.desc':'Once approved, we share your certificate/registration with you — job done.',
+  'step4.title':'Processing','step4.desc':'Your case is filed with the relevant department or portal and moves through review.',
+  'step5.title':'Updates','step5.desc':'Track progress against your Case ID, with updates sent to you on WhatsApp.',
+  'step6.title':'Completion','step6.desc':'Once approved, we share your certificate, filing confirmation or completed documents — job done.',
+  'caseid.title':'Your request. Your Case ID. Your updates.','caseid.desc':'Every request gets a unique Onnmore Case ID the moment you submit it. Use it to check your status, follow progress, and talk to our team without repeating yourself.','caseid.track':'Track My Case',
   'reviews.sectionLabel':'What clients say','reviews.title':'Customer Reviews',
-  'reviews.tagline1':'Made with care, for','reviews.taglineHl':'growing businesses',
-  'reviews.sample1':"ONNMORE understood our business model in depth and helped us build a professional website and streamline our operations. Their support has been exceptional.",
-  'reviews.sample2':"Their documentation and compliance support made the entire process smooth and hassle-free. Much more organized compared to other consultants we worked with.",
-  'reviews.sample3':"ONNMORE's market research report was detailed, insightful, and exactly what we needed to make the right investment decision. Far better than other generic reports.",
-  'reviews.sample4':"From company registration to GST and other compliance, ONNMORE took care of everything. One-stop solution for all business needs! Highly recommended.",
-  'reviews.sample5':"Compared to others, ONNMORE provides practical solutions, clear guidance, and ongoing support. They genuinely care about our business growth.",
-  'reviews.sample6':"They helped us prepare a solid business plan and financial model. Professional, timely, and very cooperative team. Better value than any other consultant.",
-  'reviews.sample7':"ONNMORE guided us through MSME registration and funding support. Their team's knowledge and network helped us get results quickly.",
-  'reviews.sample8':"What sets ONNMORE apart is their response time and dedication. Other firms take weeks, but they deliver on time with complete accuracy.",
-  'reviews.stat1':'Clients We Worked With','reviews.stat2':'Work Delivered On Time','reviews.stat3':'Our Rating',
+  'reviews.tagline1':'Trusted by businesses,','reviews.taglineHl':'built through real work',
+  'reviews.stat1':'Businesses Served','reviews.stat2':'Applications Assisted','reviews.stat3':'Years of Experience','reviews.stat4':'Customer Rating','reviews.stat5':'Cases Completed',
+  'reviews.emptyState':"We're still building our public review collection — this space will show real, verified customer feedback as it comes in. Worked with us recently? We'd love to hear from you.",'reviews.emptyCta':'Share Your Feedback',
   'faq.sectionLabel':'Have questions?','faq.title':'Frequently Asked Questions',
   'faq.q1':'How long does company registration take?','faq.a1':'Timelines depend on document readiness and government processing times. Once you share your requirement, our team will give you a realistic timeline for your specific case.',
   'faq.q2':'What documents will I need?','faq.a2':"This varies by service — for most registrations you'll need basic ID and address proof, photographs, and business-related documents. We'll send you an exact checklist once you tell us which service you need.",
@@ -1740,9 +2053,9 @@ bn: {
   'offer.text':'আমাদের সাথে যেকোনো পরিষেবা নিন এবং আপনার Udyam/MSME নিবন্ধন সম্পূর্ণ বিনামূল্যে পান!','offer.note':'(অফারটি শুধুমাত্র পশ্চিমবঙ্গের গ্রাহকদের জন্য প্রযোজ্য)',
   'nav.services':'পরিষেবা','nav.pricing':'মূল্য তালিকা','nav.getStarted':'শুরু করুন','nav.whyUs':'কেন আমরা','nav.reviews':'রিভিউ','nav.faq':'প্রশ্নোত্তর','nav.contact':'যোগাযোগ','nav.contactBtn':'যোগাযোগ','nav.consultBtn':'বিনামূল্যে পরামর্শ নিন',
   'hero.eyebrow':'পশ্চিমবঙ্গ · ব্যবসা নিবন্ধন ও কমপ্লায়েন্স বিশেষজ্ঞ',
-  'hero.title1':'আপনার ব্যবসা শুরু, লাইসেন্স ও পরিচালনা করুন','hero.titleHl':'সঠিক উপায়ে।',
-  'hero.lead':'প্রাইভেট লিমিটেড কোম্পানি নিবন্ধন থেকে শুরু করে GST, MSME, লাইসেন্স, ট্যাক্স ফাইলিং এবং পেটেন্ট পর্যন্ত — সমস্ত কাগজপত্র আমরা সামলাই, যাতে আপনি আপনার ব্যবসায় মনোযোগ দিতে পারেন, সমগ্র পশ্চিমবঙ্গ জুড়ে। ১০০% অনলাইন, সম্পূর্ণ ব্যাখ্যা সহ, হোয়াটসঅ্যাপে নিশ্চিত করা হয়।',
-  'hero.ctaConsult':'বিনামূল্যে পরামর্শ নিন','hero.ctaWa':'হোয়াটসঅ্যাপে যোগাযোগ করুন',
+  'hero.title1':'আপনার ব্যবসা শুরু করুন।','hero.titleHl':'কাগজপত্র আমরা সামলাব।',
+  'hero.lead':'ব্যবসা নিবন্ধন, লাইসেন্স, GST, ট্যাক্স এবং কমপ্লায়েন্স — উদ্যোক্তা ও ক্রমবর্ধমান ব্যবসার জন্য সহজভাবে।',
+  'hero.ctaConsult':'শুরু করুন','hero.ctaUnsure':'কী দরকার নিশ্চিত নন?','hero.ctaWa':'হোয়াটসঅ্যাপে যোগাযোগ করুন',
   'hero.trust1':'বিশেষজ্ঞ দ্বারা পরিচালিত','hero.trust2':'১০০% অনলাইন প্রক্রিয়া','hero.trust3':'স্বচ্ছ মূল্য','hero.trust4':'নিবেদিত সহায়তা',
   'feat1':'সমস্ত নথিপত্র সামলানো হয়','feat2':'দ্রুত সম্পন্ন','feat3':'হোয়াটসঅ্যাপে আপডেট',
   'services.sectionLabel':'আমরা যা করি','services.title':'আমাদের পরিষেবাসমূহ','services.pill':'স্পষ্ট মূল্য · কোনো লুকানো চার্জ নেই','services.swipeHint':'সব পরিষেবা দেখতে সোয়াইপ করুন',
@@ -1751,7 +2064,7 @@ bn: {
   'svc.trade':'ট্রেড লাইসেন্স','svc.trade.desc':'সঠিক নথিপত্র ও আবেদন ফাইলিং সহ পৌরসভার ট্রেড লাইসেন্স সম্পন্ন করুন — পশ্চিমবঙ্গের যেকোনো এলাকায় ব্যবসা বৈধভাবে চালানোর জন্য প্রয়োজনীয়।',
   'svc.food':'ফুড লাইসেন্স (FSSAI)','svc.food.desc':'রেস্তোরাঁ, ক্লাউড কিচেন, ক্যাফে এবং যেকোনো আকারের খাদ্য ব্যবসার জন্য FSSAI নিবন্ধন ও লাইসেন্সিং।',
   'svc.gst':'GST নিবন্ধন','svc.gst.desc':'নতুন GST নিবন্ধন, সংশোধন এবং নির্দেশনা, যাতে আপনার ব্যবসা প্রথম দিন থেকেই কমপ্লায়েন্ট থাকে।',
-  'svc.msme':'MSME (উদ্যম) নিবন্ধন','svc.msme.desc':'মাইক্রো, স্মল বা মিডিয়াম এন্টারপ্রাইজ হিসেবে নিবন্ধন করুন এবং সরকারি স্কিম, ভর্তুকি ও সহজ ঋণের সুবিধা পান।','svc.msme.badge':'ফ্রি','svc.msme.badgeNote':'আমাদের সাথে যেকোনো পরিষেবা নিলে সম্পূর্ণ বিনামূল্যে — অফারটি শুধুমাত্র পশ্চিমবঙ্গের জন্য প্রযোজ্য।',
+  'svc.msme':'MSME (উদ্যম) নিবন্ধন','svc.msme.desc':'মাইক্রো, স্মল বা মিডিয়াম এন্টারপ্রাইজ হিসেবে নিবন্ধন করুন এবং সরকারি স্কিম, ভর্তুকি ও সহজ ঋণের সুবিধা পান।','svc.msme.badge':'সরকারিভাবে ফ্রি','svc.msme.badgeNote':'Udyam (MSME) নিবন্ধন সরকারি পোর্টালে সম্পূর্ণ বিনামূল্যে — আমরা সাহায্য করলে ফি হোয়াটসঅ্যাপে আগে থেকে জানানো হয়।',
   'svc.dsc':'ডিজিটাল স্বাক্ষর সার্টিফিকেট (DSC)','svc.dsc.desc':'কোম্পানি ফাইলিং, GST, টেন্ডার ও ই-টেন্ডারিং-এর জন্য ক্লাস ৩ DSC — সম্পূর্ণ নথিপত্র সহায়তাসহ দ্রুত ইস্যু করা হয়।',
   'svc.ptax':'পেশাগত কর (P.Tax)','svc.ptax.desc':'নিয়োগকর্তা ও কর্মচারীর পেশাগত কর নিবন্ধন এবং রিটার্ন ফাইলিং, সঠিক ও সময়মতো সম্পন্ন করা হয়।',
   'svc.itr':'আয়কর রিটার্ন (ITR)','svc.itr.desc':'ব্যক্তি, পেশাদার এবং ব্যবসার জন্য নির্ভুল ITR ফাইলিং — কমপ্লায়েন্ট থাকতে এবং প্রাপ্য সুবিধা দাবি করতে সাহায্য সহ।',
@@ -1768,8 +2081,8 @@ bn: {
   'price.trade.note':'পৌরসভা/সরকারি লাইসেন্স ফি অন্তর্ভুক্ত নয়, যা ব্যবসার ধরন অনুযায়ী পরিবর্তিত হয়।',
   'price.food.note':'মৌলিক নিবন্ধন; টার্নওভার অনুযায়ী রাজ্য/কেন্দ্রীয় লাইসেন্সের দাম আলাদা।',
   'price.gst.note':'GSTIN বরাদ্দ সরকার থেকে বিনামূল্যে — শুধুমাত্র আমাদের ফাইলিং সহায়তার জন্য অর্থ প্রদান করবেন।',
-  'price.msme.badge':'ফ্রি',
-  'price.msme.note':'সম্পূর্ণ বিনামূল্যে, আমাদের ফাইলিং সহায়তা সহ — যেসব গ্রাহক আমাদের সাথে অন্য কোনো পরিষেবা নেন তাদের জন্য এই অফারটি শুধুমাত্র পশ্চিমবঙ্গে প্রযোজ্য।',
+  'price.msme.badge':'সরকারি ফি: ₹0',
+  'price.msme.note':'Udyam সরকারি নিবন্ধনের কোনো সরকারি ফি নেই। আমরা ফাইল করে দিলে আমাদের সহায়তা ফি হোয়াটসঅ্যাপে আগে থেকেই জানানো হয়।',
   'price.dsc.note':'শারীরিক টোকেন প্রয়োজন হলে তার খরচ আলাদা হতে পারে।',
   'price.ptax.note':'রাজ্য সরকারের সামান্য ফি অন্তর্ভুক্ত নয়।',
   'price.itr.badge':'শেষ তারিখ পার হয়ে গেছে',
@@ -1786,7 +2099,7 @@ bn: {
   'consult.step1Label':'পরিষেবা','consult.step2Label':'আপনার তথ্য','consult.step3Label':'অনুরোধ পাঠান',
   'consult.p1Title':'আপনার কোন পরিষেবা(গুলি) প্রয়োজন?','consult.p1Sub':'চালিয়ে যেতে একটি বা একাধিক নির্বাচন করুন।',
   'consult.selectedWord':'টি পরিষেবা নির্বাচিত',
-  'consult.msmeNote':'আমাদের সাথে যেকোনো পরিষেবা নিলে MSME (উদ্যম) নিবন্ধন সম্পূর্ণ বিনামূল্যে — অফারটি শুধুমাত্র পশ্চিমবঙ্গের জন্য প্রযোজ্য।',
+  'consult.msmeNote':'Udyam (MSME) নিবন্ধন সরকারি পোর্টালে বিনামূল্যে। আমরা সহায়তা করলে ফি আগে থেকেই জানিয়ে দেওয়া হয়।',
   'consult.p2Title':'আপনার তথ্য','consult.p2Sub':'যাতে আমাদের টিম সঠিক নির্দেশনা নিয়ে যোগাযোগ করতে পারে।',
   'consult.labelName':'পুরো নাম','consult.labelPhone':'ফোন নম্বর','consult.labelEmail':'ইমেইল ঠিকানা','consult.labelBiz':'ব্যবসা / কোম্পানির নাম (যদি থাকে)','consult.labelMsg':'আমাদের বিশেষভাবে জানার মতো কিছু আছে কি?',
   'consult.placeholderName':'আপনার নাম','consult.placeholderPhone':'১০-সংখ্যার মোবাইল নম্বর','consult.placeholderEmail':'you@example.com','consult.placeholderBiz':'যেমন আপনার ব্যবসা বা ব্র্যান্ডের নাম','consult.placeholderMsg':'আপনার ব্যবসা বা প্রয়োজন সম্পর্কে কিছু বলুন…',
@@ -1828,18 +2141,14 @@ bn: {
   'step1.title':'আপনার প্রয়োজন জানান','step1.desc':'একটি পরিষেবা বেছে নিন এবং আমাদের কাছে তথ্য পাঠান — এক মিনিটেরও কম সময় লাগে।',
   'step2.title':'বিনামূল্যে পরামর্শ','step2.desc':'আমাদের টিম আপনার প্রয়োজন বুঝতে এবং স্বচ্ছ মূল্য নিশ্চিত করতে আপনাকে কল করবে।',
   'step3.title':'নথিপত্র','step3.desc':'প্রয়োজনীয় নথিপত্র সম্পর্কে আমরা আপনাকে নির্দেশনা দিই এবং আপনার পক্ষে সমস্ত ফাইলিং প্রস্তুত করি।',
-  'step4.title':'অনুমোদন ও হস্তান্তর','step4.desc':'অনুমোদিত হলে, আমরা আপনার সার্টিফিকেট/নিবন্ধন আপনার সাথে শেয়ার করি — কাজ সম্পন্ন।',
+  'step4.title':'প্রসেসিং','step4.desc':'আপনার কেস সংশ্লিষ্ট দপ্তর বা পোর্টালে ফাইল করা হয় এবং পর্যালোচনার মধ্য দিয়ে যায়।',
+  'step5.title':'আপডেট','step5.desc':'আপনার কেস আইডি অনুযায়ী অগ্রগতি ট্র্যাক করুন, হোয়াটসঅ্যাপে আপডেট সহ।',
+  'step6.title':'সম্পন্ন','step6.desc':'অনুমোদিত হলে, আমরা আপনার সার্টিফিকেট, ফাইলিং নিশ্চিতকরণ বা সম্পন্ন নথি শেয়ার করি — কাজ শেষ।',
+  'caseid.title':'আপনার অনুরোধ। আপনার কেস আইডি। আপনার আপডেট।','caseid.desc':'সাবমিট করার সাথে সাথে প্রতিটি অনুরোধ একটি অনন্য Onnmore কেস আইডি পায়। এটি ব্যবহার করে স্ট্যাটাস দেখুন, অগ্রগতি অনুসরণ করুন এবং পুনরাবৃত্তি ছাড়াই আমাদের সাথে কথা বলুন।','caseid.track':'আমার কেস ট্র্যাক করুন',
   'reviews.sectionLabel':'গ্রাহকরা যা বলেন','reviews.title':'গ্রাহকদের মতামত',
-  'reviews.tagline1':'যত্নের সাথে তৈরি, যাদের জন্য','reviews.taglineHl':'ক্রমবর্ধমান ব্যবসাগুলো',
-  'reviews.sample1':"ONNMORE understood our business model in depth and helped us build a professional website and streamline our operations. Their support has been exceptional.",
-  'reviews.sample2':"Their documentation and compliance support made the entire process smooth and hassle-free. Much more organized compared to other consultants we worked with.",
-  'reviews.sample3':"ONNMORE's market research report was detailed, insightful, and exactly what we needed to make the right investment decision. Far better than other generic reports.",
-  'reviews.sample4':"From company registration to GST and other compliance, ONNMORE took care of everything. One-stop solution for all business needs! Highly recommended.",
-  'reviews.sample5':"Compared to others, ONNMORE provides practical solutions, clear guidance, and ongoing support. They genuinely care about our business growth.",
-  'reviews.sample6':"They helped us prepare a solid business plan and financial model. Professional, timely, and very cooperative team. Better value than any other consultant.",
-  'reviews.sample7':"ONNMORE guided us through MSME registration and funding support. Their team's knowledge and network helped us get results quickly.",
-  'reviews.sample8':"What sets ONNMORE apart is their response time and dedication. Other firms take weeks, but they deliver on time with complete accuracy.",
-  'reviews.stat1':'আমাদের সাথে কাজ করা গ্রাহক','reviews.stat2':'সময়মতো সম্পন্ন কাজ','reviews.stat3':'আমাদের রেটিং',
+  'reviews.tagline1':'ব্যবসার আস্থায়,','reviews.taglineHl':'বাস্তব কাজের মাধ্যমে',
+  'reviews.stat1':'ব্যবসা সেবা পেয়েছে','reviews.stat2':'আবেদন সহায়তা','reviews.stat3':'বছরের অভিজ্ঞতা','reviews.stat4':'গ্রাহক রেটিং','reviews.stat5':'কেস সম্পন্ন',
+  'reviews.emptyState':'আমরা এখনো আমাদের রিভিউ সংগ্রহ তৈরি করছি — সত্যিকারের, যাচাইকৃত গ্রাহক মতামত এখানে যোগ হবে। সম্প্রতি আমাদের সাথে কাজ করেছেন? আপনার মতামত জানাতে চাই।','reviews.emptyCta':'আপনার মতামত জানান',
   'faq.sectionLabel':'প্রশ্ন আছে?','faq.title':'প্রায়শই জিজ্ঞাসিত প্রশ্ন',
   'faq.q1':'কোম্পানি নিবন্ধন করতে কত সময় লাগে?','faq.a1':'সময়সীমা নথিপত্র প্রস্তুতি এবং সরকারি প্রক্রিয়াকরণের সময়ের উপর নির্ভর করে। আপনার প্রয়োজন জানানোর পর, আমাদের টিম আপনার নির্দিষ্ট ক্ষেত্রে বাস্তবসম্মত সময়সীমা জানাবে।',
   'faq.q2':'আমার কী কী নথিপত্র প্রয়োজন হবে?','faq.a2':'এটি পরিষেবা অনুযায়ী পরিবর্তিত হয় — বেশিরভাগ নিবন্ধনের জন্য আপনার মৌলিক পরিচয়পত্র ও ঠিকানা প্রমাণ, ছবি এবং ব্যবসা সম্পর্কিত নথিপত্র প্রয়োজন। আপনি কোন পরিষেবা চান তা জানানোর পর আমরা সঠিক তালিকা পাঠাব।',
@@ -1881,9 +2190,9 @@ hi: {
   'offer.text':'हमारे साथ कोई भी सेवा लें और अपना Udyam/MSME पंजीकरण बिल्कुल मुफ़्त पाएं!','offer.note':'(यह ऑफर केवल पश्चिम बंगाल के ग्राहकों के लिए मान्य है)',
   'nav.services':'सेवाएं','nav.pricing':'मूल्य सूची','nav.getStarted':'शुरू करें','nav.whyUs':'हमें क्यों चुनें','nav.reviews':'समीक्षाएं','nav.faq':'सामान्य प्रश्न','nav.contact':'संपर्क करें','nav.contactBtn':'संपर्क करें','nav.consultBtn':'मुफ़्त परामर्श लें',
   'hero.eyebrow':'पश्चिम बंगाल · व्यवसाय पंजीकरण और अनुपालन विशेषज्ञ',
-  'hero.title1':'अपना व्यवसाय शुरू करें, लाइसेंस लें और चलाएं','hero.titleHl':'सही तरीके से।',
-  'hero.lead':'प्राइवेट लिमिटेड कंपनी पंजीकरण से लेकर GST, MSME, लाइसेंस, टैक्स फाइलिंग और पेटेंट तक — हम सारा कागज़ी काम संभालते हैं, ताकि आप पूरे पश्चिम बंगाल में अपने व्यवसाय पर ध्यान दे सकें। 100% ऑनलाइन, पूरी तरह समझाया गया, व्हाट्सएप पर पुष्टि किया गया।',
-  'hero.ctaConsult':'मुफ़्त परामर्श लें','hero.ctaWa':'व्हाट्सएप पर संपर्क करें',
+  'hero.title1':'अपना व्यवसाय शुरू करें।','hero.titleHl':'कागज़ी काम हम संभालेंगे।',
+  'hero.lead':'व्यवसाय पंजीकरण, लाइसेंस, GST, टैक्स और अनुपालन — उद्यमियों और बढ़ते व्यवसायों के लिए आसान बनाया गया।',
+  'hero.ctaConsult':'शुरू करें','hero.ctaUnsure':'पक्का नहीं कि क्या चाहिए?','hero.ctaWa':'व्हाट्सएप पर संपर्क करें',
   'hero.trust1':'विशेषज्ञों द्वारा संभाला गया','hero.trust2':'100% ऑनलाइन प्रक्रिया','hero.trust3':'पारदर्शी मूल्य निर्धारण','hero.trust4':'समर्पित सहायता',
   'feat1':'सभी दस्तावेज़ीकरण संभाला गया','feat2':'तेज़ प्रोसेसिंग','feat3':'व्हाट्सएप पर अपडेट',
   'services.sectionLabel':'हम क्या संभालते हैं','services.title':'हमारी सेवाएं','services.pill':'स्पष्ट मूल्य निर्धारण · कोई छिपा शुल्क नहीं','services.swipeHint':'सभी सेवाएं देखने के लिए स्वाइप करें',
@@ -1892,7 +2201,7 @@ hi: {
   'svc.trade':'ट्रेड लाइसेंस','svc.trade.desc':'सही दस्तावेज़ीकरण और आवेदन फाइलिंग के साथ अपना नगरपालिका ट्रेड लाइसेंस प्राप्त करें — पश्चिम बंगाल में कहीं भी अधिकांश स्थानीय व्यवसाय चलाने के लिए आवश्यक।',
   'svc.food':'फूड लाइसेंस (FSSAI)','svc.food.desc':'रेस्टोरेंट, क्लाउड किचन, कैफे और हर आकार के फूड बिज़नेस के लिए FSSAI पंजीकरण और लाइसेंसिंग।',
   'svc.gst':'GST पंजीकरण','svc.gst.desc':'नया GST पंजीकरण, संशोधन और मार्गदर्शन, ताकि आपका व्यवसाय पहले दिन से ही अनुपालन में रहे।',
-  'svc.msme':'MSME (उद्यम) पंजीकरण','svc.msme.desc':'माइक्रो, स्मॉल या मीडियम एंटरप्राइज़ के रूप में पंजीकरण करें और सरकारी योजनाओं, सब्सिडी और आसान ऋण सुविधा का लाभ उठाएं।','svc.msme.badge':'फ्री','svc.msme.badgeNote':'हमारे साथ कोई भी सेवा लेने पर बिल्कुल मुफ़्त — यह ऑफर केवल पश्चिम बंगाल के लिए मान्य है।',
+  'svc.msme':'MSME (उद्यम) पंजीकरण','svc.msme.desc':'माइक्रो, स्मॉल या मीडियम एंटरप्राइज़ के रूप में पंजीकरण करें और सरकारी योजनाओं, सब्सिडी और आसान ऋण सुविधा का लाभ उठाएं।','svc.msme.badge':'सरकारी रूप से मुफ़्त','svc.msme.badgeNote':'Udyam (MSME) पंजीकरण सरकारी पोर्टल पर बिल्कुल मुफ़्त है — हमारी सहायता शुल्क, यदि आप चाहें, WhatsApp पर पहले से बता दी जाती है।',
   'svc.dsc':'डिजिटल सिग्नेचर सर्टिफिकेट (DSC)','svc.dsc.desc':'कंपनी फाइलिंग, GST, टेंडर और ई-टेंडरिंग के लिए क्लास 3 DSC — पूर्ण दस्तावेज़ सहायता के साथ जल्दी जारी किया जाता है।',
   'svc.ptax':'प्रोफेशनल टैक्स (P.Tax)','svc.ptax.desc':'नियोक्ता और कर्मचारी का प्रोफेशनल टैक्स पंजीकरण और रिटर्न फाइलिंग, सही और समय पर संभाला गया।',
   'svc.itr':'इनकम टैक्स रिटर्न (ITR)','svc.itr.desc':'व्यक्तियों, पेशेवरों और व्यवसायों के लिए सटीक ITR फाइलिंग — अनुपालन में रहने और अपने हक का दावा करने में मदद के साथ।',
@@ -1909,8 +2218,8 @@ hi: {
   'price.trade.note':'नगरपालिका/सरकारी लाइसेंस शुल्क शामिल नहीं है, जो व्यवसाय श्रेणी के अनुसार बदलता है।',
   'price.food.note':'बेसिक पंजीकरण; टर्नओवर के अनुसार राज्य/केंद्रीय लाइसेंस की कीमत अलग होती है।',
   'price.gst.note':'GSTIN आवंटन सरकार की ओर से मुफ़्त है — आप केवल हमारी फाइलिंग सहायता के लिए भुगतान करते हैं।',
-  'price.msme.badge':'फ्री',
-  'price.msme.note':'हमारी फाइलिंग सहायता सहित पूरी तरह मुफ़्त — यह ऑफर उन पश्चिम बंगाल ग्राहकों के लिए है जो हमारे साथ कोई अन्य सेवा लेते हैं।',
+  'price.msme.badge':'सरकारी शुल्क: ₹0',
+  'price.msme.note':'Udyam सरकारी पंजीकरण का कोई सरकारी शुल्क नहीं है। यदि हम आपके लिए फाइल करें तो हमारी सहायता शुल्क WhatsApp पर पहले से बता दी जाती है।',
   'price.dsc.note':'भौतिक टोकन आवश्यक होने पर उसकी लागत अलग हो सकती है।',
   'price.ptax.note':'राज्य सरकार का न्यूनतम शुल्क शामिल नहीं है।',
   'price.itr.badge':'अंतिम तिथि समाप्त',
@@ -1927,7 +2236,7 @@ hi: {
   'consult.step1Label':'सेवा','consult.step2Label':'आपका विवरण','consult.step3Label':'अनुरोध भेजें',
   'consult.p1Title':'आपको कौन-कौन सी सेवाएं चाहिए?','consult.p1Sub':'जारी रखने के लिए एक या अधिक चुनें।',
   'consult.selectedWord':'सेवाएं चुनी गईं',
-  'consult.msmeNote':'हमारे साथ कोई भी सेवा लेने पर MSME (उद्यम) पंजीकरण बिल्कुल मुफ़्त — यह ऑफर केवल पश्चिम बंगाल के लिए मान्य है।',
+  'consult.msmeNote':'Udyam (MSME) पंजीकरण सरकारी पोर्टल पर मुफ़्त है। हम मदद करें तो शुल्क पहले से बता दिया जाता है।',
   'consult.p2Title':'आपका विवरण','consult.p2Sub':'ताकि हमारी टीम सही मार्गदर्शन के साथ आपसे संपर्क कर सके।',
   'consult.labelName':'पूरा नाम','consult.labelPhone':'फ़ोन नंबर','consult.labelEmail':'ईमेल पता','consult.labelBiz':'व्यवसाय / कंपनी का नाम (यदि कोई हो)','consult.labelMsg':'क्या कुछ खास है जो हमें जानना चाहिए?',
   'consult.placeholderName':'आपका नाम','consult.placeholderPhone':'10 अंकों का मोबाइल नंबर','consult.placeholderEmail':'you@example.com','consult.placeholderBiz':'जैसे आपके व्यवसाय या ब्रांड का नाम','consult.placeholderMsg':'अपने व्यवसाय या आवश्यकता के बारे में थोड़ा बताएं…',
@@ -1969,18 +2278,14 @@ hi: {
   'step1.title':'अपनी आवश्यकता बताएं','step1.desc':'एक सेवा चुनें और हमें अपना विवरण भेजें — एक मिनट से भी कम समय लगता है।',
   'step2.title':'मुफ़्त परामर्श','step2.desc':'हमारी टीम आपकी आवश्यकताओं को समझने और पारदर्शी मूल्य निर्धारण की पुष्टि करने के लिए आपको वापस कॉल करती है।',
   'step3.title':'दस्तावेज़ीकरण','step3.desc':'हम आपको आवश्यक दस्तावेज़ों के बारे में मार्गदर्शन देते हैं और आपकी ओर से सभी फाइलिंग तैयार करते हैं।',
-  'step4.title':'स्वीकृति और सुपुर्दगी','step4.desc':'स्वीकृति मिलने पर, हम आपका प्रमाणपत्र/पंजीकरण आपके साथ साझा करते हैं — काम पूरा।',
+  'step4.title':'प्रोसेसिंग','step4.desc':'आपका केस संबंधित विभाग या पोर्टल पर फाइल किया जाता है और समीक्षा से गुज़रता है।',
+  'step5.title':'अपडेट','step5.desc':'अपनी केस आईडी के आधार पर प्रगति ट्रैक करें, WhatsApp पर अपडेट के साथ।',
+  'step6.title':'पूर्णता','step6.desc':'स्वीकृति मिलने पर, हम आपका प्रमाणपत्र, फाइलिंग पुष्टि या पूर्ण दस्तावेज़ साझा करते हैं — काम पूरा।',
+  'caseid.title':'आपका अनुरोध। आपकी केस आईडी। आपके अपडेट।','caseid.desc':'सबमिट करते ही हर अनुरोध को एक यूनीक Onnmore केस आईडी मिलती है। इससे आप स्टेटस देख सकते हैं, प्रगति ट्रैक कर सकते हैं और दोबारा बताए बिना हमारी टीम से बात कर सकते हैं।','caseid.track':'मेरा केस ट्रैक करें',
   'reviews.sectionLabel':'ग्राहक क्या कहते हैं','reviews.title':'ग्राहक समीक्षाएं',
-  'reviews.tagline1':'देखभाल के साथ बनाया गया, उन','reviews.taglineHl':'बढ़ते व्यवसायों के लिए',
-  'reviews.sample1':"ONNMORE understood our business model in depth and helped us build a professional website and streamline our operations. Their support has been exceptional.",
-  'reviews.sample2':"Their documentation and compliance support made the entire process smooth and hassle-free. Much more organized compared to other consultants we worked with.",
-  'reviews.sample3':"ONNMORE's market research report was detailed, insightful, and exactly what we needed to make the right investment decision. Far better than other generic reports.",
-  'reviews.sample4':"From company registration to GST and other compliance, ONNMORE took care of everything. One-stop solution for all business needs! Highly recommended.",
-  'reviews.sample5':"Compared to others, ONNMORE provides practical solutions, clear guidance, and ongoing support. They genuinely care about our business growth.",
-  'reviews.sample6':"They helped us prepare a solid business plan and financial model. Professional, timely, and very cooperative team. Better value than any other consultant.",
-  'reviews.sample7':"ONNMORE guided us through MSME registration and funding support. Their team's knowledge and network helped us get results quickly.",
-  'reviews.sample8':"What sets ONNMORE apart is their response time and dedication. Other firms take weeks, but they deliver on time with complete accuracy.",
-  'reviews.stat1':'हमारे साथ काम करने वाले ग्राहक','reviews.stat2':'समय पर पूरा किया गया काम','reviews.stat3':'हमारी रेटिंग',
+  'reviews.tagline1':'व्यवसायों का भरोसा,','reviews.taglineHl':'वास्तविक काम से बना',
+  'reviews.stat1':'सेवा प्राप्त व्यवसाय','reviews.stat2':'सहायता प्राप्त आवेदन','reviews.stat3':'वर्षों का अनुभव','reviews.stat4':'ग्राहक रेटिंग','reviews.stat5':'पूर्ण किए गए केस',
+  'reviews.emptyState':'हम अभी अपना समीक्षा संग्रह बना रहे हैं — असली, सत्यापित ग्राहक फीडबैक यहाँ आता रहेगा। हाल में हमारे साथ काम किया? हमें आपकी राय जाननी है।','reviews.emptyCta':'अपनी राय साझा करें',
   'faq.sectionLabel':'कोई सवाल है?','faq.title':'अक्सर पूछे जाने वाले प्रश्न',
   'faq.q1':'कंपनी पंजीकरण में कितना समय लगता है?','faq.a1':'समय-सीमा दस्तावेज़ों की तैयारी और सरकारी प्रोसेसिंग समय पर निर्भर करती है। एक बार जब आप अपनी आवश्यकता बता देंगे, हमारी टीम आपके मामले के लिए एक यथार्थवादी समय-सीमा देगी।',
   'faq.q2':'मुझे कौन से दस्तावेज़ चाहिए होंगे?','faq.a2':'यह सेवा के अनुसार अलग होता है — अधिकांश पंजीकरणों के लिए आपको बुनियादी पहचान व पते का प्रमाण, फोटो और व्यवसाय संबंधी दस्तावेज़ चाहिए होंगे। आप कौन सी सेवा चाहते हैं यह बताने के बाद हम आपको सही सूची भेजेंगे।',
@@ -2094,10 +2399,22 @@ function initials(name) {
 
 function buildTestimonials() {
   const grid = document.getElementById('testiGrid');
+  if (!TESTIMONIALS.length) {
+    grid.classList.add('testi-empty-wrap');
+    grid.style.animation = 'none';
+    grid.style.width = '100%';
+    grid.innerHTML = `
+      <div class="testi-empty">
+        <i class="ri-chat-quote-line"></i>
+        <p data-i18n="reviews.emptyState">We're still building our public review collection — this space will show real, verified customer feedback as it comes in. Worked with us recently? We'd love to hear from you.</p>
+        <a href="https://wa.me/919477110971" id="reviewsWaLink" class="btn ghost" target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i> <span data-i18n="reviews.emptyCta">Share Your Feedback</span></a>
+      </div>`;
+    return;
+  }
   const cardHtml = (r, hidden) => `
     <div class="testi-card"${hidden ? ' aria-hidden="true"' : ''}>
       <div class="testi-quote-ico">&ldquo;</div>
-      <p class="testi-quote" data-i18n="${r.quoteKey}">${t(r.quoteKey)}</p>
+      <p class="testi-quote">${r.quote}</p>
       <div class="testi-stars">${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}</div>
       <div class="testi-divider"></div>
       <div class="testi-head">
@@ -2363,7 +2680,7 @@ function ckTrack(eventName, params) {
 function waLink(msg) { return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`; }
 function updateWaLinks() {
   const msg = t('wa.defaultMsg');
-  ['heroWaLink','faqWaLink','contactWaLink','footWaLink','mnavWaLink','fabWaLink'].forEach(id => {
+  ['heroWaLink','faqWaLink','contactWaLink','footWaLink','mnavWaLink','fabWaLink','reviewsWaLink'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.href = waLink(msg);
   });
@@ -2419,7 +2736,7 @@ function submitWaModal(event) {
 
 /* Intercepts every WhatsApp trigger's click so the modal opens first. */
 function initWaModalTriggers() {
-  ['heroWaLink','faqWaLink','contactWaLink','footWaLink','mnavWaLink','fabWaLink'].forEach(id => {
+  ['heroWaLink','faqWaLink','contactWaLink','footWaLink','mnavWaLink','fabWaLink','reviewsWaLink'].forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
     el.addEventListener('click', (e) => {
