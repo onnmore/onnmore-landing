@@ -299,9 +299,9 @@
     .hl { background: linear-gradient(92deg, var(--accent) 0%, var(--accent-light) 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
     /* ── PEN-WRITING QUOTE (replaces the old underline sweep) ── */
-    .hero-pen-quote { position:relative; display:flex; align-items:flex-end; min-height:1.7em; margin:10px 0 24px; }
+    .hero-pen-quote { position:relative; display:flex; align-items:flex-end; min-height:1.7em; margin:10px 0 24px; min-width:0; max-width:100%; overflow:hidden; }
     .pen-quote-measure { position:absolute; visibility:hidden; white-space:nowrap; pointer-events:none; left:0; top:0; }
-    .pen-quote-ink-wrap { display:inline-block; overflow:hidden; white-space:nowrap; width:0; vertical-align:bottom; }
+    .pen-quote-ink-wrap { display:inline-block; overflow:hidden; white-space:nowrap; width:0; max-width:100%; vertical-align:bottom; }
     .pen-quote-text, .pen-quote-measure {
       font-family:'Yellowtail', cursive; font-weight:400;
       font-size: clamp(28px, 4vw, 46px); line-height:1.4; white-space:nowrap;
@@ -2681,14 +2681,30 @@ function initHeroPenQuote() {
     const text = quotes[i % quotes.length];
     i++;
 
-    measure.textContent = text;
-    ink.textContent = text;
-    const targetWidth = measure.offsetWidth;
-
     inkWrap.style.transition = 'none';
     inkWrap.style.width = '0px';
     pen.style.transition = 'none';
     pen.style.transform = 'translateX(0)';
+
+    // Reset to the CSS-defined size, measure at that size, then shrink the
+    // font (not just clip it) if the quote is wider than the space we
+    // actually have — this is what stops long quotes from ever forcing the
+    // hero column, and the whole page, wider than the viewport.
+    measure.style.fontSize = '';
+    ink.style.fontSize = '';
+    measure.textContent = text;
+    ink.textContent = text;
+
+    const penGutter = 40; // room for the pen icon at the end of the line
+    const availableWidth = Math.max(80, wrap.clientWidth - penGutter);
+    let targetWidth = measure.offsetWidth;
+    if (targetWidth > availableWidth) {
+      const baseSize = parseFloat(window.getComputedStyle(measure).fontSize) || 28;
+      const scaledSize = Math.max(15, baseSize * (availableWidth / targetWidth));
+      measure.style.fontSize = scaledSize + 'px';
+      ink.style.fontSize = scaledSize + 'px';
+      targetWidth = measure.offsetWidth;
+    }
 
     if (reduceMotion) {
       inkWrap.style.width = targetWidth + 'px';
@@ -2729,7 +2745,14 @@ function initHeroPenQuote() {
     }
   });
 
-  playNext();
+  // Wait for the signature font to actually be loaded before the first
+  // measurement, so the very first quote isn't sized against a fallback
+  // font's (different) metrics.
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(playNext).catch(playNext);
+  } else {
+    playNext();
+  }
 }
 
 /* ══════════ HERO IMAGE CAROUSEL ══════════
