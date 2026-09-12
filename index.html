@@ -99,7 +99,7 @@
   <!-- ── FONTS ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Yellowtail&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
 
   <!-- ── FAVICON ── -->
@@ -196,8 +196,8 @@
     [data-theme="light"] svg text[fill="#ffffff"] { fill: var(--logo-fg); }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { overflow-x: hidden; scroll-behavior: smooth; font-size: 16px; }
-    body { margin: 0; padding: 0; background: var(--bg); color: var(--txt); font-family: Manrope, system-ui, sans-serif; line-height: 1.5; }
+    html { overflow-x: hidden; scroll-behavior: smooth; font-size: 16px; overscroll-behavior-x: none; }
+    body { margin: 0; padding: 0; background: var(--bg); color: var(--txt); font-family: Manrope, system-ui, sans-serif; line-height: 1.5; overflow-x: hidden; overscroll-behavior-x: none; width: 100%; }
     html[lang="bn"] body { font-family: 'Noto Sans Bengali', Manrope, system-ui, sans-serif; }
     html[lang="hi"] body { font-family: 'Noto Sans Devanagari', Manrope, system-ui, sans-serif; }
     a { color: inherit; text-decoration: none; }
@@ -212,7 +212,7 @@
     @media (prefers-reduced-motion: reduce) {
       .reveal { transition: opacity .01s linear !important; transform:none !important; }
       .hero-img-card { transition:none !important; }
-      .hero-grid > div:first-child::before, .hero h1 .hl::after { animation:none !important; }
+      .hero-grid > div:first-child::before { animation:none !important; }
     }
 
     .ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
@@ -297,15 +297,24 @@
     @keyframes heroGlowPulse { 0%,100%{ opacity:.55; transform:scale(1); } 50%{ opacity:1; transform:scale(1.08); } }
     h1 { font-size: clamp(34px, 5.8vw, 60px); line-height:1.05; margin:0 0 20px; font-weight:900; letter-spacing:-.5px; }
     .hl { background: linear-gradient(92deg, var(--accent) 0%, var(--accent-light) 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    /* Animated underline sweep, scoped to the hero headline only so it
-       doesn't leak into other places .hl is reused (e.g. testimonials). */
-    .hero h1 .hl { position:relative; display:inline-block; }
-    .hero h1 .hl::after {
-      content:''; position:absolute; left:1px; right:1px; bottom:-.05em; height:.12em; border-radius:2px;
-      background: linear-gradient(90deg, transparent, var(--accent-light), transparent);
-      background-size: 200% 100%; opacity:.6; animation: hlSweep 3.4s ease-in-out infinite;
+
+    /* ── PEN-WRITING QUOTE (replaces the old underline sweep) ── */
+    .hero-pen-quote { position:relative; display:flex; align-items:flex-end; min-height:1.7em; margin:10px 0 24px; }
+    .pen-quote-measure { position:absolute; visibility:hidden; white-space:nowrap; pointer-events:none; left:0; top:0; }
+    .pen-quote-ink-wrap { display:inline-block; overflow:hidden; white-space:nowrap; width:0; vertical-align:bottom; }
+    .pen-quote-text, .pen-quote-measure {
+      font-family:'Yellowtail', cursive; font-weight:400;
+      font-size: clamp(28px, 4vw, 46px); line-height:1.4; white-space:nowrap;
+      color: var(--accent-light); letter-spacing:.2px;
     }
-    @keyframes hlSweep { 0%{ background-position:0% 0; } 100%{ background-position:-200% 0; } }
+    .pen-icon { position:absolute; left:-4px; bottom:-2px; width:34px; height:34px; opacity:0; pointer-events:none; filter: drop-shadow(0 2px 4px rgba(0,0,0,.35)); }
+    .pen-icon.is-active { opacity:1; }
+    @media (prefers-reduced-motion: reduce) { .pen-icon { display:none !important; } }
+    @media (max-width:680px) {
+      .pen-quote-text, .pen-quote-measure { font-size: clamp(22px, 6.4vw, 32px); }
+      .pen-icon { width:26px; height:26px; left:-3px; bottom:-1px; }
+    }
+
     .hero-lead { font-size: clamp(15.5px, 2vw, 18px); color:var(--muted); line-height:1.7; margin:0 0 26px; max-width:520px; }
     .hero-cta { display:flex; gap:.75rem; flex-wrap:wrap; }
     .hero-trust { display:flex; flex-wrap:wrap; gap:1.2rem; margin-top:26px; padding-top:22px; border-top:1px solid var(--border); }
@@ -343,7 +352,7 @@
 
     .svc-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:15px; }
     @media (max-width: 680px) {
-      .svc-grid { display:flex; overflow-x:auto; scroll-snap-type:x proximity; gap:12px; padding:2px 16px 14px; margin:0 -16px; -webkit-overflow-scrolling:touch; }
+      .svc-grid { display:flex; overflow-x:auto; scroll-snap-type:x proximity; gap:12px; padding:2px 16px 14px; width:100vw; margin-left:calc(-50vw + 50%); margin-right:calc(-50vw + 50%); -webkit-overflow-scrolling:touch; }
       .svc-grid::-webkit-scrollbar { height:6px; }
       .svc-grid::-webkit-scrollbar-thumb { background: var(--border-md); border-radius:10px; }
       .svc-card { flex:0 0 78vw; max-width:290px; scroll-snap-align:start; }
@@ -958,6 +967,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="badge"><i class="ri-map-pin-2-fill"></i> <span data-i18n="hero.eyebrow">West Bengal · Business Registration & Compliance Experts</span></span>
         </div>
         <h1 id="hero-h1"><span data-i18n="hero.title1">Start Your Business.</span> <span class="hl" data-i18n="hero.titleHl">We'll Handle the Paperwork.</span></h1>
+        <div class="hero-pen-quote" aria-hidden="true">
+          <span class="pen-quote-measure" id="penQuoteMeasure"></span>
+          <span class="pen-quote-ink-wrap" id="penQuoteInkWrap"><span class="pen-quote-text" id="penQuoteInk"></span></span>
+          <svg class="pen-icon" id="penIcon" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+            <g transform="rotate(-38 6 29)">
+              <rect x="3" y="1" width="7" height="6" rx="1.5" fill="#4a4f5c"/>
+              <rect x="3" y="7" width="7" height="18" rx="1" fill="#1c1f26"/>
+              <rect x="3" y="18" width="7" height="3" fill="#d9b34a"/>
+              <polygon points="3,25 10,25 6.5,32" fill="#e3c368"/>
+              <polygon points="4.6,25 8.4,25 6.5,29.6" fill="#8a6a20"/>
+              <line x1="6.5" y1="25.5" x2="6.5" y2="30.5" stroke="#5c451a" stroke-width="0.5"/>
+            </g>
+          </svg>
+        </div>
         <p class="hero-lead" data-i18n="hero.lead">Business registration, licenses, GST, tax and compliance — simplified for entrepreneurs and growing businesses.</p>
         <div class="hero-cta">
           <a href="#consult" class="btn primary"><i class="ri-file-list-3-line"></i> <span data-i18n="hero.ctaConsult">Get Started</span></a>
@@ -2625,6 +2648,90 @@ function initHeroTilt() {
   window.addEventListener('resize', () => { rect = null; });
 }
 
+/* ══════════ HERO PEN-WRITING QUOTE ══════════
+   Cycles a small set of business/education quotes in a signature-style
+   script font, "written" left-to-right by a moving pen icon. Uses a hidden
+   measuring span to size each quote precisely (so it always fits on one
+   line), then animates an overflow-clipped ink wrapper's width alongside
+   the pen icon's transform. Falls back to an instant reveal (no pen) when
+   the visitor prefers reduced motion. */
+function initHeroPenQuote() {
+  const wrap = document.querySelector('.hero-pen-quote');
+  const measure = document.getElementById('penQuoteMeasure');
+  const inkWrap = document.getElementById('penQuoteInkWrap');
+  const ink = document.getElementById('penQuoteInk');
+  const pen = document.getElementById('penIcon');
+  if (!wrap || !measure || !inkWrap || !ink || !pen) return;
+
+  const quotes = [
+    "Do the paperwork today, thank yourself tomorrow.",
+    "A registered business is a trusted business.",
+    "Compliance isn't a chore — it's your credibility.",
+    "Small filings, done on time, build big companies.",
+    "Your first invoice needs a GSTIN, not luck.",
+    "Growth loves a business that planned ahead."
+  ];
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let i = 0;
+  let cancelled = false;
+
+  function playNext() {
+    if (cancelled) return;
+    const text = quotes[i % quotes.length];
+    i++;
+
+    measure.textContent = text;
+    ink.textContent = text;
+    const targetWidth = measure.offsetWidth;
+
+    inkWrap.style.transition = 'none';
+    inkWrap.style.width = '0px';
+    pen.style.transition = 'none';
+    pen.style.transform = 'translateX(0)';
+
+    if (reduceMotion) {
+      inkWrap.style.width = targetWidth + 'px';
+      setTimeout(playNext, 3400);
+      return;
+    }
+
+    const writeMs = Math.min(4200, Math.max(1100, text.length * 65));
+    // Reading delay: gives people enough time to actually read the quote
+    // before it's erased, scaling with how long the quote is.
+    const readMs = Math.max(2800, text.length * 110);
+    pen.classList.add('is-active');
+
+    requestAnimationFrame(() => {
+      inkWrap.style.transition = `width ${writeMs}ms cubic-bezier(.45,0,.2,1)`;
+      pen.style.transition = `transform ${writeMs}ms cubic-bezier(.45,0,.2,1)`;
+      inkWrap.style.width = targetWidth + 'px';
+      pen.style.transform = `translateX(${targetWidth}px)`;
+    });
+
+    setTimeout(() => { pen.classList.remove('is-active'); }, writeMs);
+
+    setTimeout(() => {
+      if (cancelled) return;
+      inkWrap.style.transition = 'width .6s ease-in';
+      inkWrap.style.width = '0px';
+      setTimeout(playNext, 650);
+    }, writeMs + readMs);
+  }
+
+  // Pause the loop while the tab is hidden, and resume cleanly when it's back.
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelled = true;
+    } else if (cancelled) {
+      cancelled = false;
+      playNext();
+    }
+  });
+
+  playNext();
+}
+
 /* ══════════ HERO IMAGE CAROUSEL ══════════
    Auto-rotating fade carousel for the hero visual. Pauses on hover/focus
    and when the tab is hidden; dots allow manual jump. */
@@ -3739,6 +3846,7 @@ document.addEventListener('keydown', (e) => {
   }
   initScrollReveal();
   initHeroTilt();
+  initHeroPenQuote();
   initHeroCarousel();
   initTestiMarquee();
   a2hsInitFab();
