@@ -5,14 +5,6 @@
        the wrong (default dark) theme on repeat visits who picked light. -->
   <script>(function(){try{if(localStorage.getItem('onnmore_theme')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-56VL3FPC');</script>
-  <!-- End Google Tag Manager -->
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -806,23 +798,38 @@
     .cta-banner p { margin:0; color: var(--muted); font-size:.9rem; max-width:480px; }
     .cta-banner .btns { display:flex; gap:10px; flex-wrap:wrap; }
     @media (max-width:780px) { .cta-banner { flex-direction:column; align-items:flex-start; } }
+
+    /* ── TERMS ACCEPTANCE ── */
+    .ck-terms-box { margin-top:18px; padding:13px 14px; border:1px solid var(--border-md); border-radius:12px; background:rgba(58,184,129,.035); }
+    .ck-terms-label { display:flex; align-items:flex-start; gap:10px; cursor:pointer; margin:0; }
+    .ck-terms-label input { width:18px; height:18px; flex:0 0 18px; margin:2px 0 0; accent-color:var(--accent); }
+    .ck-terms-label span { color:var(--muted); font-size:.82rem; line-height:1.55; font-weight:600; }
+    .ck-terms-label a { color:var(--accent-light); text-decoration:underline; text-underline-offset:2px; }
+    .ck-terms-box.invalid { border-color:rgba(224,97,111,.55); background:rgba(224,97,111,.06); }
+
+    /* ── COOKIE / ANALYTICS CONSENT ── */
+    .cookie-consent { position:fixed; left:18px; right:18px; bottom:18px; z-index:1000; display:none; }
+    .cookie-consent.show { display:block; }
+    .cookie-consent-inner { width:min(1080px,100%); margin:0 auto; border:1px solid var(--border-hi); border-radius:16px; background:var(--card); box-shadow:0 20px 60px rgba(0,0,0,.45); padding:16px 18px; display:flex; align-items:center; gap:18px; }
+    .cookie-consent-copy { flex:1; min-width:0; }
+    .cookie-consent-copy strong { display:block; font-size:.9rem; margin-bottom:4px; }
+    .cookie-consent-copy p { margin:0; color:var(--muted); font-size:.78rem; line-height:1.5; }
+    .cookie-consent-copy a { color:var(--accent-light); text-decoration:underline; }
+    .cookie-consent-actions { display:flex; gap:8px; flex-wrap:wrap; flex-shrink:0; }
+    .cookie-btn { border:1px solid var(--border-md); background:transparent; color:var(--txt); border-radius:9px; padding:.62rem .9rem; font:700 .8rem Manrope,system-ui,sans-serif; cursor:pointer; }
+    .cookie-btn.primary { background:linear-gradient(135deg,var(--accent),var(--accent-light)); border-color:transparent; color:#071a0f; }
+    @media (max-width:680px) {
+      .cookie-consent { left:10px; right:10px; bottom:10px; }
+      .cookie-consent-inner { align-items:stretch; flex-direction:column; gap:12px; padding:14px; }
+      .cookie-consent-actions { display:grid; grid-template-columns:1fr 1fr; }
+      .cookie-btn { width:100%; }
+      .cookie-btn.primary { grid-column:1 / -1; }
+    }
+
   </style>
 
-  <!-- ══════════ ANALYTICS (GA4) ══════════ -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJT7THH2DT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-PJT7THH2DT', { anonymize_ip: true });
-  </script>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56VL3FPC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 <div class="ambient" aria-hidden="true"></div>
 
 <!-- ════════════ OFFER BAR ════════════ -->
@@ -1070,16 +1077,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- ════════════ PRICING ════════════ -->
-<section class="content-note" aria-label="What your payment covers" style="padding-top:0">
-  <div class="container">
-    <div class="info-card" style="border-color:var(--border-md);background:linear-gradient(135deg, rgba(58,184,129,.08), rgba(58,184,129,.02));">
-      <div class="ic-ico"><i class="ri-wallet-3-line"></i></div>
-      <h4>What your payment covers</h4>
-      <p>Payments to Onnmore are for the professional assistance described for the selected service — such as consultation, document review, application preparation, filing assistance and process coordination. Government or statutory charges, where applicable, are separate and are confirmed before work begins.</p>
-    </div>
-  </div>
-</section>
-
 <section id="pricing" aria-labelledby="pricing-h2">
   <div class="container">
     <div class="sec-hd">
@@ -1137,7 +1134,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="ck-ptitle" data-i18n="consult.p1Title">Which service(s) do you need?</p>
         <p class="ck-psub" data-i18n="consult.p1Sub">Select one or more to continue.</p>
         <div class="ck-svc-grid" id="ckSvcGrid"></div>
-        <p class="ck-svc-note" data-i18n="consult.msmeNote"><i class="ri-shield-check-line"></i> Udyam (MSME) Registration is free on the government portal. Assistance is available for an additional professional fee, confirmed before work begins.</p>
+        <p class="ck-svc-note" data-i18n="consult.msmeNote"><i class="ri-gift-line"></i> MSME (Udyam) Registration is FREE with any service — offer valid for West Bengal only.</p>
         <div class="ck-svc-selbar" id="ckSvcSelBar" style="display:none">
           <span id="ckSvcSelBarText"></span>
         </div>
@@ -1245,6 +1242,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <button type="button" class="ck-updates-opt wa" onclick="ckCheckStatus('whatsapp')"><i class="ri-whatsapp-line"></i> <span data-i18n="consult.viaWhatsapp">via WhatsApp</span></button>
           </div>
         </div>
+      </div>
+
+      <div class="ck-terms-box" id="ckTermsBox">
+        <label class="ck-terms-label" for="ckTermsAccepted">
+          <input type="checkbox" id="ckTermsAccepted" name="termsAccepted">
+          <span>I have read and agree to the <a href="terms-conditions.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and acknowledge the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+        </label>
       </div>
 
       <div class="ck-err" id="ckErr" role="alert"></div>
@@ -1541,7 +1545,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="foot-disclaimer">
       <strong>Website Disclaimer :</strong>
-      This website is privately operated and is not affiliated with any government entity. We do not represent, and are not endorsed by or connected to, any government body or department. The forms on this website are used to collect information so we can understand your business requirement and provide our professional assistance. Customers pay Onnmore for consultancy, documentation support, application preparation, filing assistance and process coordination, as applicable to the selected service. Government and statutory fees, where applicable, are separate and are disclosed before work begins. We do not guarantee government approval or any particular outcome. Where a matter requires legal advice or representation, we recommend consulting a qualified lawyer or law firm.
+      This website is privately operated and not affiliated with any government entity. We do not represent or are affiliated with, endorsed by, or in any way connected to any government body or department. The form provided is not for official registration purposes; rather, it's designed to gather information from our clients to help us better understand their business or needs. By continuing to use this website, you acknowledge that we are a private company. We offer assistance based on customer requests, and the fees collected on this website are charged as a platform fee. We reserve the right to outsource matters as deemed necessary. This platform does not offer legal services, nor does it provide legal advice or representation. Do you require legal assistance? We strongly recommend consulting with a qualified lawyer or law firm.
     </div>
   </div>
 </footer>
@@ -2004,7 +2008,7 @@ en: {
   'consult.docsChecklistTitle':"Documents you'll need",'consult.docsChecklistSub':"A general checklist so you can start gathering these — we'll confirm the exact list on WhatsApp.",
   'consult.docsOtherNote':"We'll share the exact document list after understanding your custom requirement.",
   'consult.addonsTitle':'Add extra services',
-  'consult.addonMsmeLabel':'Udyam (MSME) Registration Assistance','consult.addonMsmeDesc':'Government registration fee is ₹0. Our assistance fee, if applicable, is confirmed before work begins.','consult.addonMsmeIncluded':'Already included in your selected services',
+  'consult.addonMsmeLabel':'Add free MSME (Udyam) Registration','consult.addonMsmeDesc':'Bundled at zero cost with any other service — offer valid for West Bengal only.','consult.addonMsmeIncluded':'Already included in your selected services',
   'consult.addonCALabel':'Personal CA Support','consult.addonCADesc':'A dedicated Chartered Accountant personally guides your case end-to-end.',
   'consult.promoTitle':'Have a promo code?','consult.promoSuggestDesc':'Tap to apply — get {discount} off your service fee','consult.promoApply':'Apply','consult.promoRemove':'Remove',
   'consult.promoApplied':'Promo code applied:','consult.promoInvalid':"That promo code isn't valid or has expired.",
@@ -2083,7 +2087,7 @@ en: {
   'a2hs.note':'Once added, Onnmore opens like an app — full-screen, right from your home screen.'
 },
 bn: {
-  'offer.text':'Udyam (MSME) নিবন্ধন সরকারি পোর্টালে বিনামূল্যে — প্রয়োজন হলে আমরা প্রক্রিয়াটি বুঝতে ও সম্পন্ন করতে সহায়তা করতে পারি।','offer.note':'(সহায়তা পশ্চিমবঙ্গ জুড়ে উপলব্ধ)',
+  'offer.text':'আমাদের সাথে যেকোনো পরিষেবা নিন এবং আপনার Udyam/MSME নিবন্ধন সম্পূর্ণ বিনামূল্যে পান!','offer.note':'(অফারটি শুধুমাত্র পশ্চিমবঙ্গের গ্রাহকদের জন্য প্রযোজ্য)',
   'nav.services':'পরিষেবা','nav.pricing':'মূল্য তালিকা','nav.getStarted':'শুরু করুন','nav.whyUs':'কেন আমরা','nav.reviews':'রিভিউ','nav.faq':'প্রশ্নোত্তর','nav.contact':'যোগাযোগ','nav.contactBtn':'যোগাযোগ','nav.consultBtn':'বিনামূল্যে পরামর্শ নিন',
   'hero.eyebrow':'পশ্চিমবঙ্গ · ব্যবসা নিবন্ধন ও কমপ্লায়েন্স বিশেষজ্ঞ',
   'hero.title1':'আপনার ব্যবসা শুরু করুন।','hero.titleHl':'কাগজপত্র আমরা সামলাব।',
@@ -2220,7 +2224,7 @@ bn: {
   'a2hs.note':'যোগ করার পর, Onnmore একটি অ্যাপের মতোই খুলবে — পূর্ণ স্ক্রিনে, সরাসরি আপনার হোম স্ক্রিন থেকে।'
 },
 hi: {
-  'offer.text':'Udyam (MSME) पंजीकरण सरकारी पोर्टल पर निःशुल्क है — आवश्यकता होने पर हम प्रक्रिया समझने और पूरा करने में सहायता कर सकते हैं।','offer.note':'(सहायता पूरे पश्चिम बंगाल में उपलब्ध)',
+  'offer.text':'हमारे साथ कोई भी सेवा लें और अपना Udyam/MSME पंजीकरण बिल्कुल मुफ़्त पाएं!','offer.note':'(यह ऑफर केवल पश्चिम बंगाल के ग्राहकों के लिए मान्य है)',
   'nav.services':'सेवाएं','nav.pricing':'मूल्य सूची','nav.getStarted':'शुरू करें','nav.whyUs':'हमें क्यों चुनें','nav.reviews':'समीक्षाएं','nav.faq':'सामान्य प्रश्न','nav.contact':'संपर्क करें','nav.contactBtn':'संपर्क करें','nav.consultBtn':'मुफ़्त परामर्श लें',
   'hero.eyebrow':'पश्चिम बंगाल · व्यवसाय पंजीकरण और अनुपालन विशेषज्ञ',
   'hero.title1':'अपना व्यवसाय शुरू करें।','hero.titleHl':'कागज़ी काम हम संभालेंगे।',
@@ -2907,7 +2911,7 @@ const GSHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwsgIpEKNUWU
    they gave above and see this request's status on their dashboard. */
 const PORTAL_API_URL = 'https://script.google.com/macros/s/AKfycbzV6IreJDzuGRboGPWSCM4CTKEL6rUjljgGdxBBMvR2cej6sfFx0l-vFdLssp_SDOZpKg/exec';
 
-function sendLeadToEmail(svcName, addonsText, promoText, totalText) {
+function sendLeadToEmail(svcName, addonsText, promoText, totalText, termsAcceptedAt) {
   if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY.startsWith('PASTE_')) return;
   fetch('https://api.web3forms.com/submit', {
     method: 'POST',
@@ -2925,12 +2929,14 @@ function sendLeadToEmail(svcName, addonsText, promoText, totalText) {
       Email: ckState.email || 'Not provided',
       Business: ckState.biz || 'N/A',
       Notes: ckState.msg || 'N/A',
-      Language: currentLang
+      Language: currentLang,
+      TermsAccepted: 'Yes',
+      TermsAcceptedAt: termsAcceptedAt || ''
     })
   }).catch(err => console.error('Email lead delivery failed:', err));
 }
 
-function sendLeadToSheet(svcName, addonsText, promoText, totalText) {
+function sendLeadToSheet(svcName, addonsText, promoText, totalText, termsAcceptedAt) {
   if (!GSHEET_WEBHOOK_URL || GSHEET_WEBHOOK_URL.startsWith('PASTE_')) return;
   fetch(GSHEET_WEBHOOK_URL, {
     method: 'POST',
@@ -2947,7 +2953,9 @@ function sendLeadToSheet(svcName, addonsText, promoText, totalText) {
       email: ckState.email || '',
       business: ckState.biz || '',
       notes: ckState.msg || '',
-      language: currentLang
+      language: currentLang,
+      termsAccepted: true,
+      termsAcceptedAt: termsAcceptedAt || ''
     })
   }).catch(err => console.error('Sheet lead delivery failed:', err));
 }
@@ -2957,7 +2965,7 @@ function sendLeadToSheet(svcName, addonsText, promoText, totalText) {
    email they gave above and see this exact Case ID with a live status.
    Silently no-ops until PORTAL_API_URL is filled in. Requires no login: it
    finds or creates the customer record by email, purely from this form. */
-function registerCaseWithPortal(svcName, addonsText, promoText, totalText) {
+function registerCaseWithPortal(svcName, addonsText, promoText, totalText, termsAcceptedAt) {
   if (!PORTAL_API_URL || PORTAL_API_URL.startsWith('PASTE_')) return;
   if (!ckState.email) return; // no email given — nothing to tie the case to
   const detailsParts = [];
@@ -3006,7 +3014,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* ══════════ CONSULTATION REQUEST WIZARD ══════════ */
 let ckStep = 1;
 const ckState = {
-  svcKeys: [], ico: 'ri-briefcase-4-line', name: '', phone: '', email: '', biz: '', msg: '', caseId: '',
+  svcKeys: [], ico: 'ri-briefcase-4-line', name: '', phone: '', email: '', biz: '', msg: '', caseId: '', termsAcceptedAt: '',
   addons: { 'addon.msme': false, 'addon.ca': false },
   promo: { code: '', type: null, value: 0, valid: false }
 };
@@ -3506,7 +3514,18 @@ function ckValidate(s) {
     const linkCount = (msg.match(/https?:\/\/|www\./gi) || []).length;
     if (linkCount > 1) { ckShowErr(t('consult.errMsgLinks')); return false; }
   }
-  if (s === 3 && ckOnCooldown()) { ckShowErr(t('consult.errTooSoon')); return false; }
+  if (s === 3) {
+    if (ckOnCooldown()) { ckShowErr(t('consult.errTooSoon')); return false; }
+    const terms = document.getElementById('ckTermsAccepted');
+    const termsBox = document.getElementById('ckTermsBox');
+    if (!terms || !terms.checked) {
+      if (termsBox) termsBox.classList.add('invalid');
+      ckShowErr('Please accept the Terms & Conditions before submitting your request.');
+      if (terms) terms.focus();
+      return false;
+    }
+    if (termsBox) termsBox.classList.remove('invalid');
+  }
   return true;
 }
 
@@ -3608,11 +3627,12 @@ function ckSubmit() {
      person plausibly could) never reaches our inbox/sheet/WhatsApp. We still
      show the normal success screen so an automated script has no signal to
      learn from and adapt around — the request is just quietly discarded. */
+  ckState.termsAcceptedAt = new Date().toISOString();
   const isSpam = ckIsSpamSubmission();
   if (!isSpam) {
-    sendLeadToEmail(svcName, addonsText, promoText, totalText);
-    sendLeadToSheet(svcName, addonsText, promoText, totalText);
-    registerCaseWithPortal(svcName, addonsText, promoText, totalText);
+    sendLeadToEmail(svcName, addonsText, promoText, totalText, ckState.termsAcceptedAt);
+    sendLeadToSheet(svcName, addonsText, promoText, totalText, ckState.termsAcceptedAt);
+    registerCaseWithPortal(svcName, addonsText, promoText, totalText, ckState.termsAcceptedAt);
     ckMarkSubmitted();
     ckSaveContactInfo();
   }
@@ -3708,7 +3728,7 @@ function ckReset() {
   // customer is adding another service right after submitting one, they've
   // already given us these details and shouldn't have to retype them.
   // Only the request-specific fields reset for the next service.
-  ckState.svcKeys = []; ckState.ico = 'ri-briefcase-4-line'; ckState.biz = ''; ckState.msg = ''; ckState.caseId = '';
+  ckState.svcKeys = []; ckState.ico = 'ri-briefcase-4-line'; ckState.biz = ''; ckState.msg = ''; ckState.caseId = ''; ckState.termsAcceptedAt = '';
   ckState.addons = { 'addon.msme': false, 'addon.ca': false };
   ckState.promo = { code: '', type: null, value: 0, valid: false };
   document.getElementById('ckBiz').value = '';
@@ -3717,6 +3737,8 @@ function ckReset() {
   document.querySelectorAll('.ck-svc.sel').forEach(b => { b.classList.remove('sel'); b.setAttribute('aria-pressed', 'false'); });
   ckUpdateSvcSelBar();
   document.getElementById('cp4').classList.remove('show');
+  const terms = document.getElementById('ckTermsAccepted'); if (terms) terms.checked = false;
+  const termsBox = document.getElementById('ckTermsBox'); if (termsBox) termsBox.classList.remove('invalid');
   const updOpts = document.getElementById('ckUpdatesOptions');
   if (updOpts) updOpts.classList.remove('show');
   const foot = document.querySelector('.ck-foot');
@@ -3884,6 +3906,63 @@ document.addEventListener('keydown', (e) => {
   initTestiMarquee();
   a2hsInitFab();
 })();
+
+/* ══════════ COOKIE / ANALYTICS CONSENT ══════════ */
+const COOKIE_CONSENT_KEY = 'onnmore_cookie_consent_v1';
+let analyticsLoaded = false;
+function loadConsentAnalytics() {
+  if (analyticsLoaded) return;
+  analyticsLoaded = true;
+  try {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-PJT7THH2DT', { anonymize_ip: true });
+    const ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-PJT7THH2DT';
+    document.head.appendChild(ga);
+
+    // Load GTM only after analytics consent.
+    window.dataLayer.push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+    const gtm = document.createElement('script');
+    gtm.async = true;
+    gtm.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-56VL3FPC';
+    document.head.appendChild(gtm);
+  } catch (e) {}
+}
+function setCookieConsent(choice) {
+  try { localStorage.setItem(COOKIE_CONSENT_KEY, choice); } catch (e) {}
+  const banner = document.getElementById('cookieConsent');
+  if (banner) banner.classList.remove('show');
+  if (choice === 'all') loadConsentAnalytics();
+}
+function initCookieConsent() {
+  let choice = '';
+  try { choice = localStorage.getItem(COOKIE_CONSENT_KEY) || ''; } catch (e) {}
+  if (choice === 'all') { loadConsentAnalytics(); return; }
+  if (choice !== 'essential') {
+    const banner = document.getElementById('cookieConsent');
+    if (banner) banner.classList.add('show');
+  }
+}
+initCookieConsent();
+
 </script>
+
+<!-- ════════════ COOKIE / ANALYTICS CONSENT ════════════ -->
+<div class="cookie-consent" id="cookieConsent" role="dialog" aria-live="polite" aria-label="Cookie and analytics preferences">
+  <div class="cookie-consent-inner">
+    <div class="cookie-consent-copy">
+      <strong>Cookies &amp; Analytics</strong>
+      <p>We use essential browser storage to keep the site working and, with your permission, analytics to understand how visitors use Onnmore. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    </div>
+    <div class="cookie-consent-actions">
+      <button type="button" class="cookie-btn" onclick="setCookieConsent('essential')">Essential Only</button>
+      <button type="button" class="cookie-btn primary" onclick="setCookieConsent('all')">Accept All</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

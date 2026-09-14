@@ -114,6 +114,15 @@
     @keyframes viewIn { from { opacity:0; transform:translateY(8px);} to { opacity:1; transform:none; } }
 
     #dashboardWrap { width:min(720px, 94vw); margin:0 auto; }
+
+    /* ── TERMS ACCEPTANCE ── */
+    .terms-box { margin: 12px 0 16px; padding: 12px 13px; border:1px solid var(--border-md); border-radius:11px; background:rgba(58,184,129,.035); }
+    .terms-box.invalid { border-color:rgba(224,97,111,.55); background:rgba(224,97,111,.06); }
+    .terms-label { display:flex; align-items:flex-start; gap:9px; cursor:pointer; margin:0; }
+    .terms-label input { width:18px; height:18px; flex:0 0 18px; margin:2px 0 0; accent-color:var(--accent); }
+    .terms-label span { color:var(--muted); font-size:.78rem; line-height:1.5; font-weight:600; }
+    .terms-label a { color:var(--accent-light); text-decoration:underline; text-underline-offset:2px; }
+
   </style>
 </head>
 <body>
@@ -150,6 +159,12 @@
       <div class="field">
         <label for="loginEmail">Email address</label>
         <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" />
+      </div>
+      <div class="terms-box" id="loginTermsBox">
+        <label class="terms-label" for="loginTermsAccepted">
+          <input type="checkbox" id="loginTermsAccepted" name="loginTermsAccepted">
+          <span>I agree to the <a href="terms-conditions.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and acknowledge the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+        </label>
       </div>
       <button class="btn primary block" id="sendOtpBtn" onclick="submitSendOtp()">
         <i class="ri-mail-send-line"></i> <span>Send Login Code</span>
@@ -229,6 +244,12 @@
           <label for="serviceDetails">Details (optional)</label>
           <textarea id="serviceDetails" placeholder="Anything specific we should know? e.g. city, business type, preferred timeline…"></textarea>
         </div>
+        <div class="terms-box" id="appTermsBox">
+          <label class="terms-label" for="appTermsAccepted">
+            <input type="checkbox" id="appTermsAccepted" name="appTermsAccepted">
+            <span>Before submitting, I agree to the <a href="terms-conditions.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and acknowledge the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+          </label>
+        </div>
         <button class="btn primary block" id="submitAppBtn" onclick="submitApplication()">
           <i class="ri-send-plane-line"></i> <span>Submit Application</span>
         </button>
@@ -295,6 +316,15 @@ function setBtnLoading(btnId, loading, label) {
 async function submitSendOtp() {
   const email = document.getElementById('loginEmail').value.trim();
   hideMsg('loginMsg');
+  const terms = document.getElementById('loginTermsAccepted');
+  const termsBox = document.getElementById('loginTermsBox');
+  if (!terms || !terms.checked) {
+    if (termsBox) termsBox.classList.add('invalid');
+    showMsg('loginMsg', 'Please accept the Terms & Conditions and Privacy Policy to continue.');
+    if (terms) terms.focus();
+    return;
+  }
+  if (termsBox) termsBox.classList.remove('invalid');
   if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
     showMsg('loginMsg', 'Please enter a valid email address.');
     return;
@@ -412,11 +442,21 @@ async function submitApplication() {
   hideMsg('applyMsg'); hideMsg('applySuccessMsg');
   const serviceKey = document.getElementById('serviceSelect').value;
   const details = document.getElementById('serviceDetails').value.trim();
+  const terms = document.getElementById('appTermsAccepted');
+  const termsBox = document.getElementById('appTermsBox');
   if (!serviceKey) { showMsg('applyMsg', 'Please choose a service first.'); return; }
+  if (!terms || !terms.checked) {
+    if (termsBox) termsBox.classList.add('invalid');
+    showMsg('applyMsg', 'Please accept the Terms & Conditions before submitting your application.');
+    if (terms) terms.focus();
+    return;
+  }
+  if (termsBox) termsBox.classList.remove('invalid');
+  const termsAcceptedAt = new Date().toISOString();
 
   setBtnLoading('submitAppBtn', true, 'Submit Application');
   try {
-    const res = await api('submitApplication', { token: getToken(), serviceKey, details });
+    const res = await api('submitApplication', { token: getToken(), serviceKey, details, termsAccepted: true, termsAcceptedAt });
     if (!res.ok) {
       if (res.error && res.error.indexOf('expired') !== -1) { logout(); return; }
       showMsg('applyMsg', res.error || 'Something went wrong.');
@@ -425,6 +465,7 @@ async function submitApplication() {
     showMsg('applySuccessMsg', `Submitted! Your reference number is ${res.referenceNumber} — keep this for your records.`);
     document.getElementById('serviceSelect').value = '';
     document.getElementById('serviceDetails').value = '';
+    const terms = document.getElementById('appTermsAccepted'); if (terms) terms.checked = false;
     await loadApplications();
   } catch (e) {
     showMsg('applyMsg', 'Could not reach the server. Please try again.');
