@@ -250,7 +250,7 @@
     .mnav-theme .theme-btn { flex:1; display:flex; align-items:center; justify-content:center; gap:.4rem; text-align:center; padding:.65rem; border:1px solid var(--border-md); border-radius: var(--radius-sm); font-size:.82rem; font-weight:700; background: var(--ov02); }
     .mnav-theme .theme-btn.active { border-color: var(--accent); background: rgba(58,184,129,.1); color: var(--accent-light); }
 
-    header { position:sticky; top:0; z-index:100; background:var(--header-bg); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%); border-bottom:1px solid var(--border); }
+    header { position:fixed; top:0; left:0; right:0; width:100%; z-index:1000; background:var(--header-bg); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%); border-bottom:1px solid var(--border); }
     .offer-bar { background: linear-gradient(90deg, var(--accent), var(--accent-light)); color:#06140d; padding:9px 16px; text-align:center; font-size:.82rem; font-weight:700; position:relative; z-index:101; }
     .offer-bar .container { display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; }
     .offer-bar i { font-size:1rem; }
@@ -816,6 +816,18 @@
     gtag('js', new Date());
     gtag('config', 'G-PJT7THH2DT', { anonymize_ip: true });
   </script>
+<script>
+(function(){
+  function syncHeaderHeight(){
+    var h=document.querySelector('header');
+    if(h) document.documentElement.style.setProperty('--header-height', h.getBoundingClientRect().height+'px');
+  }
+  window.addEventListener('load', syncHeaderHeight);
+  window.addEventListener('resize', syncHeaderHeight);
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(syncHeaderHeight);
+})();
+</script>
+<style>body{padding-top:var(--header-height,0px)}</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -1531,7 +1543,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="foot-disclaimer">
       <strong>Website Disclaimer :</strong>
-      This website is privately operated and not affiliated with any government entity. We do not represent or are affiliated with, endorsed by, or in any way connected to any government body or department. The form provided is not for official registration purposes; rather, it's designed to gather information from our clients to help us better understand their business or needs. By continuing to use this website, you acknowledge that we are a private company. We offer assistance based on customer requests, and the fees collected on this website are charged as a platform fee. We reserve the right to outsource matters as deemed necessary. This platform does not offer legal services, nor does it provide legal advice or representation. Do you require legal assistance? We strongly recommend consulting with a qualified lawyer or law firm.
+      This website is privately operated by Onnmore Technologies Private Limited, a private-sector business consultancy and professional assistance provider. We are not a government authority, government department or government portal, and we are not affiliated with, endorsed by, or connected to any government body or department. We assist entrepreneurs and businesses with business registration, GST-related assistance, licensing, documentation, compliance support and other business consultancy services. Customers pay Onnmore for the professional assistance selected. Government and statutory fees, where applicable, are separate and are disclosed before work begins. We do not guarantee government approval or any particular statutory outcome. Where legal advice, legal drafting or legal representation is required, such services are provided through qualified legal professionals or separate law-firm arrangements, as applicable.
     </div>
   </div>
 </footer>
