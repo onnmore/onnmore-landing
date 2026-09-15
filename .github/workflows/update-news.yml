@@ -1,0 +1,50 @@
+name: Update Business News
+
+on:
+  schedule:
+    # Every 6 hours, at :17 past — an off-the-hour minute so this doesn't
+    # line up with the top-of-hour spike every scheduled Action on GitHub
+    # tends to pile onto. Adjust to '0 */4 * * *' for every 4 hours if the
+    # extra runs are worth it later.
+    - cron: "17 */6 * * *"
+  workflow_dispatch: {} # lets you trigger a run manually from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-news
+  cancel-in-progress: false
+
+jobs:
+  update-news:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install --no-save
+
+      - name: Fetch and process business news
+        run: node scripts/update-news.js
+
+      - name: Validate generated JSON
+        run: node -e "const d=require('./news/news.json'); if(!Array.isArray(d.articles)) throw new Error('news.json is malformed: articles is not an array'); console.log('news.json OK —', d.articles.length, 'article(s)');"
+
+      - name: Commit and push if news.json changed
+        run: |
+          if git diff --quiet -- news/news.json; then
+            echo "No changes to news/news.json — nothing to commit."
+          else
+            git config user.name "onnmore-news-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add news/news.json
+            git commit -m "chore: update business news feed [automated]"
+            git push
+          fi
