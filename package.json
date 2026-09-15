@@ -1,0 +1,12 @@
+{
+  "name": "onnmore-landing",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Build tooling for the Onnmore static site. The site itself is plain HTML/CSS/JS served by GitHub Pages and does not require a build step. This file exists only so scripts/update-news.js (run by .github/workflows/update-news.yml) can install its one dependency.",
+  "scripts": {
+    "update-news": "node scripts/update-news.js"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^4.5.0"
+  }
+}
