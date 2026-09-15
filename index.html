@@ -257,7 +257,7 @@
     .nav-actions { display:flex; align-items:center; gap:.45rem; flex-shrink:0; }
     .mobile-toggle { display:none; background:none; border:1px solid var(--border); border-radius:9px; padding:.55rem .6rem; color:var(--txt); cursor:pointer; align-items:center; justify-content:center; font-size:1.15rem; }
 
-    .mobile-nav { display:none; position:fixed; inset:0; background:var(--mnav-bg); backdrop-filter: blur(20px); z-index:200; flex-direction:column; align-items:stretch; padding:1.4rem; overflow-y:auto; }
+    .mobile-nav { display:none; position:fixed; inset:0; background:var(--mnav-bg); backdrop-filter: blur(20px); z-index:200; flex-direction:column; flex-wrap:nowrap; align-items:stretch; padding:1.4rem; overflow-y:auto; }
     .mobile-nav.open { display:flex; animation: mnavIn .22s ease; }
     @keyframes mnavIn { from{opacity:0; transform:translateY(-6px);} to{opacity:1; transform:translateY(0);} }
     .mnav-header { display:flex; justify-content:center; align-items:center; position:relative; margin-bottom:1.4rem; width:100%; }
