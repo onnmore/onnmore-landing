@@ -1,0 +1,89 @@
+{
+  "updatedAt": "2026-09-14T22:00:01+05:30",
+  "articles": [
+    {
+      "id": "rbi-press-63587",
+      "title": "RBI invites comments on the Draft \u201cReserve Bank of India (Know Your Customer) Amendment Directions, 2026\u201d",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63587",
+      "publishedAt": "2026-09-11T21:40:00+05:30",
+      "category": "Government & Policy",
+      "region": "National",
+      "summary": "Draft amendment directions covering temporary debit holds on accounts linked to money-mule activity and cyber-enabled fraud, open for public feedback until October 2, 2026.",
+      "image": null,
+      "sourceType": "official",
+      "isOfficial": true,
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63586",
+      "title": "RBI to conduct Overnight Variable Rate Reverse Repo (VRRR) auction under LAF on September 15, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63586",
+      "publishedAt": "2026-09-11T19:05:00+05:30",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "RBI scheduled a one-day Variable Rate Reverse Repo auction for September 15, 2026 as part of routine liquidity management under the Liquidity Adjustment Facility.",
+      "image": null,
+      "sourceType": "official",
+      "isOfficial": true,
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63583",
+      "title": "RBI imposes monetary penalty on Asset Care & Reconstruction Enterprise Limited",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63583",
+      "publishedAt": "2026-09-11T17:35:00+05:30",
+      "category": "Companies",
+      "region": "National",
+      "summary": "RBI fined Asset Care & Reconstruction Enterprise Limited \u20b927.30 lakh for non-compliance with its directions on income recognition, following a statutory inspection.",
+      "image": null,
+      "sourceType": "official",
+      "isOfficial": true,
+      "priority": 90
+    },
+    {
+      "id": "sebi-rss-104418",
+      "title": "Successful launch of \u201cDemat 2.0\u201d pilot project for tokenised corporate bonds",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/successful-launch-of-demat-2-0-pilot-project-for-tokenised-corporate-bonds_104418.html",
+      "publishedAt": "2026-09-10T12:00:00+05:30",
+      "category": "Technology & Business",
+      "region": "National",
+      "summary": "SEBI announced the pilot launch of \u201cDemat 2.0\u201d for tokenised corporate bonds, alongside an FAQ document for market participants.",
+      "image": null,
+      "sourceType": "official",
+      "isOfficial": true,
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104416",
+      "title": "SEBI Chairman delivers keynote address and joins panel discussion at Global Fintech Fest 2026",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/chairman-sebi-delivered-a-keynote-address-and-participated-in-a-panel-discussion-during-global-fintech-fest-2026_104416.html",
+      "publishedAt": "2026-09-10T12:00:00+05:30",
+      "category": "Technology & Business",
+      "region": "National",
+      "summary": "SEBI's Chairman spoke at Global Fintech Fest 2026, addressing developments in India's securities-market technology.",
+      "image": null,
+      "sourceType": "official",
+      "isOfficial": true,
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104463",
+      "title": "Winners of the Securities Market TechSprint felicitated at Global Fintech Fest 2026",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/felicitation-of-winners-of-securities-market-techsprint-at-global-fintech-fest-2026_104463.html",
+      "publishedAt": "2026-09-11T12:00:00+05:30",
+      "category": "Startups",
+      "region": "National",
+      "summary": "SEBI felicitated the winning teams of its Securities Market TechSprint innovation challenge at Global Fintech Fest 2026.",
+      "image": null,
+      "sourceType": "official",
+      "isOfficial": true,
+      "priority": 85
+    }
+  ]
+}

@@ -713,3 +713,10 @@
 .page-toc a:hover { border-color:var(--accent); color:var(--accent-light); background:rgba(58,184,129,.07); }
 
 @media (max-width:780px) { .cta-banner { flex-direction:column; align-items:flex-start; } }
+
+/* ══════════ FREE BUSINESS TOOLS — footer cross-link block (added site-wide) ══════════ */
+.foot-tools { border-top: 1px solid var(--border); padding-top: 22px; margin-bottom: 22px; }
+.foot-tools h5 { margin: 0 0 12px; font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 800; }
+.foot-tools-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.foot-tools-links a { display: inline-flex; align-items: center; border: 1px solid var(--border-md); border-radius: 100vmax; padding: .4rem .85rem; font-size: .78rem; font-weight: 700; color: var(--muted); transition: .15s; background: var(--ov02); }
+.foot-tools-links a:hover { border-color: var(--accent); color: var(--accent-light); background: rgba(58,184,129,.08); }

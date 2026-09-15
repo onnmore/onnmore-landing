@@ -5,14 +5,6 @@
        the wrong (default dark) theme on repeat visits who picked light. -->
   <script>(function(){try{if(localStorage.getItem('onnmore_theme')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
 
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-56VL3FPC');</script>
-  <!-- End Google Tag Manager -->
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -21,15 +13,15 @@
   <meta name="description" content="West Bengal business consultancy for Pvt Ltd & LLP registration, Trade License, FSSAI Food License, GST & MSME registration, Digital Signature (DSC), Professional Tax, ITR filing, IEC and Patent filing. 100% online, expert-handled, confirmed on WhatsApp. Serving Kolkata, Howrah, Hooghly, Durgapur, Asansol, Siliguri and every district of West Bengal." />
   <meta name="keywords" content="company registration West Bengal, pvt ltd registration Kolkata, LLP registration West Bengal, trade license Kolkata, food license FSSAI, GST registration West Bengal, MSME Udyam registration, digital signature certificate DSC, professional tax registration, ITR filing, import export code IEC, patent filing consultant, business consultancy West Bengal" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://onnmore.com/" />
+  <link rel="canonical" href="https://onnmore.github.io/onnmore-landing/" />
   <meta name="author" content="Onnmore Technologies Private Limited" />
 
   <!-- ── OPEN GRAPH ── -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://onnmore.com/" />
+  <meta property="og:url" content="https://onnmore.github.io/onnmore-landing/" />
   <meta property="og:title" content="Onnmore Business Consultancy – Company Registration & Compliance across West Bengal" />
   <meta property="og:description" content="Pvt Ltd & LLP registration, Trade License, Food License, GST, MSME, DSC, P.Tax, ITR filing, IEC & Patent filing — handled end-to-end by experts, anywhere in West Bengal. Chat with us on WhatsApp." />
-  <meta property="og:image" content="https://onnmore.com/images/og-image.jpg" />
+  <meta property="og:image" content="https://onnmore.github.io/onnmore-landing/images/og-image.jpg" />
   <meta property="og:locale" content="en_IN" />
   <meta property="og:site_name" content="Onnmore" />
 
@@ -47,7 +39,7 @@
     "name": "Onnmore Business Consultancy",
     "alternateName": "Onnmore",
     "description": "Business consultancy serving all of West Bengal, handling Pvt Ltd & LLP registration, Trade License, FSSAI Food License, GST registration, MSME (Udyam) registration, Digital Signature Certificate (DSC), Professional Tax registration, Income Tax Return filing, Import Export Code (IEC), Patent filing and other business compliance services.",
-    "url": "https://onnmore.com",
+    "url": "https://onnmore.github.io/onnmore-landing",
     "email": "support@onnmore.com",
     "currenciesAccepted": "INR",
     "paymentAccepted": "Cash, Online",
@@ -250,18 +242,19 @@
     .mnav-theme .theme-btn { flex:1; display:flex; align-items:center; justify-content:center; gap:.4rem; text-align:center; padding:.65rem; border:1px solid var(--border-md); border-radius: var(--radius-sm); font-size:.82rem; font-weight:700; background: var(--ov02); }
     .mnav-theme .theme-btn.active { border-color: var(--accent); background: rgba(58,184,129,.1); color: var(--accent-light); }
 
-    header { position:fixed; top:0; left:0; right:0; width:100%; z-index:1000; background:var(--header-bg); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%); border-bottom:1px solid var(--border); }
+    header { position:sticky; top:0; z-index:100; background:var(--header-bg); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%); border-bottom:1px solid var(--border); }
     .offer-bar { background: linear-gradient(90deg, var(--accent), var(--accent-light)); color:#06140d; padding:9px 16px; text-align:center; font-size:.82rem; font-weight:700; position:relative; z-index:101; }
     .offer-bar .container { display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; }
     .offer-bar i { font-size:1rem; }
     .offer-bar .offer-note { font-weight:600; opacity:.85; font-size:.78rem; }
     @media (max-width: 560px) { .offer-bar { font-size:.76rem; padding:8px 12px; } .offer-bar .offer-note { display:block; width:100%; } }
-    nav { display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; gap:1rem; }
+    nav { display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; gap:.85rem; flex-wrap:wrap; row-gap:.6rem; }
+    header .container { width: min(1680px, 96vw); }
     .brand { display:flex; align-items:center; flex-shrink:0; }
-    .nav-links { display:flex; gap:.2rem; align-items:center; }
-    .nav-links a { padding:.52rem .78rem; border-radius:9px; color:var(--muted); font-size:.88rem; font-weight:600; transition:.18s; white-space:nowrap; }
+    .nav-links { display:flex; gap:.1rem; align-items:center; }
+    .nav-links a { padding:.52rem .62rem; border-radius:9px; color:var(--muted); font-size:.85rem; font-weight:600; transition:.18s; white-space:nowrap; }
     .nav-links a:hover { color: var(--accent-light); background: rgba(58,184,129,.08); }
-    .nav-actions { display:flex; align-items:center; gap:.55rem; flex-shrink:0; }
+    .nav-actions { display:flex; align-items:center; gap:.45rem; flex-shrink:0; }
     .mobile-toggle { display:none; background:none; border:1px solid var(--border); border-radius:9px; padding:.55rem .6rem; color:var(--txt); cursor:pointer; align-items:center; justify-content:center; font-size:1.15rem; }
 
     .mobile-nav { display:none; position:fixed; inset:0; background:var(--mnav-bg); backdrop-filter: blur(20px); z-index:200; flex-direction:column; align-items:stretch; padding:1.4rem; overflow-y:auto; }
@@ -660,6 +653,11 @@
     .foot-links { display:flex; flex-direction:column; gap:8px; }
     .foot-links a { color: var(--muted); font-size:.86rem; transition: color .18s; }
     .foot-links a:hover { color: var(--txt); }
+    .foot-tools { border-top:1px solid var(--border); padding-top:22px; margin-bottom:22px; }
+    .foot-tools h5 { margin:0 0 12px; font-size:.72rem; text-transform:uppercase; letter-spacing:1.5px; color: var(--accent); font-weight:800; }
+    .foot-tools-links { display:flex; flex-wrap:wrap; gap:8px; }
+    .foot-tools-links a { display:inline-flex; align-items:center; border:1px solid var(--border-md); border-radius:100vmax; padding:.4rem .85rem; font-size:.78rem; font-weight:700; color:var(--muted); background:var(--ov02); transition:.15s; }
+    .foot-tools-links a:hover { border-color:var(--accent); color:var(--accent-light); background:rgba(58,184,129,.08); }
     .foot-areas { display:flex; flex-wrap:wrap; gap:6px; }
     .foot-area-chip { font-size:.76rem; color: var(--muted); background: var(--ov04); border:1px solid var(--border); border-radius:100vmax; padding:.28rem .62rem; }
     .foot-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding-top:22px; border-top:1px solid var(--border); }
@@ -760,12 +758,18 @@
 
     @media (max-width: 1080px) { .foot-grid { grid-template-columns: 1fr 1fr 1fr; } }
     @media (max-width: 960px) { .why-grid, .steps-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 780px) {
-      .faq-layout { grid-template-columns: 1fr; }
-      .faq-contact-card { position:static; }
+    /* Desktop nav (logo + 9 links + theme/lang switch + 2 buttons) needs
+       genuine room to sit on one line. Switch to the mobile hamburger menu
+       below 1500px so the full row is only ever shown once there's enough
+       space to render it cleanly on a single line, never clipped or wrapped. */
+    @media (max-width: 1499px) {
       .nav-links { display:none; }
       .mobile-toggle { display:flex; }
       .nav-actions .hide-mobile { display:none; }
+    }
+    @media (max-width: 780px) {
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-contact-card { position:static; }
       section { padding:52px 0; }
       .foot-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -806,35 +810,38 @@
     .cta-banner p { margin:0; color: var(--muted); font-size:.9rem; max-width:480px; }
     .cta-banner .btns { display:flex; gap:10px; flex-wrap:wrap; }
     @media (max-width:780px) { .cta-banner { flex-direction:column; align-items:flex-start; } }
+
+    /* ── TERMS ACCEPTANCE ── */
+    .ck-terms-box { margin-top:18px; padding:13px 14px; border:1px solid var(--border-md); border-radius:12px; background:rgba(58,184,129,.035); }
+    .ck-terms-label { display:flex; align-items:flex-start; gap:10px; cursor:pointer; margin:0; }
+    .ck-terms-label input { width:18px; height:18px; flex:0 0 18px; margin:2px 0 0; accent-color:var(--accent); }
+    .ck-terms-label span { color:var(--muted); font-size:.82rem; line-height:1.55; font-weight:600; }
+    .ck-terms-label a { color:var(--accent-light); text-decoration:underline; text-underline-offset:2px; }
+    .ck-terms-box.invalid { border-color:rgba(224,97,111,.55); background:rgba(224,97,111,.06); }
+
+    /* ── COOKIE / ANALYTICS CONSENT ── */
+    .cookie-consent { position:fixed; left:18px; right:18px; bottom:18px; z-index:1000; display:none; }
+    .cookie-consent.show { display:block; }
+    .cookie-consent-inner { width:min(1080px,100%); margin:0 auto; border:1px solid var(--border-hi); border-radius:16px; background:var(--card); box-shadow:0 20px 60px rgba(0,0,0,.45); padding:16px 18px; display:flex; align-items:center; gap:18px; }
+    .cookie-consent-copy { flex:1; min-width:0; }
+    .cookie-consent-copy strong { display:block; font-size:.9rem; margin-bottom:4px; }
+    .cookie-consent-copy p { margin:0; color:var(--muted); font-size:.78rem; line-height:1.5; }
+    .cookie-consent-copy a { color:var(--accent-light); text-decoration:underline; }
+    .cookie-consent-actions { display:flex; gap:8px; flex-wrap:wrap; flex-shrink:0; }
+    .cookie-btn { border:1px solid var(--border-md); background:transparent; color:var(--txt); border-radius:9px; padding:.62rem .9rem; font:700 .8rem Manrope,system-ui,sans-serif; cursor:pointer; }
+    .cookie-btn.primary { background:linear-gradient(135deg,var(--accent),var(--accent-light)); border-color:transparent; color:#071a0f; }
+    @media (max-width:680px) {
+      .cookie-consent { left:10px; right:10px; bottom:10px; }
+      .cookie-consent-inner { align-items:stretch; flex-direction:column; gap:12px; padding:14px; }
+      .cookie-consent-actions { display:grid; grid-template-columns:1fr 1fr; }
+      .cookie-btn { width:100%; }
+      .cookie-btn.primary { grid-column:1 / -1; }
+    }
+
   </style>
 
-  <!-- ══════════ ANALYTICS (GA4) ══════════ -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJT7THH2DT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-PJT7THH2DT', { anonymize_ip: true });
-  </script>
-<script>
-(function(){
-  function syncHeaderHeight(){
-    var h=document.querySelector('header');
-    if(h) document.documentElement.style.setProperty('--header-height', h.getBoundingClientRect().height+'px');
-  }
-  window.addEventListener('load', syncHeaderHeight);
-  window.addEventListener('resize', syncHeaderHeight);
-  if(document.fonts && document.fonts.ready) document.fonts.ready.then(syncHeaderHeight);
-})();
-</script>
-<style>body{padding-top:var(--header-height,0px)}</style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56VL3FPC"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 <div class="ambient" aria-hidden="true"></div>
 
 <!-- ════════════ OFFER BAR ════════════ -->
@@ -864,6 +871,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
 
       <div class="nav-links">
+        <a href="tools/index.html">Free Tools</a>
+        <a href="news/index.html">Business News</a>
         <a href="#services" data-i18n="nav.services">Services</a>
         <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
         <a href="#consult" data-i18n="nav.getStarted">Get Started</a>
@@ -883,7 +892,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <button class="lang-btn" data-lang="bn" onclick="setLang('bn')">বাং</button>
           <button class="lang-btn" data-lang="hi" onclick="setLang('hi')">हिं</button>
         </div>
-        <a href="#contact" class="btn ghost hide-mobile" style="padding:.52rem .85rem;font-size:.86rem" data-i18n="nav.contactBtn">Contact</a>
         <a href="portal.html" class="btn ghost hide-mobile" style="padding:.52rem .85rem;font-size:.86rem"><i class="ri-user-3-line"></i> Login</a>
         <a href="#consult" class="btn primary hide-mobile" style="padding:.52rem .9rem;font-size:.86rem"><i class="ri-file-list-3-line"></i> <span data-i18n="nav.consultBtn">Get Free Consultation</span></a>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
@@ -920,6 +928,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="portal.html">
     <span class="mnav-icon"><i class="ri-user-3-line"></i></span>
     <span class="mnav-label">Login / My Applications</span>
+    <i class="ri-arrow-right-s-line mnav-chevron"></i>
+  </a>
+  <a href="tools/index.html" onclick="closeMobileNav()">
+    <span class="mnav-icon"><i class="ri-tools-line"></i></span>
+    <span class="mnav-label">Free Tools</span>
+    <i class="ri-arrow-right-s-line mnav-chevron"></i>
+  </a>
+  <a href="news/index.html" onclick="closeMobileNav()">
+    <span class="mnav-icon"><i class="ri-newspaper-line"></i></span>
+    <span class="mnav-label">Business News</span>
     <i class="ri-arrow-right-s-line mnav-chevron"></i>
   </a>
   <a href="#services" onclick="closeMobileNav()">
@@ -1062,6 +1080,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4>🛒 Sell Online</h4>
         <p>Selling through Instagram, Amazon, Flipkart, your own website or other platforms? Get help formalising your online business.</p>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FREE BUSINESS TOOLS ════════════ -->
+<section id="free-tools" aria-labelledby="free-tools-h2">
+  <div class="container">
+    <div class="sec-hd">
+      <div>
+        <span class="sec-label">10 Free Tools, No Sign-up</span>
+        <h2 id="free-tools-h2">Free Business Tools</h2>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:1.02rem;max-width:680px;margin:-8px 0 20px">Before you register, calculate, apply or pay — understand what you need.</p>
+    <p style="color:var(--muted);font-size:.92rem;max-width:680px;margin:0 0 24px">Use our free tools to explore GST, business structure, MSME/Udyam, trademarks, invoices, licences and compliance.</p>
+    <div class="info-card-grid">
+      <a class="info-card" href="tools/gst-calculator.html" style="display:block">
+        <div class="ic-ico"><i class="ri-calculator-line"></i></div>
+        <h4>GST Calculator</h4>
+        <p>Instant GST-inclusive/exclusive amounts with CGST, SGST and IGST split.</p>
+      </a>
+      <a class="info-card" href="tools/company-name-generator.html" style="display:block">
+        <div class="ic-ico"><i class="ri-magic-line"></i></div>
+        <h4>Company Name Generator</h4>
+        <p>Preliminary business name ideas based on your industry and style.</p>
+      </a>
+      <a class="info-card" href="tools/business-structure-selector.html" style="display:block">
+        <div class="ic-ico"><i class="ri-git-branch-line"></i></div>
+        <h4>Business Structure Selector</h4>
+        <p>Answer a few questions to see which structure may suit your business.</p>
+      </a>
+      <a class="info-card" href="tools/udyam-eligibility-checker.html" style="display:block">
+        <div class="ic-ico"><i class="ri-medal-line"></i></div>
+        <h4>Udyam/MSME Checker</h4>
+        <p>See your likely Micro, Small or Medium classification.</p>
+      </a>
+      <a class="info-card" href="tools/invoice-generator.html" style="display:block">
+        <div class="ic-ico"><i class="ri-bill-line"></i></div>
+        <h4>Invoice Generator</h4>
+        <p>Create a GST-ready invoice and print or save it as a PDF.</p>
+      </a>
+      <a class="info-card" href="tools/compliance-calendar.html" style="display:block">
+        <div class="ic-ico"><i class="ri-calendar-check-line"></i></div>
+        <h4>Compliance Calendar</h4>
+        <p>Track recurring GST, TDS, ROC, LLP and FSSAI compliance items.</p>
+      </a>
+    </div>
+    <div style="margin-top:26px">
+      <a href="tools/index.html" class="btn primary"><i class="ri-tools-line"></i> Explore Free Tools</a>
     </div>
   </div>
 </section>
@@ -1249,6 +1316,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
 
+      <div class="ck-terms-box" id="ckTermsBox">
+        <label class="ck-terms-label" for="ckTermsAccepted">
+          <input type="checkbox" id="ckTermsAccepted" name="termsAccepted">
+          <span>I have read and agree to the <a href="terms-conditions.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and acknowledge the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+        </label>
+      </div>
+
       <div class="ck-err" id="ckErr" role="alert"></div>
       <div class="ck-toast" id="ckToast"><i class="ri-checkbox-circle-fill"></i> <span data-i18n="consult.toast">Got it! Your details have been recorded — we'll also reach out by phone or email.</span></div>
       <div class="ck-foot">
@@ -1383,6 +1457,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- ════════════ BUSINESS NEWS (homepage teaser) ════════════ -->
+<section id="business-news" aria-labelledby="business-news-h2">
+  <div class="container">
+    <div class="sec-hd">
+      <div>
+        <span class="sec-label">Automatically Updated</span>
+        <h2 id="business-news-h2">Business News</h2>
+      </div>
+    </div>
+    <p style="color:var(--muted);font-size:1.02rem;max-width:680px;margin:-8px 0 20px">Stay updated with business, startup, MSME, tax, finance and West Bengal business developments.</p>
+    <div class="info-card-grid" id="homeNewsGrid">
+      <a class="info-card" href="news/index.html" style="display:block">
+        <div class="ic-ico"><i class="ri-newspaper-line"></i></div>
+        <h4>Business News</h4>
+        <p>Loading the latest headlines&hellip;</p>
+      </a>
+    </div>
+    <div style="margin-top:26px">
+      <a href="news/index.html" class="btn primary"><i class="ri-newspaper-line"></i> View All Business News</a>
+    </div>
+  </div>
+</section>
+<script>
+(function () {
+  var grid = document.getElementById('homeNewsGrid');
+  if (!grid) return;
+  fetch('news/news.json', { cache: 'no-store' })
+    .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+    .then(function (data) {
+      var articles = Array.isArray(data.articles) ? data.articles : [];
+      if (!articles.length) return; // leave the static fallback card in place
+      var latest = [...articles].sort(function (a, b) { return new Date(b.publishedAt) - new Date(a.publishedAt); }).slice(0, 6);
+      grid.innerHTML = latest.map(function (a) {
+        var title = String(a.title || '').replace(/[&<>"']/g, function (c) { return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; });
+        var src = String(a.source || '').replace(/[&<>"']/g, function (c) { return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; });
+        return '<a class="info-card" href="news/index.html" style="display:block">' +
+          '<div class="ic-ico"><i class="ri-newspaper-line"></i></div>' +
+          '<h4>' + title + '</h4>' +
+          '<p>' + src + '</p>' +
+          '</a>';
+      }).join('');
+    })
+    .catch(function () { /* leave the static fallback card — never show a broken section */ });
+})();
+</script>
 
 <section id="faq" aria-labelledby="faq-h2">
   <div class="container">
@@ -1463,7 +1582,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="fbl-mono" aria-hidden="true"></span>
           <span class="fbl-accent" aria-hidden="true"></span>
         </a>
-        <p class="foot-desc" data-i18n="footer.desc">West Bengal's trusted business consultancy — company registration, licensing and compliance, made simple, from Kolkata to every district we serve.</p>
+        <p class="foot-desc" data-i18n="footer.desc">Business registration, startup paperwork, licensing, GST-related assistance and compliance support — made simple for businesses across West Bengal.</p>
         <p style="color:var(--muted);font-size:.76rem;margin-top:8px" data-i18n="footer.hours">Mon–Sat · 10 AM – 7 PM</p>
       </div>
 
@@ -1471,6 +1590,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h5 data-i18n="footer.company">Company</h5>
         <div class="foot-links">
           <a href="about.html">About Onnmore</a>
+          <a href="news/index.html">Business News</a>
           <a href="#features" data-i18n="footer.link.why">Why Onnmore</a>
           <a href="#pricing" data-i18n="footer.link.pricing">Pricing</a>
           <a href="#docs" data-i18n="footer.link.docs">Document Checklist</a>
@@ -1508,7 +1628,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="foot-links">
           <a href="privacy-policy.html">Privacy Policy</a>
           <a href="terms-conditions.html">Terms &amp; Conditions</a>
-          <a href="refund-cancellation.html">Refund &amp; Cancellation Policy</a>
+          <a href="refund-cancellation.html">Refund &amp; Cancellation Policy</a><a href="service-delivery-policy.html">Service Delivery Policy</a>
           <a href="data-protection.html">Data Protection</a>
         </div>
       </div>
@@ -1518,6 +1638,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="foot-areas" id="footAreas"></div>
       </div>
 
+    </div>
+
+    <div class="foot-tools">
+      <h5>Free Business Tools</h5>
+      <div class="foot-tools-links">
+        <a href="tools/gst-calculator.html">GST Calculator</a>
+        <a href="tools/company-name-generator.html">Company Name Generator</a>
+        <a href="tools/business-structure-selector.html">Business Structure Selector</a>
+        <a href="tools/gst-eligibility-checker.html">GST Eligibility Checker</a>
+        <a href="tools/udyam-eligibility-checker.html">Udyam/MSME Checker</a>
+        <a href="tools/invoice-generator.html">Invoice Generator</a>
+        <a href="tools/trademark-class-finder.html">Trademark Class Finder</a>
+        <a href="tools/business-licence-finder.html">Business Licence Finder</a>
+        <a href="tools/fssai-checker.html">FSSAI Eligibility Checker</a>
+        <a href="tools/compliance-calendar.html">Compliance Calendar</a>
+        <a href="tools/index.html">View All Free Tools &rarr;</a>
+      </div>
     </div>
 
     <div class="foot-bottom">
@@ -1542,9 +1679,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <div class="foot-disclaimer">
-      <strong>Website Disclaimer :</strong>
-      This website is privately operated by Onnmore Technologies Private Limited, a private-sector business consultancy and professional assistance provider. We are not a government authority, government department or government portal, and we are not affiliated with, endorsed by, or connected to any government body or department. We assist entrepreneurs and businesses with business registration, GST-related assistance, licensing, documentation, compliance support and other business consultancy services. Customers pay Onnmore for the professional assistance selected. Government and statutory fees, where applicable, are separate and are disclosed before work begins. We do not guarantee government approval or any particular statutory outcome. Where legal advice, legal drafting or legal representation is required, such services are provided through qualified legal professionals or separate law-firm arrangements, as applicable.
-    </div>
+      <strong>Website Disclaimer:</strong> Onnmore Technologies Private Limited is a private-sector business services and professional assistance company. We help entrepreneurs, startups, small businesses and growing companies with business registration, startup and business documentation, application preparation, filing assistance, licensing support, GST-related assistance, compliance support, process coordination and related business paperwork services, as applicable to the selected service. Onnmore is not a government authority, government department or government portal, and is not affiliated with, endorsed by, or acting on behalf of any government authority. Amounts paid to Onnmore are charges for the professional services and assistance selected by the customer and are not government fees. Government or statutory fees, stamp duty, filing charges and other third-party charges, where applicable, are separate and will be disclosed before payment or before the relevant work begins. Relevant government authorities, regulators, statutory bodies, courts, tribunals, funding programmes and other third parties independently assess applications and make their own decisions. Onnmore does not guarantee approval, registration, licence issuance, funding, tax treatment, trademark registration or any other statutory, regulatory, judicial or commercial outcome. Where a matter requires legal advice, legal drafting, legal representation or another regulated professional engagement, Onnmore may coordinate with the appropriate qualified professional or associated legal practice, as applicable.</div>
   </div>
 </footer>
 
@@ -2061,7 +2196,7 @@ en: {
   'contact.call.title':'Call Us','contact.call.desc':"Prefer to talk it through? Give us a call and we'll walk you through everything.",'contact.call.btn':'+91 94771 10971',
   'contact.email.title':'Email','contact.email.desc':'For detailed queries, document sharing, and follow-ups.',
   'contact.addr.title':'Office Address','contact.addr.desc':'HFGP+RQG, AA II, Newtown, Chakpachuria, West Bengal 700160','contact.addr.btn':'Get Directions',
-  'footer.desc':"West Bengal's trusted business consultancy — company registration, licensing and compliance, made simple, from Kolkata to every district we serve.",
+  'footer.desc':"Business registration, startup paperwork, licensing, GST-related assistance and compliance support — made simple for businesses across West Bengal.",
   'footer.hours':'Mon–Sat · 10 AM – 7 PM','footer.company':'Company','footer.servicesHead':'Services','footer.contactHead':'Contact','footer.areasHead':'Areas We Serve',
   'footer.link.why':'Why Onnmore','footer.link.services':'Our Services','footer.link.pricing':'Pricing','footer.link.faq':'FAQ','footer.link.contact':'Contact',
   'footer.link.pvtltd':'Pvt Ltd & LLP Registration','footer.link.gstmsme':'GST & MSME Registration','footer.link.tradefood':'Trade & Food License','footer.link.itrpatent':'ITR, DSC & Patent Filing',
@@ -2909,7 +3044,7 @@ const GSHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbwsgIpEKNUWU
    they gave above and see this request's status on their dashboard. */
 const PORTAL_API_URL = 'https://script.google.com/macros/s/AKfycbzV6IreJDzuGRboGPWSCM4CTKEL6rUjljgGdxBBMvR2cej6sfFx0l-vFdLssp_SDOZpKg/exec';
 
-function sendLeadToEmail(svcName, addonsText, promoText, totalText) {
+function sendLeadToEmail(svcName, addonsText, promoText, totalText, termsAcceptedAt) {
   if (!WEB3FORMS_ACCESS_KEY || WEB3FORMS_ACCESS_KEY.startsWith('PASTE_')) return;
   fetch('https://api.web3forms.com/submit', {
     method: 'POST',
@@ -2927,12 +3062,14 @@ function sendLeadToEmail(svcName, addonsText, promoText, totalText) {
       Email: ckState.email || 'Not provided',
       Business: ckState.biz || 'N/A',
       Notes: ckState.msg || 'N/A',
-      Language: currentLang
+      Language: currentLang,
+      TermsAccepted: 'Yes',
+      TermsAcceptedAt: termsAcceptedAt || ''
     })
   }).catch(err => console.error('Email lead delivery failed:', err));
 }
 
-function sendLeadToSheet(svcName, addonsText, promoText, totalText) {
+function sendLeadToSheet(svcName, addonsText, promoText, totalText, termsAcceptedAt) {
   if (!GSHEET_WEBHOOK_URL || GSHEET_WEBHOOK_URL.startsWith('PASTE_')) return;
   fetch(GSHEET_WEBHOOK_URL, {
     method: 'POST',
@@ -2949,7 +3086,9 @@ function sendLeadToSheet(svcName, addonsText, promoText, totalText) {
       email: ckState.email || '',
       business: ckState.biz || '',
       notes: ckState.msg || '',
-      language: currentLang
+      language: currentLang,
+      termsAccepted: true,
+      termsAcceptedAt: termsAcceptedAt || ''
     })
   }).catch(err => console.error('Sheet lead delivery failed:', err));
 }
@@ -2959,7 +3098,7 @@ function sendLeadToSheet(svcName, addonsText, promoText, totalText) {
    email they gave above and see this exact Case ID with a live status.
    Silently no-ops until PORTAL_API_URL is filled in. Requires no login: it
    finds or creates the customer record by email, purely from this form. */
-function registerCaseWithPortal(svcName, addonsText, promoText, totalText) {
+function registerCaseWithPortal(svcName, addonsText, promoText, totalText, termsAcceptedAt) {
   if (!PORTAL_API_URL || PORTAL_API_URL.startsWith('PASTE_')) return;
   if (!ckState.email) return; // no email given — nothing to tie the case to
   const detailsParts = [];
@@ -3008,7 +3147,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /* ══════════ CONSULTATION REQUEST WIZARD ══════════ */
 let ckStep = 1;
 const ckState = {
-  svcKeys: [], ico: 'ri-briefcase-4-line', name: '', phone: '', email: '', biz: '', msg: '', caseId: '',
+  svcKeys: [], ico: 'ri-briefcase-4-line', name: '', phone: '', email: '', biz: '', msg: '', caseId: '', termsAcceptedAt: '',
   addons: { 'addon.msme': false, 'addon.ca': false },
   promo: { code: '', type: null, value: 0, valid: false }
 };
@@ -3508,7 +3647,18 @@ function ckValidate(s) {
     const linkCount = (msg.match(/https?:\/\/|www\./gi) || []).length;
     if (linkCount > 1) { ckShowErr(t('consult.errMsgLinks')); return false; }
   }
-  if (s === 3 && ckOnCooldown()) { ckShowErr(t('consult.errTooSoon')); return false; }
+  if (s === 3) {
+    if (ckOnCooldown()) { ckShowErr(t('consult.errTooSoon')); return false; }
+    const terms = document.getElementById('ckTermsAccepted');
+    const termsBox = document.getElementById('ckTermsBox');
+    if (!terms || !terms.checked) {
+      if (termsBox) termsBox.classList.add('invalid');
+      ckShowErr('Please accept the Terms & Conditions before submitting your request.');
+      if (terms) terms.focus();
+      return false;
+    }
+    if (termsBox) termsBox.classList.remove('invalid');
+  }
   return true;
 }
 
@@ -3610,11 +3760,12 @@ function ckSubmit() {
      person plausibly could) never reaches our inbox/sheet/WhatsApp. We still
      show the normal success screen so an automated script has no signal to
      learn from and adapt around — the request is just quietly discarded. */
+  ckState.termsAcceptedAt = new Date().toISOString();
   const isSpam = ckIsSpamSubmission();
   if (!isSpam) {
-    sendLeadToEmail(svcName, addonsText, promoText, totalText);
-    sendLeadToSheet(svcName, addonsText, promoText, totalText);
-    registerCaseWithPortal(svcName, addonsText, promoText, totalText);
+    sendLeadToEmail(svcName, addonsText, promoText, totalText, ckState.termsAcceptedAt);
+    sendLeadToSheet(svcName, addonsText, promoText, totalText, ckState.termsAcceptedAt);
+    registerCaseWithPortal(svcName, addonsText, promoText, totalText, ckState.termsAcceptedAt);
     ckMarkSubmitted();
     ckSaveContactInfo();
   }
@@ -3710,7 +3861,7 @@ function ckReset() {
   // customer is adding another service right after submitting one, they've
   // already given us these details and shouldn't have to retype them.
   // Only the request-specific fields reset for the next service.
-  ckState.svcKeys = []; ckState.ico = 'ri-briefcase-4-line'; ckState.biz = ''; ckState.msg = ''; ckState.caseId = '';
+  ckState.svcKeys = []; ckState.ico = 'ri-briefcase-4-line'; ckState.biz = ''; ckState.msg = ''; ckState.caseId = ''; ckState.termsAcceptedAt = '';
   ckState.addons = { 'addon.msme': false, 'addon.ca': false };
   ckState.promo = { code: '', type: null, value: 0, valid: false };
   document.getElementById('ckBiz').value = '';
@@ -3719,6 +3870,8 @@ function ckReset() {
   document.querySelectorAll('.ck-svc.sel').forEach(b => { b.classList.remove('sel'); b.setAttribute('aria-pressed', 'false'); });
   ckUpdateSvcSelBar();
   document.getElementById('cp4').classList.remove('show');
+  const terms = document.getElementById('ckTermsAccepted'); if (terms) terms.checked = false;
+  const termsBox = document.getElementById('ckTermsBox'); if (termsBox) termsBox.classList.remove('invalid');
   const updOpts = document.getElementById('ckUpdatesOptions');
   if (updOpts) updOpts.classList.remove('show');
   const foot = document.querySelector('.ck-foot');
@@ -3886,6 +4039,63 @@ document.addEventListener('keydown', (e) => {
   initTestiMarquee();
   a2hsInitFab();
 })();
+
+/* ══════════ COOKIE / ANALYTICS CONSENT ══════════ */
+const COOKIE_CONSENT_KEY = 'onnmore_cookie_consent_v1';
+let analyticsLoaded = false;
+function loadConsentAnalytics() {
+  if (analyticsLoaded) return;
+  analyticsLoaded = true;
+  try {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ dataLayer.push(arguments); };
+    gtag('js', new Date());
+    gtag('config', 'G-PJT7THH2DT', { anonymize_ip: true });
+    const ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-PJT7THH2DT';
+    document.head.appendChild(ga);
+
+    // Load GTM only after analytics consent.
+    window.dataLayer.push({'gtm.start': new Date().getTime(), event:'gtm.js'});
+    const gtm = document.createElement('script');
+    gtm.async = true;
+    gtm.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-56VL3FPC';
+    document.head.appendChild(gtm);
+  } catch (e) {}
+}
+function setCookieConsent(choice) {
+  try { localStorage.setItem(COOKIE_CONSENT_KEY, choice); } catch (e) {}
+  const banner = document.getElementById('cookieConsent');
+  if (banner) banner.classList.remove('show');
+  if (choice === 'all') loadConsentAnalytics();
+}
+function initCookieConsent() {
+  let choice = '';
+  try { choice = localStorage.getItem(COOKIE_CONSENT_KEY) || ''; } catch (e) {}
+  if (choice === 'all') { loadConsentAnalytics(); return; }
+  if (choice !== 'essential') {
+    const banner = document.getElementById('cookieConsent');
+    if (banner) banner.classList.add('show');
+  }
+}
+initCookieConsent();
+
 </script>
+
+<!-- ════════════ COOKIE / ANALYTICS CONSENT ════════════ -->
+<div class="cookie-consent" id="cookieConsent" role="dialog" aria-live="polite" aria-label="Cookie and analytics preferences">
+  <div class="cookie-consent-inner">
+    <div class="cookie-consent-copy">
+      <strong>Cookies &amp; Analytics</strong>
+      <p>We use essential browser storage to keep the site working and, with your permission, analytics to understand how visitors use Onnmore. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    </div>
+    <div class="cookie-consent-actions">
+      <button type="button" class="cookie-btn" onclick="setCookieConsent('essential')">Essential Only</button>
+      <button type="button" class="cookie-btn primary" onclick="setCookieConsent('all')">Accept All</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
