@@ -1,6 +1,58 @@
 {
-  "updatedAt": "2026-09-15T21:20:37.798Z",
+  "updatedAt": "2026-09-16T04:48:36.842Z",
   "articles": [
+    {
+      "id": "rbi-press-63598",
+      "title": "Money Market Operations as on September 15, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63598",
+      "publishedAt": "2026-09-16T09:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 7,08,362.96 4.80 2.00-5.30 I. Call Money 12,991.60 5.06 4.60-5.20…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "sebi-rss-104416",
+      "title": "Chairman, SEBI delivered a keynote address and participated in a panel discussion during Global Fintech Fest 2026",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/chairman-sebi-delivered-a-keynote-address-and-participated-in-a-panel-discussion-during-global-fintech-fest-2026_104416.html",
+      "publishedAt": "2026-09-16T04:48:36.842Z",
+      "category": "Technology & Business",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104463",
+      "title": "Felicitation of Winners of Securities Market TechSprint at Global Fintech Fest 2026",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/felicitation-of-winners-of-securities-market-techsprint-at-global-fintech-fest-2026_104463.html",
+      "publishedAt": "2026-09-16T04:48:36.841Z",
+      "category": "Startups",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104418",
+      "title": "Successful launch of “Demat 2.0” Pilot project for Tokenised Corporate Bonds [FAQ]",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/successful-launch-of-demat-2-0-pilot-project-for-tokenised-corporate-bonds_104418.html",
+      "publishedAt": "2026-09-16T04:48:36.841Z",
+      "category": "Technology & Business",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
     {
       "id": "sebi-rss-104418",
       "title": "Successful launch of “Demat 2.0” Pilot project for Tokenised Corporate Bonds [FAQ]",
@@ -93,45 +145,6 @@
       "priority": 90
     },
     {
-      "id": "sebi-rss-104463",
-      "title": "Felicitation of Winners of Securities Market TechSprint at Global Fintech Fest 2026",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/felicitation-of-winners-of-securities-market-techsprint-at-global-fintech-fest-2026_104463.html",
-      "publishedAt": "2026-09-15T16:58:48.340Z",
-      "category": "Startups",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-104418",
-      "title": "Successful launch of “Demat 2.0” Pilot project for Tokenised Corporate Bonds [FAQ]",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/successful-launch-of-demat-2-0-pilot-project-for-tokenised-corporate-bonds_104418.html",
-      "publishedAt": "2026-09-15T16:58:48.340Z",
-      "category": "Technology & Business",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-104416",
-      "title": "Chairman, SEBI delivered a keynote address and participated in a panel discussion during Global Fintech Fest 2026",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/chairman-sebi-delivered-a-keynote-address-and-participated-in-a-panel-discussion-during-global-fintech-fest-2026_104416.html",
-      "publishedAt": "2026-09-15T16:58:48.340Z",
-      "category": "Technology & Business",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
       "id": "rbi-press-63595",
       "title": "State Government Securities - Full Auction Result",
       "source": "Reserve Bank of India (RBI)",
@@ -309,19 +322,6 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "Tenor 1-day Notified Amount (in ₹ crore) 5,00,000 Total amount of offers received (in ₹ crore) 3,93,352 Amount accepted (in ₹ crore) 3,93,352 Cut off Rate (%) 5.24 Weighted Average Rate (%) 5.24 Partial Acceptance…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63588",
-      "title": "Money Market Operations as on September 11, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63588",
-      "publishedAt": "2026-09-15T09:00:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 6,73,803.41 4.66 1.00-6.00 I. Call Money 12,791.66 5.02 4.50-5.15…",
       "image": null,
       "sourceType": "official",
       "priority": 90
