@@ -1,6 +1,45 @@
 {
-  "updatedAt": "2026-09-16T16:54:54.486Z",
+  "updatedAt": "2026-09-16T21:18:00.803Z",
   "articles": [
+    {
+      "id": "sebi-rss-104528",
+      "title": "Ex-Parte Interim Order in the matter of cross segment price manipulation by Prrsaar Sampada Private Limited and Chaubara Eats Private Limited",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/enforcement/orders/sep-2026/ex-parte-interim-order-in-the-matter-of-cross-segment-price-manipulation-by-prrsaar-sampada-private-limited-and-chaubara-eats-private-limited_104528.html",
+      "publishedAt": "2026-09-16T21:18:00.802Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104463",
+      "title": "Felicitation of Winners of Securities Market TechSprint at Global Fintech Fest 2026",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/felicitation-of-winners-of-securities-market-techsprint-at-global-fintech-fest-2026_104463.html",
+      "publishedAt": "2026-09-16T21:18:00.802Z",
+      "category": "Startups",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "rbi-press-63606",
+      "title": "Conversion/Switch of Government of India Securities",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63606",
+      "publishedAt": "2026-09-16T19:10:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Government of India announces the conversion/switch of its securities through auction for an aggregate amount of ₹30,000 crore (face value). The security-wise details of the conversion/switch are given as under: Date of…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
     {
       "id": "rbi-press-63606",
       "title": "Conversion/Switch of Government of India Securities",
@@ -23,6 +62,32 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "On a review of current and evolving liquidity conditions, it has been decided to conduct a Variable Rate Reverse Repo (VRRR) auction on Thursday, September 17, 2026, as under: Sl. No. Notified Amount (₹ crore) Tenor…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63605",
+      "title": "RBI to conduct Overnight Variable Rate Reverse Repo (VRRR) auction under LAF on September 17, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63605",
+      "publishedAt": "2026-09-16T19:05:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "On a review of current and evolving liquidity conditions, it has been decided to conduct a Variable Rate Reverse Repo (VRRR) auction on Thursday, September 17, 2026, as under: Sl. No. Notified Amount (₹ crore) Tenor…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63604",
+      "title": "Premature redemption under Sovereign Gold Bond (SGB) Scheme - Redemption Price for premature redemption of SGB 2019-20 Series IV due on September 17, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63604",
+      "publishedAt": "2026-09-16T18:35:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "In terms of GoI notification F.No. 4(7)-B(W&M)/2019 dated May 30, 2019 (SGB 2019-20 Series IV - Issue date September 17, 2019) on Sovereign Gold Bond Scheme, premature redemption of Gold Bond may be permitted after…",
       "image": null,
       "sourceType": "official",
       "priority": 90
@@ -143,19 +208,6 @@
       "image": null,
       "sourceType": "official",
       "priority": 90
-    },
-    {
-      "id": "sebi-rss-104463",
-      "title": "Felicitation of Winners of Securities Market TechSprint at Global Fintech Fest 2026",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/felicitation-of-winners-of-securities-market-techsprint-at-global-fintech-fest-2026_104463.html",
-      "publishedAt": "2026-09-16T11:32:45.602Z",
-      "category": "Startups",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
     },
     {
       "id": "sebi-rss-104418",
