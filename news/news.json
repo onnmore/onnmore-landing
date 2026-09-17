@@ -1,6 +1,71 @@
 {
-  "updatedAt": "2026-09-17T16:59:19.431Z",
+  "updatedAt": "2026-09-17T21:21:49.174Z",
   "articles": [
+    {
+      "id": "sebi-rss-104570",
+      "title": "Interim Order in the matter of Kore Digital Limited",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/enforcement/orders/sep-2026/interim-order-in-the-matter-of-kore-digital-limited_104570.html",
+      "publishedAt": "2026-09-17T21:21:49.172Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104568",
+      "title": "Samuhik Prativedan Manch- A Technology based common reporting mechanism extended to Members of Clearing Corporations",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/samuhik-prativedan-manch-a-technology-based-common-reporting-mechanism-extended-to-members-of-clearing-corporations_104568.html",
+      "publishedAt": "2026-09-17T21:21:49.172Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104528",
+      "title": "Ex-Parte Interim Order in the matter of cross segment price manipulation by Prrsaar Sampada Private Limited and Chaubara Eats Private Limited",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/enforcement/orders/sep-2026/ex-parte-interim-order-in-the-matter-of-cross-segment-price-manipulation-by-prrsaar-sampada-private-limited-and-chaubara-eats-private-limited_104528.html",
+      "publishedAt": "2026-09-17T21:21:49.172Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104463",
+      "title": "Felicitation of Winners of Securities Market TechSprint at Global Fintech Fest 2026",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/felicitation-of-winners-of-securities-market-techsprint-at-global-fintech-fest-2026_104463.html",
+      "publishedAt": "2026-09-17T21:21:49.172Z",
+      "category": "Startups",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "rbi-press-63617",
+      "title": "RBI to conduct 3-day Variable Rate Reverse Repo (VRRR) auction under LAF on September 18, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63617",
+      "publishedAt": "2026-09-17T19:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "On a review of current and evolving liquidity conditions, it has been decided to conduct a Variable Rate Reverse Repo (VRRR) auction on Friday, September 18, 2026, as under: Sl. No. Notified Amount (₹ crore) Tenor (day)…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
     {
       "id": "rbi-press-63617",
       "title": "RBI to conduct 3-day Variable Rate Reverse Repo (VRRR) auction under LAF on September 18, 2026",
@@ -23,6 +88,32 @@
       "category": "Government & Policy",
       "region": "National",
       "summary": "The Reserve Bank of India issued Directions under Section 35A read with Section 56 of the Banking Regulation Act, 1949 to The Valsad Mahila Nagrik Sahakari Bank Ltd., Valsad Gujarat vide Directive No.…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63616",
+      "title": "Directions under Section 35A read with Section 56 of the Banking Regulation Act, 1949 – The Valsad Mahila Nagrik Sahakari Bank Ltd., Valsad Gujarat – Extension of period",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63616",
+      "publishedAt": "2026-09-17T17:35:00.000Z",
+      "category": "Government & Policy",
+      "region": "National",
+      "summary": "The Reserve Bank of India issued Directions under Section 35A read with Section 56 of the Banking Regulation Act, 1949 to The Valsad Mahila Nagrik Sahakari Bank Ltd., Valsad Gujarat vide Directive No.…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63615",
+      "title": "RBI announces OMO Sale of Government of India Securities",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63615",
+      "publishedAt": "2026-09-17T17:25:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "As announced vide the Press Release 2026-27/1106 dated September 11, 2026 , the Reserve Bank will be conducting OMO sale auction of Government of India securities for an aggregate amount of ₹25,000 crore on September…",
       "image": null,
       "sourceType": "official",
       "priority": 90
@@ -247,32 +338,6 @@
       "image": null,
       "sourceType": "official",
       "priority": 90
-    },
-    {
-      "id": "sebi-rss-104463",
-      "title": "Felicitation of Winners of Securities Market TechSprint at Global Fintech Fest 2026",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/felicitation-of-winners-of-securities-market-techsprint-at-global-fintech-fest-2026_104463.html",
-      "publishedAt": "2026-09-17T11:40:47.345Z",
-      "category": "Startups",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-104528",
-      "title": "Ex-Parte Interim Order in the matter of cross segment price manipulation by Prrsaar Sampada Private Limited and Chaubara Eats Private Limited",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/enforcement/orders/sep-2026/ex-parte-interim-order-in-the-matter-of-cross-segment-price-manipulation-by-prrsaar-sampada-private-limited-and-chaubara-eats-private-limited_104528.html",
-      "publishedAt": "2026-09-17T11:40:47.344Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
     },
     {
       "id": "rbi-press-63608",
@@ -621,19 +686,6 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "Reserve Bank of India announces the auction of Government of India Treasury Bills as per the following details: Sr. No. Treasury Bill Notified Amount (₹ crore) Auction Date Settlement Date 1 91-Day 9,000 September 16,…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63584",
-      "title": "RBI announces OMO Sale of Government of India Securities",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63584",
-      "publishedAt": "2026-09-11T17:40:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "On a review of current and evolving liquidity conditions, the Reserve Bank has decided to conduct OMO sale auctions of Government of India securities for an aggregate amount of ₹1,00,000 crore in three tranches of…",
       "image": null,
       "sourceType": "official",
       "priority": 90
