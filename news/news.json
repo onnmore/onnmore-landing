@@ -1,6 +1,71 @@
 {
-  "updatedAt": "2026-09-21T12:47:21.569Z",
+  "updatedAt": "2026-09-21T21:59:05.176Z",
   "articles": [
+    {
+      "id": "sebi-rss-104570",
+      "title": "Interim Order in the matter of Kore Digital Limited",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/enforcement/orders/sep-2026/interim-order-in-the-matter-of-kore-digital-limited_104570.html",
+      "publishedAt": "2026-09-21T21:59:05.173Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104568",
+      "title": "Samuhik Prativedan Manch- A Technology based common reporting mechanism extended to Members of Clearing Corporations",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/samuhik-prativedan-manch-a-technology-based-common-reporting-mechanism-extended-to-members-of-clearing-corporations_104568.html",
+      "publishedAt": "2026-09-21T21:59:05.173Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104528",
+      "title": "Ex-Parte Interim Order in the matter of cross segment price manipulation by Prrsaar Sampada Private Limited and Chaubara Eats Private Limited",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/enforcement/orders/sep-2026/ex-parte-interim-order-in-the-matter-of-cross-segment-price-manipulation-by-prrsaar-sampada-private-limited-and-chaubara-eats-private-limited_104528.html",
+      "publishedAt": "2026-09-21T21:59:05.173Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "rbi-press-63640",
+      "title": "RBI to conduct Overnight Variable Rate Reverse Repo (VRRR) auction under LAF on September 22, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63640",
+      "publishedAt": "2026-09-21T19:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "On a review of current and evolving liquidity conditions, it has been decided to conduct a Variable Rate Reverse Repo (VRRR) auction on Tuesday, September 22, 2026, as under: Sl. No. Notified Amount (₹ crore) Tenor…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63639",
+      "title": "Auction of Government of India Dated Security",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63639",
+      "publishedAt": "2026-09-21T18:25:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Government of India (GoI) has announced the sale (re-issue) of one dated security for a notified amount of ₹34,000 crore as per the following details: Sr No Security Date of Repayment Notified Amount (₹ Crore) GoI…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
     {
       "id": "rbi-press-63638",
       "title": "Data on Forex inflows via FCNR(B) Deposits, External Commercial Borrowings (ECBs) and Overseas Foreign Currency Borrowings (OFCBs) under Reserve Bank’s Swap facility",
@@ -10,6 +75,32 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "RBI had introduced a special USD-INR Forex Swap facility covering FCNR(B) deposits, ECB and OFCB inflows on June&#8239;08,&#8239;2026. As announced vide Press Release dated August 14, 2026 , the Scheme was open…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63638",
+      "title": "Data on Forex inflows via FCNR(B) Deposits, External Commercial Borrowings (ECBs) and Overseas Foreign Currency Borrowings (OFCBs) under Reserve Bank’s Swap facility",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63638",
+      "publishedAt": "2026-09-21T18:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "RBI had introduced a special USD-INR Forex Swap facility covering FCNR(B) deposits, ECB and OFCB inflows on June&#8239;08,&#8239;2026. As announced vide Press Release dated August 14, 2026 , the Scheme was open till…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63637",
+      "title": "Rate of interest on Government of India Floating Rate Bond 2033",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63637",
+      "publishedAt": "2026-09-21T17:45:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "The rate of interest on Government of India Floating Rate Bond 2033 (FRB 2033) applicable for the half year September 22, 2026 to March 21, 2027 shall be 6.87 percent per annum. It may be recalled that FRB 2033 carries…",
       "image": null,
       "sourceType": "official",
       "priority": 90
@@ -41,6 +132,32 @@
       "priority": 90
     },
     {
+      "id": "rbi-press-63636",
+      "title": "RBI issues Directions on Minimum Capital Requirements for Market Risk under Basel III for Commercial Banks",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63636",
+      "publishedAt": "2026-09-21T17:25:00.000Z",
+      "category": "Government & Policy",
+      "region": "National",
+      "summary": "The Reserve Bank of India had issued Draft Guidelines on Minimum Capital Requirements for Market Risk &ndash; under Basel III on February 17, 2023 , seeking stakeholder feedback. The draft guidelines proposed adoption…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63635",
+      "title": "Detailed Result: OMO Sale Auction held on Sep 21, 2026 and Settlement on Sep 22, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63635",
+      "publishedAt": "2026-09-21T16:50:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "I. SUMMARY OMO SALE RESULTS Aggregate Amount (Face value) notified by RBI : ₹25,000 crore Total amount bid (Face value) by participants : ₹84,982 crore Total amount accepted (Face value) by RBI : ₹25,000 crore II.…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
       "id": "rbi-press-63635",
       "title": "Detailed Result: OMO Sale Auction held on Sep 21, 2026 and Settlement on Sep 22, 2026",
       "source": "Reserve Bank of India (RBI)",
@@ -62,6 +179,32 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "A. Source Security 8.26% GS 2027 7.06% GS 2028 8.60% GS 2028 7.26% GS 2029 B. Notified Amount (in ₹ crore) 2,000 4,000 4,000 4,000 Destination Security 7.19% GS 2060 6.79% GS 2034 7.50% GS 2034 7.50% GS 2034 C. i. No.…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63634",
+      "title": "Result: Conversion/Switch Auction of Government of India Securities",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63634",
+      "publishedAt": "2026-09-21T16:40:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "A. Source Security 8.26% GS 2027 7.06% GS 2028 8.60% GS 2028 7.26% GS 2029 B. Notified Amount (in ₹ crore) 2,000 4,000 4,000 4,000 Destination Security 7.19% GS 2060 6.79% GS 2034 7.50% GS 2034 7.50% GS 2034 C. i. No.…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63633",
+      "title": "Open Market Operation (OMO) – Sale of Government of India Securities held on Sep 21, 2026: Cut-Offs",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63633",
+      "publishedAt": "2026-09-21T14:30:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Security 8.28% GS 2027 7.17% GS 2028 6.75% GS 2029 7.17% GS 2030 6.10% GS 2031 7.95% GS 2032 Total amount notified Aggregate amount of ₹25,000 crore (No security-wise notified amount) Total amount (Face Value) accepted…",
       "image": null,
       "sourceType": "official",
       "priority": 90
@@ -132,6 +275,32 @@
       "priority": 90
     },
     {
+      "id": "rbi-press-63632",
+      "title": "Money Market Operations as on September 20, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63632",
+      "publishedAt": "2026-09-21T11:55:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 0.00 - - I. Call Money 0.00 - - II. Triparty Repo 0.00 - - III.…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63631",
+      "title": "Money Market Operations as on September 19, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63631",
+      "publishedAt": "2026-09-21T11:50:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 11,474.37 5.22 4.75-5.50 I. Call Money 828.80 4.92 4.75-5.25 II.…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
       "id": "rbi-press-63631",
       "title": "Money Market Operations as on September 19, 2026",
       "source": "Reserve Bank of India (RBI)",
@@ -158,19 +327,6 @@
       "priority": 90
     },
     {
-      "id": "rbi-press-63630",
-      "title": "Result of the Overnight Variable Rate Reverse Repo (VRRR) auction held on September 21, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63630",
-      "publishedAt": "2026-09-21T10:20:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "Tenor 1-day Notified Amount (in ₹ crore) 1,00,000 Total amount of offers received (in ₹ crore) 75,058 Amount accepted (in ₹ crore) 75,058 Cut off Rate (%) 5.24 Weighted Average Rate (%) 5.24 Partial Acceptance…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
       "id": "rbi-press-63629",
       "title": "Money Market Operations as on September 18, 2026",
       "source": "Reserve Bank of India (RBI)",
@@ -182,58 +338,6 @@
       "image": null,
       "sourceType": "official",
       "priority": 90
-    },
-    {
-      "id": "rbi-press-63629",
-      "title": "Money Market Operations as on September 18, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63629",
-      "publishedAt": "2026-09-21T09:00:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 12,740.38 5.02 4.25-5.30 I. Call Money 1,149.49 4.94 4.60-5.10…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "sebi-rss-104570",
-      "title": "Interim Order in the matter of Kore Digital Limited",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/enforcement/orders/sep-2026/interim-order-in-the-matter-of-kore-digital-limited_104570.html",
-      "publishedAt": "2026-09-21T04:55:06.955Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-104568",
-      "title": "Samuhik Prativedan Manch- A Technology based common reporting mechanism extended to Members of Clearing Corporations",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/samuhik-prativedan-manch-a-technology-based-common-reporting-mechanism-extended-to-members-of-clearing-corporations_104568.html",
-      "publishedAt": "2026-09-21T04:55:06.955Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-104528",
-      "title": "Ex-Parte Interim Order in the matter of cross segment price manipulation by Prrsaar Sampada Private Limited and Chaubara Eats Private Limited",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/enforcement/orders/sep-2026/ex-parte-interim-order-in-the-matter-of-cross-segment-price-manipulation-by-prrsaar-sampada-private-limited-and-chaubara-eats-private-limited_104528.html",
-      "publishedAt": "2026-09-21T04:55:06.955Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
     },
     {
       "id": "sebi-rss-104463",
