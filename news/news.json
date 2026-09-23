@@ -1,7 +1,59 @@
 {
-  "updatedAt": "2026-09-22T21:18:18.204Z",
+  "updatedAt": "2026-09-23T04:44:35.656Z",
   "articles": [
     {
+      "id": "rbi-press-63647",
+      "title": "Money Market Operations as on September 22, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63647",
+      "publishedAt": "2026-09-23T09:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 7,44,738.10 5.11 3.01-6.30 I. Call Money 15,782.26 5.24 4.00-5.35…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "sebi-rss-104651",
+      "title": "Notices of Attachment of Bank and Post Office accounts and Demat Accounts and mutual Fund Folios with AP Nos. 15805 and 15806 of 2026 dated September 18, 2026 issued against…",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/enforcement/recovery-proceedings/sep-2026/notices-of-attachment-of-bank-and-post-office-accounts-and-demat-accounts-and-mutual-fund-folios-with-ap-nos-15805-and-15806-of-2026-dated-september-18-2026-issued-against-harsha-ishvarbhai-solanki-_104651.html",
+      "publishedAt": "2026-09-23T04:44:35.654Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104570",
+      "title": "Interim Order in the matter of Kore Digital Limited",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/enforcement/orders/sep-2026/interim-order-in-the-matter-of-kore-digital-limited_104570.html",
+      "publishedAt": "2026-09-23T04:44:35.654Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104568",
+      "title": "Samuhik Prativedan Manch- A Technology based common reporting mechanism extended to Members of Clearing Corporations",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/samuhik-prativedan-manch-a-technology-based-common-reporting-mechanism-extended-to-members-of-clearing-corporations_104568.html",
+      "publishedAt": "2026-09-23T04:44:35.654Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
       "id": "sebi-rss-104651",
       "title": "Notices of Attachment of Bank and Post Office accounts and Demat Accounts and mutual Fund Folios with AP Nos. 15805 and 15806 of 2026 dated September 18, 2026 issued against…",
       "source": "Securities and Exchange Board of India (SEBI)",
@@ -91,45 +143,6 @@
       "image": null,
       "sourceType": "official",
       "priority": 90
-    },
-    {
-      "id": "sebi-rss-104651",
-      "title": "Notices of Attachment of Bank and Post Office accounts and Demat Accounts and mutual Fund Folios with AP Nos. 15805 and 15806 of 2026 dated September 18, 2026 issued against…",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/enforcement/recovery-proceedings/sep-2026/notices-of-attachment-of-bank-and-post-office-accounts-and-demat-accounts-and-mutual-fund-folios-with-ap-nos-15805-and-15806-of-2026-dated-september-18-2026-issued-against-harsha-ishvarbhai-solanki-_104651.html",
-      "publishedAt": "2026-09-22T16:57:03.711Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-104570",
-      "title": "Interim Order in the matter of Kore Digital Limited",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/enforcement/orders/sep-2026/interim-order-in-the-matter-of-kore-digital-limited_104570.html",
-      "publishedAt": "2026-09-22T16:57:03.711Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-104568",
-      "title": "Samuhik Prativedan Manch- A Technology based common reporting mechanism extended to Members of Clearing Corporations",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/samuhik-prativedan-manch-a-technology-based-common-reporting-mechanism-extended-to-members-of-clearing-corporations_104568.html",
-      "publishedAt": "2026-09-22T16:57:03.711Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
     },
     {
       "id": "rbi-press-63644",
@@ -322,19 +335,6 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "RBI had introduced a special USD-INR Forex Swap facility covering FCNR(B) deposits, ECB and OFCB inflows on June&#8239;08,&#8239;2026. As announced vide Press Release dated August 14, 2026 , the Scheme was open till…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63637",
-      "title": "Rate of interest on Government of India Floating Rate Bond 2033",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63637",
-      "publishedAt": "2026-09-21T17:45:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "The rate of interest on Government of India Floating Rate Bond 2033 (FRB 2033) applicable for the half year September 22, 2026 to March 21, 2027 shall be 6.87 percent per annum. It may be recalled that FRB 2033 carries…",
       "image": null,
       "sourceType": "official",
       "priority": 90
