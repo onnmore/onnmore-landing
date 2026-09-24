@@ -1,7 +1,59 @@
 {
-  "updatedAt": "2026-09-23T21:29:47.003Z",
+  "updatedAt": "2026-09-24T04:49:47.154Z",
   "articles": [
     {
+      "id": "rbi-press-63653",
+      "title": "Money Market Operations as on September 23, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63653",
+      "publishedAt": "2026-09-24T09:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 7,25,595.80 5.09 3.75-6.40 I. Call Money 11,812.91 5.21 4.60-5.30…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "sebi-rss-104651",
+      "title": "Notices of Attachment of Bank and Post Office accounts and Demat Accounts and mutual Fund Folios with AP Nos. 15805 and 15806 of 2026 dated September 18, 2026 issued against…",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/enforcement/recovery-proceedings/sep-2026/notices-of-attachment-of-bank-and-post-office-accounts-and-demat-accounts-and-mutual-fund-folios-with-ap-nos-15805-and-15806-of-2026-dated-september-18-2026-issued-against-harsha-ishvarbhai-solanki-_104651.html",
+      "publishedAt": "2026-09-24T04:49:47.152Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104570",
+      "title": "Interim Order in the matter of Kore Digital Limited",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/enforcement/orders/sep-2026/interim-order-in-the-matter-of-kore-digital-limited_104570.html",
+      "publishedAt": "2026-09-24T04:49:47.152Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
+      "id": "sebi-rss-104568",
+      "title": "Samuhik Prativedan Manch- A Technology based common reporting mechanism extended to Members of Clearing Corporations",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/samuhik-prativedan-manch-a-technology-based-common-reporting-mechanism-extended-to-members-of-clearing-corporations_104568.html",
+      "publishedAt": "2026-09-24T04:49:47.152Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
+    {
       "id": "sebi-rss-104651",
       "title": "Notices of Attachment of Bank and Post Office accounts and Demat Accounts and mutual Fund Folios with AP Nos. 15805 and 15806 of 2026 dated September 18, 2026 issued against…",
       "source": "Securities and Exchange Board of India (SEBI)",
@@ -91,45 +143,6 @@
       "image": null,
       "sourceType": "official",
       "priority": 90
-    },
-    {
-      "id": "sebi-rss-104651",
-      "title": "Notices of Attachment of Bank and Post Office accounts and Demat Accounts and mutual Fund Folios with AP Nos. 15805 and 15806 of 2026 dated September 18, 2026 issued against…",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/enforcement/recovery-proceedings/sep-2026/notices-of-attachment-of-bank-and-post-office-accounts-and-demat-accounts-and-mutual-fund-folios-with-ap-nos-15805-and-15806-of-2026-dated-september-18-2026-issued-against-harsha-ishvarbhai-solanki-_104651.html",
-      "publishedAt": "2026-09-23T16:57:36.590Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-104570",
-      "title": "Interim Order in the matter of Kore Digital Limited",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/enforcement/orders/sep-2026/interim-order-in-the-matter-of-kore-digital-limited_104570.html",
-      "publishedAt": "2026-09-23T16:57:36.590Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-104568",
-      "title": "Samuhik Prativedan Manch- A Technology based common reporting mechanism extended to Members of Clearing Corporations",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/samuhik-prativedan-manch-a-technology-based-common-reporting-mechanism-extended-to-members-of-clearing-corporations_104568.html",
-      "publishedAt": "2026-09-23T16:57:36.590Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
     },
     {
       "id": "rbi-press-63650",
@@ -309,19 +322,6 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "The result of the auction of State Government Securities held on September 22, 2026 , is as under: (Amount in ₹ Crore) ANDHRA PRADESH SGS 2039 ANDHRA PRADESH SGS 2051 GOA SGS 2041 GUJARAT SGS 2036 Notified Amount 1000…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63643",
-      "title": "Result of Yield/Price Based Auction of State Government Securities",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63643",
-      "publishedAt": "2026-09-22T13:45:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "Sr. No State/UT Amount to be raised (₹ Crore) Amount Accepted (₹ Crore) Cut off Price (₹)/Yield (%) Tenor (Year) 1. Andhra Pradesh 1000 1000 97.44/7.8793 Re-issue of 7.56% Andhra Pradesh SGS 2039, issued on July 01,…",
       "image": null,
       "sourceType": "official",
       "priority": 90
