@@ -1,6 +1,58 @@
 {
-  "updatedAt": "2026-09-28T23:15:53.005Z",
+  "updatedAt": "2026-09-29T05:43:17.531Z",
   "articles": [
+    {
+      "id": "rbi-press-63685",
+      "title": "RBI to conduct Second Overnight Variable Rate Reverse Repo (VRRR) auction under LAF on September 29, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63685",
+      "publishedAt": "2026-09-29T10:50:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "On a review of current and evolving liquidity conditions, it has been decided to conduct a second Variable Rate Reverse Repo (VRRR) auction on Tuesday, September 29, 2026, as under: Sl. No. Notified Amount (₹ crore)…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63684",
+      "title": "Result of the Overnight Variable Rate Reverse Repo (VRRR) auction held on September 29, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63684",
+      "publishedAt": "2026-09-29T10:25:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Tenor 1-day Notified Amount (in ₹ crore) 2,00,000 Total amount of offers received (in ₹ crore) 1,19,048 Amount accepted (in ₹ crore) 1,19,048 Cut off Rate (%) 5.24 Weighted Average Rate (%) 5.24 Partial Acceptance…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63683",
+      "title": "Money Market Operations as on September 28, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63683",
+      "publishedAt": "2026-09-29T09:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 7,42,309.96 5.06 4.00-5.40 I. Call Money 17,367.62 5.11 4.00-5.25…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "sebi-rss-104725",
+      "title": "Key decisions taken in the SEBI Board Meeting dated 24th September, 2026",
+      "source": "Securities and Exchange Board of India (SEBI)",
+      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/key-decisions-taken-in-the-sebi-board-meeting-dated-24th-september-2026_104725.html",
+      "publishedAt": "2026-09-29T05:43:17.529Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "",
+      "image": null,
+      "sourceType": "official",
+      "priority": 85
+    },
     {
       "id": "sebi-rss-104725",
       "title": "Key decisions taken in the SEBI Board Meeting dated 24th September, 2026",
@@ -171,19 +223,6 @@
       "priority": 85
     },
     {
-      "id": "sebi-rss-104725",
-      "title": "Key decisions taken in the SEBI Board Meeting dated 24th September, 2026",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/sep-2026/key-decisions-taken-in-the-sebi-board-meeting-dated-24th-september-2026_104725.html",
-      "publishedAt": "2026-09-28T13:53:32.956Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
       "id": "sebi-rss-104698",
       "title": "Remittance Order dated September 24, 2026 issued under RC No. 9209 of 2026 drawn against Pranav Kamleshkumar Trivedi in the matter of Trading activities of certain entities in the…",
       "source": "Securities and Exchange Board of India (SEBI)",
@@ -301,19 +340,6 @@
       "priority": 90
     },
     {
-      "id": "rbi-press-63675",
-      "title": "Money Market Operations as on September 25, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63675",
-      "publishedAt": "2026-09-28T09:00:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 7,22,052.74 5.10 4.00-5.50 I. Call Money 13,110.64 5.20 4.60-5.30…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
       "id": "rbi-press-63674",
       "title": "RBI Bulletin – September 2026",
       "source": "Reserve Bank of India (RBI)",
@@ -322,32 +348,6 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "Today, the Reserve Bank released the September 2026 issue of its monthly Bulletin. The Bulletin includes seven speeches, three articles and current statistics. The three articles are: I. State of the Economy; II.…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63674",
-      "title": "RBI Bulletin – September 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63674",
-      "publishedAt": "2026-09-25T21:50:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "Today, the Reserve Bank released the September 2026 issue of its monthly Bulletin. The Bulletin includes seven speeches, three articles and current statistics. The three articles are: I. State of the Economy ; II.…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63673",
-      "title": "RBI to conduct Overnight Variable Rate Reverse Repo (VRRR) auction under LAF on September 28, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63673",
-      "publishedAt": "2026-09-25T19:10:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "On a review of current and evolving liquidity conditions, it has been decided to conduct a Variable Rate Reverse Repo (VRRR) auction on Monday, September 28, 2026, as under: Sl. No. Notified Amount (₹ crore) Tenor (day)…",
       "image": null,
       "sourceType": "official",
       "priority": 90
