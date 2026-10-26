@@ -1,0 +1,20 @@
+paths:
+  static: ''
+  uploads: uploads
+timezone: Asia/Calcutta
+markdown:
+  engine: commonmark
+  options: {}
+collections_config:
+  pages:
+    path: ''
+    icon: wysiwyg
+  blog:
+    path: blog
+    icon: event_available
+  news:
+    path: news
+    icon: newsmode
+  tools:
+    path: tools
+    icon: looks
