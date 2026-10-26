@@ -91,6 +91,18 @@
     .tc-table tbody tr:last-child td{border-bottom:0}
     .tc-table td{font-weight:700}
     .tc-table .tc-hl{background:color-mix(in srgb,#f2b705 12%,transparent)}
+    .tc-gp{display:flex;align-items:center;justify-content:space-between;gap:22px;border:1px solid var(--border);border-radius:18px;padding:22px 24px;background:linear-gradient(145deg,var(--card),var(--bg-2))}
+    .tc-gp-main{display:flex;align-items:center;gap:16px;min-width:0}
+    .tc-gp-ico{flex:0 0 52px;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:#fff;color:#4285f4;font-size:1.7rem;box-shadow:0 0 0 1px var(--border)}
+    .tc-gp-name{margin:0;font-size:1.05rem;font-weight:900;color:var(--txt);line-height:1.3}
+    .tc-gp-rate{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:6px 0 4px;font-size:.9rem;color:var(--txt)}
+    .tc-gp-rate b{font-weight:900;font-size:1rem}
+    .tc-gp-stars{display:inline-flex;gap:1px;color:#f2b705;font-size:1rem}
+    .tc-gp-rate span.tc-gp-count{color:var(--muted)}
+    .tc-gp-meta{margin:0;color:var(--muted);font-size:.84rem;line-height:1.6}
+    .tc-gp-meta .tc-open{color:var(--accent-light);font-weight:800}
+    .tc-gp .btn{flex-shrink:0;white-space:nowrap}
+    @media(max-width:899px){.tc-gp{flex-direction:column;align-items:flex-start}.tc-gp .btn{width:100%;justify-content:center}}
     .tc-final{margin-top:50px;padding:clamp(25px,4vw,42px);border:1px solid var(--border-hi);border-radius:20px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:radial-gradient(ellipse at 0 0,rgba(58,184,129,.12),transparent 55%),var(--card)}
     .tc-final h2{margin:0 0 8px;color:var(--txt);font-size:clamp(1.35rem,3vw,2rem);letter-spacing:-.035em}
     .tc-final p{margin:0;max-width:560px;color:var(--muted);font-size:.9rem;line-height:1.7}
@@ -216,6 +228,21 @@
             <tr><td>Service reminders</td><td>Every 3 months</td><td class="tc-hl">Every 3 months</td><td>Every 3 months</td></tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <section class="tc-sec" aria-labelledby="tcGpTitle">
+      <div class="tc-h"><h2 id="tcGpTitle">Serviced by Techonn</h2><p>Tech Care Club is delivered by TECHONN IT SOLUTION. See our Google profile and customer reviews.</p></div>
+      <div class="tc-gp">
+        <div class="tc-gp-main">
+          <span class="tc-gp-ico" aria-hidden="true"><i class="ri-google-fill"></i></span>
+          <div>
+            <h3 class="tc-gp-name">Techonn Computer And Laptop Repairing</h3>
+            <div class="tc-gp-rate" aria-label="Rated 4.7 out of 5 from 106 Google reviews"><b>4.7</b><span class="tc-gp-stars" aria-hidden="true"><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-half-fill"></i></span><span class="tc-gp-count">(106 Google reviews)</span></div>
+            <p class="tc-gp-meta">Computer repair service &middot; <span class="tc-open">Open</span><br>Kolkata, Chakpachuria, West Bengal</p>
+          </div>
+        </div>
+        <a class="btn ghost" href="https://www.google.com/search?kgmid=%2Fg%2F11ygkt6xcl&amp;q=Techonn+Computer+And+Laptop+Repairing" target="_blank" rel="noopener noreferrer"><i class="ri-external-link-line"></i> View on Google</a>
       </div>
     </section>
 
