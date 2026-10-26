@@ -245,7 +245,9 @@
     header { position:sticky; top:0; z-index:100; background:var(--header-bg); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%); border-bottom:1px solid var(--border); }
     nav { display:flex; align-items:center; justify-content:space-between; padding:.8rem 0; gap:.85rem; flex-wrap:nowrap; }
     header .container { width: min(2000px, 98vw); }
-    .brand { display:flex; align-items:center; flex-shrink:0; }
+    .brand { display:flex; align-items:center; flex-shrink:0; margin-left:clamp(10px,1.8vw,34px); }
+    .btn.nav-it { padding:.52rem .9rem; font-size:.86rem; border-color:var(--border-hi); color:var(--accent-light); white-space:nowrap; }
+    .btn.nav-it:hover { background:rgba(58,184,129,.1); }
     .nav-links { display:flex; gap:.1rem; align-items:center; }
     .nav-links a { padding:.52rem .62rem; border-radius:9px; color:var(--muted); font-size:.85rem; font-weight:600; transition:.18s; white-space:nowrap; }
     .nav-links a:hover { color: var(--accent-light); background: rgba(58,184,129,.08); }
@@ -1057,6 +1059,7 @@
         </div>
         <a href="portal.html" class="btn ghost hide-mobile" style="padding:.52rem .85rem;font-size:.86rem"><i class="ri-user-3-line"></i> Login</a>
         <a href="#consult" class="btn primary hide-mobile" style="padding:.52rem .9rem;font-size:.86rem"><i class="ri-file-list-3-line"></i> <span data-i18n="nav.consultBtn">Get Free Consultation</span></a>
+        <a href="it-support.html" class="btn ghost nav-it hide-mobile"><i class="ri-computer-line"></i> <span>IT Support</span></a>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
           <i class="ri-menu-3-line"></i>
         </button>
