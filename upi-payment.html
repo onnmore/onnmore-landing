@@ -49,7 +49,7 @@
   </section>
 
   <div id="payArea" hidden>
-    <div class="co-heading"><span class="co-eyebrow">UPI payment</span><h1>Pay <span id="amountTitle"></span> by UPI.</h1><p>Scan the QR code or pay to our UPI ID, then upload your payment screenshot below. Your plan activates after we verify the payment.</p></div>
+    <div class="co-heading"><span class="co-eyebrow">UPI payment</span><h1>Pay <span id="amountTitle"></span> by UPI.</h1><p id="paymentDescription">Scan the QR code or pay to our UPI ID, then upload your payment screenshot below. Your plan activates after we verify the payment.</p></div>
     <section class="co-card">
       <div class="co-plan-head"><div><h2 id="planName">Your plan</h2><p>Order reference <span class="co-order-id" id="orderRef" style="margin:0 0 0 6px;padding:4px 10px"></span></p></div><div class="co-price" id="amountBig"></div></div>
 
@@ -59,7 +59,7 @@
           <div>
             <div class="upi-rows">
               <div class="upi-row"><div><span>UPI ID</span><strong id="vpa"></strong></div><button class="upi-copy" type="button" data-copy="vpa">Copy</button></div>
-              <div class="upi-row"><div><span>Amount (inclusive of GST)</span><strong id="amountRow"></strong></div><button class="upi-copy" type="button" data-copy="amountRow">Copy</button></div>
+              <div class="upi-row"><div><span id="amountRowLabel">Amount (inclusive of GST)</span><strong id="amountRow"></strong></div><button class="upi-copy" type="button" data-copy="amountRow">Copy</button></div>
               <div class="upi-row"><div><span>Payment remark / note</span><strong id="remark"></strong></div><button class="upi-copy" type="button" data-copy="remark">Copy</button></div>
             </div>
             <a class="co-btn primary upi-open" id="openApp" href="#"><i class="ri-smartphone-line"></i> Open my UPI app</a>
@@ -85,12 +85,12 @@
           <p id="doneText"></p>
           <div class="co-order-id" id="doneRef"></div>
           <div style="text-align:left;max-width:420px;margin:10px auto 0" id="doneChecks"></div>
-          <p style="font-size:.8rem">A confirmation email is on its way to <strong id="doneEmail"></strong>. We will send a second email as soon as the payment is verified.</p>
+          <p style="font-size:.8rem" id="doneEmailNote">We will send an update after verifying the payment.</p>
           <div class="co-actions" style="justify-content:center"><button class="co-btn secondary" id="statusBtn" type="button"><i class="ri-refresh-line"></i> Check status</button><a class="co-btn primary" href="index.html">Back to home</a></div>
         </div>
       </div>
     </section>
-    <p class="co-smallprint">Never share your UPI PIN or OTP. Payments are verified against our bank credit before your plan is activated. Need help? Message us on WhatsApp or write to onnmore@gmail.com quoting your order reference.</p>
+    <p class="co-smallprint" id="paymentSmallprint">Never share your UPI PIN or OTP. Payments are verified against our bank credit before your plan is activated. Need help? Message us on WhatsApp or write to onnmore@gmail.com quoting your order reference.</p>
   </div>
 </main>
 <footer class="co-footer">© <span id="year"></span> Onnmore Technologies Private Limited</footer>

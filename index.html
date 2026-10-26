@@ -931,6 +931,7 @@
   </style>
   <link rel="stylesheet" href="assets/service-gateway.css">
   <script src="assets/service-gateway.js" defer></script>
+  <script src="assets/checkout-config.js"></script>
 
 </head>
 <body>
@@ -3294,6 +3295,37 @@ function registerCaseWithPortal(svcName, addonsText, planText, termsAcceptedAt) 
   }).catch(err => console.error('Portal case registration failed:', err));
 }
 
+function registerCaseWithAdmin(svcName, addonsText, planText, termsAcceptedAt) {
+  const apiUrl = window.ONNMORE_PAYMENT_API_URL || '';
+  if (!apiUrl) return;
+  const details = [];
+  if (addonsText) details.push(`Add-ons: ${addonsText}`);
+  if (planText) details.push(`Plan: ${planText}`);
+  if (ckState.msg) details.push(`Notes: ${ckState.msg}`);
+  fetch(apiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({
+      action: 'submitLead',
+      lead: {
+        caseId: ckState.caseId,
+        name: ckState.name || '',
+        email: ckState.email || '',
+        phone: ckState.phone || '',
+        businessName: ckState.biz || '',
+        serviceKey: ckState.svcKeys.join(', '),
+        serviceName: svcName,
+        details: details.join(' | '),
+        termsAccepted: true,
+        termsAcceptedAt: termsAcceptedAt || '',
+        source: 'Consultation form'
+      }
+    })
+  }).then(response => response.json()).then(result => {
+    if (!result.ok) console.error('Admin lead mirror failed:', result.error || 'Unknown error');
+  }).catch(err => console.error('Admin lead mirror failed:', err));
+}
+
 /* ══════════ Mobile nav ══════════ */
 const mToggle = document.getElementById('mobileToggle');
 const mNav    = document.getElementById('mobileNav');
@@ -3868,6 +3900,7 @@ function ckSubmit() {
     sendLeadToEmail(svcName, addonsText, planText, ckState.termsAcceptedAt);
     sendLeadToSheet(svcName, addonsText, planText, ckState.termsAcceptedAt);
     registerCaseWithPortal(svcName, addonsText, planText, ckState.termsAcceptedAt);
+    registerCaseWithAdmin(svcName, addonsText, planText, ckState.termsAcceptedAt);
     ckMarkSubmitted();
     ckSaveContactInfo();
   }

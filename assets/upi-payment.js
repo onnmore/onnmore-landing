@@ -2,7 +2,7 @@
 'use strict';
 var $=function(id){return document.getElementById(id)};
 var params=new URLSearchParams(location.search),orderId=(params.get('order')||'').trim();
-var STORE='onnmore_upi_order_v1',data=null,email='',imageB64='',pollTimer=null;
+var STORE='onnmore_upi_order_v1',data=null,email='',imageB64='',pollTimer=null,isQuote=false;
 function money(n){return '₹'+Number(n).toLocaleString('en-IN')}
 function show(el,on){el.hidden=!on}
 function msg(el,text){el.textContent=text;el.classList.add('show')}
@@ -44,11 +44,19 @@ $('lookupBtn').addEventListener('click',async function(){
 /* ---------- payment details ---------- */
 function renderPay(){
   show($('payArea'),true);
+  isQuote=data.serviceType==='custom-quote'||data.planId==='custom-quote'||String(data.planName||'').indexOf('Quotation ')===0;
   $('planName').textContent=data.planName||'Your plan';
   $('orderRef').textContent=data.orderId;
   var amt=money(data.amount);
   $('amountTitle').textContent=amt;$('amountBig').innerHTML='';$('amountBig').textContent=amt;
-  var small=document.createElement('small');small.textContent='incl. GST';$('amountBig').appendChild(small);
+  var small=document.createElement('small');small.textContent=isQuote?'quotation':'incl. GST';$('amountBig').appendChild(small);
+  $('amountRowLabel').textContent=isQuote?'Amount requested':'Amount (inclusive of GST)';
+  $('paymentSmallprint').textContent=isQuote
+    ?'Never share your UPI PIN or OTP. Payments are verified against our bank credit before the quotation payment is confirmed. Need help? Message us on WhatsApp or write to onnmore@gmail.com quoting your order reference.'
+    :'Never share your UPI PIN or OTP. Payments are verified against our bank credit before your plan is activated. Need help? Message us on WhatsApp or write to onnmore@gmail.com quoting your order reference.';
+  $('paymentDescription').textContent=isQuote
+    ?'Pay the exact quotation amount using the QR code or UPI ID, then upload your payment screenshot. We will verify the bank credit before confirming receipt.'
+    :'Scan the QR code or pay to our UPI ID, then upload your payment screenshot below. Your plan activates after we verify the payment.';
   $('amountRow').textContent=Number(data.amount).toFixed(2);
   $('vpa').textContent=data.upiId||'';$('remark').textContent=data.remark||data.orderId;
   $('openApp').href=data.upiLink||'#';
@@ -108,17 +116,23 @@ $('proofBtn').addEventListener('click',async function(){
 function line(ok,text){var d=document.createElement('div');d.className='upi-check';var i=document.createElement('i');i.className=ok?'ri-checkbox-circle-fill':'ri-information-line';if(!ok)i.style.color='#ffd138';var s=document.createElement('span');s.textContent=text;d.appendChild(i);d.appendChild(s);return d}
 function renderDone(status,info){
   show($('payBlock'),false);show($('doneBlock'),true);
-  $('doneRef').textContent=orderId;$('doneEmail').textContent=email||'your email address';
+  $('doneRef').textContent=orderId;
   var checks=$('doneChecks');checks.innerHTML='';
   if(status==='PAID'){
     $('doneIcon').innerHTML='<i class="ri-check-double-line"></i>';
     $('doneTitle').textContent='Payment confirmed';
-    $('doneText').textContent='Thank you. We have verified your payment, and a confirmation email has been sent. Our team will now begin the next steps.';
+    $('doneText').textContent=isQuote
+      ?'Thank you. We have verified your quotation payment against our bank credit.'
+      :'Thank you. We have verified your payment, and a confirmation email has been sent. Our team will now begin the next steps.';
+    $('doneEmailNote').textContent=isQuote
+      ?'Your payment status was updated for ' + (email || 'your email address') + '. Contact onnmore@gmail.com if you need a receipt copy.'
+      :'A confirmation email is on its way to ' + (email || 'your email address') + '.';
     clearInterval(pollTimer);return;
   }
   $('doneIcon').innerHTML='<i class="ri-time-line"></i>';
   $('doneTitle').textContent='Payment proof received';
   $('doneText').textContent='Thank you. We have received your screenshot and will confirm the payment once we verify it against our bank credit. This usually takes a few working hours.';
+  $('doneEmailNote').textContent='We will send an update to ' + (email || 'your email address') + ' after verifying the payment.';
   if(info&&info.utr)checks.appendChild(line(true,'Transaction ID noted: '+info.utr));
   else checks.appendChild(line(false,'We could not read a transaction ID from the screenshot. Our team will check it manually.'));
   if(info&&info.detected&&info.detected.amount===false)checks.appendChild(line(false,'We could not see the expected amount in the screenshot. We will verify it manually.'));

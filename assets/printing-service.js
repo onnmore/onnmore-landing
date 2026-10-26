@@ -195,6 +195,12 @@ function sendPrintOrderSecondary(payload){
   const sheet='https://script.google.com/macros/s/AKfycbwsgIpEKNUWUo8VHOIoF2O-w-xzfzu-5C1n7_S6d_CYLeTR5l9AdPMrkJB0aHk4O5MafQ/exec';
   fetch(sheet,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).catch(()=>{});
 }
+function mirrorPrintLeadToAdmin(payload){
+  const apiUrl=window.ONNMORE_PAYMENT_API_URL||'';
+  if(!apiUrl)return;
+  const details=['Files: '+payload.fileCount,'Estimate: '+payload.estimate,'Delivery area: '+payload.zone,payload.eta?'Estimated delivery: '+payload.eta:'',payload.notes?'Notes: '+payload.notes:''].filter(Boolean).join(' | ');
+  fetch(apiUrl,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'submitLead',lead:{caseId:payload.caseId,name:payload.name,email:'',phone:payload.phone,businessName:'',location:'New Town, Kolkata',serviceKey:'printing',serviceName:payload.service,details:details,termsAccepted:payload.termsAccepted===true,termsAcceptedAt:payload.termsAcceptedAt||'',source:'Printing order'}})}).then(response=>response.json()).then(result=>{if(!result.ok)console.error('Admin lead mirror failed:',result.error||'Unknown error');}).catch(error=>console.error('Admin lead mirror failed:',error));
+}
 function setPlaceButton(loading){const btn=$('placePrintOrder');btn.disabled=loading;btn.innerHTML=loading?'<i class="ri-loader-4-line"></i> Placing order…':'<i class="ri-check-line"></i> Agree &amp; Place Order';}
 form.addEventListener('submit',async e=>{
   e.preventDefault();
@@ -225,6 +231,7 @@ form.addEventListener('submit',async e=>{
     const result=await response.json();
     if(!response.ok||!result.success)throw new Error(result.message||'The order could not be sent.');
     sendPrintOrderSecondary(payload);
+    mirrorPrintLeadToAdmin(payload);
     $('printOrderForm').hidden=true;$('printOrderSuccess').hidden=false;
     $('printSuccessReference').textContent=caseId;$('printSuccessEta').textContent=values.eta;$('printSuccessPrice').textContent=estimate;
     $('printSuccessMessage').textContent='Thanks, '+values.name+'. Your order request has been sent with '+cart.length+' file(s). Onnmore will contact you on '+values.phone+' to confirm delivery availability, timing and final charges.';
@@ -238,6 +245,5 @@ form.addEventListener('submit',async e=>{
 });
 render();
 })(); 
-
 
 
