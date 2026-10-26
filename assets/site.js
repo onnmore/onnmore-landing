@@ -56,6 +56,28 @@ function initMobileNav() {
   document.addEventListener('keydown', e => { if (e.key === 'Escape') window.closeMobileNav(); });
 }
 
+/* ── Consistent cross-site navigation ── */
+function initPrimaryNavigation() {
+  const nav = document.querySelector('header .nav-links');
+  if (!nav) return;
+  const nested = /\/(?:tools|news|blog)\//.test(window.location.pathname);
+  const root = nested ? '../' : '';
+  const links = [
+    ['index.html#services', 'Business Services'],
+    ['it-support.html', 'IT Support'],
+    ['tools/index.html', 'Free Tools'],
+    ['news/index.html', 'Business News'],
+    ['index.html#contact', 'Contact']
+  ];
+  nav.replaceChildren(...links.map(([href, label]) => {
+    const link = document.createElement('a');
+    link.href = root + href;
+    link.textContent = label;
+    if (window.location.pathname.endsWith('/' + href)) link.setAttribute('aria-current', 'page');
+    return link;
+  }));
+}
+
 /* ── FAQ accordion helper (native <details> already handles most of it) ── */
 
 /* ── Scroll reveal ── */
@@ -161,6 +183,7 @@ document.addEventListener('click', (e) => {
 (function () {
   document.addEventListener('DOMContentLoaded', function () {
     initThemeSwitch();
+    initPrimaryNavigation();
     updateWaLinks();
     initMobileNav();
     initScrollReveal();

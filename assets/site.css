@@ -143,6 +143,15 @@
     .nav-links { display:flex; gap:.2rem; align-items:center; }
     .nav-links a { padding:.52rem .78rem; border-radius:9px; color:var(--muted); font-size:.88rem; font-weight:600; transition:.18s; white-space:nowrap; }
     .nav-links a:hover { color: var(--accent-light); background: rgba(58,184,129,.08); }
+    .nav-dropdown { position:relative; }
+    .nav-dropdown summary { display:flex; align-items:center; gap:.2rem; padding:.52rem .78rem; border-radius:9px; color:var(--muted); font-size:.88rem; font-weight:600; white-space:nowrap; cursor:pointer; list-style:none; }
+    .nav-dropdown summary::-webkit-details-marker { display:none; }
+    .nav-dropdown summary:hover, .nav-dropdown[open] summary { color:var(--accent-light); background:rgba(58,184,129,.08); }
+    .nav-dropdown summary:focus-visible { outline:3px solid var(--accent-light); outline-offset:2px; }
+    .nav-dropdown-menu { position:absolute; top:calc(100% + 8px); left:0; z-index:120; display:grid; gap:4px; min-width:245px; padding:8px; border:1px solid var(--border-hi); border-radius:13px; background:var(--card); box-shadow:var(--shadow); }
+    .nav-dropdown-menu a { display:flex; align-items:center; gap:9px; padding:10px 11px; border-radius:8px; color:var(--txt); font-size:.8rem; }
+    .nav-dropdown-menu a:hover { background:rgba(58,184,129,.1); color:var(--accent-light); }
+    .nav-dropdown-menu a i { color:var(--accent-light); font-size:1rem; }
     .nav-actions { display:flex; align-items:center; gap:.55rem; flex-shrink:0; }
     .mobile-toggle { display:none; background:none; border:1px solid var(--border); border-radius:9px; padding:.55rem .6rem; color:var(--txt); cursor:pointer; align-items:center; justify-content:center; font-size:1.15rem; }
 
@@ -153,6 +162,13 @@
     .mnav-close { position:absolute; right:0; top:50%; transform:translateY(-50%); background:none; border:1px solid var(--border-md); border-radius:11px; padding:.6rem; color:var(--txt); cursor:pointer; display:flex; font-size:1.15rem; }
     .mobile-nav a { display:flex; align-items:center; gap:.85rem; padding:.85rem 1rem; border-radius: var(--radius); font-size:.98rem; font-weight:700; color:var(--txt); border:1px solid var(--border); background: var(--ov02); transition:.18s; margin-bottom:.55rem; width:100%; align-self:stretch; text-align:left; }
     .mobile-nav a:hover { background: rgba(58,184,129,.08); border-color: var(--border-md); }
+    .mnav-dropdown { width:100%; margin-bottom:.55rem; border:1px solid var(--border); border-radius:var(--radius); background:var(--ov02); }
+    .mnav-dropdown > summary { display:flex; align-items:center; gap:.85rem; padding:.85rem 1rem; border-radius:var(--radius); color:var(--txt); font-size:.98rem; font-weight:700; cursor:pointer; list-style:none; }
+    .mnav-dropdown > summary::-webkit-details-marker { display:none; }
+    .mnav-dropdown > summary:focus-visible { outline:3px solid var(--accent-light); outline-offset:2px; }
+    .mnav-dropdown[open] > summary { color:var(--accent-light); }
+    .mnav-dropdown-links { padding:0 .55rem .35rem; }
+    .mnav-dropdown-links a { margin-bottom:.35rem; font-size:.9rem; }
     .mnav-icon { display:flex; align-items:center; justify-content:center; width:42px; height:42px; flex-shrink:0; border-radius:12px; background: rgba(58,184,129,.14); }
     .mobile-nav a .mnav-icon i { font-size:1.05rem; color:var(--accent-light); }
     .mobile-nav a .mnav-label { flex:1; text-align:left; }

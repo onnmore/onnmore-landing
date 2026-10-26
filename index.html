@@ -1034,16 +1034,18 @@
       </a>
 
       <div class="nav-links">
-        <a href="tools/index.html">Free Tools</a>
-        <a href="news/index.html">Business News</a>
         <a href="#services" data-i18n="nav.services">Services</a>
-        <a href="it-support.html">IT Support</a>
-        <a href="index.html?change-location=1">Change Location</a>
         <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
-        <a href="#consult" data-i18n="nav.getStarted">Get Started</a>
-        <a href="#features" data-i18n="nav.whyUs">Why Us</a>
-        <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
-        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+        <a href="it-support.html">IT Support</a>
+        <details class="nav-dropdown">
+          <summary>Resources <i class="ri-arrow-down-s-line" aria-hidden="true"></i></summary>
+          <div class="nav-dropdown-menu">
+            <a href="tools/index.html"><i class="ri-tools-line" aria-hidden="true"></i> Free business tools</a>
+            <a href="news/index.html"><i class="ri-newspaper-line" aria-hidden="true"></i> Business news</a>
+            <a href="blog/index.html"><i class="ri-book-open-line" aria-hidden="true"></i> Business guides</a>
+            <a href="faq.html"><i class="ri-question-line" aria-hidden="true"></i> Frequently asked questions</a>
+          </div>
+        </details>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </div>
 
@@ -1059,7 +1061,6 @@
         </div>
         <a href="portal.html" class="btn ghost hide-mobile" style="padding:.52rem .85rem;font-size:.86rem"><i class="ri-user-3-line"></i> Login</a>
         <a href="#consult" class="btn primary hide-mobile" style="padding:.52rem .9rem;font-size:.86rem"><i class="ri-file-list-3-line"></i> <span data-i18n="nav.consultBtn">Get Free Consultation</span></a>
-        <a href="it-support.html" class="btn ghost nav-it hide-mobile"><i class="ri-computer-line"></i> <span>IT Support</span></a>
         <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false">
           <i class="ri-menu-3-line"></i>
         </button>
@@ -1096,16 +1097,14 @@
     <span class="mnav-label">Login / My Applications</span>
     <i class="ri-arrow-right-s-line mnav-chevron"></i>
   </a>
-  <a href="tools/index.html" onclick="closeMobileNav()">
-    <span class="mnav-icon"><i class="ri-tools-line"></i></span>
-    <span class="mnav-label">Free Tools</span>
-    <i class="ri-arrow-right-s-line mnav-chevron"></i>
-  </a>
-  <a href="news/index.html" onclick="closeMobileNav()">
-    <span class="mnav-icon"><i class="ri-newspaper-line"></i></span>
-    <span class="mnav-label">Business News</span>
-    <i class="ri-arrow-right-s-line mnav-chevron"></i>
-  </a>
+  <details class="mnav-dropdown">
+    <summary><span class="mnav-icon"><i class="ri-compass-3-line"></i></span><span class="mnav-label">Resources</span><i class="ri-arrow-down-s-line mnav-chevron"></i></summary>
+    <div class="mnav-dropdown-links">
+      <a href="tools/index.html" onclick="closeMobileNav()"><span class="mnav-icon"><i class="ri-tools-line"></i></span><span class="mnav-label">Free Tools</span><i class="ri-arrow-right-s-line mnav-chevron"></i></a>
+      <a href="news/index.html" onclick="closeMobileNav()"><span class="mnav-icon"><i class="ri-newspaper-line"></i></span><span class="mnav-label">Business News</span><i class="ri-arrow-right-s-line mnav-chevron"></i></a>
+      <a href="blog/index.html" onclick="closeMobileNav()"><span class="mnav-icon"><i class="ri-book-open-line"></i></span><span class="mnav-label">Business Guides</span><i class="ri-arrow-right-s-line mnav-chevron"></i></a>
+    </div>
+  </details>
   <a href="it-support.html" onclick="closeMobileNav()">
     <span class="mnav-icon"><i class="ri-computer-line"></i></span>
     <span class="mnav-label">IT Support</span>
