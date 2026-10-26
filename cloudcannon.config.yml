@@ -9,12 +9,33 @@ collections_config:
   pages:
     path: ''
     icon: wysiwyg
+    filter:
+      exclude:
+        - assets/**
+        - images/**
+        - icons/**
+        - scripts/**
+        - tools/**
+        - news/**
+        - blog/**
+        - plan-checkout.html
+        - plan-review.html
+        - payment-result.html
+        - upi-payment.html
+        - portal.html
+        - service-request.html
+        - printing-service.html
   blog:
     path: blog
     icon: event_available
   news:
     path: news
     icon: newsmode
+    filter:
+      exclude:
+        - news.js
+        - news.css
+        - news.json
   tools:
     path: tools
     icon: looks
