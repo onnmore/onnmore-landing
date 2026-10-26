@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://onnmore.com/sitemap.xml
+Sitemap: https://onnmore.space/sitemap.xml

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Complete your UPI payment | Onnmore</title>
+<meta name="description" content="Pay your Onnmore plan by UPI and upload your payment proof.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/plan-checkout.css">
+<style>
+.upi-grid{display:grid;grid-template-columns:240px 1fr;gap:26px;align-items:start;margin-top:8px}
+.upi-qr{background:#fff;border-radius:18px;padding:12px;width:240px;height:240px;display:grid;place-items:center}
+.upi-qr svg{width:216px;height:216px;display:block}
+.upi-qr-note{text-align:center;color:var(--co-muted);font-size:.74rem;margin-top:9px}
+.upi-rows{display:grid;gap:10px}
+.upi-row{display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid var(--co-border);background:#0c1016;border-radius:12px;padding:12px 14px}
+.upi-row span{display:block;color:var(--co-muted);font-size:.72rem;margin-bottom:3px}
+.upi-row strong{font-size:.95rem;overflow-wrap:anywhere}
+.upi-copy{border:1px solid #37414d;background:transparent;color:#edf3f9;border-radius:9px;padding:8px 11px;font:inherit;font-size:.76rem;font-weight:800;cursor:pointer;flex:0 0 auto}
+.upi-copy:hover{border-color:var(--co-green);color:var(--co-green)}
+.upi-warn{border:1px solid rgba(255,209,56,.35);background:rgba(255,209,56,.07);border-radius:12px;padding:12px 14px;color:#f4e6b0;font-size:.8rem;line-height:1.6;margin-top:14px}
+.upi-open{display:none;margin-top:12px}
+.upi-section{margin-top:30px;padding-top:26px;border-top:1px solid rgba(140,160,180,.17)}
+.upi-section h2{font-size:1.1rem;margin:0 0 6px}.upi-section>p{color:var(--co-muted);font-size:.84rem;line-height:1.6;margin:0 0 16px}
+.upi-drop{display:block;border:1.5px dashed #3a4a58;border-radius:14px;padding:20px;text-align:center;cursor:pointer;color:#c9d4df;font-size:.86rem;background:#0b0e14}
+.upi-drop:hover{border-color:var(--co-green)}
+.upi-drop input{display:none}
+.upi-preview{display:none;margin-top:14px;text-align:center}.upi-preview img{max-width:100%;max-height:280px;border-radius:12px;border:1px solid var(--co-border)}
+.upi-lookup{max-width:460px;margin:0 auto}
+.upi-check{display:flex;gap:9px;align-items:flex-start;font-size:.8rem;color:#cdd9e4;margin:5px 0}.upi-check i{color:var(--co-green);margin-top:2px}
+@media(max-width:700px){.upi-grid{grid-template-columns:1fr}.upi-qr{margin:auto}.upi-open{display:inline-flex}}
+</style>
+<script src="assets/checkout-config.js"></script>
+</head>
+<body class="plan-checkout">
+<header class="co-header"><div class="co-header-in"><a href="index.html" class="co-logo" aria-label="Onnmore home"><img src="assets/onnmore-logo.svg" alt="Onnmore"></a><a class="co-back" href="index.html"><i class="ri-home-4-line"></i> Back to home</a></div></header>
+<main class="co-main">
+  <div class="co-steps" aria-label="Checkout progress"><div class="co-step done"><b><i class="ri-check-line"></i></b> Your details</div><span class="co-step-line"></span><div class="co-step done"><b><i class="ri-check-line"></i></b> Review</div><span class="co-step-line"></span><div class="co-step active"><b>3</b> Payment</div></div>
+
+  <!-- Lookup (when opened from the email link on a new device) -->
+  <section class="co-card upi-lookup" id="lookupCard" hidden>
+    <h2 style="margin:0 0 8px">Find your order</h2>
+    <p style="color:var(--co-muted);font-size:.86rem;line-height:1.6;margin:0 0 16px">Enter the email address you used at checkout to open your UPI payment page.</p>
+    <div class="co-field"><label for="lookupEmail">Email address</label><input id="lookupEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+    <div class="co-alert error" id="lookupError" role="alert"></div>
+    <div class="co-actions"><span></span><button class="co-btn primary" id="lookupBtn" type="button">Open my order</button></div>
+  </section>
+
+  <div id="payArea" hidden>
+    <div class="co-heading"><span class="co-eyebrow">UPI payment</span><h1>Pay <span id="amountTitle"></span> by UPI.</h1><p>Scan the QR code or pay to our UPI ID, then upload your payment screenshot below. Your plan activates after we verify the payment.</p></div>
+    <section class="co-card">
+      <div class="co-plan-head"><div><h2 id="planName">Your plan</h2><p>Order reference <span class="co-order-id" id="orderRef" style="margin:0 0 0 6px;padding:4px 10px"></span></p></div><div class="co-price" id="amountBig"></div></div>
+
+      <div id="payBlock">
+        <div class="upi-grid">
+          <div><div class="upi-qr" id="qrBox" aria-live="polite"></div><div class="upi-qr-note">Scan with PhonePe, Google Pay, Paytm, BHIM or any UPI app</div></div>
+          <div>
+            <div class="upi-rows">
+              <div class="upi-row"><div><span>UPI ID</span><strong id="vpa"></strong></div><button class="upi-copy" type="button" data-copy="vpa">Copy</button></div>
+              <div class="upi-row"><div><span>Amount (inclusive of GST)</span><strong id="amountRow"></strong></div><button class="upi-copy" type="button" data-copy="amountRow">Copy</button></div>
+              <div class="upi-row"><div><span>Payment remark / note</span><strong id="remark"></strong></div><button class="upi-copy" type="button" data-copy="remark">Copy</button></div>
+            </div>
+            <a class="co-btn primary upi-open" id="openApp" href="#"><i class="ri-smartphone-line"></i> Open my UPI app</a>
+            <div class="upi-warn"><i class="ri-information-line"></i> Please pay the exact amount and keep the remark exactly as shown. If your app does not fill the remark automatically, type it in the note field. This is how we match your payment.</div>
+          </div>
+        </div>
+
+        <div class="upi-section" id="proofSection">
+          <h2>After paying, upload your payment screenshot</h2>
+          <p>Upload the success screen from your UPI app. We read the transaction ID from it. You can also type the 12-digit transaction ID (UTR) yourself.</p>
+          <label class="upi-drop" id="drop"><input id="proofFile" type="file" accept="image/png,image/jpeg,image/webp,image/*"><i class="ri-upload-cloud-2-line" style="font-size:1.6rem;display:block;margin-bottom:6px"></i><span id="dropText">Tap to choose a screenshot (JPG or PNG)</span></label>
+          <div class="upi-preview" id="preview"><img id="previewImg" alt="Selected payment screenshot"></div>
+          <div class="co-field" style="margin-top:16px"><label for="utr">Transaction ID / UTR (optional)</label><input id="utr" inputmode="numeric" autocomplete="off" maxlength="20" placeholder="12-digit UPI reference number"><p class="co-hint">Find it in your UPI app under “UPI transaction ID”, “UTR” or “Ref no.”.</p></div>
+          <div class="co-alert error" id="proofError" role="alert"></div>
+          <div class="co-actions"><span class="co-hint" style="margin:0">We never ask for your UPI PIN.</span><button class="co-btn primary" id="proofBtn" type="button">Submit payment proof <i class="ri-send-plane-line"></i></button></div>
+        </div>
+      </div>
+
+      <div id="doneBlock" hidden>
+        <div class="co-result">
+          <div class="co-result-icon" id="doneIcon"><i class="ri-time-line"></i></div>
+          <h2 id="doneTitle">Payment proof received</h2>
+          <p id="doneText"></p>
+          <div class="co-order-id" id="doneRef"></div>
+          <div style="text-align:left;max-width:420px;margin:10px auto 0" id="doneChecks"></div>
+          <p style="font-size:.8rem">A confirmation email is on its way to <strong id="doneEmail"></strong>. We will send a second email as soon as the payment is verified.</p>
+          <div class="co-actions" style="justify-content:center"><button class="co-btn secondary" id="statusBtn" type="button"><i class="ri-refresh-line"></i> Check status</button><a class="co-btn primary" href="index.html">Back to home</a></div>
+        </div>
+      </div>
+    </section>
+    <p class="co-smallprint">Never share your UPI PIN or OTP. Payments are verified against our bank credit before your plan is activated. Need help? Message us on WhatsApp or write to onnmore@gmail.com quoting your order reference.</p>
+  </div>
+</main>
+<footer class="co-footer">© <span id="year"></span> Onnmore Technologies Private Limited</footer>
+<script src="assets/qr.js"></script>
+<script src="assets/upi-payment.js"></script>
+</body>
+</html>

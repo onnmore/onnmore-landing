@@ -10,9 +10,9 @@
    on the official Udyam portal before relying on this for a filing. */
 var UDYAM_THRESHOLDS = {
   lastReviewed: '2026',
-  micro:  { investmentCr: 1,   turnoverCr: 5   },
-  small:  { investmentCr: 10,  turnoverCr: 50  },
-  medium: { investmentCr: 50,  turnoverCr: 250 }
+  micro:  { investmentCr: 2.5, turnoverCr: 10  },
+  small:  { investmentCr: 25,  turnoverCr: 100 },
+  medium: { investmentCr: 125, turnoverCr: 500 }
 };
 
 function classifyUdyam(investmentLakh, turnoverLakh) {

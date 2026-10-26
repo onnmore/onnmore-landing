@@ -81,4 +81,4 @@ function flashCopied(btnEl, label) {
 }
 
 /* GST rate options used consistently across GST Calculator, Invoice Generator, etc. */
-var GST_RATES = [0, 5, 12, 18, 28];
+var GST_RATES = [0, 5, 18, 40];

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Complete Your Plan Details | Onnmore</title>
+  <meta name="description" content="Complete your details to review your selected Onnmore annual plan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/plan-checkout.css">
+  <script src="assets/checkout-config.js"></script><script src="assets/plan-catalog.js"></script>
+</head>
+<body class="plan-checkout">
+<header class="co-header"><div class="co-header-in"><a href="index.html" class="co-logo" aria-label="Onnmore home"><img src="assets/onnmore-logo.svg" alt="Onnmore"></a><a class="co-back" id="coBack" href="index.html"><i class="ri-arrow-left-line"></i> Back to plans</a></div></header>
+<main class="co-main">
+  <div class="co-steps" aria-label="Checkout progress"><div class="co-step active"><b>1</b> Your details</div><span class="co-step-line"></span><div class="co-step"><b>2</b> Review</div><span class="co-step-line"></span><div class="co-step"><b>3</b> Payment</div></div>
+  <div class="co-heading"><span class="co-eyebrow" id="coServiceLabel">Plan registration</span><h1 id="coHeading">Let’s get your business moving.</h1><p id="coSubheading">Enter your details once. You’ll review everything before choosing how to pay.</p></div>
+  <section class="co-card" aria-labelledby="coSelectedTitle">
+    <div class="co-plan-head"><div><h2 id="coSelectedTitle">Your selected plan</h2><p id="coPlanDescription"></p></div><div class="co-price" id="coPrice"></div></div>
+    <p class="co-call" id="coPlanCall"></p>
+    <form id="planCheckoutForm" novalidate>
+      <div class="co-form-progress" aria-label="Form progress"><span class="is-active" data-form-step-label="0"><b>01</b><em>Your contact</em></span><i></i><span data-form-step-label="1"><b>02</b><em id="coStep2Label">Business details</em></span><i></i><span data-form-step-label="2"><b>03</b><em>Final checks</em></span></div>
+      <p class="co-form-step-title" id="coFormStepTitle">Step 1 of 3 · Your contact details</p>
+      <div class="co-form-grid">
+        <div class="co-field" data-form-step="0"><label for="customerName">Full name <span class="req">*</span></label><input id="customerName" name="customerName" type="text" required autocomplete="name" maxlength="100" placeholder="Enter your full name"></div>
+        <div class="co-field" data-form-step="0"><label for="customerEmail">Email address <span class="req">*</span></label><input id="customerEmail" name="customerEmail" type="email" required autocomplete="email" maxlength="160" placeholder="you@example.com"><p class="co-hint">Your order confirmation and payment receipt will be sent to this email.</p></div>
+        <div class="co-field" data-form-step="0"><label for="customerPhone">Mobile number <span class="req">*</span></label><input id="customerPhone" name="customerPhone" type="tel" required autocomplete="tel" inputmode="tel" maxlength="20" placeholder="10-digit mobile number"></div>
+        <div class="co-field" id="businessNameWrap" data-service-only="business-plan,tech-plan" data-form-step="1"><label for="businessName" id="businessNameLabel">Business / startup name</label><input id="businessName" name="businessName" type="text" autocomplete="organization" maxlength="140" placeholder="Business name, if decided"></div>
+        <div class="co-field" id="stateWrap" data-service-only="business-plan,tech-plan" data-form-step="1"><label for="customerState">State / Union Territory <span class="req">*</span></label><input id="customerState" name="customerState" type="text" required autocomplete="address-level1" maxlength="80" placeholder="e.g. West Bengal"></div>
+        <div class="co-field" data-form-step="1"><label for="customerCity" id="cityLabel">City <span class="req">*</span></label><input id="customerCity" name="customerCity" type="text" required autocomplete="address-level2" maxlength="80" placeholder="e.g. Kolkata"><p class="co-hint" id="cityHint" hidden></p></div>
+        <div class="co-field full" id="businessTypeWrap" data-service-only="business-plan" data-form-step="1"><label for="businessType">Business structure</label><select id="businessType" name="businessType"><option value="Not decided yet">Not decided yet</option><option>Proprietorship</option><option>Partnership</option><option>LLP</option><option>Private Limited Company</option><option>OPC</option><option>Other</option></select></div>
+        <div class="co-field full" id="deviceDetailsWrap" data-service-only="tech-care" data-form-step="1" hidden><label for="deviceType">Device type <span class="req">*</span></label><select id="deviceType" name="deviceType"><option value="">Select device</option><option>Laptop</option><option>Desktop computer</option><option>Tablet</option><option>Other</option></select><p class="co-hint">Tech Care Club covers the device type selected here. The model is required below.</p></div>
+        <div class="co-field full" id="deviceModelWrap" data-service-only="tech-care" data-form-step="1" hidden><label for="deviceModel">Device make and model <span class="req">*</span></label><input id="deviceModel" name="deviceModel" type="text" maxlength="140" placeholder="e.g. HP Pavilion 14"></div>
+        <div class="co-field full" id="siteAddressWrap" data-service-only="tech-plan" data-form-step="1" hidden><label for="websiteUrl">Current website or domain (optional)</label><input id="websiteUrl" name="websiteUrl" type="text" inputmode="url" autocomplete="url" maxlength="250" placeholder="https://example.com or your domain name"></div>
+        <div class="co-field full" id="techGoalWrap" data-service-only="tech-plan" data-form-step="2" hidden><label for="techGoal">What do you want to build or improve?</label><textarea id="techGoal" name="techGoal" maxlength="1800" placeholder="Website, business email, ecommerce, automation, or your main goal"></textarea></div>
+        <div class="co-field full" data-form-step="2"><label for="orderNotes">Additional requirements (optional)</label><textarea id="orderNotes" name="orderNotes" maxlength="1800" placeholder="Anything the Onnmore team should know before starting"></textarea></div>
+        <div class="co-field full" data-form-step="2"><label class="co-consent"><input id="privacyConsent" type="checkbox" required><span>I confirm these details are correct and consent to Onnmore using them to process my plan request, payment and service communications. I agree to the <a href="terms-conditions.html" target="_blank" rel="noopener">Terms &amp; Conditions</a> and have read the <a href="privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a>. <strong>Email is required.</strong></span></label></div>
+      </div>
+      <div class="co-alert error" id="formError" role="alert"></div>
+      <div class="co-alert error" id="stepError" role="alert"></div>
+      <div class="co-actions co-step-actions"><a class="co-btn secondary" id="coCancel" href="index.html">Cancel</a><button class="co-btn secondary" id="formStepBack" type="button" hidden><i class="ri-arrow-left-line"></i> Back</button><button class="co-btn primary" id="formStepNext" type="button">Continue <i class="ri-arrow-right-line"></i></button><button class="co-btn primary" id="formStepSubmit" type="submit" hidden>Continue to review <i class="ri-arrow-right-line"></i></button></div>
+    </form>
+  </section>
+  <p class="co-smallprint">Complete your plan purchase on this website: enter your details, review the order, then pay by UPI / QR code, or submit the request and pay later. No WhatsApp handoff is used in checkout. The displayed plan fee is inclusive of GST; government/statutory charges, filing fees and third-party costs are separate where applicable. Payment is not taken on this page.</p>
+</main>
+<footer class="co-footer">© <span id="year"></span> Onnmore Technologies Private Limited · <a href="privacy-policy.html">Privacy</a> · <a href="refund-cancellation.html">Refunds</a></footer>
+<script src="assets/plan-checkout.js"></script>
+</body></html>

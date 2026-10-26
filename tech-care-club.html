@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script>(function(){try{if(localStorage.getItem('onnmore_theme')==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tech Care Club by Techonn | Computer, Laptop &amp; Mobile Care Plans | Onnmore</title>
+  <meta name="description" content="Tech Care Club by Techonn IT Solution: yearly care plans from ₹499 with standard check-ups, repair labour discounts and service reminders for your computer, laptop and mobile." />
+  <meta name="author" content="Onnmore Technologies Private Limited">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://onnmore.space/tech-care-club.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tech Care Club by Techonn | Computer, Laptop &amp; Mobile Care Plans">
+  <meta property="og:description" content="One membership. Smarter care. Check-ups, repair labour discounts and service reminders from ₹499 a year.">
+  <meta property="og:url" content="https://onnmore.space/tech-care-club.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#09090f">
+  <link rel="stylesheet" href="assets/site.css">
+  <style>
+    .tc-page{min-height:75vh;padding:70px 0 72px}
+    .tc-page section{padding:0}
+    .tc-crumb{display:flex;align-items:center;gap:8px;justify-content:center;color:var(--muted);font-size:.8rem;margin-bottom:26px}
+    .tc-crumb a{color:var(--muted)} .tc-crumb a:hover{color:var(--accent-light)} .tc-crumb strong{color:var(--txt);font-weight:700}
+    .tc-hero{max-width:860px;margin:0 auto 46px;text-align:center}
+    .tc-eyebrow{display:inline-flex;align-items:center;gap:9px;flex-wrap:wrap;justify-content:center;border:1px solid var(--border-hi);background:rgba(58,184,129,.07);color:var(--accent-light);border-radius:999px;padding:8px 14px;font-size:.75rem;font-weight:800;letter-spacing:.035em;text-transform:uppercase}
+    .tc-by{display:inline-flex;align-items:center;gap:6px;border-radius:999px;background:#f2b705;color:#2b2100;padding:3px 10px;font-size:.7rem;font-weight:900;letter-spacing:.04em}
+    .tc-hero h1{font-size:clamp(2.35rem,6.2vw,4.6rem);line-height:1.05;letter-spacing:-.055em;margin:19px 0 15px;color:var(--txt);font-weight:900}
+    .tc-hero h1 span{color:var(--accent-light)}
+    .tc-area{display:inline-flex;align-items:center;gap:7px;margin:16px auto 0;border:1px solid rgba(255,209,56,.4);background:rgba(255,209,56,.08);color:#ffe08a;border-radius:999px;padding:8px 15px;font-size:.84rem;font-weight:700}
+    .tc-hero p.tc-lead{max-width:660px;margin:0 auto;color:var(--muted);font-size:1.02rem;line-height:1.8}
+    .tc-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:26px 0 0}
+    .tc-chip{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--border);border-radius:14px;padding:10px 15px;background:linear-gradient(145deg,var(--card),var(--bg-2));color:var(--txt);font-weight:800;font-size:.82rem;letter-spacing:.02em;text-transform:uppercase}
+    .tc-chip i{color:var(--accent-light);font-size:1.25rem}
+    .tc-by-line{margin:20px 0 0;color:var(--muted);font-size:.82rem}
+    .tc-by-line strong{color:var(--txt)}
+
+    .tc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch;margin-top:8px}
+    .tc-plan{--c:#3ab881;--c2:#1f8a5f;position:relative;display:flex;flex-direction:column;border:1px solid var(--border);border-radius:18px;background:linear-gradient(145deg,var(--card),var(--bg-2));overflow:hidden}
+    .tc-basic{--c:#3ab881;--c2:#127a50}
+    .tc-smart{--c:#5b9bff;--c2:#1a4fc4}
+    .tc-premium{--c:#ff6b72;--c2:#c4121a}
+    [data-theme="light"] .tc-basic{--c:#12805a;--c2:#0b6b3a}
+    [data-theme="light"] .tc-smart{--c:#1f5fd6;--c2:#0b3a9e}
+    [data-theme="light"] .tc-premium{--c:#d3222b;--c2:#b30f19}
+    .tc-plan.tc-pop{border:2px solid #f2b705;margin-top:-10px;margin-bottom:-10px}
+    @media(max-width:899px){.tc-plan.tc-pop{margin:0}}
+    .tc-pophead{background:#f2b705;color:#2b2100;text-align:center;font-weight:900;font-size:.78rem;letter-spacing:.06em;padding:6px 10px;text-transform:uppercase}
+    .tc-plan-head{padding:22px 22px 20px;text-align:center;color:#fff;background:linear-gradient(160deg,var(--c2),color-mix(in srgb,var(--c2) 70%,#000))}
+    .tc-plan-head h2{margin:0;font-size:1.65rem;font-weight:900;letter-spacing:-.02em;text-transform:uppercase;color:#fff}
+    .tc-plan-head .tc-for{margin:4px 0 10px;font-weight:700;font-size:.92rem;color:rgba(255,255,255,.9)}
+    .tc-price{font-size:3rem;font-weight:900;letter-spacing:-.03em;line-height:1;color:#fff}
+    .tc-price small{font-size:.9rem;font-weight:700;letter-spacing:0;margin-left:4px;color:rgba(255,255,255,.88)}
+    .tc-perks{list-style:none;margin:0;padding:20px 22px 6px;display:grid;gap:16px;flex:1;align-content:start}
+    .tc-perks li{display:flex;gap:13px;align-items:flex-start;font-size:.95rem;line-height:1.45;color:var(--txt)}
+    .tc-perks li span.tc-sub{display:block;color:var(--muted);font-size:.86rem;margin-top:2px}
+    .tc-ico{flex:0 0 40px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:1.2rem;color:#fff}
+    .tc-ico-cal{background:#1f9d57}.tc-ico-off{background:#e0262f}.tc-ico-cart{background:#2563eb}.tc-ico-bell{background:#f2a50c}
+    .tc-perks li b{color:var(--c);font-size:1.15rem;font-weight:900}
+    .tc-perks li strong{font-weight:800}
+    .tc-best{margin:10px 0 0;padding:13px 18px;text-align:center;font-size:.88rem;line-height:1.5;color:var(--txt);background:color-mix(in srgb,var(--c) 13%,transparent);font-weight:600}
+    .tc-cta{display:block;margin:18px 22px 22px;text-align:center;font-weight:800;text-decoration:none;padding:13px 16px;border-radius:999px;background:var(--c2);color:#fff;transition:filter .2s,transform .2s}
+    .tc-cta:hover{filter:brightness(1.12);transform:translateY(-1px)}
+    .tc-pop .tc-cta{background:#f2b705;color:#2b2100}
+
+    .tc-sec{margin-top:58px}
+    .tc-h{text-align:center;margin:0 auto 26px;max-width:760px}
+    .tc-h h2{margin:0;font-size:clamp(1.5rem,3.6vw,2.3rem);line-height:1.12;letter-spacing:-.045em;font-weight:900;color:var(--txt)}
+    .tc-h p{margin:10px 0 0;color:var(--muted);font-size:.95rem;line-height:1.7}
+    .tc-incl{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+    .tc-incl > div{border:1px solid var(--border);border-radius:16px;padding:20px 14px;text-align:center;background:linear-gradient(145deg,var(--card),var(--bg-2));font-size:.9rem;line-height:1.5;color:var(--txt);font-weight:600}
+    .tc-incl i{display:grid;place-items:center;width:45px;height:45px;margin:0 auto 12px;border-radius:13px;background:rgba(58,184,129,.1);color:var(--accent-light);font-size:1.4rem}
+    .tc-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+    .tc-box{border:1px solid var(--border);border-radius:18px;padding:24px;background:linear-gradient(145deg,var(--card),var(--bg-2))}
+    .tc-box h3{margin:0 0 16px;font-size:1.05rem;font-weight:900;letter-spacing:.01em;text-transform:uppercase;color:var(--txt)}
+    .tc-box ul{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+    .tc-box li{display:flex;gap:12px;align-items:flex-start;font-size:.93rem;line-height:1.5;color:var(--txt)}
+    .tc-box li i{flex:0 0 auto;font-size:1.25rem;margin-top:1px}
+    .tc-no li i{color:#ff5a62}.tc-terms li i{color:var(--accent-light)}
+    .tc-box .tc-note{margin:14px 0 0;color:var(--muted);font-size:.82rem}
+    .tc-tablewrap{overflow-x:auto;border:1px solid var(--border);border-radius:18px;background:linear-gradient(145deg,var(--card),var(--bg-2))}
+    .tc-table{width:100%;min-width:560px;border-collapse:collapse;font-size:.93rem}
+    .tc-table th,.tc-table td{padding:14px 16px;text-align:center;border-bottom:1px solid var(--border);color:var(--txt)}
+    .tc-table th:first-child,.tc-table td:first-child{text-align:left;font-weight:700}
+    .tc-table thead th{font-weight:900;font-size:.95rem}
+    .tc-table thead th small{display:block;color:var(--muted);font-weight:700}
+    .tc-table tbody tr:last-child td{border-bottom:0}
+    .tc-table td{font-weight:700}
+    .tc-table .tc-hl{background:color-mix(in srgb,#f2b705 12%,transparent)}
+    .tc-final{margin-top:50px;padding:clamp(25px,4vw,42px);border:1px solid var(--border-hi);border-radius:20px;display:flex;align-items:center;justify-content:space-between;gap:24px;background:radial-gradient(ellipse at 0 0,rgba(58,184,129,.12),transparent 55%),var(--card)}
+    .tc-final h2{margin:0 0 8px;color:var(--txt);font-size:clamp(1.35rem,3vw,2rem);letter-spacing:-.035em}
+    .tc-final p{margin:0;max-width:560px;color:var(--muted);font-size:.9rem;line-height:1.7}
+    .tc-final-actions{display:flex;flex-wrap:wrap;gap:10px;flex-shrink:0}
+    .tc-back{display:inline-flex;align-items:center;gap:8px;margin-top:25px;color:var(--muted);font-size:.83rem}.tc-back:hover{color:var(--accent-light)}
+    .tc-disclaimer{margin-top:30px;color:var(--muted);font-size:.74rem;line-height:1.7}.tc-disclaimer strong{color:var(--txt)}
+    @media(max-width:899px){.tc-grid{grid-template-columns:minmax(0,1fr);max-width:520px;margin-left:auto;margin-right:auto}.tc-incl{grid-template-columns:repeat(2,minmax(0,1fr))}.tc-two{grid-template-columns:minmax(0,1fr)}.tc-final{align-items:flex-start;flex-direction:column}.tc-final-actions{width:100%}}
+    @media(max-width:560px){.tc-page{padding:48px 0 48px}.tc-incl{grid-template-columns:minmax(0,1fr)}.tc-final-actions{flex-direction:column}.tc-final-actions .btn{width:100%;justify-content:center}.tc-price{font-size:2.6rem}.tc-chip{font-size:.74rem;padding:9px 12px}}
+  </style>
+</head>
+<body>
+<div class="ambient" aria-hidden="true"></div>
+<header>
+  <div class="container">
+    <nav aria-label="Primary navigation">
+      <a href="index.html" class="brand" aria-label="Onnmore home"><img src="assets/onnmore-logo.svg" alt="Onnmore" width="126" height="38"></a>
+      <div class="nav-links">
+        <a href="index.html?change-location=1">Business Papers</a>
+        <a href="it-support.html" aria-current="page">IT Support</a>
+        <a href="index.html?change-location=1">Change Location</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <div class="theme-switch hide-mobile" role="group" aria-label="Theme switcher">
+          <button class="theme-btn active" data-theme-choice="dark" onclick="setTheme('dark')" aria-label="Dark theme"><i class="ri-moon-fill"></i></button>
+          <button class="theme-btn" data-theme-choice="light" onclick="setTheme('light')" aria-label="Light theme"><i class="ri-sun-fill"></i></button>
+        </div>
+        <a href="index.html?change-location=1" class="btn primary hide-mobile" style="padding:.52rem .9rem;font-size:.86rem"><i class="ri-map-pin-line"></i> Select Service</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation menu" aria-expanded="false"><i class="ri-menu-3-line"></i></button>
+      </div>
+    </nav>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="mnav-header">
+    <a href="index.html" aria-label="Onnmore home"><img src="assets/onnmore-logo.svg" alt="Onnmore" width="106" height="32"></a>
+    <button class="mnav-close" id="mobileNavClose" aria-label="Close menu"><i class="ri-close-line"></i></button>
+  </div>
+  <a href="index.html?change-location=1" onclick="closeMobileNav()"><span class="mnav-icon"><i class="ri-file-list-3-line"></i></span><span class="mnav-label">Business Papers</span><i class="ri-arrow-right-s-line mnav-chevron"></i></a>
+  <a href="it-support.html" onclick="closeMobileNav()"><span class="mnav-icon"><i class="ri-computer-line"></i></span><span class="mnav-label">IT Support</span><i class="ri-arrow-right-s-line mnav-chevron"></i></a>
+  <a href="index.html?change-location=1" onclick="closeMobileNav()"><span class="mnav-icon"><i class="ri-map-pin-line"></i></span><span class="mnav-label">Change Location / Service</span><i class="ri-arrow-right-s-line mnav-chevron"></i></a>
+  <a href="index.html#contact" onclick="closeMobileNav()"><span class="mnav-icon"><i class="ri-mail-line"></i></span><span class="mnav-label">Contact</span><i class="ri-arrow-right-s-line mnav-chevron"></i></a>
+  <div class="mnav-cta"><a href="https://wa.me/919477110971" class="mnav-wa-btn" target="_blank" rel="noopener noreferrer"><i class="ri-whatsapp-line"></i><span class="mnav-wa-divider"></span><span class="mnav-wa-label">Chat on WhatsApp</span><i class="ri-arrow-right-s-line mnav-wa-chevron"></i></a></div>
+</nav>
+<main class="tc-page">
+  <div class="container">
+    <nav class="tc-crumb" aria-label="Breadcrumb"><a href="it-support.html">IT Support</a><i class="ri-arrow-right-s-line"></i><strong>Tech Care Club</strong></nav>
+
+    <section class="tc-hero" aria-labelledby="tcTitle">
+      <span class="tc-eyebrow"><i class="ri-tools-line"></i> Introducing Tech Care Club <span class="tc-by">by TECHONN</span></span>
+      <h1 id="tcTitle">One membership. <span>Smarter care.</span></h1>
+      <p class="tc-lead">Regular check-ups, repair labour discounts and service reminders for your computer, laptop and mobile, all in one yearly membership.</p>
+      <p class="tc-area"><i class="ri-map-pin-2-line"></i> Currently available in Kolkata and New Town only.</p>
+      <div class="tc-chips" aria-label="Devices covered">
+        <span class="tc-chip"><i class="ri-computer-line"></i> Computer repairs</span>
+        <span class="tc-chip"><i class="ri-macbook-line"></i> Laptop repairs</span>
+        <span class="tc-chip"><i class="ri-smartphone-line"></i> Mobile repairs</span>
+      </div>
+      <p class="tc-by-line">A membership by <strong>TECHONN IT SOLUTION</strong></p>
+    </section>
+
+    <section aria-label="Tech Care Club plans">
+      <div class="tc-grid">
+      <article class="tc-plan tc-basic">
+        
+        <header class="tc-plan-head"><h2>Basic Care</h2><p class="tc-for">For occasional users</p><div class="tc-price">₹499<small>per year, incl. GST</small></div></header>
+        <ul class="tc-perks">
+          <li><span class="tc-ico tc-ico-cal"><i class="ri-calendar-check-line"></i></span><div><strong>2 standard check-ups/services</strong> in a year<span class="tc-sub">For 1 device only</span></div></li>
+          <li><span class="tc-ico tc-ico-off"><i class="ri-percent-line"></i></span><div><b>10% off</b><span class="tc-sub">on repair labour charges</span></div></li>
+          <li><span class="tc-ico tc-ico-cart"><i class="ri-shopping-cart-2-line"></i></span><div><b>3% off</b><span class="tc-sub">on accessories</span></div></li>
+          <li><span class="tc-ico tc-ico-bell"><i class="ri-notification-3-line"></i></span><div><strong>Service reminders</strong><span class="tc-sub">in every 3 months</span></div></li>
+        </ul>
+        <p class="tc-best">Best for individual computer or mobile users.</p>
+        <a class="tc-cta" href="plan-checkout.html?service=tech-care&amp;plan=techcare-basic-care">Choose Basic Care</a>
+      </article>
+      <article class="tc-plan tc-smart tc-pop">
+        <div class="tc-pophead"><i class="ri-star-fill"></i> Most popular</div>
+        <header class="tc-plan-head"><h2>Smart Care</h2><p class="tc-for">For regular device users</p><div class="tc-price">₹799<small>per year, incl. GST</small></div></header>
+        <ul class="tc-perks">
+          <li><span class="tc-ico tc-ico-cal"><i class="ri-calendar-check-line"></i></span><div><strong>2 standard check-ups/services</strong> in a year<span class="tc-sub">Up to any 2 devices</span></div></li>
+          <li><span class="tc-ico tc-ico-off"><i class="ri-percent-line"></i></span><div><b>20% off</b><span class="tc-sub">on repair labour charges</span></div></li>
+          <li><span class="tc-ico tc-ico-cart"><i class="ri-shopping-cart-2-line"></i></span><div><b>5% off</b><span class="tc-sub">on accessories</span></div></li>
+          <li><span class="tc-ico tc-ico-bell"><i class="ri-notification-3-line"></i></span><div><strong>Service reminders</strong><span class="tc-sub">in every 3 months</span></div></li>
+        </ul>
+        <p class="tc-best">Best for people who use multiple devices.</p>
+        <a class="tc-cta" href="plan-checkout.html?service=tech-care&amp;plan=techcare-smart-care">Choose Smart Care</a>
+      </article>
+      <article class="tc-plan tc-premium">
+        
+        <header class="tc-plan-head"><h2>Premium Care</h2><p class="tc-for">For heavy users &amp; families</p><div class="tc-price">₹1,199<small>per year, incl. GST</small></div></header>
+        <ul class="tc-perks">
+          <li><span class="tc-ico tc-ico-cal"><i class="ri-calendar-check-line"></i></span><div><strong>3 standard check-ups/services</strong> in a year<span class="tc-sub">Up to any 2 devices</span></div></li>
+          <li><span class="tc-ico tc-ico-off"><i class="ri-percent-line"></i></span><div><b>50% off</b><span class="tc-sub">on repair labour charges</span></div></li>
+          <li><span class="tc-ico tc-ico-cart"><i class="ri-shopping-cart-2-line"></i></span><div><b>10% off</b><span class="tc-sub">on accessories</span></div></li>
+          <li><span class="tc-ico tc-ico-bell"><i class="ri-notification-3-line"></i></span><div><strong>Service reminders</strong><span class="tc-sub">in every 3 months</span></div></li>
+        </ul>
+        <p class="tc-best">Best for customers who want maximum savings and care.</p>
+        <a class="tc-cta" href="plan-checkout.html?service=tech-care&amp;plan=techcare-premium-care">Choose Premium Care</a>
+      </article>
+      </div>
+    </section>
+
+    <section class="tc-sec" aria-labelledby="tcInclTitle">
+      <div class="tc-h"><h2 id="tcInclTitle">What&rsquo;s included in a standard check-up/service?</h2></div>
+      <div class="tc-incl"><div><i class="ri-computer-line"></i>Basic hardware and software diagnostics</div><div><i class="ri-brush-line"></i>General performance check</div><div><i class="ri-settings-3-line"></i>System settings and optimisation advice</div><div><i class="ri-shield-check-line"></i>Visual inspection and health check</div><div><i class="ri-chat-3-line"></i>Brief consultation and preventive maintenance tips</div></div>
+    </section>
+
+    <section class="tc-sec tc-two" aria-label="Exclusions and terms">
+      <div class="tc-box tc-no"><h3>Not included in check-ups</h3><ul><li><i class="ri-close-circle-fill"></i><span>Dismantling or internal cleaning</span></li><li><i class="ri-close-circle-fill"></i><span>Operating system installation</span></li><li><i class="ri-close-circle-fill"></i><span>Data recovery</span></li><li><i class="ri-close-circle-fill"></i><span>Component replacement</span></li><li><i class="ri-close-circle-fill"></i><span>Deep cleaning or repairs <span style="color:var(--muted)">(these are paid services)</span></span></li></ul></div>
+      <div class="tc-box tc-terms" id="terms"><h3>Important terms</h3><ul><li><i class="ri-calendar-2-line"></i><span>Valid for 12 months from activation</span></li><li><i class="ri-macbook-line"></i><span>Covers 1 device (Basic) or up to 2 devices (Smart &amp; Premium)</span></li><li><i class="ri-forbid-2-line"></i><span>Not transferable</span></li><li><i class="ri-percent-line"></i><span>Discounts apply to labour charges only</span></li><li><i class="ri-shopping-bag-3-line"></i><span>Parts, accessories and software licences are not included in discounts</span></li><li><i class="ri-information-line"></i><span>Other exclusions apply. Please ask for the full terms and conditions.</span></li></ul></div>
+    </section>
+
+    <section class="tc-sec" aria-labelledby="tcCmpTitle">
+      <div class="tc-h"><h2 id="tcCmpTitle">Plan comparison</h2></div>
+      <div class="tc-tablewrap" role="region" aria-label="Plan comparison table" tabindex="0">
+        <table class="tc-table">
+          <thead><tr><th scope="col">Benefits</th><th scope="col">Basic Care<small>₹499</small></th><th scope="col" class="tc-hl">Smart Care<small>₹799</small></th><th scope="col">Premium Care<small>₹1,199</small></th></tr></thead>
+          <tbody>
+            <tr><td>Standard check-up/service (per year)</td><td>2</td><td class="tc-hl">2</td><td>3</td></tr>
+            <tr><td>Device coverage</td><td>1 device</td><td class="tc-hl">Up to 2 devices</td><td>Up to 2 devices</td></tr>
+            <tr><td>Repair labour discount</td><td>10%</td><td class="tc-hl">20%</td><td>50%</td></tr>
+            <tr><td>Accessories discount</td><td>3%</td><td class="tc-hl">5%</td><td>10%</td></tr>
+            <tr><td>Service reminders</td><td>Every 3 months</td><td class="tc-hl">Every 3 months</td><td>Every 3 months</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tc-final" aria-labelledby="tcFinalTitle">
+      <div><h2 id="tcFinalTitle">Not sure which plan suits you?</h2><p>Tell us how many devices you use and how often, and we&rsquo;ll help you pick the right Tech Care Club plan.</p></div>
+      <div class="tc-final-actions">
+        <a class="btn primary" href="service-request.html?service=tech-care"><i class="ri-file-list-3-line"></i> Ask about a membership</a>
+        <a class="btn ghost" href="service-request.html?service=tech-care"><i class="ri-mail-line"></i> Request a callback</a>
+      </div>
+    </section>
+
+    <a class="tc-back" href="it-support.html"><i class="ri-arrow-left-line"></i> Back to IT Support</a>
+    <p class="tc-disclaimer"><strong>Membership note:</strong> Tech Care Club is a membership by TECHONN IT SOLUTION. Membership is valid for 12 months from activation and is not transferable. Discounts apply to repair labour charges only; parts, accessories and software licences are not included in discounts. Repairs, deep cleaning and other services outside a standard check-up are paid services, and the applicable scope and charges are confirmed before work begins. Other exclusions apply. Please ask for the full terms and conditions.</p>
+  </div>
+</main>
+<footer>
+  <div class="container">
+    <div class="foot-bottom"><p class="foot-copy">© <span id="year"></span> Onnmore Technologies Private Limited. All rights reserved.<br>Business consultancy and technology support.</p><div class="foot-links"><a href="privacy-policy.html">Privacy Policy</a><a href="terms-conditions.html">Terms &amp; Conditions</a><a href="refund-cancellation.html">Refund &amp; Cancellation</a></div></div>
+    <div class="foot-disclaimer"><strong>Website Disclaimer:</strong> Onnmore Technologies Private Limited is an independent private-sector service provider. Business and IT services are provided within the scope agreed with the customer. Onnmore is not a government authority or government portal, and does not guarantee third-party or government approvals or outcomes.</div>
+  </div>
+</footer>
+<a href="https://wa.me/919477110971" class="fab-wa" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp"><i class="ri-whatsapp-fill"></i></a>
+<script src="assets/site.js"></script>
+</body>
+</html>

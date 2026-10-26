@@ -92,7 +92,7 @@ async function fetchWithTimeout(url) {
     const res = await fetch(url, {
       signal: controller.signal,
       headers: {
-        "User-Agent": "OnnmoreBusinessNewsBot/1.0 (+https://onnmore.github.io/onnmore-landing/news/)",
+        "User-Agent": "OnnmoreBusinessNewsBot/1.0 (+https://onnmore.space/news/)",
         Accept: "application/rss+xml, application/xml, text/xml, */*",
       },
     });
