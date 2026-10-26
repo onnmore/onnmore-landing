@@ -2,15 +2,14 @@
   'use strict';
 
   var $ = function (id) { return document.getElementById(id); };
-  var state = {token: '', email: '', dashboard: {leads: [], quotes: [], orders: []}, verifyOrderId: ''};
+  var state = {token: '', email: '', dashboard: {customers: [], leads: [], quotes: [], orders: []}, verifyOrderId: ''};
   var signInRetries = 0;
   var statusOptions = [
-    ['NEW', 'New'],
-    ['CONTACTED', 'Contacted'],
-    ['APPROVED', 'Approved'],
-    ['QUOTED', 'Quoted'],
-    ['IN_PROGRESS', 'In progress'],
-    ['CLOSED', 'Closed']
+    ['Submitted', 'Submitted'],
+    ['Approved', 'Approved'],
+    ['In Progress', 'In progress'],
+    ['Completed', 'Completed'],
+    ['Rejected', 'Rejected']
   ];
 
   function escapeHtml(value) {
@@ -43,10 +42,22 @@
   }
 
   async function api(payload) {
-    var url = window.ONNMORE_PAYMENT_API_URL || '';
-    if (!url) throw new Error('The Apps Script endpoint is missing. Configure the checkout API URL first.');
+    return sendApiRequest(window.ONNMORE_PAYMENT_API_URL || '', payload);
+  }
+
+  async function portalApi(payload) {
+    return sendApiRequest(window.ONNMORE_PORTAL_ADMIN_API_URL || '', payload);
+  }
+
+  async function sendApiRequest(url, payload) {
+    if (!url) {
+      var isPortalRequest = payload.action.indexOf('adminPortal') === 0;
+      throw new Error(isPortalRequest
+        ? 'The customer portal API URL is not configured in assets/admin-config.js.'
+        : 'The checkout API URL is not configured in assets/checkout-config.js.');
+    }
     var request = Object.assign({}, payload);
-    if (request.action !== 'submitLead') request.token = state.token;
+    request.token = state.token;
     var response = await fetch(url, {
       method: 'POST',
       headers: {'Content-Type': 'text/plain;charset=utf-8'},
@@ -69,7 +80,7 @@
   function signOut(message) {
     state.token = '';
     state.email = '';
-    state.dashboard = {leads: [], quotes: [], orders: []};
+    state.dashboard = {customers: [], leads: [], quotes: [], orders: []};
     $('workspace').hidden = true;
     $('signinPanel').hidden = false;
     $('signOutBtn').hidden = true;
@@ -120,12 +131,39 @@
   async function loadDashboard() {
     clearAlert();
     $('refreshBtn').disabled = true;
+    state.dashboard.customers = [];
+    state.dashboard.leads = [];
+    state.dashboard.quotes = [];
+    state.dashboard.orders = [];
+    var portalError = '';
+    var billingError = '';
     try {
-      state.dashboard = await api({action: 'adminDashboard'});
+      try {
+        var portalData = await portalApi({action: 'adminPortalDashboard'});
+        state.dashboard.customers = portalData.customers || [];
+        state.dashboard.leads = portalData.applications || [];
+      } catch (error) {
+        portalError = /Unknown action|Unsupported portal admin request/i.test(error.message)
+          ? 'The customer portal backend is not connected yet. Add PortalAdmin.gs and its two admin routes to the Customer Portal Apps Script, then deploy a new version.'
+          : error.message;
+      }
+
+      try {
+        var billingData = await api({action: 'adminDashboard'});
+        state.dashboard.quotes = billingData.quotes || [];
+        state.dashboard.orders = billingData.orders || [];
+        var existingIds = new Set(state.dashboard.leads.map(function (lead) { return lead.caseId; }));
+        (billingData.leads || []).forEach(function (lead) {
+          if (!existingIds.has(lead.caseId)) state.dashboard.leads.push(lead);
+        });
+      } catch (error) {
+        billingError = 'Quotations and payments are unavailable until Admin.gs is installed in the checkout Apps Script.';
+      }
       renderDashboard();
+      var messages = [portalError, billingError].filter(Boolean);
+      if (messages.length) alertUser(messages.join(' '), false);
     } catch (error) {
       alertUser(error.message, false);
-      if (/sign in|authorized|configured/i.test(error.message)) signOut(error.message);
     } finally {
       $('refreshBtn').disabled = false;
     }
@@ -133,31 +171,49 @@
 
   function renderDashboard() {
     var data = state.dashboard;
-    var leads = data.leads || [], quotes = data.quotes || [], orders = data.orders || [];
-    $('metricLeads').textContent = leads.filter(function (lead) { return lead.status !== 'CLOSED'; }).length;
+    var customers = data.customers || [], leads = data.leads || [], quotes = data.quotes || [], orders = data.orders || [];
+    $('metricCustomers').textContent = customers.length;
+    $('metricLeads').textContent = leads.filter(function (lead) { return lead.status !== 'Completed' && lead.status !== 'Rejected' && lead.status !== 'CLOSED'; }).length;
     $('metricQuotes').textContent = quotes.filter(function (quote) { return quote.status !== 'PAID' && quote.status !== 'CANCELLED'; }).length;
     $('metricPayments').textContent = orders.filter(function (order) { return order.status === 'UPI_PROOF_SUBMITTED' || order.status === 'PROOF'; }).length;
-    $('metricPaid').textContent = orders.filter(function (order) { return order.status === 'PAID'; }).length;
+    renderCustomers(customers);
     renderLeads(leads);
     renderQuotes(quotes);
     renderOrders(orders);
+  }
+
+  function renderCustomers(customers) {
+    var body = $('customersBody');
+    $('customersEmpty').hidden = customers.length > 0;
+    body.innerHTML = customers.map(function (customer) {
+      return '<tr><td><strong>' + escapeHtml(customer.name || 'Customer') + '</strong><small>' + escapeHtml(customer.customerId || '') + '</small></td>' +
+        '<td>' + escapeHtml(customer.email || '—') + '</td>' +
+        '<td>' + escapeHtml(customer.phone || '—') + '</td>' +
+        '<td>' + escapeHtml(customer.businessName || '—') + '</td>' +
+        '<td>' + escapeHtml(customer.applicationCount || 0) + '</td>' +
+        '<td>' + escapeHtml(formatDate(customer.createdAt)) + '</td></tr>';
+    }).join('');
   }
 
   function renderLeads(leads) {
     var body = $('leadsBody');
     $('leadsEmpty').hidden = leads.length > 0;
     body.innerHTML = leads.map(function (lead) {
-      var selected = lead.status || 'NEW';
+      var selected = lead.status || 'Submitted';
+      var portalLead = lead.source === 'Customer portal';
+      if (!portalLead) {
+        selected = ({NEW: 'Submitted', CONTACTED: 'In Progress', APPROVED: 'Approved', QUOTED: 'Approved', IN_PROGRESS: 'In Progress', CLOSED: 'Completed'})[selected] || selected;
+      }
       var options = statusOptions.map(function (option) {
-        return '<option value="' + option[0] + '"' + (selected === option[0] ? ' selected' : '') + '>' + option[1] + '</option>';
+        return '<option value="' + escapeHtml(option[0]) + '"' + (selected === option[0] ? ' selected' : '') + '>' + escapeHtml(option[1]) + '</option>';
       }).join('');
       return '<tr>' +
         '<td><strong>' + escapeHtml(lead.name) + '</strong><small>' + escapeHtml(lead.email) + '<br>' + escapeHtml(lead.phone) + (lead.businessName ? '<br>' + escapeHtml(lead.businessName) : '') + '</small></td>' +
         '<td><strong>' + escapeHtml(lead.serviceName || lead.serviceKey || 'General enquiry') + '</strong><small>' + escapeHtml(lead.details || '') + (lead.location ? '<br>' + escapeHtml(lead.location) : '') + '</small></td>' +
         '<td>' + escapeHtml(formatDate(lead.submittedAt)) + '<small>' + escapeHtml(lead.source || 'Website') + '</small></td>' +
-        '<td><select class="status-select" data-lead-status="' + escapeHtml(lead.caseId) + '" aria-label="Status for ' + escapeHtml(lead.name) + '">' + options + '</select></td>' +
+        '<td><select class="status-select" data-lead-status="' + escapeHtml(lead.caseId) + '" data-backend="' + (portalLead ? 'portal' : 'checkout') + '" aria-label="Status for ' + escapeHtml(lead.name) + '">' + options + '</select></td>' +
         '<td><div class="table-actions">' +
-        (selected !== 'APPROVED' && selected !== 'CLOSED' ? '<button class="button small primary" type="button" data-action="approve-lead" data-id="' + escapeHtml(lead.caseId) + '">Approve request</button>' : '') +
+        (selected !== 'Approved' && selected !== 'Completed' && selected !== 'Rejected' ? '<button class="button small primary" type="button" data-action="approve-lead" data-backend="' + (portalLead ? 'portal' : 'checkout') + '" data-id="' + escapeHtml(lead.caseId) + '">Approve request</button>' : '') +
         '<button class="button small" type="button" data-action="quote-lead" data-id="' + escapeHtml(lead.caseId) + '">Create quote</button></div></td>' +
         '</tr>';
     }).join('');
@@ -301,9 +357,13 @@
     }
   }
 
-  async function approveLead(leadId) {
+  async function approveLead(leadId, backend) {
     try {
-      await api({action: 'adminUpdateLead', leadId: leadId, status: 'APPROVED'});
+      if (backend === 'portal') {
+        await portalApi({action: 'adminPortalUpdateApplication', referenceNumber: leadId, status: 'Approved'});
+      } else {
+        await api({action: 'adminUpdateLead', leadId: leadId, status: 'APPROVED'});
+      }
       alertUser('Customer request approved.', true);
       await loadDashboard();
     } catch (error) {
@@ -347,7 +407,9 @@
     }
     var columns = kind === 'leads'
       ? [['Case ID', 'caseId'], ['Submitted', 'submittedAt'], ['Name', 'name'], ['Email', 'email'], ['Phone', 'phone'], ['Business', 'businessName'], ['Service', 'serviceName'], ['Details', 'details'], ['Status', 'status']]
-      : kind === 'quotes'
+      : kind === 'customers'
+        ? [['Customer ID', 'customerId'], ['Name', 'name'], ['Email', 'email'], ['Phone', 'phone'], ['Business', 'businessName'], ['Requests', 'applicationCount'], ['Joined', 'createdAt']]
+        : kind === 'quotes'
         ? [['Quote ID', 'quoteId'], ['Created', 'createdAt'], ['Lead ID', 'leadId'], ['Customer', 'customerName'], ['Email', 'email'], ['Service', 'service'], ['Line items', 'lineItems'], ['Total', 'subtotal'], ['Status', 'status'], ['Order ID', 'orderId']]
         : [['Order ID', 'orderId'], ['Created', 'createdAt'], ['Customer', 'customerName'], ['Email', 'email'], ['Service', 'serviceType'], ['Plan / quote', 'planName'], ['Amount', 'amount'], ['Status', 'status'], ['UTR', 'utr'], ['Proof URL', 'proofUrl']];
     function cell(value) {
@@ -401,7 +463,12 @@
     if (!select) return;
     select.disabled = true;
     try {
-      await api({action: 'adminUpdateLead', leadId: select.dataset.leadStatus, status: select.value});
+      if (select.dataset.backend === 'portal') {
+        await portalApi({action: 'adminPortalUpdateApplication', referenceNumber: select.dataset.leadStatus, status: select.value});
+      } else {
+        var checkoutStatuses = {Submitted: 'NEW', Approved: 'APPROVED', 'In Progress': 'IN_PROGRESS', Completed: 'CLOSED', Rejected: 'CLOSED'};
+        await api({action: 'adminUpdateLead', leadId: select.dataset.leadStatus, status: checkoutStatuses[select.value]});
+      }
       alertUser('Enquiry status updated.', true);
       await loadDashboard();
     } catch (error) {
@@ -420,7 +487,7 @@
       var lead = state.dashboard.leads.find(function (item) { return item.caseId === id; });
       openQuote(lead || null);
     } else if (button.dataset.action === 'approve-lead') {
-      approveLead(id);
+      approveLead(id, button.dataset.backend);
     } else if (button.dataset.action === 'send-quote') {
       runQuoteAction('adminSendQuote', id);
     } else if (button.dataset.action === 'request-payment') {

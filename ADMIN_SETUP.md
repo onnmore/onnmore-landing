@@ -1,11 +1,16 @@
 # Admin workspace setup
 
-The admin page is `admin.html`. It is a static front end; authorization,
-customer data, quotations, payment orders and email are handled by the
-existing plan-checkout Google Apps Script project and its spreadsheet.
-`apps-script/Admin.gs` must be added to that same Apps Script project. Do not
-deploy it as a separate project: it uses the checkout project's order helpers
-and spreadsheet.
+The admin page is `admin.html`. Existing customer profiles and service
+applications are stored in the separate Google Apps Script project bound to
+the **ONNMORE Customer Portal** spreadsheet. The add-on
+`apps-script/PortalAdmin.gs` reads the `Customers` and `Applications` tabs and
+lets authorized admins update application status. It does not expose OTPs or
+customer session tokens.
+
+Quotations and UPI orders are managed separately by the plan-checkout Apps
+Script project using `apps-script/Admin.gs`. The two Apps Script projects must
+both be configured to use the same Google OAuth client ID and admin email
+allowlist.
 
 ## 1. Configure Google sign-in
 
@@ -13,65 +18,79 @@ and spreadsheet.
    Add `https://onnmore.space` as an authorized JavaScript origin (and add
    `https://www.onnmore.space` only if the site is served from that origin).
 2. Set `window.ONNMORE_ADMIN_GOOGLE_CLIENT_ID` in `assets/admin-config.js` to
-   the client ID. This client ID is public; do not put a client secret in this
-   repository.
-3. In the existing checkout Apps Script project, add Script Properties:
+   that client ID. The client ID is public; do not put a client secret in the
+   website.
+3. In **both** Apps Script projects, open **Project Settings → Script
+   Properties** and set:
    - `ADMIN_GOOGLE_CLIENT_ID`: the same OAuth client ID.
    - `ADMIN_EMAILS`: comma-separated Google account email addresses permitted
-     to administer the site.
+     to view customer data and administer requests.
 
-The Apps Script verifies each Google ID token and checks its audience,
-verified email and allowlist. The page's `noindex` metadata is not access
-control; the server-side allowlist is the security boundary.
+Each Apps Script add-on verifies the Google ID token, its audience and email
+allowlist server-side. The page's `noindex` metadata is not access control.
 
-## 2. Add and route the Apps Script add-on
+## 2. Connect existing customer and application records
 
-1. Add the complete `apps-script/Admin.gs` source to the existing plan-checkout
-   Apps Script project.
-2. In its `doPost` dispatcher, after parsing the incoming JSON object as
-   `request`, route the new actions through the project's existing JSON
-   response helper. For example, where the dispatcher uses
-   `ContentService` directly:
+1. Open the Apps Script project bound to the **ONNMORE Customer Portal**
+   spreadsheet—the project whose existing `doPost(e)` handles actions such as
+   `submitPublicLead`, `getApplications` and `verifyOtp`.
+2. Add a new script file named `PortalAdmin` and paste in the full contents of
+   `apps-script/PortalAdmin.gs`. Do not replace the existing portal code.
+3. In that project's existing `doPost(e)`, add the following cases inside its
+   existing `switch (action)`, before `default`:
 
    ```javascript
-   if (request.action === 'submitLead' || /^admin[A-Z]/.test(String(request.action || ''))) {
-     return ContentService
-       .createTextOutput(JSON.stringify(handleAdminRequest_(request)))
-       .setMimeType(ContentService.MimeType.JSON);
-   }
+   case 'adminPortalDashboard':
+   case 'adminPortalUpdateApplication':
+     result = handleAdminPortalRequest_(body);
+     break;
    ```
 
-   Keep the existing checkout, UPI and payment-proof routes unchanged. Put this
-   branch before the dispatcher's unsupported-action fallback. If the project
-   already has a JSON response helper, use it instead of creating a second
-   response format.
-3. Save, authorize the requested Google services, and deploy a new version of
-   the existing Web App. Keep its current deployment URL so checkout,
-   `assets/checkout-config.js`, and this admin page use the same backend.
-   The endpoint must retain the access mode required by the existing public
-   checkout and lead forms; admin operations remain protected by the server
-   verified Google ID token.
+   The existing `jsonResponse(result)` should remain in place. The front-end
+   uses the portal Web App URL already present in `assets/admin-config.js`.
+4. Save, authorize the requested services, then open **Deploy → Manage
+   deployments**, edit the existing portal Web App, select **New version** and
+   deploy. Keep its existing URL and its current access setting so the customer
+   portal continues working.
+5. Confirm the attached spreadsheet has the `Customers` and `Applications`
+   tabs and that `Applications` has the columns already used by the portal:
+   `ReferenceNumber`, `CustomerID`, `ServiceKey`, `ServiceName`, `Status`,
+   `Notes`, `SubmittedAt`, and `LastUpdatedAt`.
 
-The add-on creates `Leads` and `Quotes` tabs in the same spreadsheet as the
-existing `Orders` tab. It does not import historical rows from the separate
-customer portal backend. Website forms mirror new enquiries to `Leads`;
-the normal email, sheet and portal submissions remain in place.
+The **Customers** tab in the admin reads customer profile fields from
+`Customers`; **Enquiries** reads and updates request records in `Applications`.
+Approving a request changes its `Status` to `Approved`, which the existing
+customer portal can display.
 
-## 3. Publish and smoke-test
+## 3. Connect quotations and payments (optional)
 
-1. Publish the static-site changes to the configured GitHub Pages branch.
-2. Open `https://onnmore.space/admin.html` and sign in with an email in
-   `ADMIN_EMAILS`. Confirm the Enquiries, Quotations and Payments tabs load.
-3. Submit a test enquiry from the website and confirm it appears in the
-   `Leads` sheet and dashboard. Create a draft quotation and confirm the email
-   and total before sending it to a customer.
-4. Only use **Request payment** for a real, approved quotation. The customer
-   submits proof through the existing UPI page; an admin must compare the
-   transaction with the bank statement and explicitly confirm it in the
-   dashboard before the order is marked paid.
+To use the separate Quotations and Payments tabs, add `apps-script/Admin.gs`
+to the existing plan-checkout Apps Script project, route its admin actions
+through that project's `doPost` dispatcher, and deploy a new version while
+keeping its URL. Follow the checkout add-on's helper/deployment requirements;
+it depends on the checkout project's existing order functions and spreadsheet.
+The checkout project also needs the same `ADMIN_GOOGLE_CLIENT_ID` and
+`ADMIN_EMAILS` Script Properties.
 
-Do not mark a custom-quotation order as paid by editing the spreadsheet. Use
-the admin verification action so the quotation status and non-tax payment
-confirmation email are updated together. The workspace creates quotations and
-payment requests only; it is not accounting software and does not issue GST
-tax invoices.
+## 4. Web3Forms history
+
+The admin can show customer profiles and applications that are already in the
+portal spreadsheet. It cannot retrieve old submissions directly from a
+Web3Forms inbox. Website consultation and service-request forms also send
+their requests to the customer portal; older Web3Forms-only submissions must
+be exported from the Web3Forms dashboard and imported into the portal sheet if
+you want them in this admin.
+
+## 5. Verify the setup
+
+1. Open `https://onnmore.space/admin.html` and sign in with an email in
+   `ADMIN_EMAILS`.
+2. Refresh the **Customers** and **Enquiries** tabs; compare the rows with the
+   `Customers` and `Applications` spreadsheet tabs.
+3. Approve a test application and confirm its status changes in the Sheet and
+   the customer portal.
+4. Only use **Request payment** for an approved quotation. Verify UPI payment
+   against the bank statement before recording receipt in the dashboard.
+
+Quotations and payment requests are not GST tax invoices or accounting
+software.

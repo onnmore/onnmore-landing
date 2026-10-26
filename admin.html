@@ -40,20 +40,27 @@
       <div class="alert" id="workspaceAlert" role="status" hidden></div>
 
       <section class="metric-grid" aria-label="Workspace summary">
+        <article class="metric panel"><span>Customers in portal</span><strong id="metricCustomers">—</strong></article>
         <article class="metric panel"><span>Open enquiries</span><strong id="metricLeads">—</strong></article>
         <article class="metric panel"><span>Quotes awaiting action</span><strong id="metricQuotes">—</strong></article>
         <article class="metric panel"><span>UPI proofs to verify</span><strong id="metricPayments">—</strong></article>
-        <article class="metric panel"><span>Payments confirmed</span><strong id="metricPaid">—</strong></article>
       </section>
 
       <nav class="tabs" aria-label="Admin sections" role="tablist">
-        <button class="tab active" id="tabLeads" type="button" role="tab" aria-selected="true" aria-controls="panelLeads" data-panel="panelLeads">Enquiries</button>
+        <button class="tab active" id="tabCustomers" type="button" role="tab" aria-selected="true" aria-controls="panelCustomers" data-panel="panelCustomers">Customers</button>
+        <button class="tab" id="tabLeads" type="button" role="tab" aria-selected="false" aria-controls="panelLeads" data-panel="panelLeads">Enquiries</button>
         <button class="tab" id="tabQuotes" type="button" role="tab" aria-selected="false" aria-controls="panelQuotes" data-panel="panelQuotes">Quotations</button>
         <button class="tab" id="tabPayments" type="button" role="tab" aria-selected="false" aria-controls="panelPayments" data-panel="panelPayments">Payments</button>
       </nav>
 
-      <section class="content-panel panel" id="panelLeads" role="tabpanel" aria-labelledby="tabLeads">
-        <div class="section-heading"><div><h2>Customer enquiries</h2><p>Website enquiries received after the admin lead connector is deployed.</p></div><button class="button secondary export-btn" data-export="leads" type="button"><i class="ri-download-line"></i> Export CSV</button></div>
+      <section class="content-panel panel" id="panelCustomers" role="tabpanel" aria-labelledby="tabCustomers">
+        <div class="section-heading"><div><h2>Customer directory</h2><p>Customer profiles from the existing ONNMORE Customer Portal spreadsheet.</p></div><button class="button secondary export-btn" data-export="customers" type="button"><i class="ri-download-line"></i> Export CSV</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Email</th><th>Phone</th><th>Business</th><th>Requests</th><th>Joined</th></tr></thead><tbody id="customersBody"></tbody></table></div>
+        <p class="empty-state" id="customersEmpty" hidden>No customer profiles found.</p>
+      </section>
+
+      <section class="content-panel panel" id="panelLeads" role="tabpanel" aria-labelledby="tabLeads" hidden>
+        <div class="section-heading"><div><h2>Customer enquiries</h2><p>Requests from the portal Applications tab. Approve them here to update customer portal status.</p></div><button class="button secondary export-btn" data-export="leads" type="button"><i class="ri-download-line"></i> Export CSV</button></div>
         <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Service / request</th><th>Received</th><th>Status</th><th></th></tr></thead><tbody id="leadsBody"></tbody></table></div>
         <p class="empty-state" id="leadsEmpty" hidden>No enquiries found yet.</p>
       </section>
