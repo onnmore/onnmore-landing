@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Admin workspace | Onnmore</title>
+  <link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/admin.css">
+  <script src="assets/checkout-config.js"></script>
+  <script src="assets/admin-config.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <main class="admin-shell">
+    <header class="admin-topbar">
+      <a class="admin-brand" href="index.html"><img src="assets/onnmore-logo.svg" alt="Onnmore"><span>Admin workspace</span></a>
+      <div class="topbar-actions"><span id="adminIdentity" class="identity" hidden></span><button class="button secondary" id="signOutBtn" type="button" hidden>Sign out</button></div>
+    </header>
+
+    <section class="signin-panel panel" id="signinPanel">
+      <span class="eyebrow">PRIVATE WORKSPACE</span>
+      <h1>Customer requests and billing</h1>
+      <p>Sign in with an authorized Google account to review enquiries, prepare service-wise quotations and verify UPI payments.</p>
+      <div id="googleSignIn"></div>
+      <p class="setup-note" id="signinMessage" role="status">Admin access must be enabled by the site administrator.</p>
+    </section>
+
+    <section id="workspace" hidden>
+      <header class="welcome-row">
+        <div><span class="eyebrow">ONNMORE OPERATIONS</span><h1>Admin workspace</h1><p>Customer enquiries, quotations and payment reconciliation.</p></div>
+        <button class="button secondary" id="refreshBtn" type="button"><i class="ri-refresh-line"></i> Refresh</button>
+      </header>
+
+      <div class="notice" role="note"><i class="ri-information-line"></i><span>Quotations and payment requests only. This workspace does not issue GST tax invoices or replace accounting software.</span></div>
+      <div class="alert" id="workspaceAlert" role="status" hidden></div>
+
+      <section class="metric-grid" aria-label="Workspace summary">
+        <article class="metric panel"><span>Open enquiries</span><strong id="metricLeads">—</strong></article>
+        <article class="metric panel"><span>Quotes awaiting action</span><strong id="metricQuotes">—</strong></article>
+        <article class="metric panel"><span>UPI proofs to verify</span><strong id="metricPayments">—</strong></article>
+        <article class="metric panel"><span>Payments confirmed</span><strong id="metricPaid">—</strong></article>
+      </section>
+
+      <nav class="tabs" aria-label="Admin sections" role="tablist">
+        <button class="tab active" id="tabLeads" type="button" role="tab" aria-selected="true" aria-controls="panelLeads" data-panel="panelLeads">Enquiries</button>
+        <button class="tab" id="tabQuotes" type="button" role="tab" aria-selected="false" aria-controls="panelQuotes" data-panel="panelQuotes">Quotations</button>
+        <button class="tab" id="tabPayments" type="button" role="tab" aria-selected="false" aria-controls="panelPayments" data-panel="panelPayments">Payments</button>
+      </nav>
+
+      <section class="content-panel panel" id="panelLeads" role="tabpanel" aria-labelledby="tabLeads">
+        <div class="section-heading"><div><h2>Customer enquiries</h2><p>Website enquiries received after the admin lead connector is deployed.</p></div><button class="button secondary export-btn" data-export="leads" type="button"><i class="ri-download-line"></i> Export CSV</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Customer</th><th>Service / request</th><th>Received</th><th>Status</th><th></th></tr></thead><tbody id="leadsBody"></tbody></table></div>
+        <p class="empty-state" id="leadsEmpty" hidden>No enquiries found yet.</p>
+      </section>
+
+      <section class="content-panel panel" id="panelQuotes" role="tabpanel" aria-labelledby="tabQuotes" hidden>
+        <div class="section-heading"><div><h2>Quotations</h2><p>Build a quote with separate service line items, then email it to the customer.</p></div><div class="heading-actions"><button class="button secondary export-btn" data-export="quotes" type="button"><i class="ri-download-line"></i> Export CSV</button><button class="button primary" id="newQuoteBtn" type="button"><i class="ri-add-line"></i> New quotation</button></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Quote</th><th>Customer</th><th>Service</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead><tbody id="quotesBody"></tbody></table></div>
+        <p class="empty-state" id="quotesEmpty" hidden>No quotations created yet.</p>
+      </section>
+
+      <section class="content-panel panel" id="panelPayments" role="tabpanel" aria-labelledby="tabPayments" hidden>
+        <div class="section-heading"><div><h2>Orders and payment reconciliation</h2><p>UPI proof is not payment confirmation. Verify the bank credit before recording a payment.</p></div><button class="button secondary export-btn" data-export="orders" type="button"><i class="ri-download-line"></i> Export CSV</button></div>
+        <div class="table-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Amount</th><th>Status</th><th>Payment proof</th><th>Receipt</th></tr></thead><tbody id="ordersBody"></tbody></table></div>
+        <p class="empty-state" id="ordersEmpty" hidden>No orders found yet.</p>
+      </section>
+      <footer class="admin-footer">Customer details are visible only to authorized admins. Keep records private and follow your retention policy.</footer>
+    </section>
+  </main>
+
+  <dialog id="quoteDialog" class="dialog">
+    <form id="quoteForm" method="dialog">
+      <div class="dialog-head"><div><span class="eyebrow">SERVICE BILLING</span><h2>Create a quotation</h2><p>This is a non-tax quotation, not a GST invoice.</p></div><button class="icon-button" id="closeQuoteBtn" type="button" aria-label="Close">×</button></div>
+      <input id="quoteLeadId" type="hidden">
+      <div class="form-grid">
+        <label>Customer name<input id="quoteCustomerName" maxlength="100" required></label>
+        <label>Email<input id="quoteEmail" type="email" maxlength="160" required></label>
+        <label>Phone<input id="quotePhone" maxlength="30" required></label>
+        <label>Business name<input id="quoteBusiness" maxlength="140"></label>
+        <label class="wide">Service / project<input id="quoteService" maxlength="140" placeholder="e.g. GST registration support" required></label>
+        <label>Valid until<input id="quoteValidUntil" type="date"></label>
+      </div>
+      <div class="line-items-heading"><div><h3>Service line items</h3><span>Amounts are quoted as entered; no GST is calculated here.</span></div><button class="button secondary small" id="addLineItemBtn" type="button"><i class="ri-add-line"></i> Add line</button></div>
+      <div class="line-items" id="lineItems"></div>
+      <div class="quote-total"><span>Quotation total</span><strong id="quoteTotal">₹0.00</strong></div>
+      <label class="block-label">Notes<textarea id="quoteNotes" rows="3" maxlength="1200" placeholder="Scope, exclusions, or next steps"></textarea></label>
+      <label class="block-label">Terms<textarea id="quoteTerms" rows="3" maxlength="1200" placeholder="Payment due date, scope conditions, etc."></textarea></label>
+      <div class="dialog-actions"><button class="button secondary" id="cancelQuoteBtn" type="button">Cancel</button><button class="button primary" id="saveQuoteBtn" type="submit">Save draft</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="verifyDialog" class="dialog verify-dialog">
+    <form id="verifyForm" method="dialog">
+      <div class="dialog-head"><div><span class="eyebrow">PAYMENT RECONCILIATION</span><h2>Confirm bank credit</h2></div><button class="icon-button" id="closeVerifyBtn" type="button" aria-label="Close">×</button></div>
+      <p id="verifyOrderSummary"></p>
+      <label>Bank UTR / payment reference<input id="verifyReference" maxlength="100" required></label>
+      <label class="consent"><input id="confirmBankCredit" type="checkbox" required><span>I checked the bank/UPI statement and confirm this payment was credited for the exact order amount.</span></label>
+      <div class="dialog-actions"><button class="button secondary" id="cancelVerifyBtn" type="button">Cancel</button><button class="button primary" id="confirmPaymentBtn" type="submit">Record verified payment</button></div>
+    </form>
+  </dialog>
+  <script src="assets/admin.js"></script>
+</body>
+</html>

@@ -22,6 +22,9 @@ collections_config:
         - plan-review.html
         - payment-result.html
         - upi-payment.html
+        - admin.html
+        - ADMIN_SETUP.md
+        - apps-script/**
         - portal.html
         - service-request.html
         - printing-service.html
