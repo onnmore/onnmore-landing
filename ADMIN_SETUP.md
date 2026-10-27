@@ -133,6 +133,7 @@ case 'adminDashboard':
 case 'adminUpdateLead':
 case 'adminCreateQuote':
 case 'adminUpdateQuote':
+case 'adminDownloadQuote':
 case 'adminSendQuote':
 case 'adminRequestQuotePayment':
 case 'adminVerifyQuotePayment':
@@ -149,6 +150,11 @@ only while its status is `DRAFT`; sent or payment-requested quotes cannot be
 edited, to avoid changing terms after sending them to a customer.
 Update the dispatcher and add-on together, save, then deploy a new version of
 the checkout Web App.
+The quotation list also provides **Download PDF**. **Email quote** sends the
+same branded PDF as an attachment. The PDF is a non-tax quotation and does
+not include GST, tax invoice declarations, or unverified bank/tax details.
+The Apps Script project will request Google Docs and Drive permissions to
+create the PDF; approve those prompts when saving or sending a quotation.
 
 ## 4. Web3Forms history
 
