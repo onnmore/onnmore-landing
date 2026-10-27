@@ -24,6 +24,7 @@ function handleAdminRequest_(request) {
       case 'adminUpdateLead': return updateAdminLead_(request.leadId, request.status);
       case 'adminCreateQuote': return createAdminQuote_(request.quote || {});
       case 'adminUpdateQuote': return updateAdminQuote_(request.quoteId, request.quote || {});
+      case 'adminDownloadQuote': return downloadAdminQuote_(request.quoteId);
       case 'adminSendQuote': return sendAdminQuote_(request.quoteId);
       case 'adminRequestQuotePayment': return requestQuotePayment_(request.quoteId);
       case 'adminVerifyQuotePayment': return verifyQuotePayment_(request.orderId, request.paymentReference, request.confirmed);
@@ -191,16 +192,117 @@ function sendAdminQuote_(quoteId) {
   if (!found) return {ok:false, error:'Quotation not found.'};
   const q = found.quote;
   if (q.status === 'PAID' || q.status === 'CANCELLED') return {ok:false, error:'This quotation is no longer available to send.'};
+  const pdf = createAdminQuotePdf_(q);
   MailApp.sendEmail({
     to:q.email,
     subject:'Quotation ' + q.quoteId + ' — Onnmore',
     body:adminQuoteText_(q),
-    htmlBody:adminQuoteHtml_(q),
+    htmlBody:adminQuoteHtml_(q) + '<p>A PDF copy of this quotation is attached.</p>',
+    attachments:[pdf],
     name:'Onnmore'
   });
   adminWriteQuote_(found.row, {status:'SENT', updatedAt:new Date()});
   if (q.leadId) updateAdminLead_(q.leadId, 'QUOTED');
   return {ok:true, quoteId:q.quoteId};
+}
+
+function downloadAdminQuote_(quoteId) {
+  const found = findAdminQuote_(quoteId);
+  if (!found) return {ok:false, error:'Quotation not found.'};
+  const pdf = createAdminQuotePdf_(found.quote);
+  return {
+    ok:true,
+    filename:pdf.getName(),
+    contentType:MimeType.PDF,
+    base64:Utilities.base64Encode(pdf.getBytes())
+  };
+}
+
+function createAdminQuotePdf_(q) {
+  const document = DocumentApp.create('Quotation ' + q.quoteId);
+  const documentId = document.getId();
+  try {
+    const body = document.getBody();
+    body.clear();
+
+    const brand = body.appendParagraph('onnmore');
+    brand.setHeading(DocumentApp.ParagraphHeading.TITLE);
+    brand.editAsText().setForegroundColor('#11845b').setBold(true);
+    const company = body.appendParagraph('ONNMORE TECHNOLOGIES PRIVATE LIMITED');
+    company.editAsText().setForegroundColor('#273342').setBold(true);
+    body.appendParagraph('www.onnmore.com').editAsText().setForegroundColor('#687789');
+
+    const title = body.appendParagraph('QUOTATION');
+    title.setHeading(DocumentApp.ParagraphHeading.HEADING1);
+    title.editAsText().setForegroundColor('#11845b').setBold(true);
+    const disclaimer = body.appendParagraph('NON-TAX QUOTATION · NOT A GST TAX INVOICE');
+    disclaimer.editAsText().setForegroundColor('#687789').setBold(true);
+
+    const details = body.appendTable([
+      ['Quotation number', String(q.quoteId), 'Created', adminPdfDate_(q.createdAt)],
+      ['Valid until', q.validUntil || 'Not specified', 'Status', String(q.status || 'DRAFT')]
+    ]);
+    details.setBorderColor('#dce7e1');
+
+    body.appendParagraph('');
+    const billTo = body.appendParagraph('PREPARED FOR');
+    billTo.editAsText().setForegroundColor('#11845b').setBold(true);
+    body.appendParagraph(String(q.customerName || ''));
+    if (q.businessName) body.appendParagraph(String(q.businessName));
+    body.appendParagraph(String(q.email || '') + (q.phone ? '  |  ' + String(q.phone) : ''));
+
+    const service = body.appendParagraph('Service / project: ' + String(q.service || ''));
+    service.editAsText().setBold(true);
+    body.appendParagraph('');
+
+    const rows = [['Service', 'Description', 'Qty', 'Rate', 'Amount']];
+    (q.lineItems || []).forEach(function (item) {
+      rows.push([
+        String(item.service || ''),
+        String(item.description || ''),
+        String(item.quantity),
+        adminMoney_(item.unitPrice),
+        adminMoney_(Number(item.quantity) * Number(item.unitPrice))
+      ]);
+    });
+    const itemsTable = body.appendTable(rows);
+    itemsTable.setBorderColor('#dce7e1');
+    for (let column = 0; column < 5; column++) {
+      const cell = itemsTable.getCell(0, column);
+      cell.setBackgroundColor('#10271f');
+      cell.getChild(0).asParagraph().editAsText().setForegroundColor('#42c98e').setBold(true);
+    }
+
+    const total = body.appendParagraph('QUOTATION TOTAL     ' + adminMoney_(q.subtotal));
+    total.setAlignment(DocumentApp.HorizontalAlignment.RIGHT);
+    total.editAsText().setForegroundColor('#11845b').setBold(true).setFontSize(15);
+    if (q.notes) {
+      body.appendParagraph('Notes').editAsText().setForegroundColor('#11845b').setBold(true);
+      body.appendParagraph(String(q.notes));
+    }
+    if (q.terms) {
+      body.appendParagraph('Terms').editAsText().setForegroundColor('#11845b').setBold(true);
+      body.appendParagraph(String(q.terms));
+    }
+    body.appendParagraph('');
+    const note = body.appendParagraph('This document is a quotation only. It does not calculate GST, request payment, or serve as a tax invoice or payment receipt.');
+    note.editAsText().setForegroundColor('#687789').setItalic(true).setFontSize(9);
+    body.appendParagraph('Onnmore Technologies Private Limited  ·  www.onnmore.com')
+      .editAsText().setForegroundColor('#11845b').setBold(true);
+
+    document.saveAndClose();
+    return DriveApp.getFileById(documentId)
+      .getAs(MimeType.PDF)
+      .setName('Onnmore-Quotation-' + String(q.quoteId).replace(/[^A-Za-z0-9-]/g, '') + '.pdf');
+  } finally {
+    DriveApp.getFileById(documentId).setTrashed(true);
+  }
+}
+
+function adminPdfDate_(value) {
+  if (!value) return '—';
+  const date = value instanceof Date ? value : new Date(value);
+  return Number.isFinite(date.getTime()) ? Utilities.formatDate(date, Session.getScriptTimeZone(), 'dd MMM yyyy') : String(value);
 }
 
 function requestQuotePayment_(quoteId) {

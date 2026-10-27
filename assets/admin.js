@@ -227,6 +227,7 @@
       var serviceList = Array.from(new Set(itemServices)).join(', ') || quote.service;
       var actions = '';
       actions += '<button class="button small" type="button" data-action="view-quote" data-id="' + escapeHtml(quote.quoteId) + '">View</button>';
+      actions += '<button class="button small" type="button" data-action="download-quote" data-id="' + escapeHtml(quote.quoteId) + '">Download PDF</button>';
       if (quote.status === 'DRAFT') actions += '<button class="button small" type="button" data-action="edit-quote" data-id="' + escapeHtml(quote.quoteId) + '">Edit draft</button>';
       if (quote.status === 'DRAFT') actions += '<button class="button small" type="button" data-action="send-quote" data-id="' + escapeHtml(quote.quoteId) + '">Email quote</button>';
       if (quote.status === 'SENT') actions += '<button class="button small primary" type="button" data-action="request-payment" data-id="' + escapeHtml(quote.quoteId) + '">Request payment</button>';
@@ -422,6 +423,29 @@
     }
   }
 
+  async function downloadQuotePdf(quoteId, button) {
+    if (button) button.disabled = true;
+    try {
+      var result = await api({action: 'adminDownloadQuote', quoteId: quoteId});
+      var binary = atob(result.base64);
+      var bytes = new Uint8Array(binary.length);
+      for (var i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+      var url = URL.createObjectURL(new Blob([bytes], {type: result.contentType || 'application/pdf'}));
+      var link = document.createElement('a');
+      link.href = url;
+      link.download = result.filename || ('Onnmore-Quotation-' + quoteId + '.pdf');
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      alertUser('Quotation PDF downloaded.', true);
+    } catch (error) {
+      alertUser(error.message, false);
+    } finally {
+      if (button) button.disabled = false;
+    }
+  }
+
   async function approveLead(leadId, backend) {
     try {
       if (backend === 'portal') {
@@ -559,6 +583,8 @@
     if (button.dataset.action === 'quote-lead') {
       var lead = state.dashboard.leads.find(function (item) { return item.caseId === id; });
       openQuote(lead || null);
+    } else if (button.dataset.action === 'download-quote') {
+      downloadQuotePdf(id, button);
     } else if (button.dataset.action === 'view-quote') {
       var viewedQuote = state.dashboard.quotes.find(function (item) { return item.quoteId === id; });
       if (viewedQuote) viewQuote(viewedQuote);
