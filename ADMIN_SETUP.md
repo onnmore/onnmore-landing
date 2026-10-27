@@ -36,18 +36,75 @@ allowlist server-side. The page's `noindex` metadata is not access control.
    `submitPublicLead`, `getApplications` and `verifyOtp`.
 2. Add a new script file named `PortalAdmin` and paste in the full contents of
    `apps-script/PortalAdmin.gs`. Do not replace the existing portal code.
-3. In that project's existing `doPost(e)`, add the following cases inside its
-   existing `switch (action)`, before `default`:
+3. Replace only the existing `doPost(e)` function with this version. It keeps
+   the portal's existing actions and adds the two admin routes:
 
    ```javascript
-   case 'adminPortalDashboard':
-   case 'adminPortalUpdateApplication':
-     result = handleAdminPortalRequest_(body);
-     break;
+   function doPost(e) {
+     try {
+       const body = JSON.parse((e.postData && e.postData.contents) || '{}');
+       const action = body.action;
+
+       let result;
+
+       switch (action) {
+         case 'sendOtp':
+           result = handleSendOtp(body);
+           break;
+
+         case 'verifyOtp':
+           result = handleVerifyOtp(body);
+           break;
+
+         case 'getProfile':
+           result = handleGetProfile(body);
+           break;
+
+         case 'updateProfile':
+           result = handleUpdateProfile(body);
+           break;
+
+         case 'getServices':
+           result = handleGetServices();
+           break;
+
+         case 'submitApplication':
+           result = handleSubmitApplication(body);
+           break;
+
+         case 'getApplications':
+           result = handleGetApplications(body);
+           break;
+
+         case 'submitPublicLead':
+           result = handleSubmitPublicLead(body);
+           break;
+
+         case 'adminPortalDashboard':
+         case 'adminPortalUpdateApplication':
+           result = handleAdminPortalRequest_(body);
+           break;
+
+         default:
+           result = {
+             ok: false,
+             error: 'Unknown action: ' + action
+           };
+       }
+
+       return jsonResponse(result);
+     } catch (err) {
+       return jsonResponse({
+         ok: false,
+         error: err.message
+       });
+     }
+   }
    ```
 
-   The existing `jsonResponse(result)` should remain in place. The front-end
-   uses the portal Web App URL already present in `assets/admin-config.js`.
+   Do not add a second `doPost(e)` or replace any other portal code. The
+   front-end uses the portal Web App URL already present in
+   `assets/admin-config.js`.
 4. Save, authorize the requested services, then open **Deploy → Manage
    deployments**, edit the existing portal Web App, select **New version** and
    deploy. Keep its existing URL and its current access setting so the customer
@@ -65,12 +122,33 @@ customer portal can display.
 ## 3. Connect quotations and payments (optional)
 
 To use the separate Quotations and Payments tabs, add `apps-script/Admin.gs`
-to the existing plan-checkout Apps Script project, route its admin actions
-through that project's `doPost` dispatcher, and deploy a new version while
-keeping its URL. Follow the checkout add-on's helper/deployment requirements;
-it depends on the checkout project's existing order functions and spreadsheet.
-The checkout project also needs the same `ADMIN_GOOGLE_CLIENT_ID` and
-`ADMIN_EMAILS` Script Properties.
+to the existing plan-checkout Apps Script project. If it is already installed,
+replace its contents with the updated `apps-script/Admin.gs`. In that
+project's existing `doPost(e)` dispatcher, add these cases to its action
+switch before `default`. Use the name of the parsed request object if it is
+not `body`, and keep the existing JSON response and all checkout routes:
+
+```javascript
+case 'adminDashboard':
+case 'adminUpdateLead':
+case 'adminCreateQuote':
+case 'adminUpdateQuote':
+case 'adminSendQuote':
+case 'adminRequestQuotePayment':
+case 'adminVerifyQuotePayment':
+  result = handleAdminRequest_(body);
+  break;
+```
+
+Do not add a second `doPost(e)`. Deploy a new version while keeping the
+checkout Web App URL. The add-on depends on the checkout project's existing
+order functions and spreadsheet. The checkout project also needs the same
+`ADMIN_GOOGLE_CLIENT_ID` and `ADMIN_EMAILS` Script Properties.
+The quotation list has a **View** action. **Edit draft** updates a quotation
+only while its status is `DRAFT`; sent or payment-requested quotes cannot be
+edited, to avoid changing terms after sending them to a customer.
+Update the dispatcher and add-on together, save, then deploy a new version of
+the checkout Web App.
 
 ## 4. Web3Forms history
 

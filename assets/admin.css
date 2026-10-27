@@ -61,6 +61,13 @@ select.status-select{width:auto;min-width:135px;min-height:34px;padding:6px 8px;
 .dialog{width:min(760px,94vw);max-height:90vh;padding:0;border:1px solid #344250;border-radius:18px;background:#121821;color:var(--text);box-shadow:0 30px 100px #000b}
 .dialog::backdrop{background:rgba(3,6,9,.78);backdrop-filter:blur(4px)}
 .dialog form{padding:clamp(20px,4vw,30px);overflow:auto;max-height:90vh}
+.quote-view{padding:clamp(20px,4vw,30px);overflow:auto;max-height:90vh}
+.quote-view>p{color:var(--muted);font-size:.82rem;line-height:1.75}
+.quote-view>p strong{color:var(--text)}
+.quote-view h3{margin:18px 0 4px;font-size:.82rem}
+.quote-view-table{margin:16px 0}
+.quote-view-table table{min-width:620px}
+.quote-view-table tfoot td{color:var(--text);font-weight:800}
 .dialog-head{align-items:flex-start;margin-bottom:20px}
 .dialog-head h2{margin:5px 0;font-size:1.3rem}
 .dialog-head p{margin:0;color:var(--muted);font-size:.78rem}

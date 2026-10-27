@@ -82,8 +82,10 @@
 
   <dialog id="quoteDialog" class="dialog">
     <form id="quoteForm" method="dialog">
-      <div class="dialog-head"><div><span class="eyebrow">SERVICE BILLING</span><h2>Create a quotation</h2><p>This is a non-tax quotation, not a GST invoice.</p></div><button class="icon-button" id="closeQuoteBtn" type="button" aria-label="Close">×</button></div>
+      <div class="dialog-head"><div><span class="eyebrow">SERVICE BILLING</span><h2 id="quoteDialogTitle">Create a quotation</h2><p id="quoteDialogDescription">This is a non-tax quotation, not a GST invoice.</p></div><button class="icon-button" id="closeQuoteBtn" type="button" aria-label="Close">×</button></div>
+      <p class="alert" id="quoteError" role="alert" hidden></p>
       <input id="quoteLeadId" type="hidden">
+      <input id="quoteId" type="hidden">
       <div class="form-grid">
         <label>Customer name<input id="quoteCustomerName" maxlength="100" required></label>
         <label>Email<input id="quoteEmail" type="email" maxlength="160" required></label>
@@ -99,6 +101,14 @@
       <label class="block-label">Terms<textarea id="quoteTerms" rows="3" maxlength="1200" placeholder="Payment due date, scope conditions, etc."></textarea></label>
       <div class="dialog-actions"><button class="button secondary" id="cancelQuoteBtn" type="button">Cancel</button><button class="button primary" id="saveQuoteBtn" type="submit">Save draft</button></div>
     </form>
+  </dialog>
+
+  <dialog id="quoteViewDialog" class="dialog">
+    <div class="quote-view">
+      <div class="dialog-head"><div><span class="eyebrow">QUOTATION DETAILS</span><h2 id="quoteViewTitle">Quotation</h2><p id="quoteViewStatus"></p></div><button class="icon-button" id="closeQuoteViewBtn" type="button" aria-label="Close">×</button></div>
+      <div id="quoteViewContent"></div>
+      <div class="dialog-actions"><button class="button secondary" id="cancelQuoteViewBtn" type="button">Close</button><button class="button primary" id="editQuoteViewBtn" type="button" hidden>Edit draft</button></div>
+    </div>
   </dialog>
 
   <dialog id="verifyDialog" class="dialog verify-dialog">
