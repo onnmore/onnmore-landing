@@ -23,6 +23,7 @@ function handleAdminRequest_(request) {
       case 'adminDashboard': return getAdminDashboard_();
       case 'adminUpdateLead': return updateAdminLead_(request.leadId, request.status);
       case 'adminCreateQuote': return createAdminQuote_(request.quote || {});
+      case 'adminUpdateQuote': return updateAdminQuote_(request.quoteId, request.quote || {});
       case 'adminSendQuote': return sendAdminQuote_(request.quoteId);
       case 'adminRequestQuotePayment': return requestQuotePayment_(request.quoteId);
       case 'adminVerifyQuotePayment': return verifyQuotePayment_(request.orderId, request.paymentReference, request.confirmed);
@@ -37,7 +38,7 @@ function handleAdminRequest_(request) {
       'Admin sign-in could not be verified.',
       'This Google account is not authorized to use the admin page.'
     ];
-    if (safeErrors.indexOf(message) >= 0 || /^(Add between|Check each|Enter the customer|Enter a valid quotation expiry date|The quotation total)/.test(message)) {
+    if (safeErrors.indexOf(message) >= 0 || /^(Add between|Check each|Enter the customer|Enter a valid quotation expiry date|The quotation total|Quotation not found|Only draft quotations)/.test(message)) {
       return {ok:false, error:message};
     }
     console.error('Admin request failed (' + action + '): ' + err);
@@ -124,34 +125,65 @@ function updateAdminLead_(leadId, status) {
 }
 
 function createAdminQuote_(raw) {
-  const quote = raw || {};
-  const name = adminSafe_(quote.customerName, 100);
-  const email = String(quote.email || '').trim().toLowerCase();
-  const phone = adminSafe_(quote.phone, 30);
-  const service = adminSafe_(quote.service, 140);
-  const items = adminValidateItems_(quote.lineItems);
-  if (name.length < 2 || !/^[^\s@|]+@[^\s@|]+\.[^\s@|]+$/.test(email) || email.length > 160 || !phone || !service) {
-    return {ok:false, error:'Enter the customer name, valid email, phone and service.'};
-  }
-  const subtotal = Math.round(items.reduce(function (sum, item) {
-    return sum + item.quantity * item.unitPrice;
-  }, 0) * 100) / 100;
-  if (!subtotal || subtotal > 1000000000) return {ok:false, error:'The quotation total must be greater than zero and within the supported limit.'};
-  const validUntil = adminSafe_(quote.validUntil, 10);
-  const expiryDate = validUntil ? new Date(validUntil + 'T00:00:00Z') : null;
-  if (validUntil && (!/^\d{4}-\d{2}-\d{2}$/.test(validUntil) || !Number.isFinite(expiryDate.getTime()) || expiryDate.toISOString().slice(0, 10) !== validUntil)) {
-    return {ok:false, error:'Enter a valid quotation expiry date.'};
-  }
-
+  const quote = normalizeAdminQuote_(raw);
   const now = new Date(), quoteId = 'ONN-Q-' + Utilities.formatDate(now, Session.getScriptTimeZone(), 'yyMMdd') + '-' + Utilities.getUuid().replace(/-/g, '').slice(0, 6).toUpperCase();
   const sheet = adminSheet_('Quotes', ADMIN_QUOTE_HEADERS_);
   sheet.appendRow([
-    quoteId, now, now, adminSafe_(quote.leadId, 50), name, email, phone,
-    adminSafe_(quote.businessName, 140), service, JSON.stringify(items),
-    subtotal, 'DRAFT', validUntil,
-    adminSafe_(quote.notes, 1200), adminSafe_(quote.terms, 1200), ''
+    quoteId, now, now, quote.leadId, quote.customerName, quote.email, quote.phone,
+    quote.businessName, quote.service, JSON.stringify(quote.lineItems),
+    quote.subtotal, 'DRAFT', quote.validUntil,
+    quote.notes, quote.terms, ''
   ]);
-  return {ok:true, quoteId:quoteId, subtotal:subtotal};
+  return {ok:true, quoteId:quoteId, subtotal:quote.subtotal};
+}
+
+function updateAdminQuote_(quoteId, raw) {
+  const found = findAdminQuote_(quoteId);
+  if (!found) return {ok:false, error:'Quotation not found.'};
+  if (found.quote.status !== 'DRAFT') return {ok:false, error:'Only draft quotations can be edited. Create a new draft if details must change.'};
+
+  const quote = normalizeAdminQuote_(raw);
+  const now = new Date();
+  found.sheet.getRange(found.row, 3, 1, 13).setValues([[
+    now, quote.leadId, quote.customerName, quote.email, quote.phone,
+    quote.businessName, quote.service, JSON.stringify(quote.lineItems),
+    quote.subtotal, 'DRAFT', quote.validUntil, quote.notes, quote.terms
+  ]]);
+  return {ok:true, quoteId:found.quote.quoteId, subtotal:quote.subtotal};
+}
+
+function normalizeAdminQuote_(raw) {
+  const quote = raw || {};
+  const customerName = adminSafe_(quote.customerName, 100);
+  const email = String(quote.email || '').trim().toLowerCase();
+  const phone = adminSafe_(quote.phone, 30);
+  const service = adminSafe_(quote.service, 140);
+  const lineItems = adminValidateItems_(quote.lineItems);
+  if (customerName.length < 2 || !/^[^\s@|]+@[^\s@|]+\.[^\s@|]+$/.test(email) || email.length > 160 || !phone || !service) {
+    throw new Error('Enter the customer name, valid email, phone and service.');
+  }
+  const subtotal = Math.round(lineItems.reduce(function (sum, item) {
+    return sum + item.quantity * item.unitPrice;
+  }, 0) * 100) / 100;
+  if (!subtotal || subtotal > 1000000000) throw new Error('The quotation total must be greater than zero and within the supported limit.');
+  const validUntil = adminSafe_(quote.validUntil, 10);
+  const expiryDate = validUntil ? new Date(validUntil + 'T00:00:00Z') : null;
+  if (validUntil && (!/^\d{4}-\d{2}-\d{2}$/.test(validUntil) || !Number.isFinite(expiryDate.getTime()) || expiryDate.toISOString().slice(0, 10) !== validUntil)) {
+    throw new Error('Enter a valid quotation expiry date.');
+  }
+  return {
+    leadId:adminSafe_(quote.leadId, 50),
+    customerName:customerName,
+    email:email,
+    phone:phone,
+    businessName:adminSafe_(quote.businessName, 140),
+    service:service,
+    lineItems:lineItems,
+    subtotal:subtotal,
+    validUntil:validUntil,
+    notes:adminSafe_(quote.notes, 1200),
+    terms:adminSafe_(quote.terms, 1200)
+  };
 }
 
 function sendAdminQuote_(quoteId) {

@@ -226,6 +226,8 @@
       var itemServices = (quote.lineItems || []).map(function (item) { return item.service; }).filter(Boolean);
       var serviceList = Array.from(new Set(itemServices)).join(', ') || quote.service;
       var actions = '';
+      actions += '<button class="button small" type="button" data-action="view-quote" data-id="' + escapeHtml(quote.quoteId) + '">View</button>';
+      if (quote.status === 'DRAFT') actions += '<button class="button small" type="button" data-action="edit-quote" data-id="' + escapeHtml(quote.quoteId) + '">Edit draft</button>';
       if (quote.status === 'DRAFT') actions += '<button class="button small" type="button" data-action="send-quote" data-id="' + escapeHtml(quote.quoteId) + '">Email quote</button>';
       if (quote.status === 'SENT') actions += '<button class="button small primary" type="button" data-action="request-payment" data-id="' + escapeHtml(quote.quoteId) + '">Request payment</button>';
       if (quote.status === 'PAYMENT_REQUESTED') actions += '<button class="button small" type="button" data-action="request-payment" data-id="' + escapeHtml(quote.quoteId) + '">Resend payment request</button>';
@@ -259,6 +261,12 @@
 
   function openQuote(lead) {
     $('quoteForm').reset();
+    $('quoteError').hidden = true;
+    $('quoteError').textContent = '';
+    $('quoteId').value = '';
+    $('quoteDialogTitle').textContent = 'Create a quotation';
+    $('quoteDialogDescription').textContent = 'This is a non-tax quotation, not a GST invoice.';
+    $('saveQuoteBtn').textContent = 'Save draft';
     $('quoteLeadId').value = lead ? lead.caseId : '';
     $('quoteCustomerName').value = lead ? lead.name || '' : '';
     $('quoteEmail').value = lead ? lead.email || '' : '';
@@ -272,6 +280,54 @@
     addLineItem(lead ? lead.serviceName || lead.serviceKey || 'Service' : '');
     updateQuoteTotal();
     $('quoteDialog').showModal();
+  }
+
+  function editQuote(quote) {
+    openQuote(null);
+    $('quoteId').value = quote.quoteId;
+    $('quoteLeadId').value = quote.leadId || '';
+    $('quoteCustomerName').value = quote.customerName || '';
+    $('quoteEmail').value = quote.email || '';
+    $('quotePhone').value = quote.phone || '';
+    $('quoteBusiness').value = quote.businessName || '';
+    $('quoteService').value = quote.service || '';
+    $('quoteValidUntil').value = quote.validUntil ? String(quote.validUntil).slice(0, 10) : '';
+    $('quoteNotes').value = quote.notes || '';
+    $('quoteTerms').value = quote.terms || '';
+    $('lineItems').replaceChildren();
+    (quote.lineItems || []).forEach(function (item) {
+      addLineItem(item.service || '');
+      var row = $('lineItems').lastElementChild;
+      row.querySelector('.item-description').value = item.description || '';
+      row.querySelector('.item-quantity').value = item.quantity;
+      row.querySelector('.item-price').value = item.unitPrice;
+    });
+    if (!$('lineItems').children.length) addLineItem(quote.service || '');
+    updateQuoteTotal();
+    $('quoteDialogTitle').textContent = 'Edit quotation draft';
+    $('quoteDialogDescription').textContent = 'Changes are saved to this draft and are not emailed until you send the quotation.';
+    $('saveQuoteBtn').textContent = 'Save changes';
+  }
+
+  function viewQuote(quote) {
+    var items = quote.lineItems || [];
+    var rows = items.map(function (item) {
+      return '<tr><td>' + escapeHtml(item.service) + '</td><td>' + escapeHtml(item.description) + '</td><td>' + escapeHtml(item.quantity) + '</td><td>' + escapeHtml(money(item.unitPrice)) + '</td><td>' + escapeHtml(money(Number(item.quantity) * Number(item.unitPrice))) + '</td></tr>';
+    }).join('');
+    $('quoteViewTitle').textContent = quote.quoteId;
+    $('quoteViewStatus').textContent = (quote.status || 'DRAFT') + ' · Created ' + formatDate(quote.createdAt);
+    $('quoteViewContent').innerHTML =
+      '<p><strong>' + escapeHtml(quote.customerName || 'Customer') + '</strong><br>' +
+      escapeHtml(quote.email || '') + (quote.phone ? '<br>' + escapeHtml(quote.phone) : '') +
+      (quote.businessName ? '<br>' + escapeHtml(quote.businessName) : '') + '</p>' +
+      '<p>Service / project: <strong>' + escapeHtml(quote.service || '—') + '</strong><br>' +
+      'Valid until: ' + escapeHtml(quote.validUntil || 'Not specified') + '</p>' +
+      '<div class="table-wrap quote-view-table"><table><thead><tr><th>Service</th><th>Description</th><th>Qty</th><th>Rate</th><th>Amount</th></tr></thead><tbody>' +
+      rows + '</tbody><tfoot><tr><td colspan="4">Quotation total</td><td><strong>' + escapeHtml(money(quote.subtotal)) + '</strong></td></tr></tfoot></table></div>' +
+      (quote.notes ? '<h3>Notes</h3><p>' + escapeHtml(quote.notes).replace(/\n/g, '<br>') + '</p>' : '') +
+      (quote.terms ? '<h3>Terms</h3><p>' + escapeHtml(quote.terms).replace(/\n/g, '<br>') + '</p>' : '');
+    $('editQuoteViewBtn').hidden = quote.status !== 'DRAFT';
+    $('quoteViewDialog').showModal();
   }
 
   function addLineItem(service) {
@@ -332,13 +388,22 @@
     event.preventDefault();
     var button = $('saveQuoteBtn');
     button.disabled = true;
+    $('quoteError').hidden = true;
+    $('quoteError').textContent = '';
     try {
-      var result = await api({action: 'adminCreateQuote', quote: collectQuote()});
+      var quoteId = $('quoteId').value;
+      var action = quoteId ? 'adminUpdateQuote' : 'adminCreateQuote';
+      var payload = {action: action, quote: collectQuote()};
+      if (quoteId) payload.quoteId = quoteId;
+      var result = await api(payload);
       $('quoteDialog').close();
-      alertUser('Quotation ' + result.quoteId + ' saved as a draft. Use Email quote to send it to the customer.', true);
       await loadDashboard();
+      alertUser(quoteId
+        ? 'Quotation ' + result.quoteId + ' draft updated.'
+        : 'Quotation ' + result.quoteId + ' saved as a draft. Use Email quote to send it to the customer.', true);
     } catch (error) {
-      alertUser(error.message, false);
+      $('quoteError').textContent = error.message;
+      $('quoteError').hidden = false;
     } finally {
       button.disabled = false;
     }
@@ -452,6 +517,14 @@
   $('verifyForm').addEventListener('submit', verifyPayment);
   $('closeQuoteBtn').addEventListener('click', function () { $('quoteDialog').close(); });
   $('cancelQuoteBtn').addEventListener('click', function () { $('quoteDialog').close(); });
+  $('closeQuoteViewBtn').addEventListener('click', function () { $('quoteViewDialog').close(); });
+  $('cancelQuoteViewBtn').addEventListener('click', function () { $('quoteViewDialog').close(); });
+  $('editQuoteViewBtn').addEventListener('click', function () {
+    var quote = state.dashboard.quotes.find(function (item) { return item.quoteId === $('quoteViewTitle').textContent; });
+    if (!quote || quote.status !== 'DRAFT') return;
+    $('quoteViewDialog').close();
+    editQuote(quote);
+  });
   $('closeVerifyBtn').addEventListener('click', function () { $('verifyDialog').close(); });
   $('cancelVerifyBtn').addEventListener('click', function () { $('verifyDialog').close(); });
   document.querySelectorAll('.export-btn').forEach(function (button) {
@@ -486,6 +559,12 @@
     if (button.dataset.action === 'quote-lead') {
       var lead = state.dashboard.leads.find(function (item) { return item.caseId === id; });
       openQuote(lead || null);
+    } else if (button.dataset.action === 'view-quote') {
+      var viewedQuote = state.dashboard.quotes.find(function (item) { return item.quoteId === id; });
+      if (viewedQuote) viewQuote(viewedQuote);
+    } else if (button.dataset.action === 'edit-quote') {
+      var editedQuote = state.dashboard.quotes.find(function (item) { return item.quoteId === id; });
+      if (editedQuote && editedQuote.status === 'DRAFT') editQuote(editedQuote);
     } else if (button.dataset.action === 'approve-lead') {
       approveLead(id, button.dataset.backend);
     } else if (button.dataset.action === 'send-quote') {
