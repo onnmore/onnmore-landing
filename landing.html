@@ -156,6 +156,32 @@ html,body{overflow-x:clip}
 @media(max-width:900px){.nav{flex-wrap:wrap;height:auto;padding:8px 20px;row-gap:8px}.loc{order:9;flex:1 1 100%;max-width:none}}
 @media(max-width:900px){.nav nav,.hide{display:none}.nav .seg:first-of-type{margin-left:auto}.hero,.wiz,.split,.form,.two,.plans,.rv{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.how{grid-template-columns:1fr 1fr;gap:20px 0}.how li:after{display:none}section{padding:60px 0}.hero{padding-top:34px}}
 @media(max-width:520px){.grid,.row2{grid-template-columns:1fr}.ck{right:16px;bottom:76px;max-width:none}}
+@media(max-width:600px){
+  .w{width:100%;max-width:100%;padding-inline:16px}
+  .nav{width:100%;padding:8px 16px;column-gap:8px;row-gap:8px}
+  .brand svg{width:108px;height:auto}
+  .nav .seg{flex-shrink:0}
+  .nav .seg button{padding:4px 7px;font-size:12px}
+  .loc{box-sizing:border-box;min-width:0;width:100%;max-width:none}
+  .hero{width:100%;min-width:0;grid-template-columns:minmax(0,1fr);gap:28px;padding:34px 0 56px}
+  .hero>div:first-child,.scene,.file{box-sizing:border-box;width:100%;min-width:0;max-width:100%}
+  .hero>div:first-child>.pill{display:none}
+  .hero h1{font-size:clamp(34px,9.5vw,46px);line-height:1.05;letter-spacing:-.04em;overflow-wrap:anywhere;margin:18px 0}
+  .lead{max-width:100%;font-size:16px;line-height:1.65;overflow-wrap:anywhere}
+  .cta{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;width:100%}
+  .cta>.btn{box-sizing:border-box;width:100%;min-width:0;white-space:normal;text-align:center}
+  .trust{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px;font-size:12px}
+  .trust>span{display:flex;align-items:flex-start;min-width:0;overflow-wrap:anywhere}
+  .scene{margin:0;transform:none}
+  .scene:before,.scene:after{display:none}
+  .file{padding:20px 16px}
+  .file h3{flex-wrap:wrap;align-items:flex-start;gap:6px;font-size:17px}
+  .file .id{font-size:11px}
+  .chip3d{font-size:11px;padding:7px 10px}
+  .c2{left:4px}
+  .wa{position:static;width:48px;height:48px;box-sizing:border-box;justify-content:center;margin:16px 16px 24px auto;padding:0;border-radius:50%;font-size:21px}
+  .wa span{display:none}
+}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
@@ -310,7 +336,7 @@ html,body{overflow-x:clip}
 <div class="lm-v" data-v="out"><i class="ri-map-pin-range-fill lm-big no" aria-hidden="true"></i><h2 data-i="lcOut">Local services aren’t in your area yet</h2><p data-i="lcOutD">Repairs and printing are Newtown-only for now. Business papers and online tech plans are still available.</p><button class="btn" id="lmGo2" type="button" data-i="lcGo">Continue</button></div>
 </div></div>
 <div class="ck" id="ck" role="dialog" aria-label="Privacy choices" hidden><p data-i="ac">We use anonymous analytics to improve this site. No names, phone numbers or form entries are recorded.</p><div class="cta"><button class="btn s" id="cky" data-i="acy">Allow</button><button class="btn s g" id="ckn" data-i="acn">No thanks</button></div></div>
-<a class="wa" href="https://wa.me/919477110971" target="_blank" rel="noopener"><i class="ri-whatsapp-line"></i>WhatsApp</a>
+<a class="wa" href="https://wa.me/919477110971" target="_blank" rel="noopener" aria-label="Chat with Onnmore on WhatsApp"><i class="ri-whatsapp-line" aria-hidden="true"></i><span>WhatsApp</span></a>
 
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],WA="919477110971";
