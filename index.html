@@ -928,6 +928,207 @@
     #pricing .pl-help a { color:var(--accent-light); font-weight:700; }
     [data-theme="light"] #pricing .pl-tag, [data-theme="light"] #pricing .pl-help a { color:#0b7a56; }
     [data-theme="light"] #pricing .pl-featured .pl-tag { color:#9a7000; }
+
+    /* ══════════ DIGITAL-FIRST LANDING HERO ══════════ */
+    .hero {
+      padding: clamp(56px, 8vw, 94px) 0 42px;
+      text-align:left;
+      background:
+        radial-gradient(ellipse 760px 520px at 88% 24%, rgba(58,184,129,.11), transparent 70%),
+        linear-gradient(180deg, var(--bg-2), var(--bg));
+      overflow:hidden;
+    }
+    .hero-grid {
+      grid-template-columns:minmax(0, .92fr) minmax(0, 1.08fr);
+      gap:clamp(34px, 6vw, 76px);
+      justify-items:stretch;
+      align-items:center;
+    }
+    .hero-grid > div { min-width:0; width:100%; }
+    .hero-grid > div:first-child { max-width:650px; margin:0; }
+    .hero-grid > div:first-child::before {
+      top:-110px;
+      left:-130px;
+      width:480px;
+      height:480px;
+      background:radial-gradient(circle, rgba(58,184,129,.13), transparent 68%);
+    }
+    .hero-eyebrow { margin-bottom:18px; }
+    .hero-eyebrow .badge {
+      padding:7px 12px;
+      background:rgba(58,184,129,.075);
+      font-size:.7rem;
+      letter-spacing:.025em;
+    }
+    .hero-platform-label {
+      display:flex;
+      align-items:center;
+      gap:8px;
+      margin:0 0 12px;
+      color:var(--accent-light);
+      font-size:.72rem;
+      font-weight:800;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+    }
+    .hero-platform-label::before {
+      content:'';
+      width:22px;
+      height:1px;
+      background:currentColor;
+    }
+    .hero h1 {
+      max-width:680px;
+      margin:0 0 15px;
+      font-size:clamp(2.5rem, 5.2vw, 4.35rem);
+      line-height:1.04;
+      letter-spacing:-.065em;
+    }
+    .hero h1 .hl {
+      color:var(--accent-light);
+      background:linear-gradient(100deg, var(--accent-light), #8de5ba);
+      -webkit-background-clip:text;
+      background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .hero-pen-quote { justify-content:flex-start; margin:0 0 15px; }
+    .hero-lead { max-width:570px; margin:0; font-size:1rem; line-height:1.8; }
+    .hero-location { justify-content:flex-start; margin:18px 0 22px; }
+    .hero-cta { justify-content:flex-start; gap:10px; }
+    .hero-cta .btn { min-height:48px; }
+    .hero-cta .btn.primary { box-shadow:0 9px 28px rgba(58,184,129,.19); }
+    .hero-trust {
+      justify-content:flex-start;
+      gap:10px 18px;
+      margin-top:23px;
+      padding-top:18px;
+    }
+    .trust-badge { font-size:.75rem; }
+    .hero-visual {
+      width:100%;
+      max-width:none;
+      margin:0;
+      padding:10px 8px 0 0;
+      isolation:isolate;
+    }
+    .hero-visual::before {
+      content:'';
+      position:absolute;
+      inset:-18px 0 20px 20px;
+      z-index:-1;
+      border:1px solid var(--border);
+      border-radius:26px;
+      background-image:linear-gradient(var(--ov02) 1px, transparent 1px),linear-gradient(90deg, var(--ov02) 1px, transparent 1px);
+      background-size:28px 28px;
+      mask-image:linear-gradient(135deg, #000 0%, transparent 76%);
+      pointer-events:none;
+    }
+    .hero-img-card {
+      max-width:none;
+      margin:0;
+      border-radius:22px;
+      border-color:var(--border-hi);
+      box-shadow:0 30px 90px rgba(0,0,0,.32), 0 0 60px rgba(58,184,129,.08);
+    }
+    .hero-img-card::before {
+      content:'';
+      position:absolute;
+      inset:35% 0 0;
+      z-index:2;
+      background:linear-gradient(180deg, transparent, rgba(5,12,10,.5));
+      pointer-events:none;
+    }
+    .hero-img-card .hero-carousel { aspect-ratio:1.28 / 1; }
+    .hero-img-card .hero-carousel-slide { object-position:center; }
+    .hero-img-card .hero-carousel-dots { bottom:16px; }
+    .hero-tech-panel {
+      position:absolute;
+      right:-13px;
+      bottom:86px;
+      z-index:4;
+      width:min(290px, 58%);
+      padding:15px;
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:15px;
+      background:rgba(10,16,20,.78);
+      box-shadow:0 18px 48px rgba(0,0,0,.28);
+      color:#f0f7f3;
+      backdrop-filter:blur(16px) saturate(145%);
+      -webkit-backdrop-filter:blur(16px) saturate(145%);
+    }
+    .hero-tech-head { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+    .hero-tech-icon {
+      display:grid;
+      place-items:center;
+      width:34px;
+      height:34px;
+      flex:0 0 34px;
+      border:1px solid rgba(77,209,148,.25);
+      border-radius:10px;
+      background:rgba(58,184,129,.14);
+      color:#76e0ab;
+      font-size:1.1rem;
+    }
+    .hero-tech-heading { display:flex; flex:1; min-width:0; flex-direction:column; gap:2px; }
+    .hero-tech-heading small { color:#9baea5; font-size:.57rem; font-weight:800; letter-spacing:.12em; }
+    .hero-tech-heading strong { font-size:.78rem; line-height:1.3; }
+    .hero-tech-arrow { color:#8da198; font-size:1rem; }
+    .hero-tech-steps { display:grid; gap:7px; margin:0; padding:0; list-style:none; }
+    .hero-tech-steps li { display:flex; align-items:center; gap:9px; color:#d5e0da; font-size:.68rem; font-weight:650; }
+    .hero-tech-steps li span {
+      display:grid;
+      place-items:center;
+      width:19px;
+      height:19px;
+      flex:0 0 19px;
+      border:1px solid rgba(77,209,148,.35);
+      border-radius:50%;
+      color:#83e1b0;
+      font-size:.58rem;
+      font-weight:800;
+    }
+    .feature-strip {
+      margin-top:11px;
+      border-color:var(--border-md);
+      border-radius:13px;
+      background:var(--border);
+      box-shadow:0 12px 30px rgba(0,0,0,.12);
+    }
+    .feat { padding:12px 9px; background:linear-gradient(145deg, var(--card), var(--bg-2)); }
+    .feat i { font-size:1.1rem; }
+    .feat span { font-size:.68rem; }
+    .marquee-wrap { margin-top:34px; background:linear-gradient(90deg, rgba(58,184,129,.045), rgba(67,121,232,.035)); }
+    @media (max-width:900px) {
+      .hero-grid { grid-template-columns:minmax(0, 1fr); gap:34px; }
+      .hero-grid > div:first-child { max-width:740px; margin:0 auto; text-align:center; }
+      .hero-platform-label, .hero-cta, .hero-trust { justify-content:center; }
+      .hero-lead { margin:0 auto; }
+      .hero-location { justify-content:center; }
+      .hero-pen-quote { justify-content:center; }
+      .hero-visual { max-width:720px; margin:0 auto; }
+      .hero-img-card .hero-carousel { aspect-ratio:1.55 / 1; }
+    }
+    @media (max-width:560px) {
+      .hero { padding:48px 0 34px; }
+      .hero h1 { font-size:clamp(2.2rem, 10vw, 3.2rem); }
+      .hero-platform-label { font-size:.64rem; letter-spacing:.08em; }
+      .hero-cta .btn { white-space:normal; }
+      .hero-visual { padding-right:0; }
+      .hero-visual::before { inset:-10px 8px 16px 10px; }
+      .hero-img-card { border-radius:17px; }
+      .hero-img-card .hero-carousel { aspect-ratio:1.15 / 1; }
+      .hero-tech-panel { right:7px; bottom:62px; width:min(255px, 76%); padding:12px; }
+      .hero-tech-heading strong { font-size:.73rem; }
+      .hero-tech-steps { gap:5px; }
+      .hero-tech-steps li { font-size:.63rem; }
+      .feature-strip { margin-top:9px; }
+      .feat { padding:10px 5px; }
+      .feat span { font-size:.62rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-img-card { transition:none !important; }
+      .hero-visual::before { animation:none !important; }
+    }
   </style>
   <link rel="stylesheet" href="assets/service-gateway.css">
   <script src="assets/service-gateway.js" defer></script>
@@ -1172,6 +1373,7 @@
         <div class="hero-eyebrow">
           <span class="badge"><i class="ri-map-pin-2-fill"></i> <span data-i18n="hero.eyebrow">West Bengal · Business Registration & Compliance Experts</span></span>
         </div>
+        <p class="hero-platform-label" data-i18n="hero.platformLabel">A smarter, digital-first way to get business support</p>
         <h1 id="hero-h1"><span data-i18n="hero.title1">Start Your Business.</span> <span class="hl" data-i18n="hero.titleHl">We'll Handle the Paperwork.</span></h1>
         <div class="hero-pen-quote" aria-hidden="true">
           <span class="pen-quote-measure" id="penQuoteMeasure"></span>
@@ -1206,6 +1408,18 @@
           <div class="hero-carousel" id="heroCarousel">
             <img class="hero-carousel-slide is-active" src="images/hero-woman-office.jpg" alt="Founder managing her business registration and compliance online from her office" width="1000" height="667" loading="eager" fetchpriority="high" />
             <img class="hero-carousel-slide" src="images/hero-team-meeting.jpg" alt="Onnmore business consultancy team discussing a client's company registration and licensing" width="1000" height="563" loading="lazy" />
+          </div>
+          <div class="hero-tech-panel" aria-hidden="true">
+            <div class="hero-tech-head">
+              <span class="hero-tech-icon"><i class="ri-node-tree"></i></span>
+              <span class="hero-tech-heading"><small>ONNMORE DIGITAL WORKFLOW</small><strong>Business support, in sync.</strong></span>
+              <i class="ri-arrow-up-right-line hero-tech-arrow"></i>
+            </div>
+            <ol class="hero-tech-steps">
+              <li><span>01</span>Choose the right service</li>
+              <li><span>02</span>Get expert guidance</li>
+              <li><span>03</span>Track your case online</li>
+            </ol>
           </div>
           <div class="hero-carousel-dots" id="heroCarouselDots" role="tablist" aria-label="Hero image slides">
             <button type="button" class="hero-carousel-dot is-active" data-index="0" aria-label="Show slide 1" aria-selected="true" role="tab"></button>
@@ -2319,6 +2533,7 @@ const I18N = {
 en: {
   'nav.services':'Services','nav.pricing':'Pricing','nav.getStarted':'Get Started','nav.whyUs':'Why Us','nav.reviews':'Reviews','nav.faq':'FAQ','nav.contact':'Contact','nav.contactBtn':'Contact','nav.consultBtn':'Get Free Consultation',
   'hero.eyebrow':'West Bengal · Business Registration & Compliance Experts',
+  'hero.platformLabel':'A smarter, digital-first way to get business support',
   "consult.planTitle":"Choose a plan","consult.planSub":"Our plans bundle registration, licences and compliance support for a full year.","consult.planPerYear":" / year, incl. GST","consult.planStarterTag":"Idea to launch","consult.planProfessionalTag":"Grow and comply","consult.planBusinessPlusTag":"Scale without worries","consult.planBest":"Best value","consult.planNotSure":"Not sure yet","consult.planNotSureDesc":"Our team will help you pick the right plan.","consult.planNote":"Plan prices are inclusive of GST. Government/statutory fees are charged extra at actuals.","consult.planShort":"Plan",
   'hero.locLabel':'Your selected location:','hero.locChange':'Change location','hero.locDefault':'India-wide',
   'hero.title1':"Start Your Business.",'hero.titleHl':"We'll Handle the Paperwork.",
@@ -2438,6 +2653,7 @@ bn: {
   'waModal.title':'আমাদের বিশেষজ্ঞ পেশাদারদের সঙ্গে যোগাযোগ করুন','waModal.btn':'হোয়াটসঅ্যাপে যোগাযোগ করুন','waModal.errName':'অনুগ্রহ করে আপনার নাম লিখুন।','waModal.errPhone':'অনুগ্রহ করে ১০ অঙ্কের একটি সঠিক ফোন নম্বর দিন।',
   'nav.services':'পরিষেবা','nav.pricing':'মূল্য তালিকা','nav.getStarted':'শুরু করুন','nav.whyUs':'কেন আমরা','nav.reviews':'রিভিউ','nav.faq':'প্রশ্নোত্তর','nav.contact':'যোগাযোগ','nav.contactBtn':'যোগাযোগ','nav.consultBtn':'বিনামূল্যে পরামর্শ নিন',
   'hero.eyebrow':'পশ্চিমবঙ্গ · ব্যবসা নিবন্ধন ও কমপ্লায়েন্স বিশেষজ্ঞ',
+  'hero.platformLabel':'ব্যবসায়িক সহায়তার আরও সহজ, ডিজিটাল উপায়',
   "consult.planTitle":"একটি প্ল্যান বেছে নিন","consult.planSub":"আমাদের প্ল্যানে এক বছরের জন্য রেজিস্ট্রেশন, লাইসেন্স ও কমপ্লায়েন্স সহায়তা একসাথে থাকে।","consult.planPerYear":" / বছর, জিএসটি সহ","consult.planStarterTag":"আইডিয়া থেকে লঞ্চ","consult.planProfessionalTag":"বৃদ্ধি ও কমপ্লায়েন্স","consult.planBusinessPlusTag":"নিশ্চিন্তে ব্যবসা বাড়ান","consult.planBest":"সেরা মূল্য","consult.planNotSure":"এখনও নিশ্চিত নই","consult.planNotSureDesc":"সঠিক প্ল্যান বেছে নিতে আমাদের টিম সাহায্য করবে।","consult.planNote":"প্ল্যানের মূল্য জিএসটি সহ। সরকারি/বিধিবদ্ধ ফি এর মধ্যে নেই, সেগুলি প্রকৃত খরচে আলাদাভাবে প্রযোজ্য।","consult.planShort":"প্ল্যান",
   'hero.locLabel':'আপনার নির্বাচিত অবস্থান:','hero.locChange':'অবস্থান পরিবর্তন করুন','hero.locDefault':'সারা ভারত',
   'hero.title1':'আপনার ব্যবসা শুরু করুন।','hero.titleHl':'কাগজপত্র আমরা সামলাব।',
@@ -2556,6 +2772,7 @@ hi: {
   'waModal.title':'हमारे विशेषज्ञ पेशेवरों से जुड़ें','waModal.btn':'व्हाट्सएप पर जुड़ें','waModal.errName':'कृपया अपना नाम दर्ज करें।','waModal.errPhone':'कृपया 10 अंकों का सही फ़ोन नंबर दर्ज करें।',
   'nav.services':'सेवाएं','nav.pricing':'मूल्य सूची','nav.getStarted':'शुरू करें','nav.whyUs':'हमें क्यों चुनें','nav.reviews':'समीक्षाएं','nav.faq':'सामान्य प्रश्न','nav.contact':'संपर्क करें','nav.contactBtn':'संपर्क करें','nav.consultBtn':'मुफ़्त परामर्श लें',
   'hero.eyebrow':'पश्चिम बंगाल · व्यवसाय पंजीकरण और अनुपालन विशेषज्ञ',
+  'hero.platformLabel':'व्यवसाय सहायता का एक बेहतर, डिजिटल तरीका',
   "consult.planTitle":"एक प्लान चुनें","consult.planSub":"हमारे प्लान में पूरे साल के लिए रजिस्ट्रेशन, लाइसेंस और कंप्लायंस सहायता एक साथ मिलती है।","consult.planPerYear":" / वर्ष, GST सहित","consult.planStarterTag":"आइडिया से लॉन्च तक","consult.planProfessionalTag":"बढ़ें और नियमों का पालन करें","consult.planBusinessPlusTag":"बेफ़िक्र होकर बढ़ाएँ","consult.planBest":"सर्वोत्तम मूल्य","consult.planNotSure":"अभी तय नहीं","consult.planNotSureDesc":"सही प्लान चुनने में हमारी टीम मदद करेगी।","consult.planNote":"प्लान की कीमतें GST सहित हैं। सरकारी/वैधानिक शुल्क इनमें शामिल नहीं हैं, वे वास्तविक खर्च पर अलग से लगेंगे।","consult.planShort":"प्लान",
   'hero.locLabel':'आपका चयनित स्थान:','hero.locChange':'स्थान बदलें','hero.locDefault':'पूरे भारत में',
   'hero.title1':'अपना व्यवसाय शुरू करें।','hero.titleHl':'कागज़ी काम हम संभालेंगे।',
