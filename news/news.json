@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-14T22:23:22.044Z",
+  "updatedAt": "2026-11-15T06:29:27.636Z",
   "articles": [
     {
       "id": "sebi-rss-105741",
@@ -33,45 +33,6 @@
       "source": "Securities and Exchange Board of India (SEBI)",
       "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/nov-2026/niveshak-shivir-to-be-held-on-november-17-2026-at-new-delhi_105731.html",
       "publishedAt": "2026-11-14T22:23:22.041Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-105741",
-      "title": "Notice of Demand dated 12.11.2026 in RC No. 9325 of 2026",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/enforcement/recovery-proceedings/nov-2026/notice-of-demand-dated-12-11-2026-in-rc-no-9325-of-2026_105741.html",
-      "publishedAt": "2026-11-14T17:59:47.473Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-105739",
-      "title": "Notice of Demand dated 12.11.2026 in RC No. 9324 of 2026",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/enforcement/recovery-proceedings/nov-2026/notice-of-demand-dated-12-11-2026-in-rc-no-9324-of-2026_105739.html",
-      "publishedAt": "2026-11-14T17:59:47.473Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-105731",
-      "title": "Niveshak Shivir to be held on November 17, 2026 at New Delhi",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/nov-2026/niveshak-shivir-to-be-held-on-november-17-2026-at-new-delhi_105731.html",
-      "publishedAt": "2026-11-14T17:59:47.473Z",
       "category": "Finance & Banking",
       "region": "National",
       "summary": "",
