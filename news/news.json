@@ -1,6 +1,45 @@
 {
-  "updatedAt": "2026-11-15T18:50:15.802Z",
+  "updatedAt": "2026-11-16T06:26:52.373Z",
   "articles": [
+    {
+      "id": "rbi-press-63979",
+      "title": "RBI cancels Certificate of Registration of 49 NBFCs",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63979",
+      "publishedAt": "2026-11-16T11:05:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "The Reserve Bank of India, in exercise of powers conferred on it under Section 45-IA (6) of the Reserve Bank of India Act, 1934, has cancelled the Certificate of Registration of the following companies. Sr. No. Name of…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63978",
+      "title": "13 NBFCs and 1 HFC surrender their Certificates of Registration to the RBI",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63978",
+      "publishedAt": "2026-11-16T11:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "The following thirteen Non-Banking Financial Companies (NBFCs) and one Housing Finance Company (HFC) have surrendered their Certificates of Registration (CoRs) granted to them by the Reserve Bank of India (RBI). The…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63977",
+      "title": "Money Market Operations as on November 13, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63977",
+      "publishedAt": "2026-11-16T09:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 7,75,521.41 5.62 1.00-7.40 I. Call Money 13,875.06 5.61 4.30-5.85…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
     {
       "id": "sebi-rss-105741",
       "title": "Notice of Demand dated 12.11.2026 in RC No. 9325 of 2026",
@@ -236,19 +275,6 @@
       "priority": 90
     },
     {
-      "id": "rbi-press-63969",
-      "title": "Government Stock - Auction Results: Cut-off",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63969",
-      "publishedAt": "2026-11-13T13:10:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "6.94% GS 2036 I. Notified Amount ₹34,000 crore II. Cut off Price (₹) / Implicit Yield at cut-off 97.43/7.3203% III. Amount accepted in the auction ₹34,000 crore IV. Devolvement on Primary Dealers NIL Ajit Prasad Deputy…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
       "id": "rbi-press-63968",
       "title": "Result of the 3-day Variable Rate Reverse Repo (VRRR) auction held on November 13, 2026",
       "source": "Reserve Bank of India (RBI)",
@@ -257,32 +283,6 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "Tenor 3-day Notified Amount (in ₹ crore) 75,000 Total amount of offers received (in ₹ crore) 38,592 Amount accepted (in ₹ crore) 38,592 Cut off Rate (%) 5.49 Weighted Average Rate (%) 5.49 Partial Acceptance Percentage…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63968",
-      "title": "Result of the 3-day Variable Rate Reverse Repo (VRRR) auction held on November 13, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63968",
-      "publishedAt": "2026-11-13T10:20:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "Tenor 3-day Notified Amount (in ₹ crore) 75,000 Total amount of offers received (in ₹ crore) 38,592 Amount accepted (in ₹ crore) 38,592 Cut off Rate (%) 5.49 Weighted Average Rate (%) 5.49 Partial Acceptance Percentage…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63967",
-      "title": "Result of Underwriting Auction conducted on November 13, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63967",
-      "publishedAt": "2026-11-13T09:55:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "In the underwriting auction conducted on November 13, 2026, for Additional Competitive Underwriting (ACU) of the undernoted Government security, the Reserve Bank of India has set the cut-off rate for underwriting…",
       "image": null,
       "sourceType": "official",
       "priority": 90
