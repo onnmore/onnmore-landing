@@ -1,6 +1,32 @@
 {
-  "updatedAt": "2026-11-16T21:59:52.885Z",
+  "updatedAt": "2026-11-17T07:53:51.275Z",
   "articles": [
+    {
+      "id": "rbi-press-63986",
+      "title": "Result of the 2-day Variable Rate Reverse Repo (VRRR) auction held on November 17, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63986",
+      "publishedAt": "2026-11-17T10:35:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Tenor 2-day Notified Amount (in ₹ crore) 50,000 Total amount of offers received (in ₹ crore) 7,627 Amount accepted (in ₹ crore) 7,627 Cut off Rate (%) 5.49 Weighted Average Rate (%) 5.49 Partial Acceptance Percentage of…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63985",
+      "title": "Money Market Operations as on November 16, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63985",
+      "publishedAt": "2026-11-17T09:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 8,46,109.51 5.58 4.00-7.20 I. Call Money 14,925.52 5.65 4.30-5.85…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
     {
       "id": "rbi-press-63984",
       "title": "RBI to conduct 2-day Variable Rate Reverse Repo (VRRR) auction under LAF on November 17, 2026",
@@ -10,6 +36,32 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "On a review of current and evolving liquidity conditions, it has been decided to conduct a Variable Rate Reverse Repo (VRRR) auction on Tuesday, November 17, 2026, as under: Sl. No. Notified Amount (₹ crore) Tenor (day)…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63984",
+      "title": "RBI to conduct 2-day Variable Rate Reverse Repo (VRRR) auction under LAF on November 17, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63984",
+      "publishedAt": "2026-11-16T19:25:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "On a review of current and evolving liquidity conditions, it has been decided to conduct a Variable Rate Reverse Repo (VRRR) auction on Tuesday, November 17, 2026, as under: Sl. No. Notified Amount (₹ crore) Tenor (day)…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63983",
+      "title": "Auction of Government of India Dated Securities",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63983",
+      "publishedAt": "2026-11-16T17:45:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Government of India (GoI) has announced the sale (re-issue) of two dated securities for a notified amount of ₹33,000 crore as per the following details: Sr No Security Date of Repayment Notified Amount (₹ Crore) GoI…",
       "image": null,
       "sourceType": "official",
       "priority": 90
@@ -41,11 +93,50 @@
       "priority": 90
     },
     {
+      "id": "rbi-press-63982",
+      "title": "Result: Conversion/Switch Auction of Government of India Securities",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63982",
+      "publishedAt": "2026-11-16T14:55:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "A. Source Security 7.38% GS 2027 8.26% GS 2027 7.37% GS 2028 7.26% GS 2029 7.10% GS 2029 7.04% GS 2029 B. Notified Amount (in ₹ crore) 5,000 2,000 4,000 4,000 5,000 5,000 Destination Security 7.18% GS 2037 7.40% GS 2062…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
       "id": "rbi-press-63981",
       "title": "Money Market Operations as on November 15, 2026",
       "source": "Reserve Bank of India (RBI)",
       "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63981",
       "publishedAt": "2026-11-16T12:05:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 0.00 - - I. Call Money 0.00 - - II. Triparty Repo 0.00 - - III.…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63981",
+      "title": "Money Market Operations as on November 15, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63981",
+      "publishedAt": "2026-11-16T12:05:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 0.00 - - I. Call Money 0.00 - - II. Triparty Repo 0.00 - - III.…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63980",
+      "title": "Money Market Operations as on November 14, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63980",
+      "publishedAt": "2026-11-16T12:00:00.000Z",
       "category": "Finance & Banking",
       "region": "National",
       "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 0.00 - - I. Call Money 0.00 - - II. Triparty Repo 0.00 - - III.…",
@@ -192,32 +283,6 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "The following State Governments have offered to sell stock by way of auction, for an aggregate amount of ₹23,300 Crore (Face Value). Sr. No. State Amount to be raised (₹ Crore) Tenor (Year) Type of Auction 1. Andhra…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63976",
-      "title": "Auction of State Government Securities",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63976",
-      "publishedAt": "2026-11-13T17:50:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "The following State Governments have offered to sell stock by way of auction, for an aggregate amount of ₹23,300 Crore (Face Value). Sr. No. State Amount to be raised (₹ Crore) Tenor (Year) Type of Auction 1. Andhra…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63975",
-      "title": "Auction of 91-Day, 182-Day and 364-Day Treasury Bills",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63975",
-      "publishedAt": "2026-11-13T17:45:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "Reserve Bank of India announces the auction of Government of India Treasury Bills as per the following details: Sr. No. Treasury Bill Notified Amount (₹ crore) Auction Date Settlement Date 1 91-Day 8,000 November 18,…",
       "image": null,
       "sourceType": "official",
       "priority": 90
@@ -1235,71 +1300,6 @@
       "image": null,
       "sourceType": "official",
       "priority": 90
-    },
-    {
-      "id": "rbi-press-63914",
-      "title": "Constitution of the Technical Consultative Committee for Financial Markets (TCCFM)",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63914",
-      "publishedAt": "2026-11-04T11:15:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "In pursuance of the announcement made in the Statement on Developmental and Regulatory Policies dated October 7, 2026 , the Reserve Bank of India announces the constitution of the Technical Consultative Committee for…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63913",
-      "title": "Result of the Overnight Variable Rate Reverse Repo (VRRR) auction held on November 04, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63913",
-      "publishedAt": "2026-11-04T10:35:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "Tenor 1-day Notified Amount (in ₹ crore) 50,000 Total amount of offers received (in ₹ crore) 73,907 Amount accepted (in ₹ crore) 50,015 Cut off Rate (%) 5.49 Weighted Average Rate (%) 5.49 Partial Acceptance Percentage…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63912",
-      "title": "Money Market Operations as on November 03, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63912",
-      "publishedAt": "2026-11-04T09:00:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 7,55,006.14 5.44 0.01-5.90 I. Call Money 11,860.77 5.45 4.30-5.65…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "sebi-rss-105523",
-      "title": "Extension of timeline with respect to compliance of Digital Accessibility Circulars",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/legal/circulars/oct-2026/extension-of-timeline-with-respect-to-compliance-of-digital-accessibility-circulars_105523.html",
-      "publishedAt": "2026-11-04T06:19:57.911Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-105522",
-      "title": "Ease of Compliance for FPIs – Rationalisation of KYC Review Periodicity",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/media-and-notifications/press-releases/oct-2026/ease-of-compliance-for-fpis-rationalisation-of-kyc-review-periodicity_105522.html",
-      "publishedAt": "2026-11-04T06:19:57.911Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
     }
   ]
 }
