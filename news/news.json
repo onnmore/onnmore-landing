@@ -1,6 +1,58 @@
 {
-  "updatedAt": "2026-11-18T20:30:06.349Z",
+  "updatedAt": "2026-11-19T07:23:40.708Z",
   "articles": [
+    {
+      "id": "rbi-press-64000",
+      "title": "Result of the Overnight Variable Rate Reverse Repo (VRRR) auction held on November 19, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64000",
+      "publishedAt": "2026-11-19T11:25:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Tenor 1-day Notified Amount (in ₹ crore) 50,000 Total amount of offers received (in ₹ crore) 11,682 Amount accepted (in ₹ crore) 11,682 Cut off Rate (%) 5.49 Weighted Average Rate (%) 5.49 Partial Acceptance Percentage…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63999",
+      "title": "Underwriting Auction for sale of Government Securities for ₹33,000 crore on November 20, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63999",
+      "publishedAt": "2026-11-19T11:15:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Government of India has announced the sale (re-issue) of Government Securities, as detailed below, through auction to be held on November 20, 2026 (Friday) . As per the extant scheme of underwriting commitment notified…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63998",
+      "title": "Money Market Operations as on November 18, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63998",
+      "publishedAt": "2026-11-19T09:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 8,02,340.74 5.50 4.30-5.90 I. Call Money 15,496.85 5.55 4.30-5.70…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63997",
+      "title": "RBI to conduct Overnight Variable Rate Reverse Repo (VRRR) auction under LAF on November 19, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63997",
+      "publishedAt": "2026-11-18T19:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "On a review of current and evolving liquidity conditions, it has been decided to conduct a Variable Rate Reverse Repo (VRRR) auction on Thursday, November 19, 2026, as under: Sl. No. Notified Amount (₹ crore) Tenor…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
     {
       "id": "rbi-press-63997",
       "title": "RBI to conduct Overnight Variable Rate Reverse Repo (VRRR) auction under LAF on November 19, 2026",
@@ -28,6 +80,19 @@
       "priority": 90
     },
     {
+      "id": "rbi-press-63996",
+      "title": "Premature redemption under Sovereign Gold Bond (SGB) Scheme - Redemption Price for premature redemption of SGB 2020-21 Series II due on November 19, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63996",
+      "publishedAt": "2026-11-18T17:55:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "In terms of GOI notification F.No. 4(4)-B(W&M)/2020 dated April 13, 2020 (SGB 2020-21 Series II - Issue date May 19, 2020) on Sovereign Gold Bond Scheme, premature redemption of Gold Bond may be permitted after fifth…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
       "id": "rbi-press-63995",
       "title": "Treasury Bills: Full Auction Result",
       "source": "Reserve Bank of India (RBI)",
@@ -36,6 +101,32 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "(Amount in ₹ crore) Auction Results 91-Day 182-Day 364-Day I. Notified Amount 8,000 8,000 7,000 II. Competitive Bids Received (i) Number 152 127 163 (ii) Amount 25,216.180 26,523.500 25,170.500 III. Cut-off price (₹) /…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63995",
+      "title": "Treasury Bills: Full Auction Result",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63995",
+      "publishedAt": "2026-11-18T14:40:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore) Auction Results 91-Day 182-Day 364-Day I. Notified Amount 8,000 8,000 7,000 II. Competitive Bids Received (i) Number 152 127 163 (ii) Amount 25,216.180 26,523.500 25,170.500 III. Cut-off price (₹) /…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-63994",
+      "title": "91-Day, 182-Day and 364-Day T-Bill Auction Result: Cut-off",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63994",
+      "publishedAt": "2026-11-18T13:25:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "T-Bill 91-Day 182-Day 364-Day I. Total Face Value Notified ₹8,000 Crore ₹8,000 Crore ₹7,000 Crore II. Cut-off Price (₹) and Implicit Yield at Cut-Off Price 98.5600 (YTM: 5.8602%) 96.8466 (YTM: 6.5300%) 93.7982 (YTM:…",
       "image": null,
       "sourceType": "official",
       "priority": 90
@@ -145,19 +236,6 @@
       "priority": 90
     },
     {
-      "id": "rbi-press-63990",
-      "title": "Premature redemption under Sovereign Gold Bond (SGB) Scheme - Redemption Price for premature redemption of SGB 2020-21 Series VIII due on November 18, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63990",
-      "publishedAt": "2026-11-17T18:00:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "In terms of GOI notification F.No. 4(4)-B(W&M)/2020 dated October 09, 2020 (SGB 2020-21 Series VIII - Issue date November 18, 2020) on Sovereign Gold Bond Scheme, premature redemption of Gold Bond may be permitted after…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
       "id": "rbi-press-63989",
       "title": "State Government Securities - Full Auction Result",
       "source": "Reserve Bank of India (RBI)",
@@ -166,32 +244,6 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "The result of the auction of State Government Securities held on November 17, 2026 is as under: (Amount in ₹ Crore) ANDHRA PRADESH SGS 2051 GOA SGS 2037* KARNATAKA SGS 2034 MADHYA PRADESH SGS 2030 Notified Amount 1000…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63989",
-      "title": "State Government Securities - Full Auction Result",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63989",
-      "publishedAt": "2026-11-17T16:40:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "The result of the auction of State Government Securities held on November 17, 2026 is as under: (Amount in ₹ Crore) ANDHRA PRADESH SGS 2051 GOA SGS 2037* KARNATAKA SGS 2034 MADHYA PRADESH SGS 2030 Notified Amount 1000…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63988",
-      "title": "Directions under Section 35A read with Section 56 of the Banking Regulation Act, 1949 – Nagar Sahakari Bank Ltd., Etawah – Extension of Period",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63988",
-      "publishedAt": "2026-11-17T15:15:00.000Z",
-      "category": "Government & Policy",
-      "region": "National",
-      "summary": "The Reserve Bank of India issued Directions under Section 35A read with Section 56 of the Banking Regulation Act, 1949 to Nagar Sahakari Bank Ltd., Etawah, vide Directive No. LKO.DOS.SED.No.S29/12-03-000/2026-2027 dated…",
       "image": null,
       "sourceType": "official",
       "priority": 90
@@ -782,32 +834,6 @@
       "priority": 90
     },
     {
-      "id": "rbi-press-63956",
-      "title": "Treasury Bills: Full Auction Result",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63956",
-      "publishedAt": "2026-11-11T13:40:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "(Amount in ₹ crore) Auction Results 91-Day 182-Day 364-Day I. Notified Amount 8,000 8,000 7,000 II. Competitive Bids Received (i) Number 132 91 146 (ii) Amount 27,046.800 20,021.500 21,548.500 III. Cut-off price (₹) /…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63955",
-      "title": "91-Day, 182-Day and 364-Day T-Bill Auction Result: Cut-off",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63955",
-      "publishedAt": "2026-11-11T12:55:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "T-Bill 91-Day 182-Day 364-Day I. Total Face Value Notified ₹8,000 Crore ₹8,000 Crore ₹7,000 Crore II. Cut-off Price (₹) and Implicit Yield at Cut-Off Price 98.5581 (YTM: 5.8681%) 96.8521 (YTM: 6.5183%) 93.7900 (YTM:…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
       "id": "rbi-press-63954",
       "title": "Money Market Operations as on November 10, 2026",
       "source": "Reserve Bank of India (RBI)",
@@ -1271,32 +1297,6 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "As part of the ongoing effort towards consolidation of various instructions issued from time to time, the Reserve Bank has undertaken a review of the extant guidelines relating to Priority Sector Lending (PSL) and…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63924",
-      "title": "Directions under Section 35A read with Section 56 of the Banking Regulation Act, 1949 – The Pusad Urban Co-operative Bank Ltd., Pusad, Dist. Yavatmal, Maharashtra – Extension of…",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63924",
-      "publishedAt": "2026-11-05T12:45:00.000Z",
-      "category": "Government & Policy",
-      "region": "National",
-      "summary": "The Reserve Bank of India issued Directions under Section 35A read with Section 56 of the Banking Regulation Act, 1949 to The Pusad Urban Co-operative Bank Ltd., Pusad, Dist. Yavatmal, Maharashtra vide Directive No.…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63923",
-      "title": "Underwriting Auction for sale of Government Securities for ₹36,000 crore on November 06, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63923",
-      "publishedAt": "2026-11-05T11:35:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "Government of India has announced the sale (re-issue) of Government Securities, as detailed below, through auction to be held on November 06, 2026 (Friday) . As per the extant scheme of underwriting commitment notified…",
       "image": null,
       "sourceType": "official",
       "priority": 90
