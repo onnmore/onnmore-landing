@@ -1,7 +1,72 @@
 {
-  "updatedAt": "2026-11-24T22:25:33.551Z",
+  "updatedAt": "2026-11-25T08:31:39.865Z",
   "articles": [
     {
+      "id": "rbi-press-64038",
+      "title": "Result of the Second Overnight Variable Rate Repo (VRR) auction held on November 25, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64038",
+      "publishedAt": "2026-11-25T12:50:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Tenor 1-day Notified Amount (in ₹ crore) 50,000 Total amount of bids received (in ₹ crore) 75,246 Amount allotted (in ₹ crore) 50,007 Cut off Rate (%) 5.68 Weighted Average Rate (%) 5.69 Partial Allotment Percentage of…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-64037",
+      "title": "RBI to conduct Second Overnight Variable Rate Repo (VRR) auction under LAF on November 25, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64037",
+      "publishedAt": "2026-11-25T11:30:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "On a review of current and evolving liquidity conditions in the near term, it has been decided to conduct a second Variable Rate Repo (VRR) auction on Wednesday, November 25, 2026, as under: Sl. No. Notified Amount (₹…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-64036",
+      "title": "Money Market Operations as on November 24, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64036",
+      "publishedAt": "2026-11-25T10:40:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 0.00 - - I. Call Money 0.00 - - II. Triparty Repo 0.00 - - III.…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-64035",
+      "title": "Result of the Overnight Variable Rate Repo (VRR) auction held on November 25, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64035",
+      "publishedAt": "2026-11-25T10:25:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Tenor 1-day Notified Amount (in ₹ crore) 50,000 Total amount of bids received (in ₹ crore) 1,62,017 Amount allotted (in ₹ crore) 50,007 Cut off Rate (%) 5.66 Weighted Average Rate (%) 5.67 Partial Allotment Percentage…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-64034",
+      "title": "Money Market Operations as on November 23, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64034",
+      "publishedAt": "2026-11-25T09:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 7,92,140.65 5.73 4.25-6.10 I. Call Money 13,306.12 5.74 4.30-6.10…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
       "id": "rbi-press-64033",
       "title": "RBI to conduct Overnight Variable Rate Repo (VRR) auction under LAF on November 25, 2026",
       "source": "Reserve Bank of India (RBI)",
@@ -145,32 +210,6 @@
       "priority": 90
     },
     {
-      "id": "rbi-press-64028",
-      "title": "Reserve Bank (Securitisation Transactions) Amendment Directions, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64028",
-      "publishedAt": "2026-11-23T17:00:00.000Z",
-      "category": "Government & Policy",
-      "region": "National",
-      "summary": "The Reserve Bank of India had, on July 27, 2026 , issued the Draft (Securitisation Transactions) Amendment Directions for stakeholder feedback. 2. Feedback received on the draft Directions has been examined and…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-64027",
-      "title": "State Government Securities - Full Auction Result",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64027",
-      "publishedAt": "2026-11-23T16:50:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "The result of the auction of State Government Securities held on November 23, 2026 is as under: (Amount in ₹ Crore) ASSAM SGS 2036 BIHAR SGS 2035* BIHAR SGS 2041 CHHATTISGARH SGS 2038 @ Notified Amount 1000 1000 2000…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
       "id": "rbi-press-64027",
       "title": "State Government Securities - Full Auction Result",
       "source": "Reserve Bank of India (RBI)",
@@ -197,19 +236,6 @@
       "priority": 90
     },
     {
-      "id": "rbi-press-64026",
-      "title": "RBI issues Draft Amendment Directions for ‘Preventive Safeguards for Electronic Banking Transactions (EBTs)’",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64026",
-      "publishedAt": "2026-11-23T16:35:00.000Z",
-      "category": "Government & Policy",
-      "region": "National",
-      "summary": "The Reserve Bank had issued the Amendment Directions dated June 24, 2026 on ' Customer Protection in Fraudulent Electronic Banking Transactions ' which, inter alia, strengthened the existing framework for limiting…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
       "id": "rbi-press-64025",
       "title": "RBI releases 2026 list of Domestic Systemically Important Banks (D-SIBs)",
       "source": "Reserve Bank of India (RBI)",
@@ -218,32 +244,6 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "State Bank of India, HDFC Bank, and ICICI Bank continue to be identified as Domestic Systemically Important Banks (D-SIBs) under the same bucketing structure as in the 2025 list of D-SIBs . The additional Common Equity…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-64025",
-      "title": "RBI releases 2026 list of Domestic Systemically Important Banks (D-SIBs)",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64025",
-      "publishedAt": "2026-11-23T16:30:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "State Bank of India, HDFC Bank, and ICICI Bank continue to be identified as Domestic Systemically Important Banks (D-SIBs) under the same bucketing structure as in the 2025 list of D-SIBs . The additional Common Equity…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-64024",
-      "title": "Result of Yield/Price Based Auction of State Government Securities",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64024",
-      "publishedAt": "2026-11-23T15:05:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "Sr. No State/UT Amount to be raised (₹ Crore) Amount Accepted (₹ Crore) Cut off Price (₹)/ Yield (%) Tenor (Year) 1. Assam 1000 1000 98.00/7.9615 Re-issue of 7.66% Assam SGS 2036, issued on June 17, 2026 2. Bihar* 1000…",
       "image": null,
       "sourceType": "official",
       "priority": 90
@@ -1222,45 +1222,6 @@
       "image": null,
       "sourceType": "official",
       "priority": 90
-    },
-    {
-      "id": "sebi-rss-105656",
-      "title": "Notice of Demand dated November 06, 2026, against Natasha Sinha (AAUPS3146B) in the matter of Mideast Integrated Steel Limited (MISL) under RC No. 9321 of 2026",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/enforcement/recovery-proceedings/nov-2026/notice-of-demand-dated-november-06-2026-against-natasha-sinha-aaups3146b-in-the-matter-of-mideast-integrated-steel-limited-misl-under-rc-no-9321-of-2026_105656.html",
-      "publishedAt": "2026-11-11T06:16:41.156Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-105654",
-      "title": "Notice of Demand dated November 06, 2026 against Satyen Bhupendra Dalal (PAN: AACPD0426F) in the matter of Veerkrupa Jewellers Limited under RC No. 9320 of 2026",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/enforcement/recovery-proceedings/nov-2026/notice-of-demand-dated-november-06-2026-against-satyen-bhupendra-dalal-pan-aacpd0426f-in-the-matter-of-veerkrupa-jewellers-limited-under-rc-no-9320-of-2026_105654.html",
-      "publishedAt": "2026-11-11T06:16:41.156Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
-    },
-    {
-      "id": "sebi-rss-105652",
-      "title": "Notice of Demand dated November 06, 2026 issued under RC No. 9319 of 2026 drawn against Investowryght Research Analytics Private Limited in the matter of Investowryght Research…",
-      "source": "Securities and Exchange Board of India (SEBI)",
-      "sourceUrl": "https://www.sebi.gov.in/enforcement/recovery-proceedings/nov-2026/notice-of-demand-dated-november-06-2026-issued-under-rc-no-9319-of-2026-drawn-against-investowryght-research-analytics-private-limited-in-the-matter-of-investowryght-research-analytics-private-limit-_105652.html",
-      "publishedAt": "2026-11-11T06:16:41.156Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 85
     }
   ]
 }
