@@ -1,6 +1,71 @@
 {
-  "updatedAt": "2026-11-25T08:31:39.865Z",
+  "updatedAt": "2026-11-25T21:40:25.386Z",
   "articles": [
+    {
+      "id": "rbi-press-64043",
+      "title": "RBI to conduct Overnight Variable Rate Repo (VRR) auction under LAF on November 26, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64043",
+      "publishedAt": "2026-11-25T19:20:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "On a review of current and evolving liquidity conditions in the near term, it has been decided to conduct a Variable Rate Repo (VRR) auction on Thursday, November 26, 2026, as under: Sl. No. Notified Amount (₹ crore)…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-64042",
+      "title": "47th Half-Yearly Report on Management of Foreign Exchange Reserves: April – September 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64042",
+      "publishedAt": "2026-11-25T18:05:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "It may be recalled that in February 2004 , the Reserve Bank initiated the practice of compiling half-yearly reports on the management of foreign exchange reserves and making them public to promote greater transparency…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-64041",
+      "title": "RBI Bulletin – November 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64041",
+      "publishedAt": "2026-11-25T17:55:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Today, the Reserve Bank released the November 2026 issue of its monthly Bulletin. The Bulletin includes six speeches, four articles and current statistics. The four articles are: I. State of the Economy; II. Shifting…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-64040",
+      "title": "Treasury Bills: Full Auction Result",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64040",
+      "publishedAt": "2026-11-25T15:50:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore) Auction Results 91-Day 182-Day 364-Day I. Notified Amount 8,000 8,000 7,000 II. Competitive Bids Received (i) Number 93 87 135 (ii) Amount 17,354.750 23,728.750 21,835.000 III. Cut-off price (₹) /…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-64039",
+      "title": "91-Day, 182-Day and 364-Day T-Bill Auction Result: Cut-off",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64039",
+      "publishedAt": "2026-11-25T15:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "T-Bill 91-Day 182-Day 364-Day I. Total Face Value Notified ₹8,000 Crore ₹8,000 Crore ₹7,000 Crore II. Cut-off Price (₹) and Implicit Yield at Cut-Off Price 98.5541 (YTM: 5.8846%) 96.8472 (YTM: 6.5288%) 93.7906 (YTM:…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
     {
       "id": "rbi-press-64038",
       "title": "Result of the Second Overnight Variable Rate Repo (VRR) auction held on November 25, 2026",
@@ -10,6 +75,32 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "Tenor 1-day Notified Amount (in ₹ crore) 50,000 Total amount of bids received (in ₹ crore) 75,246 Amount allotted (in ₹ crore) 50,007 Cut off Rate (%) 5.68 Weighted Average Rate (%) 5.69 Partial Allotment Percentage of…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-64038",
+      "title": "Result of the Second Overnight Variable Rate Repo (VRR) auction held on November 25, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64038",
+      "publishedAt": "2026-11-25T12:50:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Tenor 1-day Notified Amount (in ₹ crore) 50,000 Total amount of bids received (in ₹ crore) 75,246 Amount allotted (in ₹ crore) 50,007 Cut off Rate (%) 5.68 Weighted Average Rate (%) 5.69 Partial Allotment Percentage of…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-64037",
+      "title": "RBI to conduct Second Overnight Variable Rate Repo (VRR) auction under LAF on November 25, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64037",
+      "publishedAt": "2026-11-25T11:30:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "On a review of current and evolving liquidity conditions in the near term, it has been decided to conduct a second Variable Rate Repo (VRR) auction on Wednesday, November 25, 2026, as under: Sl. No. Notified Amount (₹…",
       "image": null,
       "sourceType": "official",
       "priority": 90
@@ -41,6 +132,19 @@
       "priority": 90
     },
     {
+      "id": "rbi-press-64036",
+      "title": "Money Market Operations as on November 24, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64036",
+      "publishedAt": "2026-11-25T10:40:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 0.00 - - I. Call Money 0.00 - - II. Triparty Repo 0.00 - - III.…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
       "id": "rbi-press-64035",
       "title": "Result of the Overnight Variable Rate Repo (VRR) auction held on November 25, 2026",
       "source": "Reserve Bank of India (RBI)",
@@ -49,6 +153,32 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "Tenor 1-day Notified Amount (in ₹ crore) 50,000 Total amount of bids received (in ₹ crore) 1,62,017 Amount allotted (in ₹ crore) 50,007 Cut off Rate (%) 5.66 Weighted Average Rate (%) 5.67 Partial Allotment Percentage…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-64035",
+      "title": "Result of the Overnight Variable Rate Repo (VRR) auction held on November 25, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64035",
+      "publishedAt": "2026-11-25T10:25:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "Tenor 1-day Notified Amount (in ₹ crore) 50,000 Total amount of bids received (in ₹ crore) 1,62,017 Amount allotted (in ₹ crore) 50,007 Cut off Rate (%) 5.66 Weighted Average Rate (%) 5.67 Partial Allotment Percentage…",
+      "image": null,
+      "sourceType": "official",
+      "priority": 90
+    },
+    {
+      "id": "rbi-press-64034",
+      "title": "Money Market Operations as on November 23, 2026",
+      "source": "Reserve Bank of India (RBI)",
+      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64034",
+      "publishedAt": "2026-11-25T09:00:00.000Z",
+      "category": "Finance & Banking",
+      "region": "National",
+      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 7,92,140.65 5.73 4.25-6.10 I. Call Money 13,306.12 5.74 4.30-6.10…",
       "image": null,
       "sourceType": "official",
       "priority": 90
@@ -80,32 +210,6 @@
       "priority": 90
     },
     {
-      "id": "rbi-press-64033",
-      "title": "RBI to conduct Overnight Variable Rate Repo (VRR) auction under LAF on November 25, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64033",
-      "publishedAt": "2026-11-23T19:25:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "On a review of current and evolving liquidity conditions in the near term, it has been decided to conduct a Variable Rate Repo (VRR) auction on Wednesday, November 25, 2026, as under: Sl. No. Notified Amount (₹ crore)…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-64032",
-      "title": "Governor, Reserve Bank of India meets Managing Directors & Chief Executive Officers of select NBFCs, HFCs and Industry Representatives in Mumbai on November 23, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64032",
-      "publishedAt": "2026-11-23T19:20:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "As part of the Reserve Bank's ongoing engagement with regulated entities, the Governor, Reserve Bank of India, today met in Mumbai with the Managing Directors and Chief Executive Officers (MDs & CEOs) of select…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
       "id": "rbi-press-64032",
       "title": "Governor, Reserve Bank of India meets Managing Directors & Chief Executive Officers of select NBFCs, HFCs and Industry Representatives in Mumbai on November 23, 2026",
       "source": "Reserve Bank of India (RBI)",
@@ -132,19 +236,6 @@
       "priority": 90
     },
     {
-      "id": "rbi-press-64031",
-      "title": "Governor, Reserve Bank of India meets Chairpersons and Managing Directors & Chief Executive Officers of select UCBs and Industry Representatives in Mumbai on November 23, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64031",
-      "publishedAt": "2026-11-23T19:15:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "As part of the Reserve Bank of India's continued engagement with regulated entities, the Governor today met in Mumbai with the Chairpersons and Managing Directors & Chief Executive Officers (MDs & CEOs) of select Urban…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
       "id": "rbi-press-64030",
       "title": "Premature redemption under Sovereign Gold Bond (SGB) Scheme - Redemption Price for premature redemption of SGB 2021-22 Series I due on November 25, 2026",
       "source": "Reserve Bank of India (RBI)",
@@ -153,32 +244,6 @@
       "category": "Finance & Banking",
       "region": "National",
       "summary": "In terms of GOI notification F. No. 4(5)-B(W&M)/2021 dated May 12, 2021 (SGB 2021-22 Series I - Issue date May 25, 2021) on Sovereign Gold Bond Scheme, premature redemption of Gold Bond may be permitted after fifth year…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-64030",
-      "title": "Premature redemption under Sovereign Gold Bond (SGB) Scheme - Redemption Price for premature redemption of SGB 2021-22 Series I due on November 25, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64030",
-      "publishedAt": "2026-11-23T18:10:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "In terms of GOI notification F. No. 4(5)-B(W&M)/2021 dated May 12, 2021 (SGB 2021-22 Series I - Issue date May 25, 2021) on Sovereign Gold Bond Scheme, premature redemption of Gold Bond may be permitted after fifth year…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-64029",
-      "title": "Auction of Government of India Dated Securities",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=64029",
-      "publishedAt": "2026-11-23T17:45:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "Government of India (GoI) has announced the sale (re-issue) of four dated securities for a notified amount of ₹33,000 crore as per the following details: Sr No Security Date of Repayment Notified Amount (₹ Crore) GoI…",
       "image": null,
       "sourceType": "official",
       "priority": 90
@@ -1170,58 +1235,6 @@
       "image": null,
       "sourceType": "official",
       "priority": 85
-    },
-    {
-      "id": "rbi-press-63958",
-      "title": "Conversion/Switch of Government of India Securities",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63958",
-      "publishedAt": "2026-11-11T18:10:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "Government of India announces the conversion/switch of its securities through auction for an aggregate amount of ₹25,000 crore (face value). The security-wise details of the conversion/switch are given as under: Date of…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63957",
-      "title": "Reserve Money and Money Supply for the fortnight ended on October 31, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63957",
-      "publishedAt": "2026-11-11T17:25:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "The Reserve Bank has today released data on Reserve Money and Money Supply for the fortnight ended on October 31, 2026. Ajit Prasad Deputy General Manager (Communications) Press Release: 2026-2027/1479",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63954",
-      "title": "Money Market Operations as on November 10, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63954",
-      "publishedAt": "2026-11-11T11:30:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
-    },
-    {
-      "id": "rbi-press-63953",
-      "title": "Money Market Operations as on November 09, 2026",
-      "source": "Reserve Bank of India (RBI)",
-      "sourceUrl": "https://www.rbi.org.in/scripts/BS_PressReleaseDisplay.aspx?prid=63953",
-      "publishedAt": "2026-11-11T09:00:00.000Z",
-      "category": "Finance & Banking",
-      "region": "National",
-      "summary": "(Amount in ₹ crore, Rate in Per cent) MONEY MARKETS @ --> Money Markets @ Volume (One Leg) Weighted Average Rate Range A. Overnight Segment (I+II+III+IV) 7,37,804.31 5.50 3.00-7.50 I. Call Money 14,551.04 5.59 4.30-5.70…",
-      "image": null,
-      "sourceType": "official",
-      "priority": 90
     }
   ]
 }
